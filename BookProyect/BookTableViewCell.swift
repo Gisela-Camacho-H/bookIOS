@@ -67,15 +67,15 @@ class BookTableViewCell: UITableViewCell{
         imageLibro?.layer.masksToBounds = true
         ownContent?.addSubview(imageLibro!)
         
-        goButton = UIButton(frame: CGRect(x: 300, y: 30 , width: 30 , height: 30))
+        goButton = UIButton(frame: CGRect(x: 295, y: 30 , width: 40 , height: 30))
         goButton?.setImage(UIImage(named: "go"), for: .normal);
         ownContent?.addSubview(goButton!)
         
-        shareImage = UIImageView(frame: CGRect(x: 300, y: 70 , width: 10, height: 10))
+        shareImage = UIImageView(frame: CGRect(x: 290, y: 70 , width: 17, height: 17))
         shareImage?.image = UIImage(named: "share")
         ownContent?.addSubview(shareImage!)
         
-        heartImage = UIImageView(frame: CGRect(x: 320, y: 70 , width: 10, height: 10))
+        heartImage = UIImageView(frame: CGRect(x: 320, y: 70 , width: 17, height: 17))
         heartImage?.image = UIImage(named: "heart")
         ownContent?.addSubview(heartImage!)
         

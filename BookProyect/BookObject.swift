@@ -41,9 +41,10 @@ class Libro{
     var detalles : String?
     var sobreAutor : String?
     var categoria: String?
+    var autorImage : String?
     
     
-    init(nombre : String, descripcion : String, autor: String, imagen : String, detalles : String, sobreAutor : String, categoria: String){
+    init(nombre : String, descripcion : String, autor: String, imagen : String, detalles : String, sobreAutor : String, categoria: String, autorImage: String){
         self.nombre = nombre
         self.descripcion = descripcion
         self.autor = autor
@@ -51,6 +52,7 @@ class Libro{
         self.detalles = detalles
         self.sobreAutor = sobreAutor
         self.categoria = categoria
+        self.autorImage = autorImage
     }
     
 }

@@ -30,11 +30,13 @@ class DetailBookViewController: UIViewController {
     var mLibro: Libro?
     var shareImage: UIImageView?
     var heartImage: UIImageView?
+    var autorImage : UIImageView?
     
-    
-    var backgroundColor = UIColor(displayP3Red: 220/255, green: 218/255, blue: 220/255, alpha: 1) //rgba(220,218,220,255)
-    var blueColor = UIColor(displayP3Red: 21/255, green: 39/255, blue: 112/255, alpha: 1)
-    var lightBlueColor = UIColor(displayP3Red: 121/255, green: 168/255, blue: 243/255, alpha: 1)
+    var backgroundColor = UIColor(displayP3Red: 255/255, green: 242/255, blue: 223/255, alpha: 1)
+   //rgba(220,218,220,255)
+    var blueColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
+    //rgba(64,46,32,255)
+    var lightBlueColor = UIColor(displayP3Red: 283/255, green: 162/255, blue: 129/255, alpha: 1)
     
     init(libro : Libro){
         self.mLibro = libro
@@ -45,33 +47,33 @@ class DetailBookViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = backgroundColor
+        //view.backgroundColor = backgroundColor
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "papel")
+        backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
+        self.view.insertSubview(backgroundImage, at: 0)
         
         initUI()
         
     }
     
     func initUI(){
-        
-        topImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height/4))
-        topImageView?.image = UIImage(named: "topimage")
-        view.addSubview(topImageView!)
-        
+   
     
-        backButton = UIButton(frame: CGRect(x: 25, y: 56, width: 30, height: 30))
+        backButton = UIButton(frame: CGRect(x: 25, y: 65, width: 40, height: 40))
         backButton?.setImage(UIImage(named: "back"), for: .normal)
         backButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         view.addSubview(backButton!)
         
-        shareImage = UIImageView(frame: CGRect(x: width - 80, y: 58 , width: 23, height: 23))
+        shareImage = UIImageView(frame: CGRect(x: width - 80, y: 70 , width: 23, height: 23))
         shareImage?.image = UIImage(named: "share")
         view.addSubview(shareImage!)
         
-        heartImage = UIImageView(frame: CGRect(x: width - 45, y: 58 , width: 23, height: 23))
+        heartImage = UIImageView(frame: CGRect(x: width - 45, y: 70 , width: 23, height: 23))
         heartImage?.image = UIImage(named: "heart")
         view?.addSubview(heartImage!)
         
-        imageLine =  UIView(frame: CGRect(x: 0, y: 90 , width: width, height: 3))
+        imageLine =  UIView(frame: CGRect(x: 0, y: 110 , width: width, height: 3))
         imageLine?.backgroundColor = blueColor
         view?.addSubview(imageLine!)
 
@@ -126,7 +128,7 @@ class DetailBookViewController: UIViewController {
     
     
     func createDescription(){
-        descriptionView = UIView(frame: CGRect(x: 25, y: height/3 + 80, width: width - 50, height: height/5 + 20))
+        descriptionView = UIView(frame: CGRect(x: 25, y: height/3 + 70, width: width - 50, height: height/5 + 20))
         descriptionView?.backgroundColor = .white
         descriptionView?.layer.cornerRadius = 20
         view.addSubview(descriptionView!)
@@ -160,7 +162,7 @@ class DetailBookViewController: UIViewController {
     }
     
     func createSobreAutor(){
-        descriptionView = UIView(frame: CGRect(x: 25, y: height/2 + 160, width: width - 50, height: height/5 + 50))
+        descriptionView = UIView(frame: CGRect(x: 25, y: height/2 + 140, width: width - 50, height: height/5 + 50))
         descriptionView?.backgroundColor = .white
         descriptionView?.layer.cornerRadius = 20
         view.addSubview(descriptionView!)
@@ -191,6 +193,11 @@ class DetailBookViewController: UIViewController {
         bookMas?.textColor = lightBlueColor
         bookMas?.font = .boldSystemFont(ofSize: 12)
         descriptionView?.addSubview(bookMas!)
+        
+        autorImage = UIImageView(frame: CGRect(x: 15, y: 10, width: 60, height: 60))
+        autorImage?.image = UIImage(named: mLibro?.autorImage ?? "")
+
+        descriptionView?.addSubview(autorImage!)
         
     }
     required init?(coder: NSCoder) {

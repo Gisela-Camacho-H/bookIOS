@@ -27,13 +27,19 @@ class RegisterViewController: UIViewController {
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
     
-    var backgroundColor = UIColor(displayP3Red: 220/255, green: 218/255, blue: 220/255, alpha: 1) //rgba(220,218,220,255)
-    var blueColor = UIColor(displayP3Red: 21/255, green: 39/255, blue: 112/255, alpha: 1)
-    var lightBlueColor = UIColor(displayP3Red: 121/255, green: 168/255, blue: 243/255, alpha: 1)
+    var backgroundColor = UIColor(displayP3Red: 255/255, green: 242/255, blue: 223/255, alpha: 1) //rgba(220,218,220,255)
+    var blueColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
+    var lightBlueColor = UIColor(displayP3Red: 283/255, green: 162/255, blue: 129/255, alpha: 1)
+    //rgb(194,162,164)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = backgroundColor
+        //view.backgroundColor = backgroundColor
+        
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "papel")
+        backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
+        self.view.insertSubview(backgroundImage, at: 0)
 
         initUI()
         
@@ -41,17 +47,17 @@ class RegisterViewController: UIViewController {
     func initUI(){
     
         
-        topImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height/5))
+        topImageView = UIImageView(frame: CGRect(x: 0, y: height/6 - 60, width: width, height: height/5))
         topImageView?.image = UIImage(named: "topImage")
         view.addSubview(topImageView!)
         
-        backButton = UIButton(frame: CGRect(x: 25, y: height/7 + 10, width: 30, height: 30))
+        backButton = UIButton(frame: CGRect(x: 25, y: height/7 - 40, width: 45, height: 45))
         backButton?.setImage(UIImage(named: "back"), for: .normal)
         backButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         view.addSubview(backButton!)
         
         
-        EstasAPuntoLabel = UILabel(frame: CGRect(x: 25, y: height/5 + 10, width: width - 50, height: 50))
+        EstasAPuntoLabel = UILabel(frame: CGRect(x: 25, y: height/3 - 20, width: width - 50, height: 50))
         EstasAPuntoLabel?.text = "Estas a unos cuantos pasos de vivir la mejor experiencia"
         EstasAPuntoLabel?.numberOfLines = 0
         EstasAPuntoLabel?.font = .boldSystemFont(ofSize: 16)
@@ -59,17 +65,18 @@ class RegisterViewController: UIViewController {
         view.addSubview(EstasAPuntoLabel!)
         
         
-        contentform = UIView(frame: CGRect(x: 20, y: height/4 + 40 , width: width - 40, height: height/3 + 70))
+        contentform = UIView(frame: CGRect(x: 20, y: height/2 - 90, width: width - 40, height: height/3 + 70))
         contentform?.backgroundColor = .white
         contentform?.layer.cornerRadius = 10
         view.addSubview(contentform!)
         
         
-        RegistraInfoLabel = UILabel(frame: CGRect(x: width/4, y: height/4 + 40, width: width, height: 50))
+        RegistraInfoLabel = UILabel(frame: CGRect(x: 30, y: 0, width: width - 60, height: 50))
         RegistraInfoLabel?.text = "Registra tu información"
         RegistraInfoLabel?.font = .boldSystemFont(ofSize: 20)
-        RegistraInfoLabel?.textColor = UIColor(displayP3Red: 21/255, green: 39/255, blue: 112/255, alpha: 1)
-        view.addSubview(RegistraInfoLabel!)
+        RegistraInfoLabel?.textAlignment = .center
+        RegistraInfoLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
+        contentform?.addSubview(RegistraInfoLabel!)
         
         usuarioTextField = UITextField(frame: CGRect(x:10, y:60, width: width - 60, height: 50))
         usuarioTextField?.backgroundColor = .clear
@@ -109,7 +116,7 @@ class RegisterViewController: UIViewController {
         usuarioLabel?.text = "Usuario"
         usuarioLabel?.backgroundColor = .white
         usuarioLabel?.font = .boldSystemFont(ofSize: 12)
-        usuarioLabel?.textColor = UIColor(displayP3Red: 21/255, green: 39/255, blue: 112/255, alpha: 1)
+        usuarioLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
         usuarioLabel?.textAlignment = .center
         contentform?.addSubview(usuarioLabel!)
         
@@ -117,7 +124,7 @@ class RegisterViewController: UIViewController {
         correoLabel?.text = "Correo"
         correoLabel?.backgroundColor = .white
         correoLabel?.font = .boldSystemFont(ofSize: 12)
-        correoLabel?.textColor = UIColor(displayP3Red: 21/255, green: 39/255, blue: 112/255, alpha: 1)
+        correoLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
         correoLabel?.textAlignment = .center
         contentform?.addSubview(correoLabel!)
         
@@ -125,7 +132,7 @@ class RegisterViewController: UIViewController {
         contrasenaLabel?.text = "Contraseña"
         contrasenaLabel?.backgroundColor = .white
         contrasenaLabel?.font = .boldSystemFont(ofSize: 12)
-        contrasenaLabel?.textColor = UIColor(displayP3Red: 21/255, green: 39/255, blue: 112/255, alpha: 1)
+        contrasenaLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
         contrasenaLabel?.textAlignment = .center
         contentform?.addSubview(contrasenaLabel!)
         
@@ -133,11 +140,11 @@ class RegisterViewController: UIViewController {
         confirmarLabel?.text = "Confirmar Contraseña"
         confirmarLabel?.backgroundColor = .white
         confirmarLabel?.font = .boldSystemFont(ofSize: 12)
-        confirmarLabel?.textColor = UIColor(displayP3Red: 21/255, green: 39/255, blue: 112/255, alpha: 1)
+        confirmarLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
         confirmarLabel?.textAlignment = .center
         contentform?.addSubview(confirmarLabel!)
         
-        loginButton = UIButton(frame: CGRect(x: 30, y: 670 , width: width - 60 , height: 50))
+        loginButton = UIButton(frame: CGRect(x: 30, y: height - 140 , width: width - 60 , height: 50))
         loginButton?.backgroundColor = blueColor
         loginButton?.layer.cornerRadius = 18
         loginButton?.setTitleColor(.white, for: .normal)

@@ -23,29 +23,35 @@ class ViewController: UIViewController {
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
     
-    var backgroundColor = UIColor(displayP3Red: 220/255, green: 218/255, blue: 220/255, alpha: 1) //rgba(220,218,220,255)
-    var blueColor = UIColor(displayP3Red: 21/255, green: 39/255, blue: 112/255, alpha: 1)
+    var backgroundColor = UIColor(displayP3Red: 255/255, green: 242/255, blue: 223/255, alpha: 1)
+    //rgba(255,242,223,255)
+    //rgba(220,218,220,255)
+    var blueColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = backgroundColor
-        
+        //view.backgroundColor = backgroundColor
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "papel")
+        backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
+        self.view.insertSubview(backgroundImage, at: 0)
         initUI()
     }
     func initUI(){
-        topImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height/5))
+        topImageView = UIImageView(frame: CGRect(x: 0, y: height/6 - 60, width: width, height: height/5))
         topImageView?.image = UIImage(named: "topImage")
         view.addSubview(topImageView!)
         
-        imageBook = UIImageView(frame: CGRect(x: width/2 - 64, y: height/5, width: width/3, height: height/6))
-        imageBook?.image = UIImage(named: "imageBook")
+        imageBook = UIImageView(frame: CGRect(x: width/2 - 40, y: height/4 + 50, width: 70, height: 70))
+        imageBook?.image = UIImage(named: "apple")
         view.addSubview(imageBook!)
         
-        bienvenidosLabel = UILabel(frame: CGRect(x: width/4, y: 320, width: width, height: 50))
+        bienvenidosLabel = UILabel(frame: CGRect(x: width/4, y: height/2 - 90, width: width, height: 50))
         bienvenidosLabel?.text = "¡Bienvenido!"
         bienvenidosLabel?.font = .boldSystemFont(ofSize: 35)
-        bienvenidosLabel?.textColor = UIColor(displayP3Red: 21/255, green: 39/255, blue: 112/255, alpha: 1)
+        bienvenidosLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
         view.addSubview(bienvenidosLabel!)
         
         correoTextField = UITextField(frame: CGRect(x:20, y:420, width: width - 40, height: 60))
@@ -65,11 +71,11 @@ class ViewController: UIViewController {
         contrasenaTextField?.textAlignment = NSTextAlignment.left
         view.addSubview(contrasenaTextField!)
 
-        correoLabel = UILabel(frame: CGRect(x: 40, y: 395, width: 50, height: 50))
+        correoLabel = UILabel(frame: CGRect(x: 40, y: 410, width: 50, height: 20))
         correoLabel?.text = "Correo"
         correoLabel?.backgroundColor = backgroundColor
         correoLabel?.font = .boldSystemFont(ofSize: 12)
-        correoLabel?.textColor = UIColor(displayP3Red: 21/255, green: 39/255, blue: 112/255, alpha: 1)
+        correoLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
         correoLabel?.textAlignment = .center
         view.addSubview(correoLabel!)
         
@@ -77,7 +83,7 @@ class ViewController: UIViewController {
         contrasenaLabel?.text = "Contraseña"
         contrasenaLabel?.backgroundColor = backgroundColor
         contrasenaLabel?.font = .boldSystemFont(ofSize: 12)
-        contrasenaLabel?.textColor = UIColor(displayP3Red: 21/255, green: 39/255, blue: 112/255, alpha: 1)
+        contrasenaLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
         contrasenaLabel?.textAlignment = .center
         view.addSubview(contrasenaLabel!)
         
@@ -93,11 +99,11 @@ class ViewController: UIViewController {
         cuentaLabel = UILabel(frame: CGRect(x: 45, y: 690, width: width - 40, height: 50))
         cuentaLabel?.text = "¿Todavía no tienes una cuenta?"
         cuentaLabel?.font = .boldSystemFont(ofSize: 13)
-        cuentaLabel?.textColor = UIColor(displayP3Red: 21/255, green: 39/255, blue: 112/255, alpha: 1)
+        cuentaLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
         view.addSubview(cuentaLabel!)
         
         registrateButton = UIButton(frame: CGRect(x: width - 150, y: 685 , width: 100, height: 60))
-        registrateButton?.setTitleColor(UIColor(displayP3Red: 21/255, green: 39/255, blue: 112/255, alpha: 1), for: .normal)
+        registrateButton?.setTitleColor(UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1), for: .normal)
         registrateButton?.setTitle("Registrate", for: .normal)
         registrateButton?.addTarget(self, action: #selector(register), for: .touchUpInside)
         view.addSubview(registrateButton!)
