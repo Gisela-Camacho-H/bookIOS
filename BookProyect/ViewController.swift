@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     var loginButton : UIButton?
     var cuentaLabel : UILabel?
     var registrateButton: UIButton?
+    var bienvenidoView : UIView?
     
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
@@ -44,17 +45,23 @@ class ViewController: UIViewController {
         topImageView?.image = UIImage(named: "topImage")
         view.addSubview(topImageView!)
         
-        imageBook = UIImageView(frame: CGRect(x: width/2 - 40, y: height/4 + 50, width: 70, height: 70))
-        imageBook?.image = UIImage(named: "apple")
-        view.addSubview(imageBook!)
+        bienvenidoView = UIView(frame: CGRect(x: 20, y: height/4 + 60, width: width - 40, height: 140))
+        bienvenidoView?.backgroundColor = .white
+        bienvenidoView?.layer.cornerRadius = 20
+        view.addSubview(bienvenidoView!)
         
-        bienvenidosLabel = UILabel(frame: CGRect(x: width/4, y: height/2 - 90, width: width, height: 50))
+        imageBook = UIImageView(frame: CGRect(x: width/3, y: 0, width: 90, height: 90))
+        imageBook?.image = UIImage(named: "AppIcon")
+        bienvenidoView?.addSubview(imageBook!)
+        
+        bienvenidosLabel = UILabel(frame: CGRect(x: 0, y: 80, width: width, height: 50))
         bienvenidosLabel?.text = "¡Bienvenido!"
         bienvenidosLabel?.font = .boldSystemFont(ofSize: 35)
+        bienvenidosLabel?.textAlignment = .center
         bienvenidosLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
-        view.addSubview(bienvenidosLabel!)
+        bienvenidoView?.addSubview(bienvenidosLabel!)
         
-        correoTextField = UITextField(frame: CGRect(x:20, y:420, width: width - 40, height: 60))
+        correoTextField = UITextField(frame: CGRect(x:20, y:460, width: width - 40, height: 60))
         correoTextField?.backgroundColor = .clear
         correoTextField?.layer.cornerRadius = 7
         correoTextField?.layer.borderColor = blueColor.cgColor
@@ -62,7 +69,7 @@ class ViewController: UIViewController {
         correoTextField?.textAlignment = NSTextAlignment.left
         view.addSubview(correoTextField!)
         
-        contrasenaTextField = UITextField(frame: CGRect(x:20, y:500, width: width - 40, height: 60))
+        contrasenaTextField = UITextField(frame: CGRect(x:20, y:540, width: width - 40, height: 60))
         contrasenaTextField?.backgroundColor = .clear
         contrasenaTextField?.layer.cornerRadius = 7
         contrasenaTextField?.layer.borderColor = blueColor.cgColor
@@ -71,7 +78,7 @@ class ViewController: UIViewController {
         contrasenaTextField?.textAlignment = NSTextAlignment.left
         view.addSubview(contrasenaTextField!)
 
-        correoLabel = UILabel(frame: CGRect(x: 40, y: 410, width: 50, height: 20))
+        correoLabel = UILabel(frame: CGRect(x: 40, y: 450, width: 50, height: 20))
         correoLabel?.text = "Correo"
         correoLabel?.backgroundColor = backgroundColor
         correoLabel?.font = .boldSystemFont(ofSize: 12)
@@ -79,7 +86,7 @@ class ViewController: UIViewController {
         correoLabel?.textAlignment = .center
         view.addSubview(correoLabel!)
         
-        contrasenaLabel = UILabel(frame: CGRect(x: 40, y: 490, width: 80, height: 20))
+        contrasenaLabel = UILabel(frame: CGRect(x: 40, y: 530, width: 80, height: 20))
         contrasenaLabel?.text = "Contraseña"
         contrasenaLabel?.backgroundColor = backgroundColor
         contrasenaLabel?.font = .boldSystemFont(ofSize: 12)
