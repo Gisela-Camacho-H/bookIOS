@@ -7,13 +7,12 @@
 
 import UIKit
 
-class BooksViewController: UIViewController {
+class BooksViewController : UIViewController {
 
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
     var dataSource : BookObject?
     var masPopularesLabel: UILabel?
-    var topImageView: UIImageView?
     var backButton : UIButton?
     var buttonContent : UIView?
     
@@ -30,6 +29,25 @@ class BooksViewController: UIViewController {
     var agregadosLabel: UILabel?
     
     var tableView : UITableView?
+    
+    var librosCollectionView: UICollectionView = { //ponemos el nombre de la var y lo igualamos a {}()
+    
+        let layout = UICollectionViewFlowLayout() //Declaramos un layout el cual nos servirá para definir los atributos del collectionView
+        layout.scrollDirection = .horizontal //aqui definimos el tipo de scroll que tendrá el collection
+        layout.minimumLineSpacing = 15
+        layout.minimumInteritemSpacing = 15
+        
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.register(BookCollectionView.self, forCellWithReuseIdentifier: "cell")
+        collection.isPagingEnabled = true
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        collection.backgroundColor = .white
+        collection.showsVerticalScrollIndicator = true
+        collection.showsHorizontalScrollIndicator = true
+        
+        return collection //Debemos retornar un valor del tipo del cual estamos declarando
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,16 +72,12 @@ class BooksViewController: UIViewController {
         masPopularesLabel?.textAlignment = .center
         view.addSubview(masPopularesLabel!)
         
-        topImageView = UIImageView(frame: CGRect(x: 0, y: 120, width: width, height: height/5))
-        topImageView?.image = UIImage(named: "topImageB")
-        view.addSubview(topImageView!)
-        
         backButton = UIButton(frame: CGRect(x: 20, y: 70, width: 45, height: 45))
         backButton?.setImage(UIImage(named: "back"), for: .normal)
         backButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         view.addSubview(backButton!)
         
-        agregadosLabel = UILabel(frame: CGRect(x: 20, y: 370, width: 150, height: 30))
+        agregadosLabel = UILabel(frame: CGRect(x: 20, y: 390, width: 150, height: 30))
         agregadosLabel?.text = "Recién agregados"
         agregadosLabel?.font = .boldSystemFont(ofSize: 14)
         agregadosLabel?.textColor = lightBlueColor
@@ -77,6 +91,11 @@ class BooksViewController: UIViewController {
         tableView?.delegate = self
         tableView?.dataSource = self //en donde se va a definir (en si mismo)
         view.addSubview(tableView!) //se hace visible
+        
+        librosCollectionView.delegate = self
+        librosCollectionView.dataSource = self
+        view.addSubview(librosCollectionView)
+        librosCollectionView.addAnchorsAndSize(width: nil, height: height/5, left: 0, top: 125, right: 20, bottom: nil)
         
     }
     
@@ -131,7 +150,7 @@ class BooksViewController: UIViewController {
         
         // MARK: - Clásicos
  
-        let LaDivinaComedia = Libro(nombre: "La Divina Comedia", descripcion: "Es ampliamente considerado el poema más importante de la Edad Media y la mayor obra literaria en lengua italiana. Se trata del viaje de Dante al infierno, al purgatorio y al paraíso, para expiar sus pecados y encontrar el significado de su vida, de la mano de la intervención divina.", autor: "Dante Alighieri", imagen: "divina", detalles: "Historia Universal", sobreAutor: "Poeta italiano, nacido en 1265 en Florencia, Italia. Fue un importante poeta italiano de finales de la Edad Media y principios del Renacimiento. Mientras tanto, alegóricamente, el poema representa el viaje del alma a Dios. Dante recurre a la teología y filosofía cristianas medievales, especialmente a la filosofía tomista y a la Summa Theologica de Tomás de Aquino.", categoria: "Clásicos", autorImage: "dante")
+        let LaDivinaComedia = Libro(nombre: "La Divina Comedia", descripcion: "Es ampliamente considerado el poema más importante de la Edad Media y la mayor obra literaria en lengua italiana. Se trata del viaje de Dante al infierno, al purgatorio y al paraíso, para expiar sus pecados y encontrar el significado de su vida, de la mano de la intervención divina.", autor: "Dante Alighieri", imagen: "divina", detalles: "Historia Universal", sobreAutor: "Poeta italiano, nacido en 1265 en Florencia, Italia. Fue un importante poeta italiano de finales de la Edad Media y principios del Renacimiento. Dante recurre a la teología y filosofía cristianas medievales, especialmente a la filosofía tomista y a la Summa Theologica de Tomás de Aquino.", categoria: "Clásicos", autorImage: "dante")
         
         let donQuijote = Libro(nombre: "Don Quijote de la Mancha", descripcion: "Publicada en 1605, trata la historia de Alonso Quijano, un caballero, es decir, un noble rico y de baja escala social, de unos cincuenta años, que vive en algún lugar de La Mancha a principios del siglo XVII. Su hobby es leer libros de caballería, donde se narran fantásticas aventuras de caballeros, princesas, magos y castillos encantados.", autor: "Miguel de Cervantes", imagen: "quijote", detalles: "Obra literaria", sobreAutor: "Dramaturgo español nacido en 1547 en Madrid, España. Fue novelista, poeta, dramaturgo y soldado español. Es considerado la figura más grande de la literatura española.", categoria: "Clásicos", autorImage: "miguel")
         
@@ -157,6 +176,9 @@ class BooksViewController: UIViewController {
         let menu = BookObject(categorias: [Cuentos,literatura,Clasicos, Novelas, EpopeyaLatina], title: "Libros Recientes")
         
         dataSource = menu
+        
+        librosCollectionView.reloadData()
+        
     }
 
     @objc func backAction(){
@@ -222,4 +244,29 @@ extension BooksViewController : UITableViewDelegate{
             return height/7
         }
     }
+
+
+extension BooksViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return dataSource?.categorias?[section].libros?.count ?? 0
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
+    let cell = librosCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! BookCollectionView
+        let producto = dataSource?.categorias?[indexPath.section].libros?[indexPath.item]
+        cell.setData( libro: producto!)
+        
+    return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
+        
+        return CGSize(width: width/3 - 30, height: height / 4 - 60)
+        //((indexPath.item % 2)  != 0 ) ? CGSize(width: width/2 - 40, height: height / 4) : CGSize(width: width/2 - 40, height: height / 5)
+    }
+}
 

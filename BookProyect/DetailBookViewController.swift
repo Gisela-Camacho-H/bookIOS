@@ -100,7 +100,7 @@ class DetailBookViewController: UIViewController {
         bookContentView?.addSubview(bookImage!)
         
         
-        bookName = UILabel(frame: CGRect(x: 150, y: 5, width: 180, height: 20))
+        bookName = UILabel(frame: CGRect(x: 160, y: 5, width: 180, height: 20))
         bookName?.text = mLibro?.nombre
         bookName?.textColor = blueColor
         bookName?.font = .boldSystemFont(ofSize: 17)
@@ -108,13 +108,13 @@ class DetailBookViewController: UIViewController {
         bookCard?.addSubview(bookName!)
         
         
-        bookAutor = UILabel(frame: CGRect(x: 150, y: 40, width: 160, height: 20))
+        bookAutor = UILabel(frame: CGRect(x: 160, y: 40, width: 160, height: 20))
         bookAutor?.text = mLibro?.autor
         bookAutor?.font = .boldSystemFont(ofSize: 12)
         
         bookCard?.addSubview(bookAutor!)
         
-        bookCategoria = UILabel(frame: CGRect(x: 150, y: 70, width: 160, height: 20))
+        bookCategoria = UILabel(frame: CGRect(x: 160, y: 70, width: 160, height: 20))
         bookCategoria?.text = mLibro?.categoria
         bookCategoria?.font = .boldSystemFont(ofSize: 12)
         
@@ -181,22 +181,23 @@ class DetailBookViewController: UIViewController {
         bookAutor?.textAlignment = .left
         descriptionView?.addSubview(bookAutor!)
         
-        bookSobre = UILabel(frame: CGRect(x: 20, y: 70, width: width - 80, height: 120))
+        bookSobre = UILabel(frame: CGRect(x: 20, y: 85, width: width - 80, height: 110))
         bookSobre?.text = mLibro?.sobreAutor
         bookSobre?.numberOfLines = 0
         bookSobre?.textAlignment = .left
         bookSobre?.font = .boldSystemFont(ofSize: 12)
         descriptionView?.addSubview(bookSobre!)
         
-        bookMas = UILabel(frame: CGRect(x: 200, y: 180 , width: 140, height: 20))
+        bookMas = UILabel(frame: CGRect(x: 210, y: 200 , width: 140, height: 20))
         bookMas?.text = "Más titulos del autor"
         bookMas?.textColor = lightBlueColor
         bookMas?.font = .boldSystemFont(ofSize: 12)
         descriptionView?.addSubview(bookMas!)
         
-        autorImage = UIImageView(frame: CGRect(x: 15, y: 10, width: 60, height: 60))
+        autorImage = UIImageView(frame: CGRect(x: 15, y: 10, width: 70, height: 70))
         autorImage?.image = UIImage(named: mLibro?.autorImage ?? "")
-
+        autorImage?.layer.cornerRadius = 10
+        autorImage?.layer.masksToBounds = true
         descriptionView?.addSubview(autorImage!)
         
     }
