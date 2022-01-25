@@ -30,11 +30,10 @@ class RegisterViewController: UIViewController {
     var backgroundColor = UIColor(displayP3Red: 255/255, green: 242/255, blue: 223/255, alpha: 1) //rgba(220,218,220,255)
     var blueColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
     var lightBlueColor = UIColor(displayP3Red: 283/255, green: 162/255, blue: 129/255, alpha: 1)
-    //rgb(194,162,164)
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //view.backgroundColor = backgroundColor
         
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "papel")

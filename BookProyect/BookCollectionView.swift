@@ -27,15 +27,13 @@ class BookCollectionView : UICollectionViewCell{
         let color =  UIColor(displayP3Red: 283/255, green: 162/255, blue: 129/255, alpha: 1)
         self.backgroundColor = color
         
-        imageLibr =  UIImageView(frame: CGRect(x: 10, y: 10 , width: 85, height: 140))
+        imageLibr =  UIImageView(frame: CGRect(x: 10, y: 10 , width: 95, height: 150))
         self.addSubview(imageLibr)
-        //imageLibr.addAnchors(left: 10, top: 15, right: 10, bottom: 15)
 
     }
     
-    func setData (libro: Libro){
-        print(libro.nombre ?? "")
-        imageLibr.image = UIImage(named: libro.imagen ?? "")
+    func setData (book : Book){
+        imageLibr.image = UIImage(named: book.imagen ?? "")
     }
     
     required init?(coder: NSCoder){

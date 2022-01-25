@@ -4,22 +4,24 @@
 //
 //  Created by GiselaCamacho on 21/01/22.
 //
-
 import UIKit
 
 class BooksViewController : UIViewController {
 
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
+    
     var dataSource : BookObject?
+    var imageSource : BooksObjectCollection?
+    
     var masPopularesLabel: UILabel?
     var backButton : UIButton?
     var buttonContent : UIView?
     
-    var backgroundColor = UIColor(displayP3Red: 255/255, green: 242/255, blue: 223/255, alpha: 1) //rgba(220,218,220,255)
+    var backgroundColor = UIColor(displayP3Red: 255/255, green: 242/255, blue: 223/255, alpha: 1) 
     var blueColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
     var lightBlueColor = UIColor(displayP3Red: 283/255, green: 162/255, blue: 129/255, alpha: 1)
-    //238, 162, 129
+
     
     var libroButton: UIButton?
     var categoriasButton: UIButton?
@@ -34,8 +36,8 @@ class BooksViewController : UIViewController {
     
         let layout = UICollectionViewFlowLayout() //Declaramos un layout el cual nos servirá para definir los atributos del collectionView
         layout.scrollDirection = .horizontal //aqui definimos el tipo de scroll que tendrá el collection
-        layout.minimumLineSpacing = 15
-        layout.minimumInteritemSpacing = 15
+        layout.minimumLineSpacing = 25
+        layout.minimumInteritemSpacing = 25
         
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.register(BookCollectionView.self, forCellWithReuseIdentifier: "cell")
@@ -60,7 +62,7 @@ class BooksViewController : UIViewController {
         self.view.insertSubview(backgroundImage, at: 0)
         
         getData()
-        
+        getImage()
         initUI()
     }
     func initUI(){
@@ -177,6 +179,28 @@ class BooksViewController : UIViewController {
         
         dataSource = menu
         
+    }
+    
+    
+    
+    func getImage(){
+
+        let cuentos = Book(imagen: "cuentos")
+        let cuentosInfantiles = Book(imagen: "cuentosInf")
+        let cumbres = Book(imagen: "cumbres")
+        let guerraPaz = Book(imagen: "guerra")
+        let LaDivinaComedia = Book(imagen: "divina")
+        let donQuijote = Book(imagen: "quijote")
+        let ElCastillo = Book(imagen: "castillo")
+        let hombreInvisible = Book(imagen: "hombre")
+        let ViejoMar = Book(imagen: "viejo")
+        let Eneida = Book(imagen: "eneida")
+        let Cuentos = Catego(nombre: "Cuentos", books: [cuentos, cuentosInfantiles, cumbres, guerraPaz, LaDivinaComedia, donQuijote, ElCastillo, hombreInvisible, ViejoMar, Eneida])
+        // MARK: - Menu
+        let menu = BooksObjectCollection(catego: [Cuentos], title: "Libros Recientes")
+        
+        imageSource = menu
+        
         librosCollectionView.reloadData()
         
     }
@@ -248,25 +272,23 @@ extension BooksViewController : UITableViewDelegate{
 
 extension BooksViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource?.categorias?[section].libros?.count ?? 0
+        return imageSource?.catego?[section].books?.count ?? 0
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 5
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
     let cell = librosCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! BookCollectionView
-        let producto = dataSource?.categorias?[indexPath.section].libros?[indexPath.item]
-        cell.setData( libro: producto!)
+        let producto = imageSource?.catego?[indexPath.section].books?[indexPath.item]
+        cell.setData( book : producto!)
         
     return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
         
-        return CGSize(width: width/3 - 30, height: height / 4 - 60)
-        //((indexPath.item % 2)  != 0 ) ? CGSize(width: width/2 - 40, height: height / 4) : CGSize(width: width/2 - 40, height: height / 5)
+        return CGSize(width: width/3 - 20, height: height / 4 - 50)
     }
 }
-

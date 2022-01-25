@@ -25,15 +25,12 @@ class ViewController: UIViewController {
     var height = UIScreen.main.bounds.height
     
     var backgroundColor = UIColor(displayP3Red: 255/255, green: 242/255, blue: 223/255, alpha: 1)
-    //rgba(255,242,223,255)
-    //rgba(220,218,220,255)
     var blueColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //view.backgroundColor = backgroundColor
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "papel")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
@@ -115,12 +112,7 @@ class ViewController: UIViewController {
         registrateButton?.addTarget(self, action: #selector(register), for: .touchUpInside)
         view.addSubview(registrateButton!)
     }
-    //@objc func goToBooks (){
-        //print("go to books")
-         //let gotoBooks = BooksViewController()
-        //gotoBooks.modalPresentationStyle = .fullScreen
-        //present(gotoBooks, animated: true, completion: nil)
-    //}
+    
     @IBAction func goToBooks(_ sender: Any) {
         if (contrasenaTextField?.text?.isEmpty)! || (correoTextField?.text?.isEmpty)!  {
           print("Text field is empty")
@@ -140,9 +132,5 @@ class ViewController: UIViewController {
     }
 }
 
-
-
-//rgba(21,39,112,255) button color
 //https://imagecolorpicker.com/
-//rgba(121,168,243,255) light blue
 //https://appicon.co/

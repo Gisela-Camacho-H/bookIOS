@@ -20,6 +20,7 @@
 		5650379C279FC34A00D4CA27 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5650379B279FC34A00D4CA27 /* Utils.swift */; };
 		5695960A279BB68D00EE3748 /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959609279BB68D00EE3748 /* BooksViewController.swift */; };
 		5695960C279BBA3B00EE3748 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5695960B279BBA3B00EE3748 /* RegisterViewController.swift */; };
+		56B6B87227A08884009BA902 /* BooksObjectCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B6B87127A08884009BA902 /* BooksObjectCollection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		5650379B279FC34A00D4CA27 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		56959609279BB68D00EE3748 /* BooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
 		5695960B279BBA3B00EE3748 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		56B6B87127A08884009BA902 /* BooksObjectCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksObjectCollection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				5649C047279A71CB000DCA63 /* Assets.xcassets */,
 				5649C049279A71CB000DCA63 /* LaunchScreen.storyboard */,
 				5649C04C279A71CB000DCA63 /* Info.plist */,
+				56B6B87127A08884009BA902 /* BooksObjectCollection.swift */,
 			);
 			path = BookProyect;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 				5649C043279A71CB000DCA63 /* ViewController.swift in Sources */,
 				5695960C279BBA3B00EE3748 /* RegisterViewController.swift in Sources */,
 				562B6F99279D24FF008F8437 /* DetailBookViewController.swift in Sources */,
+				56B6B87227A08884009BA902 /* BooksObjectCollection.swift in Sources */,
 				563AC45A279DE89700B97AA3 /* BookObject.swift in Sources */,
 				5650379C279FC34A00D4CA27 /* Utils.swift in Sources */,
 				5695960A279BB68D00EE3748 /* BooksViewController.swift in Sources */,
