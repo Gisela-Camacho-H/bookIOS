@@ -108,19 +108,19 @@ class BooksViewController : UIViewController {
         libroButton = UIButton(frame: CGRect(x: 2, y: 15, width: 80, height: 20))
         libroButton?.setTitle("Libros", for: .normal)
         libroButton?.setTitleColor(blueColor, for: .normal)
-        libroButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        //libroButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         buttonContent?.addSubview(libroButton!)
         
         categoriasButton = UIButton(frame: CGRect(x: 115, y: 15, width: 100, height: 20))
         categoriasButton?.setTitle("Categorías", for: .normal)
         categoriasButton?.setTitleColor(blueColor, for: .normal)
-        categoriasButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        //categoriasButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         buttonContent?.addSubview(categoriasButton!)
         
         autoresButton = UIButton(frame: CGRect(x: 240, y: 15, width: 80, height: 20))
         autoresButton?.setTitle("Autores", for: .normal)
         autoresButton?.setTitleColor(blueColor, for: .normal)
-        autoresButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        //autoresButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         buttonContent?.addSubview(autoresButton!)
         
         lineView =  UIView(frame: CGRect(x: 90, y: 8 , width: 2, height: 35))
