@@ -25,16 +25,19 @@ class ViewController: UIViewController {
     var height = UIScreen.main.bounds.height
     
     var backgroundColor = UIColor(displayP3Red: 255/255, green: 242/255, blue: 223/255, alpha: 1)
-    var blueColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
+    var brownColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
+        //imagen de fondo
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "papel")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
         self.view.insertSubview(backgroundImage, at: 0)
+        
+        //llamar función initUI
         initUI()
     }
     func initUI(){
@@ -58,10 +61,12 @@ class ViewController: UIViewController {
         bienvenidosLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
         bienvenidoView?.addSubview(bienvenidosLabel!)
         
+        // MARK: - formulario de log in
+        
         correoTextField = UITextField(frame: CGRect(x:20, y:460, width: width - 40, height: 60))
         correoTextField?.backgroundColor = .clear
         correoTextField?.layer.cornerRadius = 7
-        correoTextField?.layer.borderColor = blueColor.cgColor
+        correoTextField?.layer.borderColor = brownColor.cgColor
         correoTextField?.layer.borderWidth = 2
         correoTextField?.textAlignment = NSTextAlignment.left
         view.addSubview(correoTextField!)
@@ -69,7 +74,7 @@ class ViewController: UIViewController {
         contrasenaTextField = UITextField(frame: CGRect(x:20, y:540, width: width - 40, height: 60))
         contrasenaTextField?.backgroundColor = .clear
         contrasenaTextField?.layer.cornerRadius = 7
-        contrasenaTextField?.layer.borderColor = blueColor.cgColor
+        contrasenaTextField?.layer.borderColor = brownColor.cgColor
         contrasenaTextField?.layer.borderWidth = 2
         contrasenaTextField?.isSecureTextEntry = true
         contrasenaTextField?.textAlignment = NSTextAlignment.left
@@ -92,7 +97,7 @@ class ViewController: UIViewController {
         view.addSubview(contrasenaLabel!)
         
         loginButton = UIButton(frame: CGRect(x: 30, y: 650 , width: width - 60 , height: 50))
-        loginButton?.backgroundColor = blueColor
+        loginButton?.backgroundColor = brownColor
         loginButton?.layer.cornerRadius = 20
         loginButton?.setTitleColor(.white, for: .normal)
         loginButton?.setTitle("INICIAR SESIÓN", for: .normal)
@@ -100,6 +105,7 @@ class ViewController: UIViewController {
         
         view.addSubview(loginButton!)
         
+        // MARK: - Registro
         cuentaLabel = UILabel(frame: CGRect(x: 45, y: 690, width: width - 40, height: 50))
         cuentaLabel?.text = "¿Todavía no tienes una cuenta?"
         cuentaLabel?.font = .boldSystemFont(ofSize: 13)
@@ -112,7 +118,9 @@ class ViewController: UIViewController {
         registrateButton?.addTarget(self, action: #selector(register), for: .touchUpInside)
         view.addSubview(registrateButton!)
     }
+// MARK: - Función de botones
     
+    //funcion log in y verificación de campos vacios
     @IBAction func goToBooks(_ sender: Any) {
         if (contrasenaTextField?.text?.isEmpty)! || (correoTextField?.text?.isEmpty)!  {
           print("Text field is empty")
@@ -124,6 +132,7 @@ class ViewController: UIViewController {
        }
     }
     
+    //funcion de ir al registro
     @objc func register (){
         print("go to register")
          let register = RegisterViewController()
@@ -132,5 +141,7 @@ class ViewController: UIViewController {
     }
 }
 
+//tomas los colores de las fotos
 //https://imagecolorpicker.com/
+//obtener los tamaños para los iconos de la app
 //https://appicon.co/

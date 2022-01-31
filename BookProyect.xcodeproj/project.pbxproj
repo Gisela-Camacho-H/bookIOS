@@ -53,6 +53,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5620E13B27A8995C004527E6 /* CollectionBooks */ = {
+			isa = PBXGroup;
+			children = (
+				56503798279FBA1900D4CA27 /* BookCollectionView.swift */,
+				56B6B87127A08884009BA902 /* BooksObjectCollection.swift */,
+			);
+			path = CollectionBooks;
+			sourceTree = "<group>";
+		};
+		5620E13C27A8998C004527E6 /* TableViewBooks */ = {
+			isa = PBXGroup;
+			children = (
+				563AC459279DE89700B97AA3 /* BookObject.swift */,
+				561DE188279E042A0015337F /* BookTableViewCell.swift */,
+			);
+			path = TableViewBooks;
+			sourceTree = "<group>";
+		};
+		5620E13D27A89A01004527E6 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5695960B279BBA3B00EE3748 /* RegisterViewController.swift */,
+				562B6F98279D24FF008F8437 /* DetailBookViewController.swift */,
+				56959609279BB68D00EE3748 /* BooksViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		5649C032279A71CB000DCA63 = {
 			isa = PBXGroup;
 			children = (
@@ -75,18 +103,14 @@
 			children = (
 				5649C03E279A71CB000DCA63 /* AppDelegate.swift */,
 				5649C040279A71CB000DCA63 /* SceneDelegate.swift */,
-				56503798279FBA1900D4CA27 /* BookCollectionView.swift */,
-				561DE188279E042A0015337F /* BookTableViewCell.swift */,
-				563AC459279DE89700B97AA3 /* BookObject.swift */,
-				56959609279BB68D00EE3748 /* BooksViewController.swift */,
-				5649C042279A71CB000DCA63 /* ViewController.swift */,
-				562B6F98279D24FF008F8437 /* DetailBookViewController.swift */,
-				5695960B279BBA3B00EE3748 /* RegisterViewController.swift */,
 				5649C044279A71CB000DCA63 /* Main.storyboard */,
 				5649C047279A71CB000DCA63 /* Assets.xcassets */,
-				5649C049279A71CB000DCA63 /* LaunchScreen.storyboard */,
 				5649C04C279A71CB000DCA63 /* Info.plist */,
-				56B6B87127A08884009BA902 /* BooksObjectCollection.swift */,
+				5649C049279A71CB000DCA63 /* LaunchScreen.storyboard */,
+				5620E13D27A89A01004527E6 /* ViewControllers */,
+				5620E13C27A8998C004527E6 /* TableViewBooks */,
+				5620E13B27A8995C004527E6 /* CollectionBooks */,
+				5649C042279A71CB000DCA63 /* ViewController.swift */,
 			);
 			path = BookProyect;
 			sourceTree = "<group>";

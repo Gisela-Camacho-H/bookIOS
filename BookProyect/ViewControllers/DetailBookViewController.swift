@@ -33,8 +33,8 @@ class DetailBookViewController: UIViewController {
     var autorImage : UIImageView?
     
     var backgroundColor = UIColor(displayP3Red: 255/255, green: 242/255, blue: 223/255, alpha: 1)
-    var blueColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
-    var lightBlueColor = UIColor(displayP3Red: 283/255, green: 162/255, blue: 129/255, alpha: 1)
+    var brownColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
+    var pinkBlueColor = UIColor(displayP3Red: 283/255, green: 162/255, blue: 129/255, alpha: 1)
     
     init(libro : Libro){
         self.mLibro = libro
@@ -72,14 +72,15 @@ class DetailBookViewController: UIViewController {
         view?.addSubview(heartImage!)
         
         imageLine =  UIView(frame: CGRect(x: 0, y: 110 , width: width, height: 3))
-        imageLine?.backgroundColor = blueColor
+        imageLine?.backgroundColor = brownColor
         view?.addSubview(imageLine!)
 
         createBookView()
         createDescription()
         createSobreAutor()
     }
-    
+
+    //MARK: - imagen del libro e información
     func createBookView(){
         bookContentView = UIView(frame: CGRect(x: 25, y: height/7, width: width - 50, height: height/4))
         bookContentView?.backgroundColor = .clear
@@ -100,7 +101,7 @@ class DetailBookViewController: UIViewController {
         
         bookName = UILabel(frame: CGRect(x: 160, y: 5, width: 180, height: 20))
         bookName?.text = mLibro?.nombre
-        bookName?.textColor = blueColor
+        bookName?.textColor = brownColor
         bookName?.font = .boldSystemFont(ofSize: 17)
         
         bookCard?.addSubview(bookName!)
@@ -119,11 +120,14 @@ class DetailBookViewController: UIViewController {
         bookCard?.addSubview(bookCategoria!)
     }
     
+   // Función regresar
+
     @objc func backAction(){
         print("back")
         dismiss(animated: true)
     }
     
+    //MARK: - Descripción del libro
     
     func createDescription(){
         descriptionView = UIView(frame: CGRect(x: 25, y: height/3 + 70, width: width - 50, height: height/5 + 20))
@@ -134,13 +138,13 @@ class DetailBookViewController: UIViewController {
         descriptionLabel = UILabel(frame: CGRect(x: 10, y: 5, width: 160, height: 30))
         descriptionLabel?.text = "Descripción"
         descriptionLabel?.font = .boldSystemFont(ofSize: 14)
-        descriptionLabel?.textColor = blueColor
+        descriptionLabel?.textColor = brownColor
         descriptionLabel?.textAlignment = .center
         descriptionView?.addSubview(descriptionLabel!)
         
         detailLabel = UILabel(frame: CGRect(x: width/2 - 20, y: 5, width: 160, height: 30))
         detailLabel?.text = "Detalles"
-        detailLabel?.textColor = blueColor
+        detailLabel?.textColor = brownColor
         detailLabel?.font = .boldSystemFont(ofSize: 14)
         detailLabel?.textAlignment = .center
         descriptionView?.addSubview(detailLabel!)
@@ -154,10 +158,11 @@ class DetailBookViewController: UIViewController {
         descriptionView?.addSubview(descriptionTextView!)
         
         imageLine =  UIView(frame: CGRect(x: 180, y: 6 , width: 1, height: 30))
-        imageLine?.backgroundColor = blueColor
+        imageLine?.backgroundColor = brownColor
         descriptionView?.addSubview(imageLine!)
         
     }
+   // MARK: - Sobre el autor
     
     func createSobreAutor(){
         descriptionView = UIView(frame: CGRect(x: 25, y: height/2 + 140, width: width - 50, height: height/5 + 50))
@@ -167,14 +172,14 @@ class DetailBookViewController: UIViewController {
         
         descriptionLabel = UILabel(frame: CGRect(x: width/4 + 20, y: 5, width: 160, height: 30))
         descriptionLabel?.text = "Sobre el Autor"
-        descriptionLabel?.textColor = blueColor
+        descriptionLabel?.textColor = brownColor
         descriptionLabel?.font = .boldSystemFont(ofSize: 15)
         descriptionLabel?.textAlignment = .left
         descriptionView?.addSubview(descriptionLabel!)
         
         bookAutor = UILabel(frame: CGRect(x: width/4 + 20, y: 40, width: 250, height: 30))
         bookAutor?.text = mLibro?.autor
-        bookAutor?.textColor = blueColor
+        bookAutor?.textColor = brownColor
         bookAutor?.font = .boldSystemFont(ofSize: 22)
         bookAutor?.textAlignment = .left
         descriptionView?.addSubview(bookAutor!)
@@ -188,13 +193,13 @@ class DetailBookViewController: UIViewController {
         
         bookMas = UILabel(frame: CGRect(x: 210, y: 200 , width: 140, height: 20))
         bookMas?.text = "Más titulos del autor"
-        bookMas?.textColor = lightBlueColor
+        bookMas?.textColor = pinkBlueColor
         bookMas?.font = .boldSystemFont(ofSize: 12)
         descriptionView?.addSubview(bookMas!)
         
-        autorImage = UIImageView(frame: CGRect(x: 15, y: 10, width: 70, height: 70))
+        autorImage = UIImageView(frame: CGRect(x: 25, y: 10, width: 70, height: 70))
         autorImage?.image = UIImage(named: mLibro?.autorImage ?? "")
-        autorImage?.layer.cornerRadius = 10
+        autorImage?.layer.cornerRadius = 35
         autorImage?.layer.masksToBounds = true
         descriptionView?.addSubview(autorImage!)
         

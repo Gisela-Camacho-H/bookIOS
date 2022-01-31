@@ -24,8 +24,8 @@ class BookTableViewCell: UITableViewCell{
     var height = UIScreen.main.bounds.height
     var width = UIScreen.main.bounds.width
     
-    var blueColor = UIColor(displayP3Red: 21/255, green: 39/255, blue: 112/255, alpha: 1)
-    var lightBlueColor = UIColor(displayP3Red: 121/255, green: 168/255, blue: 243/255, alpha: 1)
+    var brownColor = UIColor(displayP3Red: 21/255, green: 39/255, blue: 112/255, alpha: 1)
+    var pinkBlueColor = UIColor(displayP3Red: 121/255, green: 168/255, blue: 243/255, alpha: 1)
     
     init(libro : Libro){
         super.init(style: .default, reuseIdentifier: nil)

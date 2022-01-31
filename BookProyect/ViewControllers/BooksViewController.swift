@@ -19,8 +19,8 @@ class BooksViewController : UIViewController {
     var buttonContent : UIView?
     
     var backgroundColor = UIColor(displayP3Red: 255/255, green: 242/255, blue: 223/255, alpha: 1) 
-    var blueColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
-    var lightBlueColor = UIColor(displayP3Red: 283/255, green: 162/255, blue: 129/255, alpha: 1)
+    var brownColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
+    var pinkBlueColor = UIColor(displayP3Red: 283/255, green: 162/255, blue: 129/255, alpha: 1)
 
     
     var libroButton: UIButton?
@@ -31,6 +31,8 @@ class BooksViewController : UIViewController {
     var agregadosLabel: UILabel?
     
     var tableView : UITableView?
+    
+    //MARK: - CollectionView
     
     var librosCollectionView: UICollectionView = { //ponemos el nombre de la var y lo igualamos a {}()
     
@@ -54,13 +56,13 @@ class BooksViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //view.backgroundColor = backgroundColor
-        
+        //Imagen de fondo
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "papel")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
         self.view.insertSubview(backgroundImage, at: 0)
         
+        //se llama a las funciones de datos (getData y getImage) y initUI
         getData()
         getImage()
         initUI()
@@ -70,7 +72,7 @@ class BooksViewController : UIViewController {
         masPopularesLabel = UILabel(frame: CGRect(x: 30, y: 70, width: width - 60, height: 30))
         masPopularesLabel?.text = "Más populares"
         masPopularesLabel?.font = .boldSystemFont(ofSize: 25)
-        masPopularesLabel?.textColor = lightBlueColor
+        masPopularesLabel?.textColor = pinkBlueColor
         masPopularesLabel?.textAlignment = .center
         view.addSubview(masPopularesLabel!)
         
@@ -82,12 +84,13 @@ class BooksViewController : UIViewController {
         agregadosLabel = UILabel(frame: CGRect(x: 20, y: 390, width: 150, height: 30))
         agregadosLabel?.text = "Recién agregados"
         agregadosLabel?.font = .boldSystemFont(ofSize: 14)
-        agregadosLabel?.textColor = lightBlueColor
+        agregadosLabel?.textColor = pinkBlueColor
         agregadosLabel?.textAlignment = .center
         view.addSubview(agregadosLabel!)
         
         createButtonsView()
         
+        // MARK: - TableView
         tableView = UITableView(frame: CGRect(x: 20, y: height/3 + 115, width: width - 40, height: height - 410))
         tableView?.backgroundColor = backgroundColor
         tableView?.delegate = self
@@ -101,6 +104,8 @@ class BooksViewController : UIViewController {
         
     }
     
+//MARK: - buttonsView
+    
     func createButtonsView(){
         buttonContent = UIView(frame: CGRect(x: 30, y: height/3 + 30 , width: width - 60, height: 50))
         buttonContent?.backgroundColor = .white
@@ -109,28 +114,28 @@ class BooksViewController : UIViewController {
         
         libroButton = UIButton(frame: CGRect(x: 2, y: 15, width: 80, height: 20))
         libroButton?.setTitle("Libros", for: .normal)
-        libroButton?.setTitleColor(blueColor, for: .normal)
+        libroButton?.setTitleColor(brownColor, for: .normal)
         //libroButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         buttonContent?.addSubview(libroButton!)
         
         categoriasButton = UIButton(frame: CGRect(x: 115, y: 15, width: 100, height: 20))
         categoriasButton?.setTitle("Categorías", for: .normal)
-        categoriasButton?.setTitleColor(blueColor, for: .normal)
+        categoriasButton?.setTitleColor(brownColor, for: .normal)
         //categoriasButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         buttonContent?.addSubview(categoriasButton!)
         
         autoresButton = UIButton(frame: CGRect(x: 240, y: 15, width: 80, height: 20))
         autoresButton?.setTitle("Autores", for: .normal)
-        autoresButton?.setTitleColor(blueColor, for: .normal)
+        autoresButton?.setTitleColor(brownColor, for: .normal)
         //autoresButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         buttonContent?.addSubview(autoresButton!)
         
         lineView =  UIView(frame: CGRect(x: 90, y: 8 , width: 2, height: 35))
-        lineView?.backgroundColor = blueColor
+        lineView?.backgroundColor = brownColor
         buttonContent?.addSubview(lineView!)
         
         lineView2 =  UIView(frame: CGRect(x: 230, y: 8 , width: 2, height: 35))
-        lineView2?.backgroundColor = blueColor
+        lineView2?.backgroundColor = brownColor
         buttonContent?.addSubview(lineView2!)
         
     }
@@ -173,15 +178,12 @@ class BooksViewController : UIViewController {
         
         let EpopeyaLatina = Categoria(nombre: "Epopeya Latina", libros: [Eneida])
         
+        let Libros = BookObject(categorias: [Cuentos,literatura,Clasicos, Novelas, EpopeyaLatina], title: "Libros Recientes")
         
-        // MARK: - Menu
-        let menu = BookObject(categorias: [Cuentos,literatura,Clasicos, Novelas, EpopeyaLatina], title: "Libros Recientes")
-        
-        dataSource = menu
+        dataSource = Libros
         
     }
-    
-    
+// MARK: - Imagenes de libros
     
     func getImage(){
 
@@ -196,15 +198,17 @@ class BooksViewController : UIViewController {
         let ViejoMar = Book(imagen: "viejo")
         let Eneida = Book(imagen: "eneida")
         let Cuentos = Catego(nombre: "Cuentos", books: [cuentos, cuentosInfantiles, cumbres, guerraPaz, LaDivinaComedia, donQuijote, ElCastillo, hombreInvisible, ViejoMar, Eneida])
-        // MARK: - Menu
-        let menu = BooksObjectCollection(catego: [Cuentos], title: "Libros Recientes")
+
+        let Image = BooksObjectCollection(catego: [Cuentos], title: "Libros Recientes")
         
-        imageSource = menu
+        imageSource = Image
         
         librosCollectionView.reloadData()
         
     }
 
+//MARK: - función regresar
+    
     @objc func backAction(){
         print("back")
         dismiss(animated: true)
@@ -252,6 +256,8 @@ extension BooksViewController : UITableViewDelegate{
     
 }
 
+// MARK: - UITableDataSource
+
     extension BooksViewController : UITableViewDataSource{
     // numero de celdas por cada secciones que tiene cada categoria
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -269,6 +275,8 @@ extension BooksViewController : UITableViewDelegate{
         }
     }
 
+
+//MARK: - UICollectionDelegate && UICollectionDataSourse
 
 extension BooksViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

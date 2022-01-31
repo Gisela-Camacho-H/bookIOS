@@ -35,6 +35,7 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //imagen de fonfo
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "papel")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
@@ -69,6 +70,7 @@ class RegisterViewController: UIViewController {
         contentform?.layer.cornerRadius = 10
         view.addSubview(contentform!)
         
+        //MARK: - formulario de registro
         
         RegistraInfoLabel = UILabel(frame: CGRect(x: 30, y: 0, width: width - 60, height: 50))
         RegistraInfoLabel?.text = "Registra tu información"
@@ -154,6 +156,7 @@ class RegisterViewController: UIViewController {
         
         
     }
+    //MARK: - Funciones de regresar y registrar
     
     @objc func backAction(){
         print("back")

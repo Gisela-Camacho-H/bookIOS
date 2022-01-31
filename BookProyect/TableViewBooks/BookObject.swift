@@ -1,7 +1,6 @@
 //
 //  BookObject.swift
 //  BookProyect
-//
 //  Created by GiselaCamacho on 23/01/22.
 //
 
