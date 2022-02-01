@@ -6,13 +6,15 @@
 //
 import UIKit
 
-class BooksViewController : UIViewController {
+class BooksViewController : UIViewController, BookManagerDelegate {
 
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
     
     var dataSource : BookObject?
     var imageSource : BooksObjectCollection?
+    
+    var bookManager = BookManager()
     
     var masPopularesLabel: UILabel?
     var backButton : UIButton?
@@ -29,6 +31,7 @@ class BooksViewController : UIViewController {
     var lineView: UIView?
     var lineView2: UIView?
     var agregadosLabel: UILabel?
+    var id : UILabel?
     
     var tableView : UITableView?
     
@@ -66,6 +69,8 @@ class BooksViewController : UIViewController {
         getData()
         getImage()
         initUI()
+        
+        bookManager.delegate = self
     }
     func initUI(){
         
@@ -81,12 +86,20 @@ class BooksViewController : UIViewController {
         backButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         view.addSubview(backButton!)
         
-        agregadosLabel = UILabel(frame: CGRect(x: 20, y: 390, width: 150, height: 30))
+        /*agregadosLabel = UILabel(frame: CGRect(x: 20, y: 390, width: 150, height: 30))
         agregadosLabel?.text = "Recién agregados"
         agregadosLabel?.font = .boldSystemFont(ofSize: 14)
         agregadosLabel?.textColor = pinkBlueColor
         agregadosLabel?.textAlignment = .center
         view.addSubview(agregadosLabel!)
+        */
+        
+        id = UILabel(frame: CGRect(x: 20, y: 390, width: 150, height: 30))
+        id?.text = ""
+        id?.font = .boldSystemFont(ofSize: 14)
+        id?.textColor = pinkBlueColor
+        id?.textAlignment = .center
+        view.addSubview(id!)
         
         createButtonsView()
         
@@ -212,6 +225,12 @@ class BooksViewController : UIViewController {
     @objc func backAction(){
         print("back")
         dismiss(animated: true)
+    }
+    
+    func didUpdateBook(_ bookManager: BookManager, bookid: BookModel) {
+        DispatchQueue.main.async {
+            self.id?.text = bookid.id
+    }
     }
 
 }
