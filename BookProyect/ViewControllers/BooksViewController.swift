@@ -229,7 +229,7 @@ class BooksViewController : UIViewController, BookManagerDelegate {
     
     func didUpdateBook(_ bookManager: BookManager, bookid: BookModel) {
         DispatchQueue.main.async {
-            self.id?.text = bookid.id
+            self.id?.text = bookid.title
     }
     }
 

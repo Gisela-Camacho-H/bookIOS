@@ -6,8 +6,8 @@
 //
 
 import Foundation
+
 struct BookData: Decodable {
-    
     let data: [Data]
     
 }

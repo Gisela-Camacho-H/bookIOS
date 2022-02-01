@@ -7,6 +7,5 @@
 
 import Foundation
 struct BookModel {
-    let id: String
-    
+    let title: String
 }
