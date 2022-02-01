@@ -11,7 +11,10 @@ struct BookData: Decodable {
     let data: [Data]
     
 }
-
 struct Data: Decodable {
-    let id: Int
+    let attributes: [Attributes]
 }
+struct Attributes: Decodable{
+    let title: String
+}
+
