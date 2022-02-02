@@ -6,15 +6,13 @@
 //
 import UIKit
 
-class BooksViewController : UIViewController, BookManagerDelegate {
+class BooksViewController : UIViewController {
 
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
     
     var dataSource : BookObject?
     var imageSource : BooksObjectCollection?
-    
-    var bookManager = BookManager()
     
     var masPopularesLabel: UILabel?
     var backButton : UIButton?
@@ -69,8 +67,6 @@ class BooksViewController : UIViewController, BookManagerDelegate {
         getData()
         getImage()
         initUI()
-        
-        bookManager.delegate = self
     }
     func initUI(){
         
@@ -128,7 +124,7 @@ class BooksViewController : UIViewController, BookManagerDelegate {
         libroButton = UIButton(frame: CGRect(x: 2, y: 15, width: 80, height: 20))
         libroButton?.setTitle("Libros", for: .normal)
         libroButton?.setTitleColor(brownColor, for: .normal)
-        //libroButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        libroButton?.addTarget(self, action: #selector(findBook), for: .touchUpInside)
         buttonContent?.addSubview(libroButton!)
         
         categoriasButton = UIButton(frame: CGRect(x: 115, y: 15, width: 100, height: 20))
@@ -226,11 +222,11 @@ class BooksViewController : UIViewController, BookManagerDelegate {
         print("back")
         dismiss(animated: true)
     }
-    
-    func didUpdateBook(_ bookManager: BookManager, bookid: BookModel) {
-        DispatchQueue.main.async {
-            self.id?.text = bookid.title
-    }
+    @objc func findBook (){
+        print("go to findBook")
+         let find = FindBookViewController()
+        find.modalPresentationStyle = .fullScreen
+        present(find, animated: true, completion: nil)
     }
 
 }

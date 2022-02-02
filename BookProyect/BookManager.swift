@@ -17,8 +17,8 @@ struct BookManager {
     
     var delegate: BookManagerDelegate?
     
-    func fetchBook(bookid: String) {
-        let urlString = "\(BookUrl)"
+    func fetchBook(bookName: String) {
+        let urlString = "\(BookUrl)\(bookName)"
        perfomRequest(urlString: urlString)
     }
     
@@ -55,13 +55,11 @@ struct BookManager {
         do {
             
             let decodedData = try decoder.decode(BookData.self, from: bookData)
-            
+            print(decodedData.data.attributes.title)
         
-            let titleApi = decodedData.data[3].attributes.title
+            let titleApi = decodedData.data.attributes.title
             let bookid = BookModel(title: titleApi)
             return bookid
-
-            
             
         } catch {
             print(error)
