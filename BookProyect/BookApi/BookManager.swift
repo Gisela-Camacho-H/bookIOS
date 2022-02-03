@@ -12,13 +12,13 @@ protocol BookManagerDelegate {
 }
 
 struct BookManager {
-      let BookUrl = "https://playground-bookstore.herokuapp.com/api/v1/books/"
+      let BookUrl = "https://playground-bookstore.herokuapp.com/api/v1/books"
 
     
     var delegate: BookManagerDelegate?
     
     func fetchBook(bookName: String) {
-        let urlString = "\(BookUrl)\(bookName)"
+        let urlString = "\(BookUrl)/\(bookName)"
        perfomRequest(urlString: urlString)
     }
     
@@ -56,9 +56,11 @@ struct BookManager {
             
             let decodedData = try decoder.decode(BookData.self, from: bookData)
             print(decodedData.data.attributes.title)
+            print(decodedData.data.attributes.content)
         
             let titleApi = decodedData.data.attributes.title
-            let bookid = BookModel(title: titleApi)
+            let contentApi = decodedData.data.attributes.content
+            let bookid = BookModel(title: titleApi, content: contentApi)
             return bookid
             
         } catch {

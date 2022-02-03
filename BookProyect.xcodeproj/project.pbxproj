@@ -84,6 +84,7 @@
 			children = (
 				5682C36427AB032600EA1D89 /* FindBookViewController.swift */,
 				5695960B279BBA3B00EE3748 /* RegisterViewController.swift */,
+				5649C042279A71CB000DCA63 /* ViewController.swift */,
 				562B6F98279D24FF008F8437 /* DetailBookViewController.swift */,
 				56959609279BB68D00EE3748 /* BooksViewController.swift */,
 			);
@@ -116,10 +117,9 @@
 				5649C047279A71CB000DCA63 /* Assets.xcassets */,
 				5649C04C279A71CB000DCA63 /* Info.plist */,
 				5649C049279A71CB000DCA63 /* LaunchScreen.storyboard */,
-				5649C042279A71CB000DCA63 /* ViewController.swift */,
-				565AF05F27A9AA9400B37184 /* BookManager.swift */,
-				565AF05C27A9AA2100B37184 /* BookModel.swift */,
-				565AF05A27A9A9CD00B37184 /* BookData.swift */,
+				566FDDFF27AB5D52009C1378 /* AuthorsApi */,
+				566FDDFE27AB5D3B009C1378 /* CategoriesApi */,
+				566FDDFD27AB5D21009C1378 /* BookApi */,
 				5620E13D27A89A01004527E6 /* ViewControllers */,
 				5620E13C27A8998C004527E6 /* TableViewBooks */,
 				5620E13B27A8995C004527E6 /* CollectionBooks */,
@@ -133,6 +133,30 @@
 				5650379B279FC34A00D4CA27 /* Utils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		566FDDFD27AB5D21009C1378 /* BookApi */ = {
+			isa = PBXGroup;
+			children = (
+				565AF05C27A9AA2100B37184 /* BookModel.swift */,
+				565AF05A27A9A9CD00B37184 /* BookData.swift */,
+				565AF05F27A9AA9400B37184 /* BookManager.swift */,
+			);
+			path = BookApi;
+			sourceTree = "<group>";
+		};
+		566FDDFE27AB5D3B009C1378 /* CategoriesApi */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CategoriesApi;
+			sourceTree = "<group>";
+		};
+		566FDDFF27AB5D52009C1378 /* AuthorsApi */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AuthorsApi;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
