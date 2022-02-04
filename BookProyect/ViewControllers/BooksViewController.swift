@@ -130,13 +130,13 @@ class BooksViewController : UIViewController {
         categoriasButton = UIButton(frame: CGRect(x: 115, y: 15, width: 100, height: 20))
         categoriasButton?.setTitle("Categorías", for: .normal)
         categoriasButton?.setTitleColor(brownColor, for: .normal)
-        //categoriasButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        categoriasButton?.addTarget(self, action: #selector(categories), for: .touchUpInside)
         buttonContent?.addSubview(categoriasButton!)
         
         autoresButton = UIButton(frame: CGRect(x: 240, y: 15, width: 80, height: 20))
         autoresButton?.setTitle("Autores", for: .normal)
         autoresButton?.setTitleColor(brownColor, for: .normal)
-        //autoresButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        autoresButton?.addTarget(self, action: #selector(authors), for: .touchUpInside)
         buttonContent?.addSubview(autoresButton!)
         
         lineView =  UIView(frame: CGRect(x: 90, y: 8 , width: 2, height: 35))
@@ -229,6 +229,19 @@ class BooksViewController : UIViewController {
         present(find, animated: true, completion: nil)
     }
 
+    @objc func categories (){
+        print("go to categories")
+         let find = CategoriesViewController()
+        find.modalPresentationStyle = .fullScreen
+        present(find, animated: true, completion: nil)
+    }
+    
+    @objc func authors (){
+        print("go to authors")
+         let find = AuthorsViewController()
+        find.modalPresentationStyle = .fullScreen
+        present(find, animated: true, completion: nil)
+    }
 }
 // MARK: - UITableViewDelegate
 extension BooksViewController : UITableViewDelegate{

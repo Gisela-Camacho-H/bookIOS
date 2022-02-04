@@ -19,6 +19,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
     var title1 : UILabel?
     var contentLabel : UILabel?
     var content1: UILabel?
+    var backButton: UIButton?
     
     var bookManager = BookManager()
     
@@ -40,6 +41,13 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
         SearchTextField.delegate = self
     }
             func initUI(){
+                
+            backButton = UIButton(frame: CGRect(x: 20, y: 70, width: 45, height: 45))
+            backButton?.setImage(UIImage(named: "back"), for: .normal)
+            backButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+            view.addSubview(backButton!)
+                
+                
             buscarLabel = UILabel(frame: CGRect(x: 10, y: 90, width: width , height: 40))
             buscarLabel?.textAlignment = NSTextAlignment.center
             buscarLabel?.backgroundColor = .clear
@@ -98,6 +106,11 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             content1?.text = ""
             view.addSubview(content1!)
         
+    }
+    
+    @objc func backAction(){
+        print("back")
+        dismiss(animated: true)
     }
         
         func SearchPressed(_ sender: UIButton) {
