@@ -8,6 +8,6 @@
 import Foundation
 struct AuthorModel {
     let name: String
-    //let birthday: String
-    let top: String
+    let birthday: String?
+    let top: String?
 }

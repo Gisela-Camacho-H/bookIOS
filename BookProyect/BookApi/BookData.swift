@@ -13,5 +13,6 @@ struct BookData: Decodable {
 }
 struct Docs: Decodable{
     let title : String
+    let first_publish_year : Int?
 }
 //https://app.quicktype.io/

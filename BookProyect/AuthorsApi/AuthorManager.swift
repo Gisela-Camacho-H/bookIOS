@@ -57,11 +57,12 @@ struct AuthorManager {
            
            let decodedData = try decoder.decode(AuthorData.self, from: authorData)
            print(decodedData.docs[0].name)
+           print(decodedData.docs[0].top_work)
        
            let nameApi = decodedData.docs[0].name
-           //let birthdayApi = decodedData.docs[0].birth_date
+           let birthdayApi = decodedData.docs[0].birth_date
            let topApi = decodedData.docs[0].top_work
-           let authorid = AuthorModel(name: nameApi, top: topApi)
+           let authorid = AuthorModel(name: nameApi,birthday: birthdayApi, top: topApi)
            return authorid
            
        } catch {

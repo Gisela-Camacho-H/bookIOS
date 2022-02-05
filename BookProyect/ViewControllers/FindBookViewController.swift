@@ -19,10 +19,8 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
     var title1 : UILabel?
     var contentLabel : UILabel?
     var content1: UILabel?
-    var content2: UILabel?
-    var content3: UILabel?
-    var content4: UILabel?
-    var content5: UILabel?
+    var showLabel: UILabel?
+    var goBookButton: UIButton?
     var backButton: UIButton?
     
     var bookManager = BookManager()
@@ -79,7 +77,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             titleLabel?.numberOfLines = 0
             titleLabel?.layer.cornerRadius = 7
             titleLabel?.font = UIFont(name: "Arial Bold", size: 25)
-            titleLabel?.text = "Titulo del libro:"
+            titleLabel?.text = "Nombre del libro:"
             view.addSubview(titleLabel!)
                 
             title1 = UILabel(frame: CGRect(x: 40, y: 300, width: width - 80 , height: 60))
@@ -98,7 +96,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             contentLabel?.numberOfLines = 0
             contentLabel?.layer.cornerRadius = 7
             contentLabel?.font = UIFont(name: "Arial Bold", size: 25)
-            contentLabel?.text = "Descripción del libro:"
+            contentLabel?.text = "Año de primera publicación:"
             view.addSubview(contentLabel!)
                 
             content1 = UILabel(frame: CGRect(x: 40, y: 450, width: width - 80 , height: 60))
@@ -110,42 +108,21 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             content1?.text = ""
             view.addSubview(content1!)
                 
-            content2 = UILabel(frame: CGRect(x: 40, y: 500, width: width - 80 , height: 60))
-            content2?.textAlignment = NSTextAlignment.center
-            content2?.backgroundColor = .clear
-            content2?.textColor = brownColor
-            content2?.numberOfLines = 0
-            content2?.font = UIFont(name: "Arial Bold", size: 20)
-            content2?.text = ""
-            view.addSubview(content2!)
+            showLabel = UILabel(frame: CGRect(x: width - 200, y: 600, width: 100 , height: 60))
+            showLabel?.textAlignment = NSTextAlignment.center
+            showLabel?.backgroundColor = backgroundColor
+            showLabel?.textColor = pinkColor
+            showLabel?.numberOfLines = 0
+            showLabel?.layer.cornerRadius = 7
+            showLabel?.font = UIFont(name: "Arial Bold", size: 25)
+            showLabel?.text = "+ info"
+            view.addSubview(showLabel!)
                 
-            content3 = UILabel(frame: CGRect(x: 40, y: 550, width: width - 80 , height: 60))
-            content3?.textAlignment = NSTextAlignment.center
-            content3?.backgroundColor = .clear
-            content3?.textColor = brownColor
-            content3?.numberOfLines = 0
-            content3?.font = UIFont(name: "Arial Bold", size: 20)
-            content3?.text = ""
-            view.addSubview(content3!)
-                
-            content4 = UILabel(frame: CGRect(x: 40, y: 600, width: width - 80 , height: 60))
-            content4?.textAlignment = NSTextAlignment.center
-            content4?.backgroundColor = .clear
-            content4?.textColor = brownColor
-            content4?.numberOfLines = 0
-            content4?.font = UIFont(name: "Arial Bold", size: 20)
-            content4?.text = ""
-            view.addSubview(content4!)
-                
-            content5 = UILabel(frame: CGRect(x: 40, y: 650, width: width - 80 , height: 60))
-            content5?.textAlignment = NSTextAlignment.center
-            content5?.backgroundColor = .clear
-            content5?.textColor = brownColor
-            content5?.numberOfLines = 0
-            content5?.font = UIFont(name: "Arial Bold", size: 20)
-            content5?.text = ""
-            view.addSubview(content5!)
-        
+            goBookButton = UIButton(frame: CGRect(x: width - 100, y: 600, width: 60 , height: 60))
+            goBookButton?.setImage(UIImage(named: "go"), for: .normal);
+            goBookButton?.addTarget(self, action: #selector(go), for: .touchUpInside)
+            view.addSubview(goBookButton!)
+
     }
     
     @objc func backAction(){
@@ -153,6 +130,13 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
         dismiss(animated: true)
     }
         
+    @objc func go (){
+        print("go to this book")
+         let register = DetailFindBookViewController()
+        register.modalPresentationStyle = .fullScreen
+        present(register, animated: true, completion: nil)
+    }
+    
         func SearchPressed(_ sender: UIButton) {
             SearchTextField.endEditing(true)
             print(SearchTextField.text!)
@@ -172,7 +156,8 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
         }
             func didUpdateBook(_ bookManager: BookManager, bookid: BookModel) {
                 DispatchQueue.main.async {
-                    self.title1?.text = bookid.title
+                    self.title1?.text = String(bookid.title)
+                    self.content1?.text = String(bookid.first ?? 0)
 
                     }
 

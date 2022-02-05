@@ -33,6 +33,7 @@
 		5698F27427ADE61900F66BF9 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698F27327ADE61900F66BF9 /* CategoryData.swift */; };
 		5698F27627ADE63800F66BF9 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698F27527ADE63800F66BF9 /* CategoryManager.swift */; };
 		56B6B87227A08884009BA902 /* BooksObjectCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B6B87127A08884009BA902 /* BooksObjectCollection.swift */; };
+		56D66C7D27AF3FBB00FE32B3 /* DetailFindBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D66C7C27AF3FBB00FE32B3 /* DetailFindBookViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		5698F27327ADE61900F66BF9 /* CategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryData.swift; sourceTree = "<group>"; };
 		5698F27527ADE63800F66BF9 /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 		56B6B87127A08884009BA902 /* BooksObjectCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksObjectCollection.swift; sourceTree = "<group>"; };
+		56D66C7C27AF3FBB00FE32B3 /* DetailFindBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFindBookViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				56959609279BB68D00EE3748 /* BooksViewController.swift */,
 				566FDE0027AB5E06009C1378 /* CategoriesViewController.swift */,
 				566FDE0227AB5E21009C1378 /* AuthorsViewController.swift */,
+				56D66C7C27AF3FBB00FE32B3 /* DetailFindBookViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				5695960C279BBA3B00EE3748 /* RegisterViewController.swift in Sources */,
 				5698F27627ADE63800F66BF9 /* CategoryManager.swift in Sources */,
 				565AF06027A9AA9400B37184 /* BookManager.swift in Sources */,
+				56D66C7D27AF3FBB00FE32B3 /* DetailFindBookViewController.swift in Sources */,
 				562B6F99279D24FF008F8437 /* DetailBookViewController.swift in Sources */,
 				561E381E27AE060D00C22D57 /* AuthorModel.swift in Sources */,
 				5698F27227ADE5FD00F66BF9 /* CategoryModel.swift in Sources */,

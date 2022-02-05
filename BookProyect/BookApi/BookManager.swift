@@ -58,8 +58,8 @@ struct BookManager {
             print(decodedData.docs[0].title)
         
             let title1Api = decodedData.docs[0].title
-
-            let bookid = BookModel(title: title1Api)
+            let firstApi = decodedData.docs[0].first_publish_year
+            let bookid = BookModel(title: title1Api, first: firstApi)
             return bookid
             
         } catch {

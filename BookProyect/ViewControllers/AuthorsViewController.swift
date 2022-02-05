@@ -21,6 +21,9 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     var content1: UILabel?
     var contentLabel1 : UILabel?
     var content2: UILabel?
+    var showLabel: UILabel?
+    
+    var goBookButton : UIButton?
     var backButton : UIButton?
     
     var authorManager = AuthorManager()
@@ -126,12 +129,34 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     content2?.font = UIFont(name: "Arial Bold", size: 20)
     content2?.text = ""
     view.addSubview(content2!)
+        
+    showLabel = UILabel(frame: CGRect(x: width - 200, y: 700, width: 100 , height: 60))
+    showLabel?.textAlignment = NSTextAlignment.center
+    showLabel?.backgroundColor = backgroundColor
+    showLabel?.textColor = pinkColor
+    showLabel?.numberOfLines = 0
+    showLabel?.layer.cornerRadius = 7
+    showLabel?.font = UIFont(name: "Arial Bold", size: 25)
+    showLabel?.text = "+ info"
+    view.addSubview(showLabel!)
+            
+    goBookButton = UIButton(frame: CGRect(x: width - 100, y: 700, width: 60 , height: 60))
+    goBookButton?.setImage(UIImage(named: "go"), for: .normal);
+    goBookButton?.addTarget(self, action: #selector(go), for: .touchUpInside)
+    view.addSubview(goBookButton!)
 
 }
     
     @objc func backAction(){
         print("back")
         dismiss(animated: true)
+    }
+    
+    @objc func go (){
+        print("go to this book")
+         let register = DetailFindBookViewController()
+        register.modalPresentationStyle = .fullScreen
+        present(register, animated: true, completion: nil)
     }
 
 func SearchPressed(_ sender: UIButton) {
@@ -154,8 +179,8 @@ func textFieldDidEndEditing(_ textField: UITextField) {
     func didUpdateAuthor(_ authorManager: AuthorManager, authorid: AuthorModel) {
         DispatchQueue.main.async {
             self.title1?.text = authorid.name
-            //self.content1?.text = authorid.birthday
-            self.content2?.text = authorid.top
+            self.content1?.text = authorid.birthday ?? ""
+            self.content2?.text = authorid.top ?? ""
             }
 
         }
