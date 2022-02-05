@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		561DE189279E042A0015337F /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561DE188279E042A0015337F /* BookTableViewCell.swift */; };
+		561E381E27AE060D00C22D57 /* AuthorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E381D27AE060D00C22D57 /* AuthorModel.swift */; };
+		561E382027AE062200C22D57 /* AuthorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E381F27AE062200C22D57 /* AuthorData.swift */; };
+		561E382227AE063600C22D57 /* AuthorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E382127AE063600C22D57 /* AuthorManager.swift */; };
 		562B6F99279D24FF008F8437 /* DetailBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562B6F98279D24FF008F8437 /* DetailBookViewController.swift */; };
 		563AC45A279DE89700B97AA3 /* BookObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563AC459279DE89700B97AA3 /* BookObject.swift */; };
 		5649C03F279A71CB000DCA63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5649C03E279A71CB000DCA63 /* AppDelegate.swift */; };
@@ -34,6 +37,9 @@
 
 /* Begin PBXFileReference section */
 		561DE188279E042A0015337F /* BookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
+		561E381D27AE060D00C22D57 /* AuthorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorModel.swift; sourceTree = "<group>"; };
+		561E381F27AE062200C22D57 /* AuthorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorData.swift; sourceTree = "<group>"; };
+		561E382127AE063600C22D57 /* AuthorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorManager.swift; sourceTree = "<group>"; };
 		562B6F98279D24FF008F8437 /* DetailBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBookViewController.swift; sourceTree = "<group>"; };
 		563AC459279DE89700B97AA3 /* BookObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookObject.swift; sourceTree = "<group>"; };
 		5649C03B279A71CB000DCA63 /* BookProyect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookProyect.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,7 +136,6 @@
 				5649C04C279A71CB000DCA63 /* Info.plist */,
 				5649C049279A71CB000DCA63 /* LaunchScreen.storyboard */,
 				566FDDFF27AB5D52009C1378 /* AuthorsApi */,
-				566FDDFE27AB5D3B009C1378 /* CategoriesApi */,
 				566FDDFD27AB5D21009C1378 /* BookApi */,
 				5698F27027ADE5C800F66BF9 /* CategoryApi */,
 				5620E13D27A89A01004527E6 /* ViewControllers */,
@@ -158,16 +163,12 @@
 			path = BookApi;
 			sourceTree = "<group>";
 		};
-		566FDDFE27AB5D3B009C1378 /* CategoriesApi */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CategoriesApi;
-			sourceTree = "<group>";
-		};
 		566FDDFF27AB5D52009C1378 /* AuthorsApi */ = {
 			isa = PBXGroup;
 			children = (
+				561E381D27AE060D00C22D57 /* AuthorModel.swift */,
+				561E381F27AE062200C22D57 /* AuthorData.swift */,
+				561E382127AE063600C22D57 /* AuthorManager.swift */,
 			);
 			path = AuthorsApi;
 			sourceTree = "<group>";
@@ -261,6 +262,7 @@
 				5698F27627ADE63800F66BF9 /* CategoryManager.swift in Sources */,
 				565AF06027A9AA9400B37184 /* BookManager.swift in Sources */,
 				562B6F99279D24FF008F8437 /* DetailBookViewController.swift in Sources */,
+				561E381E27AE060D00C22D57 /* AuthorModel.swift in Sources */,
 				5698F27227ADE5FD00F66BF9 /* CategoryModel.swift in Sources */,
 				56B6B87227A08884009BA902 /* BooksObjectCollection.swift in Sources */,
 				5698F27427ADE61900F66BF9 /* CategoryData.swift in Sources */,
@@ -270,8 +272,10 @@
 				5695960A279BB68D00EE3748 /* BooksViewController.swift in Sources */,
 				56503799279FBA1900D4CA27 /* BookCollectionView.swift in Sources */,
 				566FDE0327AB5E21009C1378 /* AuthorsViewController.swift in Sources */,
+				561E382227AE063600C22D57 /* AuthorManager.swift in Sources */,
 				5649C03F279A71CB000DCA63 /* AppDelegate.swift in Sources */,
 				566FDE0127AB5E06009C1378 /* CategoriesViewController.swift in Sources */,
+				561E382027AE062200C22D57 /* AuthorData.swift in Sources */,
 				5649C041279A71CB000DCA63 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

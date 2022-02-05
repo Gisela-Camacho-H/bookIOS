@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AuthorsViewController: UIViewController {
+class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFieldDelegate {
     
     var width = UIScreen.main.bounds.width
     var height = UIScreen.main.bounds.height
@@ -21,7 +21,7 @@ class AuthorsViewController: UIViewController {
     var content1: UILabel?
     var backButton : UIButton?
     
-    //var bookManager = BookManager()
+    var authorManager = AuthorManager()
     
     var backgroundColor = UIColor(displayP3Red: 255/255, green: 242/255, blue: 223/255, alpha: 1)
     var brownColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
@@ -37,8 +37,8 @@ class AuthorsViewController: UIViewController {
         
         initUI()
             
-        //bookManager.delegate = self
-        //SearchTextField.delegate = self
+        authorManager.delegate = self
+        SearchTextField.delegate = self
            
     }
     func initUI(){
@@ -126,15 +126,14 @@ func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 func textFieldDidEndEditing(_ textField: UITextField) {
     
     if let Name = SearchTextField.text {
-        //bookManager.fetchBook(bookName: Name)
+        authorManager.fetchAuthor(bookName: Name)
     }
     SearchTextField.text = ""
 }
-    //func didUpdateBook(_ bookManager: BookManager, bookid: BookModel) {
-        //DispatchQueue.main.async {
-            //self.title1?.text = bookid.title
-            //self.content1?.text = bookid.content
-           // }
+    func didUpdateAuthor(_ authorManager: AuthorManager, authorid: AuthorModel) {
+        DispatchQueue.main.async {
+            self.title1?.text = authorid.name
+            }
 
-        //}
+        }
 }
