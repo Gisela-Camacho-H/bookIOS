@@ -18,6 +18,7 @@ struct AuthorManager {
    var delegate: AuthorManagerDelegate?
    
    func fetchAuthor(bookName: String) {
+       
        let urlString = "\(BookUrl)q=\(bookName)"
       perfomRequest(urlString: urlString)
    }
@@ -58,7 +59,9 @@ struct AuthorManager {
            print(decodedData.docs[0].name)
        
            let nameApi = decodedData.docs[0].name
-           let authorid = AuthorModel(name: nameApi)
+           //let birthdayApi = decodedData.docs[0].birth_date
+           let topApi = decodedData.docs[0].top_work
+           let authorid = AuthorModel(name: nameApi, top: topApi)
            return authorid
            
        } catch {

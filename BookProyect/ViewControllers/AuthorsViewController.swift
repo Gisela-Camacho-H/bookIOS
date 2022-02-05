@@ -19,6 +19,8 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     var title1 : UILabel?
     var contentLabel : UILabel?
     var content1: UILabel?
+    var contentLabel1 : UILabel?
+    var content2: UILabel?
     var backButton : UIButton?
     
     var authorManager = AuthorManager()
@@ -75,7 +77,7 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     titleLabel?.numberOfLines = 0
     titleLabel?.layer.cornerRadius = 7
     titleLabel?.font = UIFont(name: "Arial Bold", size: 25)
-    titleLabel?.text = "id de autor:"
+    titleLabel?.text = "Nombre del autor:"
     view.addSubview(titleLabel!)
         
     title1 = UILabel(frame: CGRect(x: 40, y: 300, width: width - 80 , height: 60))
@@ -94,7 +96,7 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     contentLabel?.numberOfLines = 0
     contentLabel?.layer.cornerRadius = 7
     contentLabel?.font = UIFont(name: "Arial Bold", size: 25)
-    contentLabel?.text = "Nombre:"
+    contentLabel?.text = "Fecha de nacimiento:"
     view.addSubview(contentLabel!)
         
     content1 = UILabel(frame: CGRect(x: 40, y: 450, width: width - 80 , height: 60))
@@ -105,6 +107,25 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     content1?.font = UIFont(name: "Arial Bold", size: 20)
     content1?.text = ""
     view.addSubview(content1!)
+        
+    contentLabel1 = UILabel(frame: CGRect(x: 60, y: 520, width: width - 120 , height: 60))
+    contentLabel1?.textAlignment = NSTextAlignment.center
+    contentLabel1?.backgroundColor = brownColor
+    contentLabel1?.textColor = pinkColor
+    contentLabel1?.numberOfLines = 0
+    contentLabel1?.layer.cornerRadius = 7
+    contentLabel1?.font = UIFont(name: "Arial Bold", size: 25)
+    contentLabel1?.text = "Top - Work:"
+    view.addSubview(contentLabel1!)
+            
+    content2 = UILabel(frame: CGRect(x: 40, y: 590, width: width - 80 , height: 60))
+    content2?.textAlignment = NSTextAlignment.center
+    content2?.backgroundColor = .clear
+    content2?.textColor = brownColor
+    content2?.numberOfLines = 0
+    content2?.font = UIFont(name: "Arial Bold", size: 20)
+    content2?.text = ""
+    view.addSubview(content2!)
 
 }
     
@@ -133,6 +154,8 @@ func textFieldDidEndEditing(_ textField: UITextField) {
     func didUpdateAuthor(_ authorManager: AuthorManager, authorid: AuthorModel) {
         DispatchQueue.main.async {
             self.title1?.text = authorid.name
+            //self.content1?.text = authorid.birthday
+            self.content2?.text = authorid.top
             }
 
         }
