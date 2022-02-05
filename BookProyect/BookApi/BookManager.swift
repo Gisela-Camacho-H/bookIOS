@@ -12,13 +12,13 @@ protocol BookManagerDelegate {
 }
 
 struct BookManager {
-      let BookUrl = "https://openlibrary.org/subjects"
+      let BookUrl = "https://openlibrary.org/search.json?"
 
     
     var delegate: BookManagerDelegate?
     
     func fetchBook(bookName: String) {
-        let urlString = "\(BookUrl)/\(bookName).json"
+        let urlString = "\(BookUrl)q=\(bookName)"
        perfomRequest(urlString: urlString)
     }
     
@@ -55,12 +55,11 @@ struct BookManager {
         do {
             
             let decodedData = try decoder.decode(BookData.self, from: bookData)
-            print(decodedData.name)
-            print(decodedData.works[0].title)
+            print(decodedData.docs[0].title)
         
-            let titleApi = decodedData.name
-            let contentApi = decodedData.works[0].title
-            let bookid = BookModel(title: titleApi, content: contentApi)
+            let title1Api = decodedData.docs[0].title
+
+            let bookid = BookModel(title: title1Api)
             return bookid
             
         } catch {
@@ -70,4 +69,5 @@ struct BookManager {
     }
    
 }
+
 

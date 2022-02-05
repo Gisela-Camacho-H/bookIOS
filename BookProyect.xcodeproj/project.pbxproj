@@ -26,6 +26,9 @@
 		5682C36527AB032600EA1D89 /* FindBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5682C36427AB032600EA1D89 /* FindBookViewController.swift */; };
 		5695960A279BB68D00EE3748 /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959609279BB68D00EE3748 /* BooksViewController.swift */; };
 		5695960C279BBA3B00EE3748 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5695960B279BBA3B00EE3748 /* RegisterViewController.swift */; };
+		5698F27227ADE5FD00F66BF9 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698F27127ADE5FD00F66BF9 /* CategoryModel.swift */; };
+		5698F27427ADE61900F66BF9 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698F27327ADE61900F66BF9 /* CategoryData.swift */; };
+		5698F27627ADE63800F66BF9 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698F27527ADE63800F66BF9 /* CategoryManager.swift */; };
 		56B6B87227A08884009BA902 /* BooksObjectCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B6B87127A08884009BA902 /* BooksObjectCollection.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +54,9 @@
 		5682C36427AB032600EA1D89 /* FindBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindBookViewController.swift; sourceTree = "<group>"; };
 		56959609279BB68D00EE3748 /* BooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
 		5695960B279BBA3B00EE3748 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		5698F27127ADE5FD00F66BF9 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		5698F27327ADE61900F66BF9 /* CategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryData.swift; sourceTree = "<group>"; };
+		5698F27527ADE63800F66BF9 /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 		56B6B87127A08884009BA902 /* BooksObjectCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksObjectCollection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,6 +132,7 @@
 				566FDDFF27AB5D52009C1378 /* AuthorsApi */,
 				566FDDFE27AB5D3B009C1378 /* CategoriesApi */,
 				566FDDFD27AB5D21009C1378 /* BookApi */,
+				5698F27027ADE5C800F66BF9 /* CategoryApi */,
 				5620E13D27A89A01004527E6 /* ViewControllers */,
 				5620E13C27A8998C004527E6 /* TableViewBooks */,
 				5620E13B27A8995C004527E6 /* CollectionBooks */,
@@ -163,6 +170,16 @@
 			children = (
 			);
 			path = AuthorsApi;
+			sourceTree = "<group>";
+		};
+		5698F27027ADE5C800F66BF9 /* CategoryApi */ = {
+			isa = PBXGroup;
+			children = (
+				5698F27127ADE5FD00F66BF9 /* CategoryModel.swift */,
+				5698F27327ADE61900F66BF9 /* CategoryData.swift */,
+				5698F27527ADE63800F66BF9 /* CategoryManager.swift */,
+			);
+			path = CategoryApi;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,9 +258,12 @@
 				5649C043279A71CB000DCA63 /* ViewController.swift in Sources */,
 				565AF05B27A9A9CD00B37184 /* BookData.swift in Sources */,
 				5695960C279BBA3B00EE3748 /* RegisterViewController.swift in Sources */,
+				5698F27627ADE63800F66BF9 /* CategoryManager.swift in Sources */,
 				565AF06027A9AA9400B37184 /* BookManager.swift in Sources */,
 				562B6F99279D24FF008F8437 /* DetailBookViewController.swift in Sources */,
+				5698F27227ADE5FD00F66BF9 /* CategoryModel.swift in Sources */,
 				56B6B87227A08884009BA902 /* BooksObjectCollection.swift in Sources */,
+				5698F27427ADE61900F66BF9 /* CategoryData.swift in Sources */,
 				565AF05D27A9AA2100B37184 /* BookModel.swift in Sources */,
 				563AC45A279DE89700B97AA3 /* BookObject.swift in Sources */,
 				5650379C279FC34A00D4CA27 /* Utils.swift in Sources */,

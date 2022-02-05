@@ -19,6 +19,10 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
     var title1 : UILabel?
     var contentLabel : UILabel?
     var content1: UILabel?
+    var content2: UILabel?
+    var content3: UILabel?
+    var content4: UILabel?
+    var content5: UILabel?
     var backButton: UIButton?
     
     var bookManager = BookManager()
@@ -105,6 +109,42 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             content1?.font = UIFont(name: "Arial Bold", size: 20)
             content1?.text = ""
             view.addSubview(content1!)
+                
+            content2 = UILabel(frame: CGRect(x: 40, y: 500, width: width - 80 , height: 60))
+            content2?.textAlignment = NSTextAlignment.center
+            content2?.backgroundColor = .clear
+            content2?.textColor = brownColor
+            content2?.numberOfLines = 0
+            content2?.font = UIFont(name: "Arial Bold", size: 20)
+            content2?.text = ""
+            view.addSubview(content2!)
+                
+            content3 = UILabel(frame: CGRect(x: 40, y: 550, width: width - 80 , height: 60))
+            content3?.textAlignment = NSTextAlignment.center
+            content3?.backgroundColor = .clear
+            content3?.textColor = brownColor
+            content3?.numberOfLines = 0
+            content3?.font = UIFont(name: "Arial Bold", size: 20)
+            content3?.text = ""
+            view.addSubview(content3!)
+                
+            content4 = UILabel(frame: CGRect(x: 40, y: 600, width: width - 80 , height: 60))
+            content4?.textAlignment = NSTextAlignment.center
+            content4?.backgroundColor = .clear
+            content4?.textColor = brownColor
+            content4?.numberOfLines = 0
+            content4?.font = UIFont(name: "Arial Bold", size: 20)
+            content4?.text = ""
+            view.addSubview(content4!)
+                
+            content5 = UILabel(frame: CGRect(x: 40, y: 650, width: width - 80 , height: 60))
+            content5?.textAlignment = NSTextAlignment.center
+            content5?.backgroundColor = .clear
+            content5?.textColor = brownColor
+            content5?.numberOfLines = 0
+            content5?.font = UIFont(name: "Arial Bold", size: 20)
+            content5?.text = ""
+            view.addSubview(content5!)
         
     }
     
@@ -133,7 +173,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             func didUpdateBook(_ bookManager: BookManager, bookid: BookModel) {
                 DispatchQueue.main.async {
                     self.title1?.text = bookid.title
-                    self.content1?.text = bookid.content
+
                     }
 
                 }
