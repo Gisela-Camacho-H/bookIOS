@@ -56,10 +56,13 @@ struct BookManager {
             
             let decodedData = try decoder.decode(BookData.self, from: bookData)
             print(decodedData.docs[0].title)
+            print(decodedData.docs[0].author_key?[0])
         
             let title1Api = decodedData.docs[0].title
             let firstApi = decodedData.docs[0].first_publish_year
-            let bookid = BookModel(title: title1Api, first: firstApi)
+            let authorApi = decodedData.docs[0].author_key?[0]
+            let authorNameApi = decodedData.docs[0].author_name?[0]
+            let bookid = BookModel(title: title1Api, first: firstApi, author_key: authorApi, author_name: authorNameApi)
             return bookid
             
         } catch {

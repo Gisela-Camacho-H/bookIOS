@@ -14,5 +14,8 @@ struct BookData: Decodable {
 struct Docs: Decodable{
     let title : String
     let first_publish_year : Int?
+    let author_key : [String]?
+    let author_name: [String]?
 }
 //https://app.quicktype.io/
+

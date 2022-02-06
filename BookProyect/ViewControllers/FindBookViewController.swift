@@ -17,8 +17,12 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
     var date : UILabel?
     var titleLabel : UILabel?
     var title1 : UILabel?
-    var contentLabel : UILabel?
+    var contentLabel1 : UILabel?
     var content1: UILabel?
+    var contentLabel2 : UILabel?
+    var content2: UILabel?
+    var contentLabel3 : UILabel?
+    var content3: UILabel?
     var showLabel: UILabel?
     var goBookButton: UIButton?
     var backButton: UIButton?
@@ -89,17 +93,17 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             title1?.text = ""
             view.addSubview(title1!)
                 
-            contentLabel = UILabel(frame: CGRect(x: 60, y: 380, width: width - 120 , height: 60))
-            contentLabel?.textAlignment = NSTextAlignment.center
-            contentLabel?.backgroundColor = brownColor
-            contentLabel?.textColor = pinkColor
-            contentLabel?.numberOfLines = 0
-            contentLabel?.layer.cornerRadius = 7
-            contentLabel?.font = UIFont(name: "Arial Bold", size: 25)
-            contentLabel?.text = "Año de primera publicación:"
-            view.addSubview(contentLabel!)
+            contentLabel1 = UILabel(frame: CGRect(x: 60, y: 370, width: width - 120 , height: 60))
+            contentLabel1?.textAlignment = NSTextAlignment.center
+            contentLabel1?.backgroundColor = brownColor
+            contentLabel1?.textColor = pinkColor
+            contentLabel1?.numberOfLines = 0
+            contentLabel1?.layer.cornerRadius = 7
+            contentLabel1?.font = UIFont(name: "Arial Bold", size: 25)
+            contentLabel1?.text = "Año de primera publicación:"
+            view.addSubview(contentLabel1!)
                 
-            content1 = UILabel(frame: CGRect(x: 40, y: 450, width: width - 80 , height: 60))
+            content1 = UILabel(frame: CGRect(x: 40, y: 420, width: width - 80 , height: 60))
             content1?.textAlignment = NSTextAlignment.center
             content1?.backgroundColor = .clear
             content1?.textColor = brownColor
@@ -108,7 +112,46 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             content1?.text = ""
             view.addSubview(content1!)
                 
-            showLabel = UILabel(frame: CGRect(x: width - 200, y: 600, width: 100 , height: 60))
+            contentLabel2 = UILabel(frame: CGRect(x: 60, y: 480, width: width - 120 , height: 60))
+            contentLabel2?.textAlignment = NSTextAlignment.center
+            contentLabel2?.backgroundColor = brownColor
+            contentLabel2?.textColor = pinkColor
+            contentLabel2?.numberOfLines = 0
+            contentLabel2?.layer.cornerRadius = 7
+            contentLabel2?.font = UIFont(name: "Arial Bold", size: 25)
+            contentLabel2?.text = "Nombre de Autor:"
+            view.addSubview(contentLabel2!)
+                    
+            content2 = UILabel(frame: CGRect(x: 40, y: 540, width: width - 80 , height: 60))
+            content2?.textAlignment = NSTextAlignment.center
+            content2?.backgroundColor = .clear
+            content2?.textColor = brownColor
+            content2?.numberOfLines = 0
+            content2?.font = UIFont(name: "Arial Bold", size: 20)
+            content2?.text = ""
+            view.addSubview(content2!)
+                    
+            contentLabel3 = UILabel(frame: CGRect(x: 60, y: 600, width: width - 120 , height: 60))
+            contentLabel3?.textAlignment = NSTextAlignment.center
+            contentLabel3?.backgroundColor = brownColor
+            contentLabel3?.textColor = pinkColor
+            contentLabel3?.numberOfLines = 0
+            contentLabel3?.layer.cornerRadius = 7
+            contentLabel3?.font = UIFont(name: "Arial Bold", size: 25)
+            contentLabel3?.text = "Id de autor:"
+            view.addSubview(contentLabel3!)
+                        
+            content3 = UILabel(frame: CGRect(x: 40, y: 660, width: width - 80 , height: 60))
+            content3?.textAlignment = NSTextAlignment.center
+            content3?.backgroundColor = .clear
+            content3?.textColor = brownColor
+            content3?.numberOfLines = 0
+            content3?.font = UIFont(name: "Arial Bold", size: 20)
+            content3?.text = ""
+            view.addSubview(content3!)
+                    
+                
+            showLabel = UILabel(frame: CGRect(x: width - 190, y: 750, width: 100 , height: 60))
             showLabel?.textAlignment = NSTextAlignment.center
             showLabel?.backgroundColor = backgroundColor
             showLabel?.textColor = pinkColor
@@ -118,7 +161,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             showLabel?.text = "+ info"
             view.addSubview(showLabel!)
                 
-            goBookButton = UIButton(frame: CGRect(x: width - 100, y: 600, width: 60 , height: 60))
+            goBookButton = UIButton(frame: CGRect(x: width - 90, y: 750, width: 50 , height: 50))
             goBookButton?.setImage(UIImage(named: "go"), for: .normal);
             goBookButton?.addTarget(self, action: #selector(go), for: .touchUpInside)
             view.addSubview(goBookButton!)
@@ -158,6 +201,8 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
                 DispatchQueue.main.async {
                     self.title1?.text = String(bookid.title)
                     self.content1?.text = String(bookid.first ?? 0)
+                    self.content2?.text = bookid.author_name
+                    self.content3?.text = bookid.author_key
 
                     }
 

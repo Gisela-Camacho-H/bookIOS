@@ -9,4 +9,9 @@ import Foundation
 struct BookModel {
     let title: String
     let first : Int?
+    let author_key : String?
+    let author_name: String?
 }
+
+
+
