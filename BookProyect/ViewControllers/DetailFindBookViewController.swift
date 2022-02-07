@@ -27,13 +27,13 @@ class DetailFindBookViewController: UIViewController, DetailManagerDelegate, UIT
     
     var backgroundColor = UIColor(displayP3Red: 255/255, green: 242/255, blue: 223/255, alpha: 1)
     var brownColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
-    var pinkColor = UIColor(displayP3Red: 283/255, green: 162/255, blue: 129/255, alpha: 1)
+    var pinkColor = UIColor(displayP3Red: 241/255, green: 200/255, blue: 173/255, alpha: 1)
 
     override func viewDidLoad() {
         super.viewDidLoad()
            
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "papel")
+        backgroundImage.image = UIImage(named: "background")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
         self.view.insertSubview(backgroundImage, at: 0)
         
@@ -47,13 +47,13 @@ class DetailFindBookViewController: UIViewController, DetailManagerDelegate, UIT
     }
             func initUI(){
                 
-            backButton = UIButton(frame: CGRect(x: 20, y: 70, width: 45, height: 45))
+            backButton = UIButton(frame: CGRect(x: 20, y: 60, width: 45, height: 45))
             backButton?.setImage(UIImage(named: "back"), for: .normal)
             backButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
             view.addSubview(backButton!)
                 
         
-            titleLabel = UILabel(frame: CGRect(x: 60, y: 130, width: width - 120 , height: 60))
+            titleLabel = UILabel(frame: CGRect(x: 60, y: 180, width: width - 120 , height: 60))
             titleLabel?.textAlignment = NSTextAlignment.center
             titleLabel?.backgroundColor = brownColor
             titleLabel?.textColor = pinkColor
@@ -63,7 +63,7 @@ class DetailFindBookViewController: UIViewController, DetailManagerDelegate, UIT
             titleLabel?.text = " Book Name:"
             view.addSubview(titleLabel!)
                 
-            title1 = UILabel(frame: CGRect(x: 40, y: 200, width: width - 80 , height: 60))
+            title1 = UILabel(frame: CGRect(x: 40, y: 250, width: width - 80 , height: 60))
             title1?.textAlignment = NSTextAlignment.center
             title1?.backgroundColor = .clear
             title1?.textColor = brownColor
@@ -72,7 +72,7 @@ class DetailFindBookViewController: UIViewController, DetailManagerDelegate, UIT
             title1?.text = ""
             view.addSubview(title1!)
                 
-            contentLabel = UILabel(frame: CGRect(x: 60, y: 280, width: width - 120 , height: 60))
+            contentLabel = UILabel(frame: CGRect(x: 60, y: 330, width: width - 120 , height: 60))
             contentLabel?.textAlignment = NSTextAlignment.center
             contentLabel?.backgroundColor = brownColor
             contentLabel?.textColor = pinkColor
@@ -82,7 +82,7 @@ class DetailFindBookViewController: UIViewController, DetailManagerDelegate, UIT
             contentLabel?.text = "Book Description:"
             view.addSubview(contentLabel!)
                 
-            content1 = UILabel(frame: CGRect(x: 40, y: 370, width: width - 80 , height: 300))
+            content1 = UILabel(frame: CGRect(x: 40, y: 410, width: width - 80 , height: 300))
             content1?.textAlignment = NSTextAlignment.justified
             content1?.backgroundColor = .clear
             content1?.textColor = brownColor

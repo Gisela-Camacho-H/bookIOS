@@ -32,13 +32,13 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     
     var backgroundColor = UIColor(displayP3Red: 255/255, green: 242/255, blue: 223/255, alpha: 1)
     var brownColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
-    var pinkColor = UIColor(displayP3Red: 283/255, green: 162/255, blue: 129/255, alpha: 1)
+    var pinkColor = UIColor(displayP3Red: 241/255, green: 200/255, blue: 173/255, alpha: 1)
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "papel")
+        backgroundImage.image = UIImage(named: "background")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
         self.view.insertSubview(backgroundImage, at: 0)
         
@@ -50,12 +50,12 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     }
     func initUI(){
         
-    backButton = UIButton(frame: CGRect(x: 20, y: 70, width: 45, height: 45))
+    backButton = UIButton(frame: CGRect(x: 20, y: 60, width: 45, height: 45))
     backButton?.setImage(UIImage(named: "back"), for: .normal)
     backButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
     view.addSubview(backButton!)
         
-    buscarLabel = UILabel(frame: CGRect(x: 10, y: 90, width: width , height: 40))
+    buscarLabel = UILabel(frame: CGRect(x: 10, y: 170, width: width , height: 40))
     buscarLabel?.textAlignment = NSTextAlignment.center
     buscarLabel?.backgroundColor = .clear
     buscarLabel?.textColor = brownColor
@@ -63,7 +63,7 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     buscarLabel?.text = " Enter the Author's Name  "
     view.addSubview(buscarLabel!)
 
-    SearchTextField = UITextField(frame: CGRect(x: 70, y: 150, width: width - 120 , height: 60))
+    SearchTextField = UITextField(frame: CGRect(x: 70, y: 220, width: width - 120 , height: 50))
     SearchTextField?.placeholder = "Author Name"
     SearchTextField?.textAlignment = .center
     SearchTextField?.backgroundColor = .white
@@ -71,11 +71,8 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     SearchTextField?.layer.borderColor = UIColor.black.cgColor
     SearchTextField?.layer.borderWidth = 2
     view.addSubview(SearchTextField!)
-    
-    
         
-        
-    titleLabel = UILabel(frame: CGRect(x: 60, y: 230, width: width - 120 , height: 60))
+    titleLabel = UILabel(frame: CGRect(x: 60, y: 290, width: width - 120 , height: 50))
     titleLabel?.textAlignment = NSTextAlignment.center
     titleLabel?.backgroundColor = brownColor
     titleLabel?.textColor = pinkColor
@@ -85,7 +82,7 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     titleLabel?.text = "Author Full Name:"
     view.addSubview(titleLabel!)
         
-    title1 = UILabel(frame: CGRect(x: 40, y: 300, width: width - 80 , height: 60))
+    title1 = UILabel(frame: CGRect(x: 40, y: 350, width: width - 80 , height: 50))
     title1?.textAlignment = NSTextAlignment.center
     title1?.backgroundColor = .clear
     title1?.textColor = brownColor
@@ -94,7 +91,7 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     title1?.text = ""
     view.addSubview(title1!)
         
-    contentLabel = UILabel(frame: CGRect(x: 60, y: 360, width: width - 120 , height: 60))
+    contentLabel = UILabel(frame: CGRect(x: 60, y: 410, width: width - 120 , height: 50))
     contentLabel?.textAlignment = NSTextAlignment.center
     contentLabel?.backgroundColor = brownColor
     contentLabel?.textColor = pinkColor
@@ -104,7 +101,7 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     contentLabel?.text = "Author Id:"
     view.addSubview(contentLabel!)
         
-    content1 = UILabel(frame: CGRect(x: 40, y: 420, width: width - 80 , height: 60))
+    content1 = UILabel(frame: CGRect(x: 40, y: 470, width: width - 80 , height: 50))
     content1?.textAlignment = NSTextAlignment.center
     content1?.backgroundColor = .clear
     content1?.textColor = brownColor
@@ -113,7 +110,7 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     content1?.text = ""
     view.addSubview(content1!)
         
-    contentLabel1 = UILabel(frame: CGRect(x: 60, y: 480, width: width - 120 , height: 60))
+    contentLabel1 = UILabel(frame: CGRect(x: 60, y: 520, width: width - 120 , height: 50))
     contentLabel1?.textAlignment = NSTextAlignment.center
     contentLabel1?.backgroundColor = brownColor
     contentLabel1?.textColor = pinkColor
@@ -123,7 +120,7 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     contentLabel1?.text = "Top - Work:"
     view.addSubview(contentLabel1!)
             
-    content2 = UILabel(frame: CGRect(x: 40, y: 550, width: width - 80 , height: 60))
+    content2 = UILabel(frame: CGRect(x: 40, y: 580, width: width - 80 , height: 50))
     content2?.textAlignment = NSTextAlignment.center
     content2?.backgroundColor = .clear
     content2?.textColor = brownColor
@@ -132,7 +129,7 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     content2?.text = ""
     view.addSubview(content2!)
         
-    contentLabel2 = UILabel(frame: CGRect(x: 60, y: 620, width: width - 120 , height: 60))
+    contentLabel2 = UILabel(frame: CGRect(x: 60, y: 650, width: width - 120 , height: 50))
     contentLabel2?.textAlignment = NSTextAlignment.center
     contentLabel2?.backgroundColor = brownColor
     contentLabel2?.textColor = pinkColor
@@ -142,7 +139,7 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     contentLabel2?.text = "Birthday:"
     view.addSubview(contentLabel2!)
                 
-    content3 = UILabel(frame: CGRect(x: 40, y: 670, width: width - 80 , height: 60))
+    content3 = UILabel(frame: CGRect(x: 40, y: 700, width: width - 80 , height: 50))
     content3?.textAlignment = NSTextAlignment.center
     content3?.backgroundColor = .clear
     content3?.textColor = brownColor

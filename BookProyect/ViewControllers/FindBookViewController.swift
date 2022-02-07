@@ -33,13 +33,13 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
     
     var backgroundColor = UIColor(displayP3Red: 255/255, green: 242/255, blue: 223/255, alpha: 1)
     var brownColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
-    var pinkColor = UIColor(displayP3Red: 283/255, green: 162/255, blue: 129/255, alpha: 1)
+    var pinkColor = UIColor(displayP3Red: 241/255, green: 200/255, blue: 173/255, alpha: 1)
 
     override func viewDidLoad() {
         super.viewDidLoad()
            
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "papel")
+        backgroundImage.image = UIImage(named: "background")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
         self.view.insertSubview(backgroundImage, at: 0)
         
@@ -50,13 +50,13 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
     }
             func initUI(){
                 
-            backButton = UIButton(frame: CGRect(x: 20, y: 70, width: 45, height: 45))
+            backButton = UIButton(frame: CGRect(x: 20, y: 60, width: 45, height: 45))
             backButton?.setImage(UIImage(named: "back"), for: .normal)
             backButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
             view.addSubview(backButton!)
                 
                 
-            buscarLabel = UILabel(frame: CGRect(x: 10, y: 90, width: width , height: 40))
+            buscarLabel = UILabel(frame: CGRect(x: 10, y: 170, width: width , height: 40))
             buscarLabel?.textAlignment = NSTextAlignment.center
             buscarLabel?.backgroundColor = .clear
             buscarLabel?.textColor = brownColor
@@ -64,8 +64,8 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             buscarLabel?.text = " Enter the book's name "
             view.addSubview(buscarLabel!)
         
-            SearchTextField = UITextField(frame: CGRect(x: 70, y: 150, width: width - 120 , height: 60))
-            SearchTextField?.placeholder = "Book Name"
+            SearchTextField = UITextField(frame: CGRect(x: 70, y: 220, width: width - 120 , height: 50))
+            SearchTextField?.placeholder = " Book Name "
             SearchTextField?.textAlignment = .center
             SearchTextField?.backgroundColor = .white
             SearchTextField?.layer.cornerRadius = 7
@@ -73,10 +73,8 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             SearchTextField?.layer.borderWidth = 2
             view.addSubview(SearchTextField!)
             
-            
-                
-                
-            titleLabel = UILabel(frame: CGRect(x: 60, y: 230, width: width - 120 , height: 60))
+        
+            titleLabel = UILabel(frame: CGRect(x: 60, y: 290, width: width - 120 , height: 50))
             titleLabel?.textAlignment = NSTextAlignment.center
             titleLabel?.backgroundColor = brownColor
             titleLabel?.textColor = pinkColor
@@ -86,7 +84,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             titleLabel?.text = "Book Name:"
             view.addSubview(titleLabel!)
                 
-            title1 = UILabel(frame: CGRect(x: 40, y: 300, width: width - 80 , height: 60))
+            title1 = UILabel(frame: CGRect(x: 40, y: 350, width: width - 80 , height: 50))
             title1?.textAlignment = NSTextAlignment.center
             title1?.backgroundColor = .clear
             title1?.textColor = brownColor
@@ -95,7 +93,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             title1?.text = ""
             view.addSubview(title1!)
                 
-            contentLabel1 = UILabel(frame: CGRect(x: 60, y: 370, width: width - 120 , height: 60))
+            contentLabel1 = UILabel(frame: CGRect(x: 60, y: 410, width: width - 120 , height: 50))
             contentLabel1?.textAlignment = NSTextAlignment.center
             contentLabel1?.backgroundColor = brownColor
             contentLabel1?.textColor = pinkColor
@@ -105,7 +103,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             contentLabel1?.text = "First Publish Year:"
             view.addSubview(contentLabel1!)
                 
-            content1 = UILabel(frame: CGRect(x: 40, y: 430, width: width - 80 , height: 60))
+            content1 = UILabel(frame: CGRect(x: 40, y: 460, width: width - 80 , height: 50))
             content1?.textAlignment = NSTextAlignment.center
             content1?.backgroundColor = .clear
             content1?.textColor = brownColor
@@ -114,7 +112,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             content1?.text = ""
             view.addSubview(content1!)
                 
-            contentLabel2 = UILabel(frame: CGRect(x: 60, y: 490, width: width - 120 , height: 60))
+            contentLabel2 = UILabel(frame: CGRect(x: 60, y: 510, width: width - 120 , height: 50))
             contentLabel2?.textAlignment = NSTextAlignment.center
             contentLabel2?.backgroundColor = brownColor
             contentLabel2?.textColor = pinkColor
@@ -124,7 +122,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             contentLabel2?.text = "Author Name:"
             view.addSubview(contentLabel2!)
                     
-            content2 = UILabel(frame: CGRect(x: 40, y: 550, width: width - 80 , height: 60))
+            content2 = UILabel(frame: CGRect(x: 40, y: 560, width: width - 80 , height: 50))
             content2?.textAlignment = NSTextAlignment.center
             content2?.backgroundColor = .clear
             content2?.textColor = brownColor
@@ -133,7 +131,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             content2?.text = ""
             view.addSubview(content2!)
                     
-            contentLabel3 = UILabel(frame: CGRect(x: 60, y: 610, width: width - 120 , height: 60))
+            contentLabel3 = UILabel(frame: CGRect(x: 60, y: 610, width: width - 120 , height: 50))
             contentLabel3?.textAlignment = NSTextAlignment.center
             contentLabel3?.backgroundColor = brownColor
             contentLabel3?.textColor = pinkColor
@@ -143,7 +141,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             contentLabel3?.text = "Author Id:"
             view.addSubview(contentLabel3!)
                         
-            content3 = UILabel(frame: CGRect(x: 40, y: 670, width: width - 80 , height: 60))
+            content3 = UILabel(frame: CGRect(x: 40, y: 660, width: width - 80 , height: 50))
             content3?.textAlignment = NSTextAlignment.center
             content3?.backgroundColor = .clear
             content3?.textColor = brownColor
@@ -153,16 +151,17 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             view.addSubview(content3!)
                     
                 
-            showLabel = UILabel(frame: CGRect(x: width - 210, y: 740, width: 100 , height: 60))
+            showLabel = UILabel(frame: CGRect(x: width - 140, y: height - 90, width: 70 , height: 40))
             showLabel?.textAlignment = NSTextAlignment.center
-            showLabel?.backgroundColor = backgroundColor
-            showLabel?.textColor = pinkColor
+                showLabel?.backgroundColor = pinkColor
+            showLabel?.textColor = brownColor
             showLabel?.numberOfLines = 0
-            showLabel?.font = UIFont(name: "Arial Bold", size: 25)
-            showLabel?.text = "+ info "
+            showLabel?.font = UIFont(name: "Arial Bold", size: 22)
+            showLabel?.text = "+ info"
+            showLabel?.layer.cornerRadius = 7
             view.addSubview(showLabel!)
                 
-            goBookButton = UIButton(frame: CGRect(x: width - 90, y: 750, width: 50 , height: 50))
+            goBookButton = UIButton(frame: CGRect(x: width - 70, y: height - 95, width: 50 , height: 50))
             goBookButton?.setImage(UIImage(named: "go"), for: .normal);
             goBookButton?.addTarget(self, action: #selector(go), for: .touchUpInside)
             view.addSubview(goBookButton!)
