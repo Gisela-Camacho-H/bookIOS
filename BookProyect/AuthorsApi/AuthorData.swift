@@ -14,5 +14,6 @@ struct AuthorData: Decodable {
 struct Doc: Decodable {
     let name: String
     let birth_date, top_work: String?
+    let key: String
 }
 

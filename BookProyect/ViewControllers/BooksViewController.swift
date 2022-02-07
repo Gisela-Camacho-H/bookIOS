@@ -82,13 +82,13 @@ class BooksViewController : UIViewController {
         backButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         view.addSubview(backButton!)
         
-        /*agregadosLabel = UILabel(frame: CGRect(x: 20, y: 390, width: 150, height: 30))
+        agregadosLabel = UILabel(frame: CGRect(x: 20, y: 390, width: 150, height: 30))
         agregadosLabel?.text = "Recién agregados"
         agregadosLabel?.font = .boldSystemFont(ofSize: 14)
         agregadosLabel?.textColor = pinkBlueColor
         agregadosLabel?.textAlignment = .center
         view.addSubview(agregadosLabel!)
-        */
+        
         
         id = UILabel(frame: CGRect(x: 20, y: 390, width: 150, height: 30))
         id?.text = ""
@@ -255,7 +255,7 @@ extension BooksViewController : UITableViewDelegate{
         let view = UIView() //aqui definimos el UIView el cual se va a retornar en la funcion
         view.backgroundColor = backgroundColor //lo agregamos a la vista
         
-        //ae declara el label
+        //se declara el label
         let label = UILabel(frame: CGRect(x: 25, y: 2, width: 200, height: 20))
         label.text = dataSource?.categorias?[section].nombre ?? ""
         label.font = .boldSystemFont(ofSize: 20)
@@ -272,7 +272,6 @@ extension BooksViewController : UITableViewDelegate{
         let libro = dataSource?.categorias?[indexPath.section].libros?[indexPath.row]
         
         let vc = DetailBookViewController(libro: libro!)
-        //vc.mLibro = libro
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
         

@@ -10,4 +10,5 @@ struct AuthorModel {
     let name: String
     let birthday: String?
     let top: String?
+    let key: String
 }

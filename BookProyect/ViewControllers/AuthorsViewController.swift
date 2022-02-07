@@ -21,6 +21,8 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     var content1: UILabel?
     var contentLabel1 : UILabel?
     var content2: UILabel?
+    var contentLabel2 : UILabel?
+    var content3: UILabel?
     var showLabel: UILabel?
     
     var goBookButton : UIButton?
@@ -92,17 +94,17 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     title1?.text = ""
     view.addSubview(title1!)
         
-    contentLabel = UILabel(frame: CGRect(x: 60, y: 380, width: width - 120 , height: 60))
+    contentLabel = UILabel(frame: CGRect(x: 60, y: 360, width: width - 120 , height: 60))
     contentLabel?.textAlignment = NSTextAlignment.center
     contentLabel?.backgroundColor = brownColor
     contentLabel?.textColor = pinkColor
     contentLabel?.numberOfLines = 0
     contentLabel?.layer.cornerRadius = 7
     contentLabel?.font = UIFont(name: "Arial Bold", size: 25)
-    contentLabel?.text = "Fecha de nacimiento:"
+    contentLabel?.text = "Id de autor:"
     view.addSubview(contentLabel!)
         
-    content1 = UILabel(frame: CGRect(x: 40, y: 450, width: width - 80 , height: 60))
+    content1 = UILabel(frame: CGRect(x: 40, y: 420, width: width - 80 , height: 60))
     content1?.textAlignment = NSTextAlignment.center
     content1?.backgroundColor = .clear
     content1?.textColor = brownColor
@@ -111,7 +113,7 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     content1?.text = ""
     view.addSubview(content1!)
         
-    contentLabel1 = UILabel(frame: CGRect(x: 60, y: 520, width: width - 120 , height: 60))
+    contentLabel1 = UILabel(frame: CGRect(x: 60, y: 480, width: width - 120 , height: 60))
     contentLabel1?.textAlignment = NSTextAlignment.center
     contentLabel1?.backgroundColor = brownColor
     contentLabel1?.textColor = pinkColor
@@ -121,7 +123,7 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     contentLabel1?.text = "Top - Work:"
     view.addSubview(contentLabel1!)
             
-    content2 = UILabel(frame: CGRect(x: 40, y: 590, width: width - 80 , height: 60))
+    content2 = UILabel(frame: CGRect(x: 40, y: 550, width: width - 80 , height: 60))
     content2?.textAlignment = NSTextAlignment.center
     content2?.backgroundColor = .clear
     content2?.textColor = brownColor
@@ -130,20 +132,24 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     content2?.text = ""
     view.addSubview(content2!)
         
-    showLabel = UILabel(frame: CGRect(x: width - 200, y: 700, width: 100 , height: 60))
-    showLabel?.textAlignment = NSTextAlignment.center
-    showLabel?.backgroundColor = backgroundColor
-    showLabel?.textColor = pinkColor
-    showLabel?.numberOfLines = 0
-    showLabel?.layer.cornerRadius = 7
-    showLabel?.font = UIFont(name: "Arial Bold", size: 25)
-    showLabel?.text = "+ info"
-    view.addSubview(showLabel!)
-            
-    goBookButton = UIButton(frame: CGRect(x: width - 100, y: 700, width: 60 , height: 60))
-    goBookButton?.setImage(UIImage(named: "go"), for: .normal);
-    goBookButton?.addTarget(self, action: #selector(go), for: .touchUpInside)
-    view.addSubview(goBookButton!)
+    contentLabel2 = UILabel(frame: CGRect(x: 60, y: 620, width: width - 120 , height: 60))
+    contentLabel2?.textAlignment = NSTextAlignment.center
+    contentLabel2?.backgroundColor = brownColor
+    contentLabel2?.textColor = pinkColor
+    contentLabel2?.numberOfLines = 0
+    contentLabel2?.layer.cornerRadius = 7
+    contentLabel2?.font = UIFont(name: "Arial Bold", size: 25)
+    contentLabel2?.text = "Fecha de nacimiento:"
+    view.addSubview(contentLabel2!)
+                
+    content3 = UILabel(frame: CGRect(x: 40, y: 670, width: width - 80 , height: 60))
+    content3?.textAlignment = NSTextAlignment.center
+    content3?.backgroundColor = .clear
+    content3?.textColor = brownColor
+    content3?.numberOfLines = 0
+    content3?.font = UIFont(name: "Arial Bold", size: 20)
+    content3?.text = ""
+    view.addSubview(content3!)
 
 }
     
@@ -151,13 +157,7 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
         print("back")
         dismiss(animated: true)
     }
-    
-    @objc func go (){
-        print("go to this book")
-         let register = DetailFindBookViewController()
-        register.modalPresentationStyle = .fullScreen
-        present(register, animated: true, completion: nil)
-    }
+
 
 func SearchPressed(_ sender: UIButton) {
     SearchTextField.endEditing(true)
@@ -179,8 +179,9 @@ func textFieldDidEndEditing(_ textField: UITextField) {
     func didUpdateAuthor(_ authorManager: AuthorManager, authorid: AuthorModel) {
         DispatchQueue.main.async {
             self.title1?.text = authorid.name
-            self.content1?.text = authorid.birthday ?? ""
+            self.content3?.text = authorid.birthday ?? ""
             self.content2?.text = authorid.top ?? ""
+            self.content1?.text = authorid.key
             }
 
         }

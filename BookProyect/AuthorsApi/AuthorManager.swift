@@ -62,7 +62,8 @@ struct AuthorManager {
            let nameApi = decodedData.docs[0].name
            let birthdayApi = decodedData.docs[0].birth_date
            let topApi = decodedData.docs[0].top_work
-           let authorid = AuthorModel(name: nameApi,birthday: birthdayApi, top: topApi)
+           let keyApi = decodedData.docs[0].key
+           let authorid = AuthorModel(name: nameApi,birthday: birthdayApi, top: topApi, key: keyApi)
            return authorid
            
        } catch {
