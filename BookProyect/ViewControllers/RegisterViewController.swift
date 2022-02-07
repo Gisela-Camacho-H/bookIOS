@@ -57,10 +57,11 @@ class RegisterViewController: UIViewController {
         view.addSubview(backButton!)
         
         
-        EstasAPuntoLabel = UILabel(frame: CGRect(x: 25, y: height/3 - 20, width: width - 50, height: 50))
-        EstasAPuntoLabel?.text = "Estas a unos cuantos pasos de vivir la mejor experiencia"
+        EstasAPuntoLabel = UILabel(frame: CGRect(x: 25, y: height/3 - 10, width: width - 50, height: 50))
+        EstasAPuntoLabel?.text = "You are so close from living the best experience"
         EstasAPuntoLabel?.numberOfLines = 0
-        EstasAPuntoLabel?.font = .boldSystemFont(ofSize: 16)
+        EstasAPuntoLabel?.textAlignment = .center
+        EstasAPuntoLabel?.font = .boldSystemFont(ofSize: 20)
         EstasAPuntoLabel?.textColor = lightBlueColor
         view.addSubview(EstasAPuntoLabel!)
         
@@ -73,8 +74,8 @@ class RegisterViewController: UIViewController {
         //MARK: - formulario de registro
         
         RegistraInfoLabel = UILabel(frame: CGRect(x: 30, y: 0, width: width - 60, height: 50))
-        RegistraInfoLabel?.text = "Registra tu información"
-        RegistraInfoLabel?.font = .boldSystemFont(ofSize: 20)
+        RegistraInfoLabel?.text = "  Registration  "
+        RegistraInfoLabel?.font = .boldSystemFont(ofSize: 22)
         RegistraInfoLabel?.textAlignment = .center
         RegistraInfoLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
         contentform?.addSubview(RegistraInfoLabel!)
@@ -113,16 +114,16 @@ class RegisterViewController: UIViewController {
         confirmarTextField?.textAlignment = NSTextAlignment.left
         contentform?.addSubview(confirmarTextField!)
 
-        usuarioLabel = UILabel(frame: CGRect(x: 25, y: 50, width: 55, height: 20))
-        usuarioLabel?.text = "Usuario"
+        usuarioLabel = UILabel(frame: CGRect(x: 25, y: 50, width: 50, height: 20))
+        usuarioLabel?.text = "User"
         usuarioLabel?.backgroundColor = .white
         usuarioLabel?.font = .boldSystemFont(ofSize: 12)
         usuarioLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
         usuarioLabel?.textAlignment = .center
         contentform?.addSubview(usuarioLabel!)
         
-        correoLabel = UILabel(frame: CGRect(x: 25, y: 120, width: 55, height: 20))
-        correoLabel?.text = "Correo"
+        correoLabel = UILabel(frame: CGRect(x: 25, y: 120, width: 50, height: 20))
+        correoLabel?.text = "Email"
         correoLabel?.backgroundColor = .white
         correoLabel?.font = .boldSystemFont(ofSize: 12)
         correoLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
@@ -130,15 +131,15 @@ class RegisterViewController: UIViewController {
         contentform?.addSubview(correoLabel!)
         
         contrasenaLabel = UILabel(frame: CGRect(x: 25, y: 190, width: 75, height: 20))
-        contrasenaLabel?.text = "Contraseña"
+        contrasenaLabel?.text = "Password"
         contrasenaLabel?.backgroundColor = .white
         contrasenaLabel?.font = .boldSystemFont(ofSize: 12)
         contrasenaLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
         contrasenaLabel?.textAlignment = .center
         contentform?.addSubview(contrasenaLabel!)
         
-        confirmarLabel = UILabel(frame: CGRect(x: 25, y: 260, width: 140, height: 20))
-        confirmarLabel?.text = "Confirmar Contraseña"
+        confirmarLabel = UILabel(frame: CGRect(x: 25, y: 260, width: 130, height: 20))
+        confirmarLabel?.text = "Confirm Password"
         confirmarLabel?.backgroundColor = .white
         confirmarLabel?.font = .boldSystemFont(ofSize: 12)
         confirmarLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
@@ -149,7 +150,7 @@ class RegisterViewController: UIViewController {
         loginButton?.backgroundColor = blueColor
         loginButton?.layer.cornerRadius = 18
         loginButton?.setTitleColor(.white, for: .normal)
-        loginButton?.setTitle("CREAR CUENTA", for: .normal)
+        loginButton?.setTitle("Register", for: .normal)
         loginButton?.addTarget(self, action: #selector(goToLogin), for: .touchUpInside)
         
         view.addSubview(loginButton!)

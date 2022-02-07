@@ -70,9 +70,9 @@ class BooksViewController : UIViewController {
     }
     func initUI(){
         
-        masPopularesLabel = UILabel(frame: CGRect(x: 30, y: 70, width: width - 60, height: 30))
-        masPopularesLabel?.text = "Más populares"
-        masPopularesLabel?.font = .boldSystemFont(ofSize: 25)
+        masPopularesLabel = UILabel(frame: CGRect(x: 30, y: 80, width: width - 60, height: 30))
+        masPopularesLabel?.text = "Best Sellers "
+        masPopularesLabel?.font = .boldSystemFont(ofSize: 27)
         masPopularesLabel?.textColor = pinkBlueColor
         masPopularesLabel?.textAlignment = .center
         view.addSubview(masPopularesLabel!)
@@ -83,7 +83,7 @@ class BooksViewController : UIViewController {
         view.addSubview(backButton!)
         
         agregadosLabel = UILabel(frame: CGRect(x: 20, y: 390, width: 150, height: 30))
-        agregadosLabel?.text = "Recién agregados"
+        agregadosLabel?.text = "Recently added"
         agregadosLabel?.font = .boldSystemFont(ofSize: 14)
         agregadosLabel?.textColor = pinkBlueColor
         agregadosLabel?.textAlignment = .center
@@ -122,19 +122,19 @@ class BooksViewController : UIViewController {
         view.addSubview(buttonContent!)
         
         libroButton = UIButton(frame: CGRect(x: 2, y: 15, width: 80, height: 20))
-        libroButton?.setTitle("Libros", for: .normal)
+        libroButton?.setTitle("Books", for: .normal)
         libroButton?.setTitleColor(brownColor, for: .normal)
         libroButton?.addTarget(self, action: #selector(findBook), for: .touchUpInside)
         buttonContent?.addSubview(libroButton!)
         
         categoriasButton = UIButton(frame: CGRect(x: 115, y: 15, width: 100, height: 20))
-        categoriasButton?.setTitle("Categorías", for: .normal)
+        categoriasButton?.setTitle("Genres", for: .normal)
         categoriasButton?.setTitleColor(brownColor, for: .normal)
         categoriasButton?.addTarget(self, action: #selector(categories), for: .touchUpInside)
         buttonContent?.addSubview(categoriasButton!)
         
         autoresButton = UIButton(frame: CGRect(x: 240, y: 15, width: 80, height: 20))
-        autoresButton?.setTitle("Autores", for: .normal)
+        autoresButton?.setTitle("Authors", for: .normal)
         autoresButton?.setTitleColor(brownColor, for: .normal)
         autoresButton?.addTarget(self, action: #selector(authors), for: .touchUpInside)
         buttonContent?.addSubview(autoresButton!)
@@ -150,42 +150,42 @@ class BooksViewController : UIViewController {
     }
     
     func getData(){
-        // MARK: - cuentos
+        // MARK: - Tales
  
-        let cuentos = Libro(nombre: "Cuentos", descripcion: "La edición de Cuentos en dos volúmenes ofrece la recopilación de los 67 Cuentos publicados a lo largo de su vida por Edgar Alan Poe. Se reúnen las narraciones dominadas por el terror, la presencia de lo sobrenatural.", autor: "Edgar Allan Poe", imagen: "cuentos", detalles: "Austral Básicos", sobreAutor: "Escritor, poeta, narrador, periodista y crítico literario americano, quien se conoció por su narrativa de terror, horror romántico y su maestría del relato de influencia gótica, siendo considerado uno de los grandes de la literatura universal y padre del género detectivesco.", categoria: "cuentos", autorImage: "edgar")
+        let cuentos = Libro(nombre: "Tales and Poems", descripcion: "La edición de Cuentos en dos volúmenes ofrece la recopilación de los 67 Cuentos publicados a lo largo de su vida por Edgar Alan Poe. Se reúnen las narraciones dominadas por el terror, la presencia de lo sobrenatural.", autor: "Edgar Allan Poe", imagen: "cuentos", detalles: "Austral Básicos", sobreAutor: "Escritor, poeta, narrador, periodista y crítico literario americano, quien se conoció por su narrativa de terror, horror romántico y su maestría del relato de influencia gótica, siendo considerado uno de los grandes de la literatura universal y padre del género detectivesco.", categoria: "Tales", autorImage: "edgar")
         
-        let cuentosInfantiles = Libro(nombre: "Cuentos de Andersen", descripcion: "Algunos inspirados en cuentos y leyendas nórdicas, pero la mayoría de ellos inventados por él y caracterizada por una gran imaginación, humor y sensibilidad.", autor: "Hans C. Andersen", imagen: "cuentosInf", detalles: "Leyendas Nórdicas", sobreAutor: "Nació en el año 1805, en Odense, Dinamarca, fue escritor del género infantil por los cuáles recibió las distinciones Orden de Dannebrog, Order of the Red Eagle 3rd Class, Premio Prometheus en la categoría Hall of Fame, Orden bávara de Maximiliano para la Ciencia y las Artes (1859) y Golden Paintbrush (1976).", categoria: "Cuentos", autorImage: "hans")
+        let cuentosInfantiles = Libro(nombre: "Fairy Tales", descripcion: "Algunos inspirados en cuentos y leyendas nórdicas, pero la mayoría de ellos inventados por él y caracterizada por una gran imaginación, humor y sensibilidad.", autor: "Hans C. Andersen", imagen: "cuentosInf", detalles: "Leyendas Nórdicas", sobreAutor: "Nació en el año 1805, en Odense, Dinamarca, fue escritor del género infantil por los cuáles recibió las distinciones Orden de Dannebrog, Order of the Red Eagle 3rd Class, Premio Prometheus en la categoría Hall of Fame, Orden bávara de Maximiliano para la Ciencia y las Artes (1859) y Golden Paintbrush (1976).", categoria: "Tales", autorImage: "hans")
         
-        let Cuentos = Categoria(nombre: "Cuentos", libros: [cuentos, cuentosInfantiles])
+        let Cuentos = Categoria(nombre: "Tales", libros: [cuentos, cuentosInfantiles])
         // MARK: - literatura
-        let cumbres = Libro(nombre: "Cumbres Borrascosas", descripcion: "Una de las novelas inglesas más relevantes del siglo XIX, cuenta la historia épica de Catherine y Heathcliff. Situado en los páramos sombríos y desolados de Yorkshire, constituye una sorprendente visión metafísica del destino, la obsesión, la pasión y la venganza.", autor: "Emily Brontë", imagen: "cumbres", detalles: "Literatura Inglesa", sobreAutor: "Nació en Thornton, Reino Unido, en 1818. La personalidad de Emily era áspera, salvaje y violenta. Este trabajo rompió por completo con los cañones de decoro que la Inglaterra victoriana requería para toda producción literaria.", categoria: "Literatura", autorImage: "emily")
+        let cumbres = Libro(nombre: "Wuthering Heights", descripcion: "Catherine and Heathcliff's, a foundling adopted by Catherine's father, passionate but doomed love forms the core of this extraordinary tale. Catherine's brother Hindley's hatred and humiliation of Heathcliff leads to tragedy when Catherine marries another and Heathcliff returns newly wealthy to enact his revenge on all who wronged him.", autor: "Emily Brontë", imagen: "cumbres", detalles: "Literatura Inglesa", sobreAutor: "Nació en Thornton, Reino Unido, en 1818. La personalidad de Emily era áspera, salvaje y violenta. Este trabajo rompió por completo con los cañones de decoro que la Inglaterra victoriana requería para toda producción literaria.", categoria: "Literature", autorImage: "emily")
         
-        let guerraPaz = Libro(nombre: "Guerra y Paz", descripcion: "Guerra y paz es una novela donde se narra las vicisitudes de numerosos personajes de todo tipo y condición a lo largo de unos cincuenta años de la historia rusa, desde las guerras napoleónicas hasta más allá de mediados del siglo XIX.", autor: "León Tolstói", imagen: "guerra", detalles: "Literatura Rusa", sobreAutor: "Escritor, dramaturgo, filósofo, novelista, pedagogo y publicista de origen ruso, nacido en 1828, considerado uno de los escritores más importantes de la literatura mundial. Recibió varias nominaciones al Premio Nobel de Literatura de los años 1902 a 1906 y nominaciones al Premio Nobel de la Paz en 1901, 1902 y 1910.", categoria: "Literatura", autorImage: "leon")
+        let guerraPaz = Libro(nombre: "War and Peace", descripcion: "Tolstoy's epic masterpiece intertwines the lives of private and public individuals during the time of the Napoleonic wars and the French invasion of Russia. The fortunes of the Rostovs and the Bolkonskys, of Pierre, Natasha, and Andrei, are intimately connected with the national history that is played out in parallel with their lives. ", autor: "León Tolstói", imagen: "guerra", detalles: "Literatura Rusa", sobreAutor: "Escritor, dramaturgo, filósofo, novelista, pedagogo y publicista de origen ruso, nacido en 1828, considerado uno de los escritores más importantes de la literatura mundial. Recibió varias nominaciones al Premio Nobel de Literatura de los años 1902 a 1906 y nominaciones al Premio Nobel de la Paz en 1901, 1902 y 1910.", categoria: "Literature", autorImage: "leon")
         
-        let literatura = Categoria(nombre: "Literatura", libros: [cumbres,guerraPaz])
+        let literatura = Categoria(nombre: "Literature", libros: [cumbres,guerraPaz])
         
         // MARK: - Clásicos
  
-        let LaDivinaComedia = Libro(nombre: "La Divina Comedia", descripcion: "Es ampliamente considerado el poema más importante de la Edad Media y la mayor obra literaria en lengua italiana. Se trata del viaje de Dante al infierno, al purgatorio y al paraíso, para expiar sus pecados y encontrar el significado de su vida, de la mano de la intervención divina.", autor: "Dante Alighieri", imagen: "divina", detalles: "Historia Universal", sobreAutor: "Poeta italiano, nacido en 1265 en Florencia, Italia. Fue un importante poeta italiano de finales de la Edad Media y principios del Renacimiento. Dante recurre a la teología y filosofía cristianas medievales, especialmente a la filosofía tomista y a la Summa Theologica de Tomás de Aquino.", categoria: "Clásicos", autorImage: "dante")
+        let LaDivinaComedia = Libro(nombre: "The Divine Comedy", descripcion: "The Divine Comedy is one of the greatest ever works of western literature. In this epic poem, Dante imagines the afterlife by representing his own travels through Hell, Purgatory and Paradise. With Virgil as his guide, he travels to the Earthly Paradise.", autor: "Dante Alighieri", imagen: "divina", detalles: "Historia Universal", sobreAutor: "Poeta italiano, nacido en 1265 en Florencia, Italia. Fue un importante poeta italiano de finales de la Edad Media y principios del Renacimiento. Dante recurre a la teología y filosofía cristianas medievales, especialmente a la filosofía tomista y a la Summa Theologica de Tomás de Aquino.", categoria: "Clasics", autorImage: "dante")
         
-        let donQuijote = Libro(nombre: "Don Quijote de la Mancha", descripcion: "Publicada en 1605, trata la historia de Alonso Quijano, un caballero, es decir, un noble rico y de baja escala social, de unos cincuenta años, que vive en algún lugar de La Mancha a principios del siglo XVII. Su hobby es leer libros de caballería, donde se narran fantásticas aventuras de caballeros, princesas, magos y castillos encantados.", autor: "Miguel de Cervantes", imagen: "quijote", detalles: "Obra literaria", sobreAutor: "Dramaturgo español nacido en 1547 en Madrid, España. Fue novelista, poeta, dramaturgo y soldado español. Es considerado la figura más grande de la literatura española.", categoria: "Clásicos", autorImage: "miguel")
+        let donQuijote = Libro(nombre: "Don Quixote", descripcion: "Entranced by romantic tales of heroism and chivalry, Don Quixote goes on a delusional quest for fame and adventure as a self-proclaimed knight errant. Riding his nag of a horse and wearing a rusty old suit of armor, he roams the countryside with his loyal squire Sancho Panza. Together they encounter an array of unforgettable characters and undertake some of the most famously foolhardy exploits in literature.", autor: "Miguel de Cervantes", imagen: "quijote", detalles: "Obra literaria", sobreAutor: "Dramaturgo español nacido en 1547 en Madrid, España. Fue novelista, poeta, dramaturgo y soldado español. Es considerado la figura más grande de la literatura española.", categoria: "Clasics", autorImage: "miguel")
         
-        let Clasicos = Categoria(nombre: "Clásicos", libros: [LaDivinaComedia, donQuijote])
+        let Clasicos = Categoria(nombre: "Clasics", libros: [LaDivinaComedia, donQuijote])
         
         // MARK: - Novelas
  
-        let ElCastillo = Libro(nombre: "El Castillo", descripcion: "El protagonista de El Castillo, conocido solo como K., lucha por acceder a las misteriosas autoridades de un castillo que gobierna la ciudad en la que K. comenzó a trabajar como topógrafo.", autor: "Franz Kafka", imagen: "castillo", detalles: "Alianza Editorial", sobreAutor: "Austrohúngaro, nació en 1883, Praga, República Checa y tiene como principales temas los conflictos paternofiliales, la ansiedad, el existencialismo, la brutalidad física y psicológic", categoria: "Novelas", autorImage: "franz")
+        let ElCastillo = Libro(nombre: "The Castle", descripcion: "The story of K - the unwanted land surveyor who is never to be admitted to the Castle and yet cannot go home - seems to depict, like a dream from the deepest recesses of consciousness, an inexplicable truth about the nature of existence. A perpetual human condition lies at the heart of this labyrinthine world: dualities of certainty and doubt, hope and fear, reason and nonsense, harmony and disintegration.", autor: "Franz Kafka", imagen: "castillo", detalles: "Alianza Editorial", sobreAutor: "Austrohúngaro, nació en 1883, Praga, República Checa y tiene como principales temas los conflictos paternofiliales, la ansiedad, el existencialismo, la brutalidad física y psicológic", categoria: "Novels", autorImage: "franz")
         
-        let hombreInvisible = Libro(nombre: "El Hombre Invisible", descripcion: "Considerado la obra maestra de Ralph Ellison, es el relato en primera persona de un hombre negro sin nombre que se describe a sí mismo como un hombre invisible, no debido a una condición fisiológica anormal, sino porque la sociedad permanece ciega ante él.", autor: "Ralph Ellison", imagen: "hombre", detalles: "Novela Inglesa", sobreAutor: "Escritor y profesor estadounidense, nacido en Oklahoma, Estados Unidos, en 1913 y considerado uno de los novelistas estadounidenses más influyentes de la posguerra y ganador del Premio Anisfield-Wolf a los Logros Especiales y el Premio Nacional del Libro de ficción en 1953, entre otras distinciones.", categoria: "Novelas", autorImage: "ralph")
+        let hombreInvisible = Libro(nombre: "Invisible Man", descripcion: "Published in 1952 when American society was in the cusp of immense change, the powerfully depicted adventures of Ellison's invisible man - from his expulsion from a Southern college to a terrifying Harlem race riot - go far beyond the story of one individual to give voice to the experience of an entire generation of black Americans.", autor: "Ralph Ellison", imagen: "hombre", detalles: "Novela Inglesa", sobreAutor: "Escritor y profesor estadounidense, nacido en Oklahoma, Estados Unidos, en 1913 y considerado uno de los novelistas estadounidenses más influyentes de la posguerra y ganador del Premio Anisfield-Wolf a los Logros Especiales y el Premio Nacional del Libro de ficción en 1953, entre otras distinciones.", categoria: "Novels", autorImage: "ralph")
         
-        let ViejoMar = Libro(nombre: "El Viejo y el Mar", descripcion: "Tiene un lenguaje de gran fuerza y ​​simplicidad. En la narración, vemos a un viejo pescador cubano llamado Santiago, con el mayor desafío que enfrenta: la batalla implacable con un pez gigantesco en las aguas del golfo.", autor: "Ernest Hemingway", imagen: "viejo", detalles: "ambientada en cuba", sobreAutor: "Escritor y periodista estadounidense, uno de los principales novelistas y escritores del siglo XX, nació en Illinois, Estados Unidos en 1899. Sus obras, consideradas clásicas en la literatura del siglo XX, tuvieron una notable influencia por la sobriedad de sus escritos, estilo que lo convirtió en el ganador del Premio Nobel de literatura en 1954.", categoria: "Novelas", autorImage: "ernest")
+        let ViejoMar = Libro(nombre: "The Old Man and The Sea", descripcion: "The Old Man and the Sea examines themes of courage in the face of hardship and perseverance in the face of apparent defeat through Santiago, an old Cuban fisherman who is down on his luck. He also happens to be in the middle of his life’s greatest struggle — a high-stakes battle with a relentless marlin out the Gulf Stream. (You can understand the Moby-Dick comparison). ", autor: "Ernest Hemingway", imagen: "viejo", detalles: "ambientada en cuba", sobreAutor: "Escritor y periodista estadounidense, uno de los principales novelistas y escritores del siglo XX, nació en Illinois, Estados Unidos en 1899. Sus obras, consideradas clásicas en la literatura del siglo XX, tuvieron una notable influencia por la sobriedad de sus escritos, estilo que lo convirtió en el ganador del Premio Nobel de literatura en 1954.", categoria: "Novels", autorImage: "ernest")
         
-        let Novelas = Categoria(nombre: "Novelas", libros: [ElCastillo, hombreInvisible, ViejoMar])
+        let Novelas = Categoria(nombre: "Novels", libros: [ElCastillo, hombreInvisible, ViejoMar])
         
         // MARK: - Epopeya Latina
-        let Eneida = Libro(nombre: "Eneida", descripcion: "Eneida cuenta los viajes y conflictos en los que está involucrado el héroe troyano Eneas después de su fuga apresurada de la ciudad de Troja. En el Mediterráneo, Eneas y sus colegas huyen de los troyanos de su ciudad natal, Troya, que fue destruida por los griegos.", autor: "Virgilio", imagen: "eneida", detalles: "siglo IX a.C.", sobreAutor: "Poeta romano nacido el 70 a. C. C. en Mantua, Italia. Autor del género Epic Poetry, sus primeras composiciones poéticas fueron compiladas bajo el nombre de Apéndice Virgiliano.", categoria: "Epopeya Latina", autorImage: "virgilio")
+        let Eneida = Libro(nombre: "Eneida", descripcion: "Eneida cuenta los viajes y conflictos en los que está involucrado el héroe troyano Eneas después de su fuga apresurada de la ciudad de Troja. En el Mediterráneo, Eneas y sus colegas huyen de los troyanos de su ciudad natal, Troya, que fue destruida por los griegos.", autor: "Virgilio", imagen: "eneida", detalles: "siglo IX a.C.", sobreAutor: "Poeta romano nacido el 70 a. C. C. en Mantua, Italia. Autor del género Epic Poetry, sus primeras composiciones poéticas fueron compiladas bajo el nombre de Apéndice Virgiliano.", categoria: "Latin Epic", autorImage: "virgilio")
         
-        let EpopeyaLatina = Categoria(nombre: "Epopeya Latina", libros: [Eneida])
+        let EpopeyaLatina = Categoria(nombre: "Latin Epic", libros: [Eneida])
         
         let Libros = BookObject(categorias: [Cuentos,literatura,Clasicos, Novelas, EpopeyaLatina], title: "Libros Recientes")
         
@@ -267,7 +267,7 @@ extension BooksViewController : UITableViewDelegate{
     
     // muestra la sección y la celda por sección donde se da click
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Estoy en la sección \(indexPath.section) en la celda \(indexPath.row)")
+        print("I`m on the sección \(indexPath.section) on the cell \(indexPath.row)")
         
         let libro = dataSource?.categorias?[indexPath.section].libros?[indexPath.row]
         

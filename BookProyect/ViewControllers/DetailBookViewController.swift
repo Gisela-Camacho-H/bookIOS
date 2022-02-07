@@ -136,14 +136,14 @@ class DetailBookViewController: UIViewController {
         view.addSubview(descriptionView!)
         
         descriptionLabel = UILabel(frame: CGRect(x: 10, y: 5, width: 160, height: 30))
-        descriptionLabel?.text = "Descripción"
+        descriptionLabel?.text = "Description"
         descriptionLabel?.font = .boldSystemFont(ofSize: 14)
         descriptionLabel?.textColor = brownColor
         descriptionLabel?.textAlignment = .center
         descriptionView?.addSubview(descriptionLabel!)
         
         detailLabel = UILabel(frame: CGRect(x: width/2 - 20, y: 5, width: 160, height: 30))
-        detailLabel?.text = "Detalles"
+        detailLabel?.text = "Details"
         detailLabel?.textColor = brownColor
         detailLabel?.font = .boldSystemFont(ofSize: 14)
         detailLabel?.textAlignment = .center
@@ -171,7 +171,7 @@ class DetailBookViewController: UIViewController {
         view.addSubview(descriptionView!)
         
         descriptionLabel = UILabel(frame: CGRect(x: width/4 + 20, y: 5, width: 160, height: 30))
-        descriptionLabel?.text = "Sobre el Autor"
+        descriptionLabel?.text = "About Author"
         descriptionLabel?.textColor = brownColor
         descriptionLabel?.font = .boldSystemFont(ofSize: 15)
         descriptionLabel?.textAlignment = .left
@@ -191,8 +191,8 @@ class DetailBookViewController: UIViewController {
         bookSobre?.font = .boldSystemFont(ofSize: 12)
         descriptionView?.addSubview(bookSobre!)
         
-        bookMas = UILabel(frame: CGRect(x: 210, y: 200 , width: 140, height: 20))
-        bookMas?.text = "Más titulos del autor"
+        bookMas = UILabel(frame: CGRect(x: 260, y: 200 , width: 140, height: 20))
+        bookMas?.text = "+ author titles"
         bookMas?.textColor = pinkBlueColor
         bookMas?.font = .boldSystemFont(ofSize: 12)
         descriptionView?.addSubview(bookMas!)

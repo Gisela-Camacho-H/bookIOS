@@ -55,7 +55,7 @@ class ViewController: UIViewController {
         bienvenidoView?.addSubview(imageBook!)
         
         bienvenidosLabel = UILabel(frame: CGRect(x: 0, y: 80, width: width, height: 50))
-        bienvenidosLabel?.text = "¡Bienvenido!"
+        bienvenidosLabel?.text = "  Welcome!"
         bienvenidosLabel?.font = .boldSystemFont(ofSize: 35)
         bienvenidosLabel?.textAlignment = .center
         bienvenidosLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
@@ -81,40 +81,40 @@ class ViewController: UIViewController {
         view.addSubview(contrasenaTextField!)
 
         correoLabel = UILabel(frame: CGRect(x: 40, y: 450, width: 50, height: 20))
-        correoLabel?.text = "Correo"
+        correoLabel?.text = "Email"
         correoLabel?.backgroundColor = backgroundColor
-        correoLabel?.font = .boldSystemFont(ofSize: 12)
+        correoLabel?.font = .boldSystemFont(ofSize: 13)
         correoLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
         correoLabel?.textAlignment = .center
         view.addSubview(correoLabel!)
         
         contrasenaLabel = UILabel(frame: CGRect(x: 40, y: 530, width: 80, height: 20))
-        contrasenaLabel?.text = "Contraseña"
+        contrasenaLabel?.text = "Password"
         contrasenaLabel?.backgroundColor = backgroundColor
-        contrasenaLabel?.font = .boldSystemFont(ofSize: 12)
+        contrasenaLabel?.font = .boldSystemFont(ofSize: 13)
         contrasenaLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
         contrasenaLabel?.textAlignment = .center
         view.addSubview(contrasenaLabel!)
         
-        loginButton = UIButton(frame: CGRect(x: 30, y: 650 , width: width - 60 , height: 50))
+        loginButton = UIButton(frame: CGRect(x: 30, y: 640 , width: width - 60 , height: 60))
         loginButton?.backgroundColor = brownColor
-        loginButton?.layer.cornerRadius = 20
+        loginButton?.layer.cornerRadius = 23
         loginButton?.setTitleColor(.white, for: .normal)
-        loginButton?.setTitle("INICIAR SESIÓN", for: .normal)
+        loginButton?.setTitle("Log In", for: .normal)
         loginButton?.addTarget(self, action: #selector(goToBooks), for: .touchUpInside)
         
         view.addSubview(loginButton!)
         
         // MARK: - Registro
-        cuentaLabel = UILabel(frame: CGRect(x: 45, y: 690, width: width - 40, height: 50))
-        cuentaLabel?.text = "¿Todavía no tienes una cuenta?"
-        cuentaLabel?.font = .boldSystemFont(ofSize: 13)
+        cuentaLabel = UILabel(frame: CGRect(x: 120, y: 700, width: width - 40, height: 50))
+        cuentaLabel?.text = "No account?"
+        cuentaLabel?.font = .boldSystemFont(ofSize: 15)
         cuentaLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
         view.addSubview(cuentaLabel!)
         
-        registrateButton = UIButton(frame: CGRect(x: width - 150, y: 685 , width: 100, height: 60))
+        registrateButton = UIButton(frame: CGRect(x: width - 210, y: 695 , width: 100, height: 60))
         registrateButton?.setTitleColor(UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1), for: .normal)
-        registrateButton?.setTitle("Registrate", for: .normal)
+        registrateButton?.setTitle("Sign-up", for: .normal)
         registrateButton?.addTarget(self, action: #selector(register), for: .touchUpInside)
         view.addSubview(registrateButton!)
     }

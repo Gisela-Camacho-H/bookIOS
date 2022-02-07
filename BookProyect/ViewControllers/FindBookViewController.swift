@@ -60,12 +60,12 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             buscarLabel?.textAlignment = NSTextAlignment.center
             buscarLabel?.backgroundColor = .clear
             buscarLabel?.textColor = brownColor
-            buscarLabel?.font = UIFont(name: "Arial Bold", size: 18)
-            buscarLabel?.text = " ¡Ingresa el nombre del libro! "
+            buscarLabel?.font = UIFont(name: "Arial Bold", size: 22)
+            buscarLabel?.text = " Enter the book's name "
             view.addSubview(buscarLabel!)
         
-            SearchTextField = UITextField(frame: CGRect(x: 70, y: 150, width: width - 120 , height: 50))
-            SearchTextField?.placeholder = "Nombre del libro"
+            SearchTextField = UITextField(frame: CGRect(x: 70, y: 150, width: width - 120 , height: 60))
+            SearchTextField?.placeholder = "Book Name"
             SearchTextField?.textAlignment = .center
             SearchTextField?.backgroundColor = .white
             SearchTextField?.layer.cornerRadius = 7
@@ -83,7 +83,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             titleLabel?.numberOfLines = 0
             titleLabel?.layer.cornerRadius = 10
             titleLabel?.font = UIFont(name: "Arial Bold", size: 25)
-            titleLabel?.text = "Nombre del libro:"
+            titleLabel?.text = "Book Name:"
             view.addSubview(titleLabel!)
                 
             title1 = UILabel(frame: CGRect(x: 40, y: 300, width: width - 80 , height: 60))
@@ -102,7 +102,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             contentLabel1?.numberOfLines = 0
             contentLabel1?.layer.cornerRadius = 10
             contentLabel1?.font = UIFont(name: "Arial Bold", size: 25)
-            contentLabel1?.text = "Año de primera publicación:"
+            contentLabel1?.text = "First Publish Year:"
             view.addSubview(contentLabel1!)
                 
             content1 = UILabel(frame: CGRect(x: 40, y: 430, width: width - 80 , height: 60))
@@ -121,7 +121,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             contentLabel2?.numberOfLines = 0
             contentLabel2?.layer.cornerRadius = 10
             contentLabel2?.font = UIFont(name: "Arial Bold", size: 25)
-            contentLabel2?.text = "Nombre de Autor:"
+            contentLabel2?.text = "Author Name:"
             view.addSubview(contentLabel2!)
                     
             content2 = UILabel(frame: CGRect(x: 40, y: 550, width: width - 80 , height: 60))
@@ -140,7 +140,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             contentLabel3?.numberOfLines = 0
             contentLabel3?.layer.cornerRadius = 10
             contentLabel3?.font = UIFont(name: "Arial Bold", size: 25)
-            contentLabel3?.text = "Id del autor:"
+            contentLabel3?.text = "Author Id:"
             view.addSubview(contentLabel3!)
                         
             content3 = UILabel(frame: CGRect(x: 40, y: 670, width: width - 80 , height: 60))
@@ -153,13 +153,13 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             view.addSubview(content3!)
                     
                 
-            showLabel = UILabel(frame: CGRect(x: width - 190, y: 750, width: 100 , height: 60))
+            showLabel = UILabel(frame: CGRect(x: width - 210, y: 740, width: 100 , height: 60))
             showLabel?.textAlignment = NSTextAlignment.center
             showLabel?.backgroundColor = backgroundColor
             showLabel?.textColor = pinkColor
             showLabel?.numberOfLines = 0
             showLabel?.font = UIFont(name: "Arial Bold", size: 25)
-            showLabel?.text = "+ info"
+            showLabel?.text = "+ info "
             view.addSubview(showLabel!)
                 
             goBookButton = UIButton(frame: CGRect(x: width - 90, y: 750, width: 50 , height: 50))

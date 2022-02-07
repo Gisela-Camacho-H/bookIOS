@@ -56,12 +56,12 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
             buscarLabel?.textAlignment = NSTextAlignment.center
             buscarLabel?.backgroundColor = .clear
             buscarLabel?.textColor = brownColor
-            buscarLabel?.font = UIFont(name: "Arial Bold", size: 18)
-            buscarLabel?.text = " ¡Ingresa la categoria! "
+            buscarLabel?.font = UIFont(name: "Arial Bold", size: 22)
+            buscarLabel?.text = " Enter the Genres "
             view.addSubview(buscarLabel!)
         
-            SearchTextField = UITextField(frame: CGRect(x: 70, y: 150, width: width - 120 , height: 50))
-            SearchTextField?.placeholder = "Nombre del libro"
+            SearchTextField = UITextField(frame: CGRect(x: 70, y: 150, width: width - 120 , height: 60))
+            SearchTextField?.placeholder = "Genres"
             SearchTextField?.textAlignment = .center
             SearchTextField?.backgroundColor = .white
             SearchTextField?.layer.cornerRadius = 7
@@ -79,7 +79,7 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
             titleLabel?.numberOfLines = 0
             titleLabel?.layer.cornerRadius = 7
             titleLabel?.font = UIFont(name: "Arial Bold", size: 25)
-            titleLabel?.text = "Categoria:"
+            titleLabel?.text = " Genres:"
             view.addSubview(titleLabel!)
                 
             title1 = UILabel(frame: CGRect(x: 40, y: 300, width: width - 80 , height: 60))
@@ -98,7 +98,7 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
             contentLabel?.numberOfLines = 0
             contentLabel?.layer.cornerRadius = 7
             contentLabel?.font = UIFont(name: "Arial Bold", size: 25)
-            contentLabel?.text = "Top 5 de esta categoria:"
+            contentLabel?.text = "Top 5:"
             view.addSubview(contentLabel!)
                 
             content1 = UILabel(frame: CGRect(x: 40, y: 450, width: width - 80 , height: 60))
@@ -110,7 +110,7 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
             content1?.text = ""
             view.addSubview(content1!)
                 
-            content2 = UILabel(frame: CGRect(x: 40, y: 500, width: width - 80 , height: 60))
+            content2 = UILabel(frame: CGRect(x: 40, y: 520, width: width - 80 , height: 60))
             content2?.textAlignment = NSTextAlignment.center
             content2?.backgroundColor = .clear
             content2?.textColor = brownColor
@@ -119,7 +119,7 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
             content2?.text = ""
             view.addSubview(content2!)
                 
-            content3 = UILabel(frame: CGRect(x: 40, y: 550, width: width - 80 , height: 60))
+            content3 = UILabel(frame: CGRect(x: 40, y: 590, width: width - 80 , height: 60))
             content3?.textAlignment = NSTextAlignment.center
             content3?.backgroundColor = .clear
             content3?.textColor = brownColor
@@ -128,7 +128,7 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
             content3?.text = ""
             view.addSubview(content3!)
                 
-            content4 = UILabel(frame: CGRect(x: 40, y: 600, width: width - 80 , height: 60))
+            content4 = UILabel(frame: CGRect(x: 40, y: 660, width: width - 80 , height: 60))
             content4?.textAlignment = NSTextAlignment.center
             content4?.backgroundColor = .clear
             content4?.textColor = brownColor
@@ -137,7 +137,7 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
             content4?.text = ""
             view.addSubview(content4!)
                 
-            content5 = UILabel(frame: CGRect(x: 40, y: 650, width: width - 80 , height: 60))
+            content5 = UILabel(frame: CGRect(x: 40, y: 730, width: width - 80 , height: 60))
             content5?.textAlignment = NSTextAlignment.center
             content5?.backgroundColor = .clear
             content5?.textColor = brownColor

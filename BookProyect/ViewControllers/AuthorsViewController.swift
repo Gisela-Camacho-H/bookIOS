@@ -59,12 +59,12 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     buscarLabel?.textAlignment = NSTextAlignment.center
     buscarLabel?.backgroundColor = .clear
     buscarLabel?.textColor = brownColor
-    buscarLabel?.font = UIFont(name: "Arial Bold", size: 18)
-    buscarLabel?.text = " ¡Ingresa el autor! "
+    buscarLabel?.font = UIFont(name: "Arial Bold", size: 22)
+    buscarLabel?.text = " Enter the Author's Name  "
     view.addSubview(buscarLabel!)
 
-    SearchTextField = UITextField(frame: CGRect(x: 70, y: 150, width: width - 120 , height: 50))
-    SearchTextField?.placeholder = "Nombre del autor"
+    SearchTextField = UITextField(frame: CGRect(x: 70, y: 150, width: width - 120 , height: 60))
+    SearchTextField?.placeholder = "Author Name"
     SearchTextField?.textAlignment = .center
     SearchTextField?.backgroundColor = .white
     SearchTextField?.layer.cornerRadius = 7
@@ -82,7 +82,7 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     titleLabel?.numberOfLines = 0
     titleLabel?.layer.cornerRadius = 7
     titleLabel?.font = UIFont(name: "Arial Bold", size: 25)
-    titleLabel?.text = "Nombre del autor:"
+    titleLabel?.text = "Author Full Name:"
     view.addSubview(titleLabel!)
         
     title1 = UILabel(frame: CGRect(x: 40, y: 300, width: width - 80 , height: 60))
@@ -101,7 +101,7 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     contentLabel?.numberOfLines = 0
     contentLabel?.layer.cornerRadius = 7
     contentLabel?.font = UIFont(name: "Arial Bold", size: 25)
-    contentLabel?.text = "Id de autor:"
+    contentLabel?.text = "Author Id:"
     view.addSubview(contentLabel!)
         
     content1 = UILabel(frame: CGRect(x: 40, y: 420, width: width - 80 , height: 60))
@@ -139,7 +139,7 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     contentLabel2?.numberOfLines = 0
     contentLabel2?.layer.cornerRadius = 7
     contentLabel2?.font = UIFont(name: "Arial Bold", size: 25)
-    contentLabel2?.text = "Fecha de nacimiento:"
+    contentLabel2?.text = "Birthday:"
     view.addSubview(contentLabel2!)
                 
     content3 = UILabel(frame: CGRect(x: 40, y: 670, width: width - 80 , height: 60))

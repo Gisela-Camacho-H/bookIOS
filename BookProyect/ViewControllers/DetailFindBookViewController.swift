@@ -60,7 +60,7 @@ class DetailFindBookViewController: UIViewController, DetailManagerDelegate, UIT
             titleLabel?.numberOfLines = 0
             titleLabel?.layer.cornerRadius = 7
             titleLabel?.font = UIFont(name: "Arial Bold", size: 25)
-            titleLabel?.text = "Nombre del libro:"
+            titleLabel?.text = " Book Name:"
             view.addSubview(titleLabel!)
                 
             title1 = UILabel(frame: CGRect(x: 40, y: 200, width: width - 80 , height: 60))
@@ -79,10 +79,10 @@ class DetailFindBookViewController: UIViewController, DetailManagerDelegate, UIT
             contentLabel?.numberOfLines = 0
             contentLabel?.layer.cornerRadius = 7
             contentLabel?.font = UIFont(name: "Arial Bold", size: 25)
-            contentLabel?.text = "Descripción del libro:"
+            contentLabel?.text = "Book Description:"
             view.addSubview(contentLabel!)
                 
-            content1 = UILabel(frame: CGRect(x: 20, y: 370, width: width - 40 , height: 300))
+            content1 = UILabel(frame: CGRect(x: 40, y: 370, width: width - 80 , height: 300))
             content1?.textAlignment = NSTextAlignment.justified
             content1?.backgroundColor = .clear
             content1?.textColor = brownColor
