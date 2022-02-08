@@ -26,6 +26,10 @@
 		565AF06027A9AA9400B37184 /* BookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565AF05F27A9AA9400B37184 /* BookManager.swift */; };
 		566FDE0127AB5E06009C1378 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FDE0027AB5E06009C1378 /* CategoriesViewController.swift */; };
 		566FDE0327AB5E21009C1378 /* AuthorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566FDE0227AB5E21009C1378 /* AuthorsViewController.swift */; };
+		567C71A427B1EE6D00B8B095 /* DetailAuthorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567C71A327B1EE6D00B8B095 /* DetailAuthorViewController.swift */; };
+		567C71A727B1EFC700B8B095 /* bioData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567C71A627B1EFC700B8B095 /* bioData.swift */; };
+		567C71A927B1EFD200B8B095 /* bioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567C71A827B1EFD200B8B095 /* bioModel.swift */; };
+		567C71AB27B1EFDD00B8B095 /* bioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567C71AA27B1EFDD00B8B095 /* bioManager.swift */; };
 		5682C36527AB032600EA1D89 /* FindBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5682C36427AB032600EA1D89 /* FindBookViewController.swift */; };
 		5695960A279BB68D00EE3748 /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959609279BB68D00EE3748 /* BooksViewController.swift */; };
 		5695960C279BBA3B00EE3748 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5695960B279BBA3B00EE3748 /* RegisterViewController.swift */; };
@@ -61,6 +65,10 @@
 		565AF05F27A9AA9400B37184 /* BookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManager.swift; sourceTree = "<group>"; };
 		566FDE0027AB5E06009C1378 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		566FDE0227AB5E21009C1378 /* AuthorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorsViewController.swift; sourceTree = "<group>"; };
+		567C71A327B1EE6D00B8B095 /* DetailAuthorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAuthorViewController.swift; sourceTree = "<group>"; };
+		567C71A627B1EFC700B8B095 /* bioData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bioData.swift; sourceTree = "<group>"; };
+		567C71A827B1EFD200B8B095 /* bioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bioModel.swift; sourceTree = "<group>"; };
+		567C71AA27B1EFDD00B8B095 /* bioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bioManager.swift; sourceTree = "<group>"; };
 		5682C36427AB032600EA1D89 /* FindBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindBookViewController.swift; sourceTree = "<group>"; };
 		56959609279BB68D00EE3748 /* BooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
 		5695960B279BBA3B00EE3748 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +122,7 @@
 				566FDE0027AB5E06009C1378 /* CategoriesViewController.swift */,
 				566FDE0227AB5E21009C1378 /* AuthorsViewController.swift */,
 				56D66C7C27AF3FBB00FE32B3 /* DetailFindBookViewController.swift */,
+				567C71A327B1EE6D00B8B095 /* DetailAuthorViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -144,6 +153,7 @@
 				5649C047279A71CB000DCA63 /* Assets.xcassets */,
 				5649C04C279A71CB000DCA63 /* Info.plist */,
 				5649C049279A71CB000DCA63 /* LaunchScreen.storyboard */,
+				567C71A527B1EF6F00B8B095 /* AuthorBiography */,
 				56B49FD527B08EF500ACAE21 /* DetailFindApi */,
 				566FDDFF27AB5D52009C1378 /* AuthorsApi */,
 				566FDDFD27AB5D21009C1378 /* BookApi */,
@@ -181,6 +191,16 @@
 				561E382127AE063600C22D57 /* AuthorManager.swift */,
 			);
 			path = AuthorsApi;
+			sourceTree = "<group>";
+		};
+		567C71A527B1EF6F00B8B095 /* AuthorBiography */ = {
+			isa = PBXGroup;
+			children = (
+				567C71A627B1EFC700B8B095 /* bioData.swift */,
+				567C71A827B1EFD200B8B095 /* bioModel.swift */,
+				567C71AA27B1EFDD00B8B095 /* bioManager.swift */,
+			);
+			path = AuthorBiography;
 			sourceTree = "<group>";
 		};
 		5698F27027ADE5C800F66BF9 /* CategoryApi */ = {
@@ -274,6 +294,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				567C71A427B1EE6D00B8B095 /* DetailAuthorViewController.swift in Sources */,
+				567C71A727B1EFC700B8B095 /* bioData.swift in Sources */,
 				56B49FDB27B08F8700ACAE21 /* DetailManager.swift in Sources */,
 				56B49FD727B08F3E00ACAE21 /* DetailData.swift in Sources */,
 				561DE189279E042A0015337F /* BookTableViewCell.swift in Sources */,
@@ -282,6 +304,7 @@
 				565AF05B27A9A9CD00B37184 /* BookData.swift in Sources */,
 				5695960C279BBA3B00EE3748 /* RegisterViewController.swift in Sources */,
 				5698F27627ADE63800F66BF9 /* CategoryManager.swift in Sources */,
+				567C71AB27B1EFDD00B8B095 /* bioManager.swift in Sources */,
 				565AF06027A9AA9400B37184 /* BookManager.swift in Sources */,
 				56D66C7D27AF3FBB00FE32B3 /* DetailFindBookViewController.swift in Sources */,
 				562B6F99279D24FF008F8437 /* DetailBookViewController.swift in Sources */,
@@ -294,6 +317,7 @@
 				563AC45A279DE89700B97AA3 /* BookObject.swift in Sources */,
 				5650379C279FC34A00D4CA27 /* Utils.swift in Sources */,
 				5695960A279BB68D00EE3748 /* BooksViewController.swift in Sources */,
+				567C71A927B1EFD200B8B095 /* bioModel.swift in Sources */,
 				56503799279FBA1900D4CA27 /* BookCollectionView.swift in Sources */,
 				566FDE0327AB5E21009C1378 /* AuthorsViewController.swift in Sources */,
 				561E382227AE063600C22D57 /* AuthorManager.swift in Sources */,

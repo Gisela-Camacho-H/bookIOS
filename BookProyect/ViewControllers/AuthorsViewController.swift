@@ -28,6 +28,9 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     var goBookButton : UIButton?
     var backButton : UIButton?
     
+    var fetchedEndPoint : String?
+    var nameEndPoint: String?
+    
     var authorManager = AuthorManager()
     
     var backgroundColor = UIColor(displayP3Red: 255/255, green: 242/255, blue: 223/255, alpha: 1)
@@ -147,12 +150,36 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     content3?.font = UIFont(name: "Arial Bold", size: 20)
     content3?.text = ""
     view.addSubview(content3!)
+        
+    showLabel = UILabel(frame: CGRect(x: width - 140, y: height - 90, width: 70 , height: 40))
+    showLabel?.textAlignment = NSTextAlignment.center
+        showLabel?.backgroundColor = pinkColor
+    showLabel?.textColor = brownColor
+    showLabel?.numberOfLines = 0
+    showLabel?.font = UIFont(name: "Arial Bold", size: 22)
+    showLabel?.text = "+ info"
+    showLabel?.layer.cornerRadius = 7
+    view.addSubview(showLabel!)
+        
+    goBookButton = UIButton(frame: CGRect(x: width - 70, y: height - 95, width: 50 , height: 50))
+    goBookButton?.setImage(UIImage(named: "go"), for: .normal);
+    goBookButton?.addTarget(self, action: #selector(go), for: .touchUpInside)
+    view.addSubview(goBookButton!)
 
 }
     
     @objc func backAction(){
         print("back")
         dismiss(animated: true)
+    }
+    
+    @objc func go (){
+        print("go to this book")
+         let register = DetailAuthorViewController()
+        register.endPointKey = fetchedEndPoint
+        register.nameAuthor = nameEndPoint
+        register.modalPresentationStyle = .fullScreen
+        present(register, animated: true, completion: nil)
     }
 
 
@@ -179,6 +206,8 @@ func textFieldDidEndEditing(_ textField: UITextField) {
             self.content3?.text = authorid.birthday ?? ""
             self.content2?.text = authorid.top ?? ""
             self.content1?.text = authorid.key
+            self.fetchedEndPoint = authorid.key
+            self.nameEndPoint = authorid.name
             }
 
         }
