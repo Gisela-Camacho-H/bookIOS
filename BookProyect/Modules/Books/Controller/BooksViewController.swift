@@ -7,9 +7,6 @@
 import UIKit
 
 class BooksViewController : UIViewController {
-
-    var width = UIScreen.main.bounds.width
-    var height = UIScreen.main.bounds.height
     
     var dataSource : BookObject?
     var imageSource : BooksObjectCollection?
@@ -17,11 +14,6 @@ class BooksViewController : UIViewController {
     var masPopularesLabel: UILabel?
     var backButton : UIButton?
     var buttonContent : UIView?
-    
-    var backgroundColor = UIColor(displayP3Red: 255/255, green: 242/255, blue: 223/255, alpha: 1) 
-    var brownColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
-    var pinkBlueColor = UIColor(displayP3Red: 283/255, green: 162/255, blue: 129/255, alpha: 1)
-
     
     var libroButton: UIButton?
     var categoriasButton: UIButton?
@@ -73,7 +65,7 @@ class BooksViewController : UIViewController {
         masPopularesLabel = UILabel(frame: CGRect(x: 30, y: 80, width: width - 60, height: 30))
         masPopularesLabel?.text = "Best Sellers "
         masPopularesLabel?.font = .boldSystemFont(ofSize: 27)
-        masPopularesLabel?.textColor = pinkBlueColor
+        masPopularesLabel?.textColor = UIColor.coralColor
         masPopularesLabel?.textAlignment = .center
         view.addSubview(masPopularesLabel!)
         
@@ -85,7 +77,7 @@ class BooksViewController : UIViewController {
         agregadosLabel = UILabel(frame: CGRect(x: 20, y: 390, width: 150, height: 30))
         agregadosLabel?.text = "Recently added"
         agregadosLabel?.font = .boldSystemFont(ofSize: 14)
-        agregadosLabel?.textColor = pinkBlueColor
+        agregadosLabel?.textColor = UIColor.pinkColor
         agregadosLabel?.textAlignment = .center
         view.addSubview(agregadosLabel!)
         
@@ -93,7 +85,7 @@ class BooksViewController : UIViewController {
         id = UILabel(frame: CGRect(x: 20, y: 390, width: 150, height: 30))
         id?.text = ""
         id?.font = .boldSystemFont(ofSize: 14)
-        id?.textColor = pinkBlueColor
+        id?.textColor = UIColor.pinkColor
         id?.textAlignment = .center
         view.addSubview(id!)
         
@@ -101,7 +93,7 @@ class BooksViewController : UIViewController {
         
         // MARK: - TableView
         tableView = UITableView(frame: CGRect(x: 20, y: height/3 + 115, width: width - 40, height: height - 410))
-        tableView?.backgroundColor = backgroundColor
+        tableView?.backgroundColor = UIColor.backgroundColor
         tableView?.delegate = self
         tableView?.dataSource = self //en donde se va a definir (en si mismo)
         view.addSubview(tableView!) //se hace visible
@@ -123,28 +115,28 @@ class BooksViewController : UIViewController {
         
         libroButton = UIButton(frame: CGRect(x: 2, y: 15, width: 80, height: 20))
         libroButton?.setTitle("Books", for: .normal)
-        libroButton?.setTitleColor(brownColor, for: .normal)
+        libroButton?.setTitleColor(UIColor.brownColor, for: .normal)
         libroButton?.addTarget(self, action: #selector(findBook), for: .touchUpInside)
         buttonContent?.addSubview(libroButton!)
         
         categoriasButton = UIButton(frame: CGRect(x: 115, y: 15, width: 100, height: 20))
         categoriasButton?.setTitle("Genres", for: .normal)
-        categoriasButton?.setTitleColor(brownColor, for: .normal)
+        categoriasButton?.setTitleColor(UIColor.brownColor, for: .normal)
         categoriasButton?.addTarget(self, action: #selector(categories), for: .touchUpInside)
         buttonContent?.addSubview(categoriasButton!)
         
         autoresButton = UIButton(frame: CGRect(x: 240, y: 15, width: 80, height: 20))
         autoresButton?.setTitle("Authors", for: .normal)
-        autoresButton?.setTitleColor(brownColor, for: .normal)
+        autoresButton?.setTitleColor(UIColor.brownColor, for: .normal)
         autoresButton?.addTarget(self, action: #selector(authors), for: .touchUpInside)
         buttonContent?.addSubview(autoresButton!)
         
         lineView =  UIView(frame: CGRect(x: 90, y: 8 , width: 2, height: 35))
-        lineView?.backgroundColor = brownColor
+        lineView?.backgroundColor = UIColor.brownColor
         buttonContent?.addSubview(lineView!)
         
         lineView2 =  UIView(frame: CGRect(x: 230, y: 8 , width: 2, height: 35))
-        lineView2?.backgroundColor = brownColor
+        lineView2?.backgroundColor = UIColor.brownColor
         buttonContent?.addSubview(lineView2!)
         
     }
@@ -253,7 +245,7 @@ extension BooksViewController : UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView() //aqui definimos el UIView el cual se va a retornar en la funcion
-        view.backgroundColor = backgroundColor //lo agregamos a la vista
+        view.backgroundColor = UIColor.backgroundColor //lo agregamos a la vista
         
         //se declara el label
         let label = UILabel(frame: CGRect(x: 25, y: 2, width: 200, height: 20))

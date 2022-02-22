@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     var topImageView: UIImageView?
     var imageBook : UIImageView?
@@ -21,13 +21,6 @@ class ViewController: UIViewController {
     var registrateButton: UIButton?
     var bienvenidoView : UIView?
     
-    var width = UIScreen.main.bounds.width
-    var height = UIScreen.main.bounds.height
-    
-    var backgroundColor = UIColor(displayP3Red: 255/255, green: 242/255, blue: 223/255, alpha: 1)
-    var brownColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -39,6 +32,13 @@ class ViewController: UIViewController {
         
         //llamar función initUI
         initUI()
+        self.correoTextField?.delegate = self
+        self.contrasenaTextField?.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     func initUI(){
         topImageView = UIImageView(frame: CGRect(x: 0, y: height/6 - 60, width: width, height: height/5))
@@ -55,7 +55,16 @@ class ViewController: UIViewController {
         bienvenidoView?.addSubview(imageBook!)
         
         bienvenidosLabel = UILabel(frame: CGRect(x: 0, y: 80, width: width, height: 50))
-        bienvenidosLabel?.text = "  Welcome!"
+        bienvenidosLabel?.text = ""
+        var charIndex = 0
+       let titleText = "  Welcome  "
+        for letter in titleText {
+            Timer.scheduledTimer(withTimeInterval: Double(charIndex) * 0.3, repeats: false){
+                (timer) in
+                self.bienvenidosLabel?.text?.append(letter)
+            }
+            charIndex += 1
+        }
         bienvenidosLabel?.font = .boldSystemFont(ofSize: 35)
         bienvenidosLabel?.textAlignment = .center
         bienvenidosLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
@@ -66,7 +75,7 @@ class ViewController: UIViewController {
         correoTextField = UITextField(frame: CGRect(x:20, y:460, width: width - 40, height: 60))
         correoTextField?.backgroundColor = .clear
         correoTextField?.layer.cornerRadius = 7
-        correoTextField?.layer.borderColor = brownColor.cgColor
+        correoTextField?.layer.borderColor = UIColor.brownColor.cgColor
         correoTextField?.layer.borderWidth = 2
         correoTextField?.textAlignment = NSTextAlignment.left
         view.addSubview(correoTextField!)
@@ -74,7 +83,7 @@ class ViewController: UIViewController {
         contrasenaTextField = UITextField(frame: CGRect(x:20, y:540, width: width - 40, height: 60))
         contrasenaTextField?.backgroundColor = .clear
         contrasenaTextField?.layer.cornerRadius = 7
-        contrasenaTextField?.layer.borderColor = brownColor.cgColor
+        contrasenaTextField?.layer.borderColor = UIColor.brownColor.cgColor
         contrasenaTextField?.layer.borderWidth = 2
         contrasenaTextField?.isSecureTextEntry = true
         contrasenaTextField?.textAlignment = NSTextAlignment.left
@@ -82,7 +91,7 @@ class ViewController: UIViewController {
 
         correoLabel = UILabel(frame: CGRect(x: 40, y: 450, width: 50, height: 20))
         correoLabel?.text = "Email"
-        correoLabel?.backgroundColor = backgroundColor
+        correoLabel?.backgroundColor = UIColor.backgroundColor
         correoLabel?.font = .boldSystemFont(ofSize: 13)
         correoLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
         correoLabel?.textAlignment = .center
@@ -90,14 +99,14 @@ class ViewController: UIViewController {
         
         contrasenaLabel = UILabel(frame: CGRect(x: 40, y: 530, width: 80, height: 20))
         contrasenaLabel?.text = "Password"
-        contrasenaLabel?.backgroundColor = backgroundColor
+        contrasenaLabel?.backgroundColor = UIColor.backgroundColor
         contrasenaLabel?.font = .boldSystemFont(ofSize: 13)
         contrasenaLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
         contrasenaLabel?.textAlignment = .center
         view.addSubview(contrasenaLabel!)
         
         loginButton = UIButton(frame: CGRect(x: 30, y: 640 , width: width - 60 , height: 60))
-        loginButton?.backgroundColor = brownColor
+        loginButton?.backgroundColor = UIColor.brownColor
         loginButton?.layer.cornerRadius = 23
         loginButton?.setTitleColor(.white, for: .normal)
         loginButton?.setTitle("Log In", for: .normal)
@@ -140,7 +149,6 @@ class ViewController: UIViewController {
         present(register, animated: true, completion: nil)
     }
 }
-
 //tomas los colores de las fotos
 //https://imagecolorpicker.com/
 //obtener los tamaños para los iconos de la app

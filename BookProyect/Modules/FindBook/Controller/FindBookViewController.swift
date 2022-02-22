@@ -9,9 +9,6 @@ import UIKit
 
 class FindBookViewController: UIViewController, BookManagerDelegate, UITextFieldDelegate{
     
-    var width = UIScreen.main.bounds.width
-    var height = UIScreen.main.bounds.height
-    
     var buscarLabel : UILabel?
     var SearchTextField: UITextField!
     var date : UILabel?
@@ -30,10 +27,6 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
     var fetchedEndPoint : String?
     
     var bookManager = BookManager()
-    
-    var backgroundColor = UIColor(displayP3Red: 255/255, green: 242/255, blue: 223/255, alpha: 1)
-    var brownColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
-    var pinkColor = UIColor(displayP3Red: 241/255, green: 200/255, blue: 173/255, alpha: 1)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +52,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             buscarLabel = UILabel(frame: CGRect(x: 10, y: 170, width: width , height: 40))
             buscarLabel?.textAlignment = NSTextAlignment.center
             buscarLabel?.backgroundColor = .clear
-            buscarLabel?.textColor = brownColor
+                buscarLabel?.textColor = UIColor.brownColor
             buscarLabel?.font = UIFont(name: "Arial Bold", size: 22)
             buscarLabel?.text = " Enter the book's name "
             view.addSubview(buscarLabel!)
@@ -76,8 +69,8 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
         
             titleLabel = UILabel(frame: CGRect(x: 60, y: 290, width: width - 120 , height: 50))
             titleLabel?.textAlignment = NSTextAlignment.center
-            titleLabel?.backgroundColor = brownColor
-            titleLabel?.textColor = pinkColor
+            titleLabel?.backgroundColor = UIColor.brownColor
+                titleLabel?.textColor = UIColor.pinkColor
             titleLabel?.numberOfLines = 0
             titleLabel?.layer.cornerRadius = 10
             titleLabel?.font = UIFont(name: "Arial Bold", size: 25)
@@ -87,7 +80,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             title1 = UILabel(frame: CGRect(x: 40, y: 350, width: width - 80 , height: 50))
             title1?.textAlignment = NSTextAlignment.center
             title1?.backgroundColor = .clear
-            title1?.textColor = brownColor
+                title1?.textColor = UIColor.brownColor
             title1?.numberOfLines = 0
             title1?.font = UIFont(name: "Arial Bold", size: 20)
             title1?.text = ""
@@ -95,8 +88,8 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
                 
             contentLabel1 = UILabel(frame: CGRect(x: 60, y: 410, width: width - 120 , height: 50))
             contentLabel1?.textAlignment = NSTextAlignment.center
-            contentLabel1?.backgroundColor = brownColor
-            contentLabel1?.textColor = pinkColor
+                contentLabel1?.backgroundColor = UIColor.brownColor
+                contentLabel1?.textColor = UIColor.pinkColor
             contentLabel1?.numberOfLines = 0
             contentLabel1?.layer.cornerRadius = 10
             contentLabel1?.font = UIFont(name: "Arial Bold", size: 25)
@@ -106,7 +99,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             content1 = UILabel(frame: CGRect(x: 40, y: 460, width: width - 80 , height: 50))
             content1?.textAlignment = NSTextAlignment.center
             content1?.backgroundColor = .clear
-            content1?.textColor = brownColor
+                content1?.textColor = UIColor.brownColor
             content1?.numberOfLines = 0
             content1?.font = UIFont(name: "Arial Bold", size: 20)
             content1?.text = ""
@@ -114,8 +107,8 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
                 
             contentLabel2 = UILabel(frame: CGRect(x: 60, y: 510, width: width - 120 , height: 50))
             contentLabel2?.textAlignment = NSTextAlignment.center
-            contentLabel2?.backgroundColor = brownColor
-            contentLabel2?.textColor = pinkColor
+                contentLabel2?.backgroundColor = UIColor.brownColor
+                contentLabel2?.textColor = UIColor.pinkColor
             contentLabel2?.numberOfLines = 0
             contentLabel2?.layer.cornerRadius = 10
             contentLabel2?.font = UIFont(name: "Arial Bold", size: 25)
@@ -125,7 +118,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             content2 = UILabel(frame: CGRect(x: 40, y: 560, width: width - 80 , height: 50))
             content2?.textAlignment = NSTextAlignment.center
             content2?.backgroundColor = .clear
-            content2?.textColor = brownColor
+                content2?.textColor = UIColor.brownColor
             content2?.numberOfLines = 0
             content2?.font = UIFont(name: "Arial Bold", size: 20)
             content2?.text = ""
@@ -133,8 +126,8 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
                     
             contentLabel3 = UILabel(frame: CGRect(x: 60, y: 610, width: width - 120 , height: 50))
             contentLabel3?.textAlignment = NSTextAlignment.center
-            contentLabel3?.backgroundColor = brownColor
-            contentLabel3?.textColor = pinkColor
+                contentLabel3?.backgroundColor = UIColor.brownColor
+                contentLabel3?.textColor = UIColor.pinkColor
             contentLabel3?.numberOfLines = 0
             contentLabel3?.layer.cornerRadius = 10
             contentLabel3?.font = UIFont(name: "Arial Bold", size: 25)
@@ -144,7 +137,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             content3 = UILabel(frame: CGRect(x: 40, y: 660, width: width - 80 , height: 50))
             content3?.textAlignment = NSTextAlignment.center
             content3?.backgroundColor = .clear
-            content3?.textColor = brownColor
+                content3?.textColor = UIColor.brownColor
             content3?.numberOfLines = 0
             content3?.font = UIFont(name: "Arial Bold", size: 20)
             content3?.text = ""
@@ -153,8 +146,8 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
                 
             showLabel = UILabel(frame: CGRect(x: width - 140, y: height - 90, width: 70 , height: 40))
             showLabel?.textAlignment = NSTextAlignment.center
-                showLabel?.backgroundColor = pinkColor
-            showLabel?.textColor = brownColor
+                showLabel?.backgroundColor = UIColor.pinkColor
+                showLabel?.textColor = UIColor.brownColor
             showLabel?.numberOfLines = 0
             showLabel?.font = UIFont(name: "Arial Bold", size: 22)
             showLabel?.text = "+ info"

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UITextFieldDelegate  {
 
     var backButton : UIButton?
     var topImageView: UIImageView?
@@ -23,13 +23,6 @@ class RegisterViewController: UIViewController {
     var loginButton : UIButton?
     var EstasAPuntoLabel : UILabel?
     var contentform : UIView?
-    
-    var width = UIScreen.main.bounds.width
-    var height = UIScreen.main.bounds.height
-    
-    var backgroundColor = UIColor(displayP3Red: 255/255, green: 242/255, blue: 223/255, alpha: 1) //rgba(220,218,220,255)
-    var blueColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
-    var lightBlueColor = UIColor(displayP3Red: 283/255, green: 162/255, blue: 129/255, alpha: 1)
 
     
     override func viewDidLoad() {
@@ -42,7 +35,14 @@ class RegisterViewController: UIViewController {
         self.view.insertSubview(backgroundImage, at: 0)
 
         initUI()
-        
+        self.correoTextField?.delegate = self
+        self.contrasenaTextField?.delegate = self
+        self.usuarioTextField?.delegate = self
+        self.confirmarTextField?.delegate = self
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     func initUI(){
     
@@ -62,7 +62,7 @@ class RegisterViewController: UIViewController {
         EstasAPuntoLabel?.numberOfLines = 0
         EstasAPuntoLabel?.textAlignment = .center
         EstasAPuntoLabel?.font = .boldSystemFont(ofSize: 20)
-        EstasAPuntoLabel?.textColor = lightBlueColor
+        EstasAPuntoLabel?.textColor = UIColor.coralColor
         view.addSubview(EstasAPuntoLabel!)
         
         
@@ -83,7 +83,7 @@ class RegisterViewController: UIViewController {
         usuarioTextField = UITextField(frame: CGRect(x:10, y:60, width: width - 60, height: 50))
         usuarioTextField?.backgroundColor = .clear
         usuarioTextField?.layer.cornerRadius = 7
-        usuarioTextField?.layer.borderColor = blueColor.cgColor
+        usuarioTextField?.layer.borderColor = UIColor.brownColor.cgColor
         usuarioTextField?.layer.borderWidth = 2
         usuarioTextField?.textAlignment = NSTextAlignment.left
         contentform?.addSubview(usuarioTextField!)
@@ -91,7 +91,7 @@ class RegisterViewController: UIViewController {
         correoTextField = UITextField(frame: CGRect(x:10, y:130, width: width - 60, height: 50))
         correoTextField?.backgroundColor = .clear
         correoTextField?.layer.cornerRadius = 7
-        correoTextField?.layer.borderColor = blueColor.cgColor
+        correoTextField?.layer.borderColor = UIColor.brownColor.cgColor
         correoTextField?.layer.borderWidth = 2
         correoTextField?.textAlignment = NSTextAlignment.left
         contentform?.addSubview(correoTextField!)
@@ -99,7 +99,7 @@ class RegisterViewController: UIViewController {
         contrasenaTextField = UITextField(frame: CGRect(x:10, y:200, width: width - 60, height: 50))
         contrasenaTextField?.backgroundColor = .clear
         contrasenaTextField?.layer.cornerRadius = 7
-        contrasenaTextField?.layer.borderColor = blueColor.cgColor
+        contrasenaTextField?.layer.borderColor = UIColor.brownColor.cgColor
         contrasenaTextField?.layer.borderWidth = 2
         contrasenaTextField?.isSecureTextEntry = true
         contrasenaTextField?.textAlignment = NSTextAlignment.left
@@ -108,7 +108,7 @@ class RegisterViewController: UIViewController {
         confirmarTextField = UITextField(frame: CGRect(x:10, y:270, width: width - 60, height: 50))
         confirmarTextField?.backgroundColor = .clear
         confirmarTextField?.layer.cornerRadius = 7
-        confirmarTextField?.layer.borderColor = blueColor.cgColor
+        confirmarTextField?.layer.borderColor = UIColor.brownColor.cgColor
         confirmarTextField?.layer.borderWidth = 2
         confirmarTextField?.isSecureTextEntry = true
         confirmarTextField?.textAlignment = NSTextAlignment.left
@@ -147,7 +147,7 @@ class RegisterViewController: UIViewController {
         contentform?.addSubview(confirmarLabel!)
         
         loginButton = UIButton(frame: CGRect(x: 30, y: height - 140 , width: width - 60 , height: 50))
-        loginButton?.backgroundColor = blueColor
+        loginButton?.backgroundColor = UIColor.brownColor
         loginButton?.layer.cornerRadius = 18
         loginButton?.setTitleColor(.white, for: .normal)
         loginButton?.setTitle("Register", for: .normal)

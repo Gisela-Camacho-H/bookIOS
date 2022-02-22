@@ -10,12 +10,9 @@ import UIKit
 
 class BookCollectionView : UICollectionViewCell{
     
-    var width = UIScreen.main.bounds.width
-    var height = UIScreen.main.bounds.height
-    
     var imageLibr : UIImageView = {
         let image = UIImageView()
-        image.backgroundColor = UIColor(displayP3Red: 255/255, green: 242/255, blue: 223/255, alpha: 1)
+        image.backgroundColor = UIColor.backgroundColor
         image.contentMode = .scaleAspectFit
         image.image = UIImage(named: "divina")
         return image
@@ -23,9 +20,7 @@ class BookCollectionView : UICollectionViewCell{
 
     override init(frame: CGRect){
         super.init(frame: .zero)
-        
-        let color =  UIColor(displayP3Red: 283/255, green: 162/255, blue: 129/255, alpha: 1)
-        self.backgroundColor = color
+        self.backgroundColor = UIColor.coralColor
         
         imageLibr =  UIImageView(frame: CGRect(x: 10, y: 10 , width: 95, height: 150))
         self.addSubview(imageLibr)

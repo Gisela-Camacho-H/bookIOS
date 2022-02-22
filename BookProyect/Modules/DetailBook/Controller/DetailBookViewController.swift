@@ -9,8 +9,6 @@ import UIKit
 
 class DetailBookViewController: UIViewController {
     
-    var width = UIScreen.main.bounds.width
-    var height = UIScreen.main.bounds.height
     var topImageView : UIImageView?
     
     var bookContentView : UIView?
@@ -31,10 +29,6 @@ class DetailBookViewController: UIViewController {
     var shareImage: UIImageView?
     var heartImage: UIImageView?
     var autorImage : UIImageView?
-    
-    var backgroundColor = UIColor(displayP3Red: 255/255, green: 242/255, blue: 223/255, alpha: 1)
-    var brownColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
-    var pinkBlueColor = UIColor(displayP3Red: 283/255, green: 162/255, blue: 129/255, alpha: 1)
     
     init(libro : Libro){
         self.mLibro = libro
@@ -72,7 +66,7 @@ class DetailBookViewController: UIViewController {
         view?.addSubview(heartImage!)
         
         imageLine =  UIView(frame: CGRect(x: 0, y: 110 , width: width, height: 3))
-        imageLine?.backgroundColor = brownColor
+        imageLine?.backgroundColor = UIColor.brownColor
         view?.addSubview(imageLine!)
 
         createBookView()
@@ -101,7 +95,7 @@ class DetailBookViewController: UIViewController {
         
         bookName = UILabel(frame: CGRect(x: 160, y: 5, width: 180, height: 20))
         bookName?.text = mLibro?.nombre
-        bookName?.textColor = brownColor
+        bookName?.textColor = UIColor.brownColor
         bookName?.font = .boldSystemFont(ofSize: 17)
         
         bookCard?.addSubview(bookName!)
@@ -138,13 +132,13 @@ class DetailBookViewController: UIViewController {
         descriptionLabel = UILabel(frame: CGRect(x: 10, y: 5, width: 160, height: 30))
         descriptionLabel?.text = "Description"
         descriptionLabel?.font = .boldSystemFont(ofSize: 14)
-        descriptionLabel?.textColor = brownColor
+        descriptionLabel?.textColor = UIColor.brownColor
         descriptionLabel?.textAlignment = .center
         descriptionView?.addSubview(descriptionLabel!)
         
         detailLabel = UILabel(frame: CGRect(x: width/2 - 20, y: 5, width: 160, height: 30))
         detailLabel?.text = "Details"
-        detailLabel?.textColor = brownColor
+        detailLabel?.textColor = UIColor.brownColor
         detailLabel?.font = .boldSystemFont(ofSize: 14)
         detailLabel?.textAlignment = .center
         descriptionView?.addSubview(detailLabel!)
@@ -158,7 +152,7 @@ class DetailBookViewController: UIViewController {
         descriptionView?.addSubview(descriptionTextView!)
         
         imageLine =  UIView(frame: CGRect(x: 180, y: 6 , width: 1, height: 30))
-        imageLine?.backgroundColor = brownColor
+        imageLine?.backgroundColor = UIColor.brownColor
         descriptionView?.addSubview(imageLine!)
         
     }
@@ -172,14 +166,14 @@ class DetailBookViewController: UIViewController {
         
         descriptionLabel = UILabel(frame: CGRect(x: width/4 + 20, y: 5, width: 160, height: 30))
         descriptionLabel?.text = "About Author"
-        descriptionLabel?.textColor = brownColor
+        descriptionLabel?.textColor = UIColor.brownColor
         descriptionLabel?.font = .boldSystemFont(ofSize: 15)
         descriptionLabel?.textAlignment = .left
         descriptionView?.addSubview(descriptionLabel!)
         
         bookAutor = UILabel(frame: CGRect(x: width/4 + 20, y: 40, width: 250, height: 30))
         bookAutor?.text = mLibro?.autor
-        bookAutor?.textColor = brownColor
+        bookAutor?.textColor = UIColor.brownColor
         bookAutor?.font = .boldSystemFont(ofSize: 22)
         bookAutor?.textAlignment = .left
         descriptionView?.addSubview(bookAutor!)
@@ -193,7 +187,7 @@ class DetailBookViewController: UIViewController {
         
         bookMas = UILabel(frame: CGRect(x: 260, y: 200 , width: 140, height: 20))
         bookMas?.text = "+ author titles"
-        bookMas?.textColor = pinkBlueColor
+        bookMas?.textColor = UIColor.coralColor
         bookMas?.font = .boldSystemFont(ofSize: 12)
         descriptionView?.addSubview(bookMas!)
         

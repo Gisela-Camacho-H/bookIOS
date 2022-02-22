@@ -1,16 +1,13 @@
 //
-//  DetailFindBookViewController.swift
+//  DetailAuthorViewController.swift
 //  BookProyect
 //
-//  Created by GiselaCamacho on 05/02/22.
+//  Created by GiselaCamacho on 07/02/22.
 //
 
 import UIKit
 
-class DetailFindBookViewController: UIViewController, DetailManagerDelegate, UITextFieldDelegate{
-    
-    var width = UIScreen.main.bounds.width
-    var height = UIScreen.main.bounds.height
+class DetailAuthorViewController: UIViewController, BioManagerDelegate, UITextFieldDelegate{
     
     var buscarLabel : UILabel?
     var SearchTextField: UITextField!
@@ -22,12 +19,8 @@ class DetailFindBookViewController: UIViewController, DetailManagerDelegate, UIT
     var backButton: UIButton?
     
     var endPointKey : String?
-    
-    var detailManager = DetailManager()
-    
-    var backgroundColor = UIColor(displayP3Red: 255/255, green: 242/255, blue: 223/255, alpha: 1)
-    var brownColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
-    var pinkColor = UIColor(displayP3Red: 241/255, green: 200/255, blue: 173/255, alpha: 1)
+    var nameAuthor :String?
+    var bioManager = BioManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +32,7 @@ class DetailFindBookViewController: UIViewController, DetailManagerDelegate, UIT
         
         initUI()
         
-        detailManager.delegate = self
+        bioManager.delegate = self
         
         fetchData()
         
@@ -53,39 +46,39 @@ class DetailFindBookViewController: UIViewController, DetailManagerDelegate, UIT
             view.addSubview(backButton!)
                 
         
-            titleLabel = UILabel(frame: CGRect(x: 60, y: 180, width: width - 120 , height: 60))
+            titleLabel = UILabel(frame: CGRect(x: 60, y: 180, width: width - 120 , height: 50))
             titleLabel?.textAlignment = NSTextAlignment.center
-            titleLabel?.backgroundColor = brownColor
-            titleLabel?.textColor = pinkColor
+                titleLabel?.backgroundColor = UIColor.brownColor
+                titleLabel?.textColor = UIColor.pinkColor
             titleLabel?.numberOfLines = 0
             titleLabel?.layer.cornerRadius = 7
             titleLabel?.font = UIFont(name: "Arial Bold", size: 25)
-            titleLabel?.text = " Book Name:"
+            titleLabel?.text = " Author Name:"
             view.addSubview(titleLabel!)
                 
-            title1 = UILabel(frame: CGRect(x: 40, y: 250, width: width - 80 , height: 60))
+            title1 = UILabel(frame: CGRect(x: 40, y: 230, width: width - 80 , height: 60))
             title1?.textAlignment = NSTextAlignment.center
             title1?.backgroundColor = .clear
-            title1?.textColor = brownColor
+                title1?.textColor = UIColor.brownColor
             title1?.numberOfLines = 0
             title1?.font = UIFont(name: "Arial Bold", size: 22)
-            title1?.text = ""
+            title1?.text = nameAuthor
             view.addSubview(title1!)
                 
-            contentLabel = UILabel(frame: CGRect(x: 60, y: 330, width: width - 120 , height: 60))
+            contentLabel = UILabel(frame: CGRect(x: 60, y: 290, width: width - 120 , height: 50))
             contentLabel?.textAlignment = NSTextAlignment.center
-            contentLabel?.backgroundColor = brownColor
-            contentLabel?.textColor = pinkColor
+                contentLabel?.backgroundColor = UIColor.brownColor
+                contentLabel?.textColor = UIColor.pinkColor
             contentLabel?.numberOfLines = 0
             contentLabel?.layer.cornerRadius = 7
             contentLabel?.font = UIFont(name: "Arial Bold", size: 25)
-            contentLabel?.text = "Book Description:"
+            contentLabel?.text = "Author Biography:"
             view.addSubview(contentLabel!)
                 
-            content1 = UILabel(frame: CGRect(x: 40, y: 410, width: width - 80 , height: 300))
+            content1 = UILabel(frame: CGRect(x: 40, y: 360, width: width - 80 , height: 340))
             content1?.textAlignment = NSTextAlignment.justified
             content1?.backgroundColor = .clear
-            content1?.textColor = brownColor
+                content1?.textColor = UIColor.brownColor
             content1?.numberOfLines = 0
             content1?.adjustsFontSizeToFitWidth = true
             content1?.font = UIFont(name: "Arial Bold", size: 20)
@@ -101,18 +94,15 @@ class DetailFindBookViewController: UIViewController, DetailManagerDelegate, UIT
         
     func fetchData(){
         if let name = endPointKey {
-            detailManager.fetchDetail(bookName: name)
+            bioManager.fetchBio(bookName: name)
         }
     }
     
-            func didUpdateDetail(_ detailManager: DetailManager, detailid: DetailModel) {
+            func didUpdateBio(_ bioManager: BioManager, bioid: BioModel) {
                 DispatchQueue.main.async {
-                    self.title1?.text = detailid.title
-                    self.content1?.text = detailid.description
+                    self.content1?.text = bioid.bio
                     }
 
                 }
         }
-
-
 

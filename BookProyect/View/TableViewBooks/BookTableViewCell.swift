@@ -21,11 +21,6 @@ class BookTableViewCell: UITableViewCell{
     var heartImage: UIImageView?
     
     var libro: Libro?
-    var height = UIScreen.main.bounds.height
-    var width = UIScreen.main.bounds.width
-    
-    var brownColor = UIColor(displayP3Red: 21/255, green: 39/255, blue: 112/255, alpha: 1)
-    var pinkBlueColor = UIColor(displayP3Red: 121/255, green: 168/255, blue: 243/255, alpha: 1)
     
     init(libro : Libro){
         super.init(style: .default, reuseIdentifier: nil)

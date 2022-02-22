@@ -9,9 +9,6 @@ import UIKit
 
 class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITextFieldDelegate{
     
-    var width = UIScreen.main.bounds.width
-    var height = UIScreen.main.bounds.height
-    
     var buscarLabel : UILabel?
     var SearchTextField: UITextField!
     var date : UILabel?
@@ -26,10 +23,6 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
     var backButton: UIButton?
     
     var categoryManager = CategoryManager()
-    
-    var backgroundColor = UIColor(displayP3Red: 255/255, green: 242/255, blue: 223/255, alpha: 1)
-    var brownColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
-    var pinkColor = UIColor(displayP3Red: 241/255, green: 200/255, blue: 173/255, alpha: 1)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +48,7 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
             buscarLabel = UILabel(frame: CGRect(x: 10, y: 170, width: width , height: 40))
             buscarLabel?.textAlignment = NSTextAlignment.center
             buscarLabel?.backgroundColor = .clear
-            buscarLabel?.textColor = brownColor
+                buscarLabel?.textColor = UIColor.brownColor
             buscarLabel?.font = UIFont(name: "Arial Bold", size: 22)
             buscarLabel?.text = "Enter the Genres!"
             view.addSubview(buscarLabel!)
@@ -71,8 +64,8 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
             
             titleLabel = UILabel(frame: CGRect(x: 60, y: 290, width: width - 120 , height: 50))
             titleLabel?.textAlignment = NSTextAlignment.center
-            titleLabel?.backgroundColor = brownColor
-            titleLabel?.textColor = pinkColor
+                titleLabel?.backgroundColor = UIColor.brownColor
+                titleLabel?.textColor = UIColor.pinkColor
             titleLabel?.numberOfLines = 0
             titleLabel?.layer.cornerRadius = 7
             titleLabel?.font = UIFont(name: "Arial Bold", size: 25)
@@ -82,7 +75,7 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
             title1 = UILabel(frame: CGRect(x: 40, y: 340, width: width - 80 , height: 60))
             title1?.textAlignment = NSTextAlignment.center
             title1?.backgroundColor = .clear
-            title1?.textColor = brownColor
+                title1?.textColor = UIColor.brownColor
             title1?.numberOfLines = 0
             title1?.font = UIFont(name: "Arial Bold", size: 20)
             title1?.text = ""
@@ -90,8 +83,8 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
                 
             contentLabel = UILabel(frame: CGRect(x: 60, y: 400, width: width - 120 , height: 50))
             contentLabel?.textAlignment = NSTextAlignment.center
-            contentLabel?.backgroundColor = brownColor
-            contentLabel?.textColor = pinkColor
+                contentLabel?.backgroundColor = UIColor.brownColor
+                contentLabel?.textColor = UIColor.pinkColor
             contentLabel?.numberOfLines = 0
             contentLabel?.layer.cornerRadius = 7
             contentLabel?.font = UIFont(name: "Arial Bold", size: 25)
@@ -101,7 +94,7 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
             content1 = UILabel(frame: CGRect(x: 40, y: 460, width: width - 80 , height: 60))
             content1?.textAlignment = NSTextAlignment.center
             content1?.backgroundColor = .clear
-            content1?.textColor = brownColor
+                content1?.textColor = UIColor.brownColor
             content1?.numberOfLines = 0
             content1?.font = UIFont(name: "Arial Bold", size: 20)
             content1?.text = ""
@@ -110,7 +103,7 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
             content2 = UILabel(frame: CGRect(x: 40, y: 520, width: width - 80 , height: 60))
             content2?.textAlignment = NSTextAlignment.center
             content2?.backgroundColor = .clear
-            content2?.textColor = brownColor
+                content2?.textColor = UIColor.brownColor
             content2?.numberOfLines = 0
             content2?.font = UIFont(name: "Arial Bold", size: 20)
             content2?.text = ""
@@ -119,7 +112,7 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
             content3 = UILabel(frame: CGRect(x: 40, y: 580, width: width - 80 , height: 60))
             content3?.textAlignment = NSTextAlignment.center
             content3?.backgroundColor = .clear
-            content3?.textColor = brownColor
+                content3?.textColor = UIColor.brownColor
             content3?.numberOfLines = 0
             content3?.font = UIFont(name: "Arial Bold", size: 20)
             content3?.text = ""
@@ -128,7 +121,7 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
             content4 = UILabel(frame: CGRect(x: 40, y: 640, width: width - 80 , height: 60))
             content4?.textAlignment = NSTextAlignment.center
             content4?.backgroundColor = .clear
-            content4?.textColor = brownColor
+                content4?.textColor = UIColor.brownColor
             content4?.numberOfLines = 0
             content4?.font = UIFont(name: "Arial Bold", size: 20)
             content4?.text = ""
@@ -137,7 +130,7 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
             content5 = UILabel(frame: CGRect(x: 40, y: 700, width: width - 80 , height: 60))
             content5?.textAlignment = NSTextAlignment.center
             content5?.backgroundColor = .clear
-            content5?.textColor = brownColor
+                content5?.textColor = UIColor.brownColor
             content5?.numberOfLines = 0
             content5?.font = UIFont(name: "Arial Bold", size: 20)
             content5?.text = ""
