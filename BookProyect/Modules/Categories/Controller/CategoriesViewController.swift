@@ -20,7 +20,6 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
     var content3: UILabel?
     var content4: UILabel?
     var content5: UILabel?
-    var backButton: UIButton?
     
     var categoryManager = CategoryManager()
 
@@ -38,12 +37,6 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
         SearchTextField.delegate = self
     }
             func initUI(){
-                
-            backButton = UIButton(frame: CGRect(x: 20, y: 60, width: 45, height: 45))
-            backButton?.setImage(UIImage(named: "back"), for: .normal)
-            backButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-            view.addSubview(backButton!)
-                
                 
             buscarLabel = UILabel(frame: CGRect(x: 10, y: 170, width: width , height: 40))
             buscarLabel?.textAlignment = NSTextAlignment.center

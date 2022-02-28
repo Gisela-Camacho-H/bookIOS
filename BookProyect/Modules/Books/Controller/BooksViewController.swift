@@ -11,19 +11,14 @@ class BooksViewController : UIViewController {
     var dataSource : BookObject?
     var imageSource : BooksObjectCollection?
     
-    var masPopularesLabel: UILabel?
-    var backButton : UIButton?
-    var buttonContent : UIView?
-    
-    var libroButton: UIButton?
-    var categoriasButton: UIButton?
-    var autoresButton: UIButton?
-    var lineView: UIView?
-    var lineView2: UIView?
+    private lazy var sectionButton: UISegmentedControl = UISegmentedControl(items: viewSections)
+    private var viewSections: [String] = ["Books", "Authors", "Categories"]
     var agregadosLabel: UILabel?
     var id : UILabel?
+    var exitButton: UIButton?
     
     var tableView : UITableView?
+    
     
     //MARK: - CollectionView
     
@@ -60,19 +55,13 @@ class BooksViewController : UIViewController {
         getImage()
         initUI()
     }
+    
     func initUI(){
         
-        masPopularesLabel = UILabel(frame: CGRect(x: 30, y: 80, width: width - 60, height: 30))
-        masPopularesLabel?.text = "Best Sellers "
-        masPopularesLabel?.font = .boldSystemFont(ofSize: 27)
-        masPopularesLabel?.textColor = UIColor.coralColor
-        masPopularesLabel?.textAlignment = .center
-        view.addSubview(masPopularesLabel!)
-        
-        backButton = UIButton(frame: CGRect(x: 20, y: 70, width: 45, height: 45))
-        backButton?.setImage(UIImage(named: "back"), for: .normal)
-        backButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-        view.addSubview(backButton!)
+        exitButton = UIButton(frame: CGRect(x: width - 60, y: height/8 - 40, width: 45, height: 45))
+        exitButton?.setImage(UIImage(named: "exit"), for: .normal)
+        exitButton?.addTarget(self, action: #selector(logout), for: .touchUpInside)
+        view.addSubview(exitButton!)
         
         agregadosLabel = UILabel(frame: CGRect(x: 20, y: 390, width: 150, height: 30))
         agregadosLabel?.text = "Recently added"
@@ -89,8 +78,6 @@ class BooksViewController : UIViewController {
         id?.textAlignment = .center
         view.addSubview(id!)
         
-        createButtonsView()
-        
         // MARK: - TableView
         tableView = UITableView(frame: CGRect(x: 20, y: height/3 + 115, width: width - 40, height: height - 410))
         tableView?.backgroundColor = UIColor.backgroundColor
@@ -103,43 +90,19 @@ class BooksViewController : UIViewController {
         view.addSubview(librosCollectionView)
         librosCollectionView.addAnchorsAndSize(width: nil, height: height/5, left: 0, top: 125, right: 20, bottom: nil)
         
+        view.addSubview(sectionButton)
+        sectionButton.selectedSegmentIndex = 0
+        sectionButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            sectionButton.bottomAnchor.constraint(equalTo: librosCollectionView.bottomAnchor, constant: 60),
+            sectionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            sectionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            sectionButton.heightAnchor.constraint(equalToConstant: 30)
+        ])
     }
-    
 //MARK: - buttonsView
-    
-    func createButtonsView(){
-        buttonContent = UIView(frame: CGRect(x: 30, y: height/3 + 30 , width: width - 60, height: 50))
-        buttonContent?.backgroundColor = .white
-        buttonContent?.layer.cornerRadius = 10
-        view.addSubview(buttonContent!)
-        
-        libroButton = UIButton(frame: CGRect(x: 2, y: 15, width: 80, height: 20))
-        libroButton?.setTitle("Books", for: .normal)
-        libroButton?.setTitleColor(UIColor.brownColor, for: .normal)
-        libroButton?.addTarget(self, action: #selector(findBook), for: .touchUpInside)
-        buttonContent?.addSubview(libroButton!)
-        
-        categoriasButton = UIButton(frame: CGRect(x: 115, y: 15, width: 100, height: 20))
-        categoriasButton?.setTitle("Genres", for: .normal)
-        categoriasButton?.setTitleColor(UIColor.brownColor, for: .normal)
-        categoriasButton?.addTarget(self, action: #selector(categories), for: .touchUpInside)
-        buttonContent?.addSubview(categoriasButton!)
-        
-        autoresButton = UIButton(frame: CGRect(x: 240, y: 15, width: 80, height: 20))
-        autoresButton?.setTitle("Authors", for: .normal)
-        autoresButton?.setTitleColor(UIColor.brownColor, for: .normal)
-        autoresButton?.addTarget(self, action: #selector(authors), for: .touchUpInside)
-        buttonContent?.addSubview(autoresButton!)
-        
-        lineView =  UIView(frame: CGRect(x: 90, y: 8 , width: 2, height: 35))
-        lineView?.backgroundColor = UIColor.brownColor
-        buttonContent?.addSubview(lineView!)
-        
-        lineView2 =  UIView(frame: CGRect(x: 230, y: 8 , width: 2, height: 35))
-        lineView2?.backgroundColor = UIColor.brownColor
-        buttonContent?.addSubview(lineView2!)
-        
-    }
+ 
     
     func getData(){
         // MARK: - Tales
@@ -207,12 +170,14 @@ class BooksViewController : UIViewController {
         librosCollectionView.reloadData()
         
     }
+    
 
 //MARK: - función regresar
     
-    @objc func backAction(){
-        print("back")
-        dismiss(animated: true)
+    @objc func logout(){
+        let back = ViewController()
+       back.modalPresentationStyle = .fullScreen
+       present(back, animated: true, completion: nil)
     }
     @objc func findBook (){
         print("go to findBook")

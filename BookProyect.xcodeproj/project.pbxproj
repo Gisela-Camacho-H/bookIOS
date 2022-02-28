@@ -31,6 +31,7 @@
 		567C71A927B1EFD200B8B095 /* bioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567C71A827B1EFD200B8B095 /* bioModel.swift */; };
 		567C71AB27B1EFDD00B8B095 /* bioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567C71AA27B1EFDD00B8B095 /* bioManager.swift */; };
 		5682C36527AB032600EA1D89 /* FindBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5682C36427AB032600EA1D89 /* FindBookViewController.swift */; };
+		56910DDE27CB102900F27013 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56910DDD27CB102900F27013 /* TabBarViewController.swift */; };
 		5695960A279BB68D00EE3748 /* BooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56959609279BB68D00EE3748 /* BooksViewController.swift */; };
 		5695960C279BBA3B00EE3748 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5695960B279BBA3B00EE3748 /* RegisterViewController.swift */; };
 		5698F27227ADE5FD00F66BF9 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698F27127ADE5FD00F66BF9 /* CategoryModel.swift */; };
@@ -83,6 +84,7 @@
 		567C71A827B1EFD200B8B095 /* bioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bioModel.swift; sourceTree = "<group>"; };
 		567C71AA27B1EFDD00B8B095 /* bioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bioManager.swift; sourceTree = "<group>"; };
 		5682C36427AB032600EA1D89 /* FindBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindBookViewController.swift; sourceTree = "<group>"; };
+		56910DDD27CB102900F27013 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		56959609279BB68D00EE3748 /* BooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewController.swift; sourceTree = "<group>"; };
 		5695960B279BBA3B00EE3748 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		5698F27127ADE5FD00F66BF9 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
@@ -216,6 +218,30 @@
 			path = AuthorBiography;
 			sourceTree = "<group>";
 		};
+		56910DD827CB0FA600F27013 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				56910DD927CB0FB500F27013 /* ViewModel */,
+				56910DDA27CB0FBF00F27013 /* Controller */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		56910DD927CB0FB500F27013 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		56910DDA27CB0FBF00F27013 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				56910DDD27CB102900F27013 /* TabBarViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		5698F27027ADE5C800F66BF9 /* CategoryApi */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +255,7 @@
 		56A5474627C58DC000334829 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				56910DD827CB0FA600F27013 /* TabBar */,
 				56A5476027C58FED00334829 /* DetailAuthor */,
 				56A5475D27C58FD200334829 /* DetailFindBook */,
 				56A5475A27C58F9F00334829 /* Authors */,
@@ -610,6 +637,7 @@
 				5698F27627ADE63800F66BF9 /* CategoryManager.swift in Sources */,
 				56A5477627C5917A00334829 /* RegisterViewModel.swift in Sources */,
 				567C71AB27B1EFDD00B8B095 /* bioManager.swift in Sources */,
+				56910DDE27CB102900F27013 /* TabBarViewController.swift in Sources */,
 				565AF06027A9AA9400B37184 /* BookManager.swift in Sources */,
 				56A5477B27C591DA00334829 /* UIView++.swift in Sources */,
 				56D66C7D27AF3FBB00FE32B3 /* DetailFindBookViewController.swift in Sources */,

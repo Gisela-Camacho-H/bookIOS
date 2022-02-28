@@ -9,17 +9,26 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
-    var topImageView: UIImageView?
-    var imageBook : UIImageView?
-    var bienvenidosLabel : UILabel?
-    var correoTextField : UITextField?
-    var contrasenaTextField : UITextField?
-    var correoLabel: UILabel?
-    var contrasenaLabel: UILabel?
-    var loginButton : UIButton?
-    var cuentaLabel : UILabel?
-    var registrateButton: UIButton?
-    var bienvenidoView : UIView?
+//MARK: - Image
+    private lazy var topImageView: UIImageView = UIImageView()
+    private lazy var imageBook : UIImageView = UIImageView()
+//MARK: - Labels
+    private lazy var bienvenidosLabel : UILabel = UILabel()
+    private lazy var correoLabel: UILabel = UILabel()
+    private lazy var contrasenaLabel: UILabel = UILabel()
+    private lazy var cuentaLabel : UILabel = UILabel()
+//MARK: - TextField
+    private lazy var correoTextField : UITextField = UITextField()
+    private lazy var contrasenaTextField : UITextField = UITextField()
+//MARK: - Button
+    private lazy var loginButton : UIButton = UIButton()
+    private lazy var registrateButton: UIButton = UIButton()
+//MARK: - StackViews
+    private lazy var textFieldStackView: UIStackView = UIStackView()
+    private lazy var cuentaStackView: UIStackView = UIStackView()
+    private lazy var labelsStackView: UIStackView = UIStackView()
+//MARK: - View
+    private lazy var bienvenidoView : UIView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +41,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         //llamar función initUI
         initUI()
-        self.correoTextField?.delegate = self
-        self.contrasenaTextField?.delegate = self
+        self.correoTextField.delegate = self
+        self.contrasenaTextField.delegate = self
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -42,100 +51,132 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     func initUI(){
         topImageView = UIImageView(frame: CGRect(x: 0, y: height/6 - 60, width: width, height: height/5))
-        topImageView?.image = UIImage(named: "topImage")
-        view.addSubview(topImageView!)
+        topImageView.image = UIImage(named: "topImage")
+        view.addSubview(topImageView)
         
-        bienvenidoView = UIView(frame: CGRect(x: 20, y: height/4 + 60, width: width - 40, height: 140))
-        bienvenidoView?.backgroundColor = .white
-        bienvenidoView?.layer.cornerRadius = 20
-        view.addSubview(bienvenidoView!)
+        bienvenidoView = UIView(frame: CGRect(x: 20, y: height/4 + 60, width: width - 40, height: 160))
+        bienvenidoView.backgroundColor = .white
+        bienvenidoView.layer.cornerRadius = 20
+        view.addSubview(bienvenidoView)
         
         imageBook = UIImageView(frame: CGRect(x: width/3, y: 0, width: 90, height: 90))
-        imageBook?.image = UIImage(named: "AppIcon")
-        bienvenidoView?.addSubview(imageBook!)
+        imageBook.image = UIImage(named: "icon")
+        bienvenidoView.addSubview(imageBook)
         
-        bienvenidosLabel = UILabel(frame: CGRect(x: 0, y: 80, width: width, height: 50))
-        bienvenidosLabel?.text = ""
+        bienvenidosLabel = UILabel(frame: CGRect(x: 0, y: 100, width: width, height: 50))
+        bienvenidosLabel.text = ""
         var charIndex = 0
        let titleText = "  Welcome  "
         for letter in titleText {
             Timer.scheduledTimer(withTimeInterval: Double(charIndex) * 0.3, repeats: false){
                 (timer) in
-                self.bienvenidosLabel?.text?.append(letter)
+                self.bienvenidosLabel.text?.append(letter)
             }
             charIndex += 1
         }
-        bienvenidosLabel?.font = .boldSystemFont(ofSize: 35)
-        bienvenidosLabel?.textAlignment = .center
-        bienvenidosLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
-        bienvenidoView?.addSubview(bienvenidosLabel!)
+        bienvenidosLabel.font = .boldSystemFont(ofSize: 35)
+        bienvenidosLabel.textAlignment = .center
+        bienvenidosLabel.textColor = UIColor.brownColor
+        bienvenidoView.addSubview(bienvenidosLabel)
         
         // MARK: - formulario de log in
         
-        correoTextField = UITextField(frame: CGRect(x:20, y:460, width: width - 40, height: 60))
-        correoTextField?.backgroundColor = .clear
-        correoTextField?.layer.cornerRadius = 7
-        correoTextField?.layer.borderColor = UIColor.brownColor.cgColor
-        correoTextField?.layer.borderWidth = 2
-        correoTextField?.textAlignment = NSTextAlignment.left
-        view.addSubview(correoTextField!)
+        self.view.addSubview(correoTextField)
+        contrasenaTextField.isSecureTextEntry = true
+        self.view.addSubview(contrasenaTextField)
         
-        contrasenaTextField = UITextField(frame: CGRect(x:20, y:540, width: width - 40, height: 60))
-        contrasenaTextField?.backgroundColor = .clear
-        contrasenaTextField?.layer.cornerRadius = 7
-        contrasenaTextField?.layer.borderColor = UIColor.brownColor.cgColor
-        contrasenaTextField?.layer.borderWidth = 2
-        contrasenaTextField?.isSecureTextEntry = true
-        contrasenaTextField?.textAlignment = NSTextAlignment.left
-        view.addSubview(contrasenaTextField!)
+        let textFieldArray: [UITextField] = [correoTextField, contrasenaTextField]
+        
+        textFieldStackView.axis = .vertical
+        textFieldStackView.spacing = 30
+        textFieldStackView.alignment = .fill
+        textFieldStackView.distribution = .fillEqually
+        textFieldArray.forEach {textFieldElement in
+            textFieldStackView.addArrangedSubview(textFieldElement)
+        }
+        view.addSubview(textFieldStackView)
+        textFieldStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([textFieldStackView.topAnchor.constraint(equalTo: bienvenidoView.topAnchor, constant: 200),
+            textFieldStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            textFieldStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8)
+        ])
+        textFieldArray.forEach {textFieldElement in
+            textFieldElement.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            textFieldElement.layer.cornerRadius = 25
+            textFieldElement.layer.borderColor = UIColor.brownColor.cgColor
+            textFieldElement.layer.cornerRadius = 7
+            textFieldElement.layer.borderWidth = 2
+            textFieldElement.backgroundColor = .clear
+            textFieldElement.textAlignment = NSTextAlignment.left
+        }
 
-        correoLabel = UILabel(frame: CGRect(x: 40, y: 450, width: 50, height: 20))
-        correoLabel?.text = "Email"
-        correoLabel?.backgroundColor = UIColor.backgroundColor
-        correoLabel?.font = .boldSystemFont(ofSize: 13)
-        correoLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
-        correoLabel?.textAlignment = .center
-        view.addSubview(correoLabel!)
+
+        correoLabel = UILabel(frame: CGRect(x: 20, y: -10, width: 50, height: 20))
+        correoLabel.text = "Email"
+        correoLabel.backgroundColor = UIColor.backgroundColor
+        correoLabel.font = .boldSystemFont(ofSize: 13)
+        correoLabel.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
+        correoLabel.textAlignment = .center
+        textFieldStackView.addSubview(correoLabel)
         
-        contrasenaLabel = UILabel(frame: CGRect(x: 40, y: 530, width: 80, height: 20))
-        contrasenaLabel?.text = "Password"
-        contrasenaLabel?.backgroundColor = UIColor.backgroundColor
-        contrasenaLabel?.font = .boldSystemFont(ofSize: 13)
-        contrasenaLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
-        contrasenaLabel?.textAlignment = .center
-        view.addSubview(contrasenaLabel!)
+        contrasenaLabel = UILabel(frame: CGRect(x: 20, y: 70, width: 80, height: 20))
+        contrasenaLabel.text = "Password"
+        contrasenaLabel.backgroundColor = UIColor.backgroundColor
+        contrasenaLabel.font = .boldSystemFont(ofSize: 13)
+        contrasenaLabel.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
+        contrasenaLabel.textAlignment = .center
+        textFieldStackView.addSubview(contrasenaLabel)
         
-        loginButton = UIButton(frame: CGRect(x: 30, y: 640 , width: width - 60 , height: 60))
-        loginButton?.backgroundColor = UIColor.brownColor
-        loginButton?.layer.cornerRadius = 23
-        loginButton?.setTitleColor(.white, for: .normal)
-        loginButton?.setTitle("Log In", for: .normal)
-        loginButton?.addTarget(self, action: #selector(goToBooks), for: .touchUpInside)
-        
-        view.addSubview(loginButton!)
+        loginButton = UIButton(frame: CGRect(x: 30, y:  height - 160 , width: width - 60  , height: 60))
+        loginButton.backgroundColor = UIColor.brownColor
+        loginButton.layer.cornerRadius = 23
+        loginButton.setTitleColor(.white, for: .normal)
+        loginButton.setTitle("Log In", for: .normal)
+        loginButton.addTarget(self, action: #selector(goToBooks), for: .touchUpInside)
+        view.addSubview(loginButton)
         
         // MARK: - Registro
-        cuentaLabel = UILabel(frame: CGRect(x: 120, y: 700, width: width - 40, height: 50))
-        cuentaLabel?.text = "No account?"
-        cuentaLabel?.font = .boldSystemFont(ofSize: 15)
-        cuentaLabel?.textColor = UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1)
-        view.addSubview(cuentaLabel!)
         
-        registrateButton = UIButton(frame: CGRect(x: width - 210, y: 695 , width: 100, height: 60))
-        registrateButton?.setTitleColor(UIColor(displayP3Red: 64/255, green: 46/255, blue: 32/255, alpha: 1), for: .normal)
-        registrateButton?.setTitle("Sign-up", for: .normal)
-        registrateButton?.addTarget(self, action: #selector(register), for: .touchUpInside)
-        view.addSubview(registrateButton!)
+        cuentaLabel.text = "No account?  "
+        cuentaLabel.font = .boldSystemFont(ofSize: 18)
+        cuentaLabel.textColor = UIColor.brownColor
+        self.view.addSubview(cuentaLabel)
+        
+        registrateButton.setTitleColor(.brownColor, for: .normal)
+        registrateButton.setTitle("Sign-up", for: .normal)
+        registrateButton.addTarget(self, action: #selector(register), for: .touchUpInside)
+        self.view.addSubview(registrateButton)
+//MARK: - cuentaStackView
+        let cuentaArray: [AnyObject] = [cuentaLabel, registrateButton]
+        
+        cuentaStackView.axis = .horizontal
+        cuentaStackView.spacing = 1
+        cuentaStackView.alignment = .fill
+        cuentaStackView.distribution = .equalSpacing
+            cuentaArray.forEach {element in
+                cuentaStackView.addArrangedSubview(element as! UIView)
+        }
+        self.view.addSubview(cuentaStackView)
+        cuentaStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([cuentaStackView.bottomAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 50),
+            cuentaStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        cuentaArray.forEach {element in
+            element.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        }
+        
+        
     }
 // MARK: - Función de botones
     
     //funcion log in y verificación de campos vacios
     @IBAction func goToBooks(_ sender: Any) {
-        if (contrasenaTextField?.text?.isEmpty)! || (correoTextField?.text?.isEmpty)!  {
+        if (contrasenaTextField.text?.isEmpty)! || (correoTextField.text?.isEmpty)!  {
           print("Text field is empty")
        } else {
            print("go to books")
-            let gotoBooks = BooksViewController()
+            let gotoBooks = TabBarViewController()
            gotoBooks.modalPresentationStyle = .fullScreen
            present(gotoBooks, animated: true, completion: nil)
        }

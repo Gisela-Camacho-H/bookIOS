@@ -20,10 +20,8 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     var content2: UILabel?
     var contentLabel2 : UILabel?
     var content3: UILabel?
-    var showLabel: UILabel?
     
     var goBookButton : UIButton?
-    var backButton : UIButton?
     
     var fetchedEndPoint : String?
     var nameEndPoint: String?
@@ -42,14 +40,10 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
             
         authorManager.delegate = self
         SearchTextField.delegate = self
-           
-    }
-    func initUI(){
         
-    backButton = UIButton(frame: CGRect(x: 20, y: 60, width: 45, height: 45))
-    backButton?.setImage(UIImage(named: "back"), for: .normal)
-    backButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-    view.addSubview(backButton!)
+    }
+    
+    func initUI(){
         
     buscarLabel = UILabel(frame: CGRect(x: 10, y: 170, width: width , height: 40))
     buscarLabel?.textAlignment = NSTextAlignment.center
@@ -125,7 +119,7 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     content2?.text = ""
     view.addSubview(content2!)
         
-    contentLabel2 = UILabel(frame: CGRect(x: 60, y: 650, width: width - 120 , height: 50))
+    contentLabel2 = UILabel(frame: CGRect(x: 60, y: 620, width: width - 120 , height: 50))
     contentLabel2?.textAlignment = NSTextAlignment.center
         contentLabel2?.backgroundColor = UIColor.brownColor
         contentLabel2?.textColor = UIColor.pinkColor
@@ -144,23 +138,15 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     content3?.text = ""
     view.addSubview(content3!)
         
-    showLabel = UILabel(frame: CGRect(x: width - 140, y: height - 90, width: 70 , height: 40))
-    showLabel?.textAlignment = NSTextAlignment.center
-        showLabel?.backgroundColor = UIColor.pinkColor
-        showLabel?.textColor = UIColor.brownColor
-    showLabel?.numberOfLines = 0
-    showLabel?.font = UIFont(name: "Arial Bold", size: 22)
-    showLabel?.text = "+ info"
-    showLabel?.layer.cornerRadius = 7
-    view.addSubview(showLabel!)
-        
-    goBookButton = UIButton(frame: CGRect(x: width - 70, y: height - 95, width: 50 , height: 50))
-    goBookButton?.setImage(UIImage(named: "go"), for: .normal);
+    goBookButton = UIButton(frame: CGRect(x: width - 90, y: height - 170, width: 70 , height: 50))
+        goBookButton?.setTitle("+ info", for: .normal)
+    goBookButton?.setTitleColor(.brownColor, for: .normal)
     goBookButton?.addTarget(self, action: #selector(go), for: .touchUpInside)
+    goBookButton?.titleLabel?.font = UIFont(name: "GillSans-Bold", size: 20)
     view.addSubview(goBookButton!)
 
 }
-    
+
     @objc func backAction(){
         print("back")
         dismiss(animated: true)

@@ -20,9 +20,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
     var content2: UILabel?
     var contentLabel3 : UILabel?
     var content3: UILabel?
-    var showLabel: UILabel?
     var goBookButton: UIButton?
-    var backButton: UIButton?
     
     var fetchedEndPoint : String?
     
@@ -42,11 +40,6 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
         SearchTextField.delegate = self
     }
             func initUI(){
-                
-            backButton = UIButton(frame: CGRect(x: 20, y: 60, width: 45, height: 45))
-            backButton?.setImage(UIImage(named: "back"), for: .normal)
-            backButton?.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-            view.addSubview(backButton!)
                 
                 
             buscarLabel = UILabel(frame: CGRect(x: 10, y: 170, width: width , height: 40))
@@ -142,24 +135,13 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             content3?.font = UIFont(name: "Arial Bold", size: 20)
             content3?.text = ""
             view.addSubview(content3!)
-                    
                 
-            showLabel = UILabel(frame: CGRect(x: width - 140, y: height - 90, width: 70 , height: 40))
-            showLabel?.textAlignment = NSTextAlignment.center
-                showLabel?.backgroundColor = UIColor.pinkColor
-                showLabel?.textColor = UIColor.brownColor
-            showLabel?.numberOfLines = 0
-            showLabel?.font = UIFont(name: "Arial Bold", size: 22)
-            showLabel?.text = "+ info"
-            showLabel?.layer.cornerRadius = 7
-            view.addSubview(showLabel!)
-                
-            goBookButton = UIButton(frame: CGRect(x: width - 70, y: height - 95, width: 50 , height: 50))
-            goBookButton?.setImage(UIImage(named: "go"), for: .normal);
+            goBookButton = UIButton(frame: CGRect(x: width - 90, y: height - 170, width: 70 , height: 50))
+            goBookButton?.setTitle("+ info", for: .normal)
+            goBookButton?.setTitleColor(.brownColor, for: .normal)
             goBookButton?.addTarget(self, action: #selector(go), for: .touchUpInside)
+            goBookButton?.titleLabel?.font = UIFont(name: "GillSans-Bold", size: 20)
             view.addSubview(goBookButton!)
-                
-            
 
     }
     
