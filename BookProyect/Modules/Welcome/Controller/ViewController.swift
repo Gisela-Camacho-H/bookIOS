@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
@@ -23,12 +24,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
 //MARK: - Button
     private lazy var loginButton : UIButton = UIButton()
     private lazy var registrateButton: UIButton = UIButton()
+    var passwordButton: UIButton?
 //MARK: - StackViews
     private lazy var textFieldStackView: UIStackView = UIStackView()
     private lazy var cuentaStackView: UIStackView = UIStackView()
     private lazy var labelsStackView: UIStackView = UIStackView()
 //MARK: - View
     private lazy var bienvenidoView : UIView = UIView()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,8 +136,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
         loginButton.layer.cornerRadius = 23
         loginButton.setTitleColor(.white, for: .normal)
         loginButton.setTitle("Log In", for: .normal)
+        loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
         loginButton.addTarget(self, action: #selector(goToBooks), for: .touchUpInside)
         view.addSubview(loginButton)
+        
+        passwordButton = UIButton()
+        view.addSubview(passwordButton!)
+        passwordButton?.addAnchorsAndSize(width: 50, height: 50, left: nil, top: -50, right: nil, bottom: nil, withAnchor: .top, relativeToView: contrasenaTextField)
+        passwordButton?.addAnchors(left: -50, top: nil, right: nil, bottom: nil, withAnchor: .left, relativeToView: contrasenaTextField)
+        passwordButton?.setImage(UIImage(systemName: "eye.fill" ), for: .normal)
+        passwordButton?.tintColor = .black
+        passwordButton?.addTarget(self, action: #selector(verpass), for: .touchUpInside)
         
         // MARK: - Registro
         
@@ -143,9 +155,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         cuentaLabel.textColor = UIColor.brownColor
         self.view.addSubview(cuentaLabel)
         
-        registrateButton.setTitleColor(.brownColor, for: .normal)
+        registrateButton.setTitleColor(.coralColor, for: .normal)
         registrateButton.setTitle("Sign-up", for: .normal)
         registrateButton.addTarget(self, action: #selector(register), for: .touchUpInside)
+        registrateButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         self.view.addSubview(registrateButton)
 //MARK: - cuentaStackView
         let cuentaArray: [AnyObject] = [cuentaLabel, registrateButton]
@@ -159,7 +172,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         self.view.addSubview(cuentaStackView)
         cuentaStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([cuentaStackView.bottomAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 50),
+        NSLayoutConstraint.activate([cuentaStackView.bottomAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 30),
             cuentaStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         cuentaArray.forEach {element in
@@ -169,18 +182,29 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
     }
 // MARK: - Función de botones
-    
+    @objc func verpass(){
+        contrasenaTextField.isSecureTextEntry.toggle()
+    }
     //funcion log in y verificación de campos vacios
     @IBAction func goToBooks(_ sender: Any) {
         if (contrasenaTextField.text?.isEmpty)! || (correoTextField.text?.isEmpty)!  {
           print("Text field is empty")
        } else {
-           print("go to books")
-            let gotoBooks = TabBarViewController()
-           gotoBooks.modalPresentationStyle = .fullScreen
-           present(gotoBooks, animated: true, completion: nil)
+           if let password = contrasenaTextField.text, let email = correoTextField.text {
+               Auth.auth().signIn(withEmail: email, password: password) {
+                   [weak self] authResult, error in
+                   if let e = error {
+                       print(e)
+                   }else {
+                       print("books")
+                        let gotoBooks = TabBarViewController()
+                       gotoBooks.modalPresentationStyle = .fullScreen
+                       self?.present(gotoBooks, animated: true, completion: nil)
+                   }
+               }
        }
     }
+}
     
     //funcion de ir al registro
     @objc func register (){
@@ -190,7 +214,4 @@ class ViewController: UIViewController, UITextFieldDelegate {
         present(register, animated: true, completion: nil)
     }
 }
-//tomas los colores de las fotos
-//https://imagecolorpicker.com/
-//obtener los tamaños para los iconos de la app
-//https://appicon.co/
+

@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41BF03817884EA6C007D70E0 /* Pods_BookProyect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACE4B8FC8CBA31EEB61DE80E /* Pods_BookProyect.framework */; };
+		5600143D27D1BC1800669B0E /* BookCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5600143B27D1BC1800669B0E /* BookCoreData.xcdatamodeld */; };
 		561DE189279E042A0015337F /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561DE188279E042A0015337F /* BookTableViewCell.swift */; };
 		561E381E27AE060D00C22D57 /* AuthorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E381D27AE060D00C22D57 /* AuthorModel.swift */; };
 		561E382027AE062200C22D57 /* AuthorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E381F27AE062200C22D57 /* AuthorData.swift */; };
 		561E382227AE063600C22D57 /* AuthorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561E382127AE063600C22D57 /* AuthorManager.swift */; };
 		562B6F99279D24FF008F8437 /* DetailBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562B6F98279D24FF008F8437 /* DetailBookViewController.swift */; };
+		563480AC27D45C5200D27187 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 563480AB27D45C5200D27187 /* IQKeyboardManagerSwift */; };
 		563AC45A279DE89700B97AA3 /* BookObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563AC459279DE89700B97AA3 /* BookObject.swift */; };
+		563C766327D42CF200868934 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 563C766227D42CF200868934 /* GoogleService-Info.plist */; };
 		5649C03F279A71CB000DCA63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5649C03E279A71CB000DCA63 /* AppDelegate.swift */; };
 		5649C041279A71CB000DCA63 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5649C040279A71CB000DCA63 /* SceneDelegate.swift */; };
 		5649C043279A71CB000DCA63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5649C042279A71CB000DCA63 /* ViewController.swift */; };
@@ -37,6 +41,8 @@
 		5698F27227ADE5FD00F66BF9 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698F27127ADE5FD00F66BF9 /* CategoryModel.swift */; };
 		5698F27427ADE61900F66BF9 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698F27327ADE61900F66BF9 /* CategoryData.swift */; };
 		5698F27627ADE63800F66BF9 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5698F27527ADE63800F66BF9 /* CategoryManager.swift */; };
+		569B5B8927D259AC00C65353 /* FinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B5B8827D259AC00C65353 /* FinderViewController.swift */; };
+		569B5B8E27D2638D00C65353 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B5B8D27D2638D00C65353 /* UserViewController.swift */; };
 		56A5476627C590B600334829 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5476527C590B600334829 /* Constants.swift */; };
 		56A5476827C590F800334829 /* DetailAuthorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5476727C590F800334829 /* DetailAuthorViewModel.swift */; };
 		56A5476A27C5911200334829 /* DetailFindBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5476927C5911200334829 /* DetailFindBookViewModel.swift */; };
@@ -55,15 +61,19 @@
 		56B49FDB27B08F8700ACAE21 /* DetailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B49FDA27B08F8700ACAE21 /* DetailManager.swift */; };
 		56B6B87227A08884009BA902 /* BooksObjectCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B6B87127A08884009BA902 /* BooksObjectCollection.swift */; };
 		56D66C7D27AF3FBB00FE32B3 /* DetailFindBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D66C7C27AF3FBB00FE32B3 /* DetailFindBookViewController.swift */; };
+		56FD59A027D32F0D00449425 /* logoConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FD599F27D32F0D00449425 /* logoConstants.swift */; };
+		56FD59A227D32F4300449425 /* logoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FD59A127D32F4300449425 /* logoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5600143C27D1BC1800669B0E /* BookCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BookCoreData.xcdatamodel; sourceTree = "<group>"; };
 		561DE188279E042A0015337F /* BookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
 		561E381D27AE060D00C22D57 /* AuthorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorModel.swift; sourceTree = "<group>"; };
 		561E381F27AE062200C22D57 /* AuthorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorData.swift; sourceTree = "<group>"; };
 		561E382127AE063600C22D57 /* AuthorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorManager.swift; sourceTree = "<group>"; };
 		562B6F98279D24FF008F8437 /* DetailBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBookViewController.swift; sourceTree = "<group>"; };
 		563AC459279DE89700B97AA3 /* BookObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookObject.swift; sourceTree = "<group>"; };
+		563C766227D42CF200868934 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5649C03B279A71CB000DCA63 /* BookProyect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookProyect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5649C03E279A71CB000DCA63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5649C040279A71CB000DCA63 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +100,8 @@
 		5698F27127ADE5FD00F66BF9 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		5698F27327ADE61900F66BF9 /* CategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryData.swift; sourceTree = "<group>"; };
 		5698F27527ADE63800F66BF9 /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
+		569B5B8827D259AC00C65353 /* FinderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderViewController.swift; sourceTree = "<group>"; };
+		569B5B8D27D2638D00C65353 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		56A5476527C590B600334829 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		56A5476727C590F800334829 /* DetailAuthorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAuthorViewModel.swift; sourceTree = "<group>"; };
 		56A5476927C5911200334829 /* DetailFindBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFindBookViewModel.swift; sourceTree = "<group>"; };
@@ -108,6 +120,11 @@
 		56B49FDA27B08F8700ACAE21 /* DetailManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailManager.swift; sourceTree = "<group>"; };
 		56B6B87127A08884009BA902 /* BooksObjectCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksObjectCollection.swift; sourceTree = "<group>"; };
 		56D66C7C27AF3FBB00FE32B3 /* DetailFindBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFindBookViewController.swift; sourceTree = "<group>"; };
+		56FD599F27D32F0D00449425 /* logoConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logoConstants.swift; sourceTree = "<group>"; };
+		56FD59A127D32F4300449425 /* logoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logoView.swift; sourceTree = "<group>"; };
+		ACE4B8FC8CBA31EEB61DE80E /* Pods_BookProyect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BookProyect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF9CC6FBA78A3552001CABB5 /* Pods-BookProyect.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookProyect.release.xcconfig"; path = "Target Support Files/Pods-BookProyect/Pods-BookProyect.release.xcconfig"; sourceTree = "<group>"; };
+		B26784F3BDF9D5C03C7022D2 /* Pods-BookProyect.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookProyect.debug.xcconfig"; path = "Target Support Files/Pods-BookProyect/Pods-BookProyect.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +132,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41BF03817884EA6C007D70E0 /* Pods_BookProyect.framework in Frameworks */,
+				563480AC27D45C5200D27187 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +174,8 @@
 				5650379A279FC33300D4CA27 /* Utils */,
 				5649C03D279A71CB000DCA63 /* BookProyect */,
 				5649C03C279A71CB000DCA63 /* Products */,
+				725D332EC33A1263BB319DA1 /* Pods */,
+				631FCE36AC604DC5803DF66C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -171,11 +192,13 @@
 			children = (
 				5649C047279A71CB000DCA63 /* Assets.xcassets */,
 				5649C04C279A71CB000DCA63 /* Info.plist */,
+				563C766227D42CF200868934 /* GoogleService-Info.plist */,
 				5649C049279A71CB000DCA63 /* LaunchScreen.storyboard */,
 				56A5478127C5A21E00334829 /* Delegates */,
 				56A5474627C58DC000334829 /* Modules */,
 				5620E13D27A89A01004527E6 /* Model */,
 				56A5478027C5920B00334829 /* View */,
+				5600143B27D1BC1800669B0E /* BookCoreData.xcdatamodeld */,
 			);
 			path = BookProyect;
 			sourceTree = "<group>";
@@ -252,9 +275,59 @@
 			path = CategoryApi;
 			sourceTree = "<group>";
 		};
+		569B5B8427D2594100C65353 /* Finder */ = {
+			isa = PBXGroup;
+			children = (
+				569B5B8727D2598C00C65353 /* ViewModel */,
+				569B5B8627D2597400C65353 /* Controller */,
+			);
+			path = Finder;
+			sourceTree = "<group>";
+		};
+		569B5B8627D2597400C65353 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				569B5B8827D259AC00C65353 /* FinderViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		569B5B8727D2598C00C65353 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		569B5B8A27D2636400C65353 /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				569B5B8C27D2637800C65353 /* ViewModel */,
+				569B5B8B27D2636D00C65353 /* Controller */,
+			);
+			path = UserInfo;
+			sourceTree = "<group>";
+		};
+		569B5B8B27D2636D00C65353 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				569B5B8D27D2638D00C65353 /* UserViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		569B5B8C27D2637800C65353 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		56A5474627C58DC000334829 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				569B5B8A27D2636400C65353 /* UserInfo */,
+				569B5B8427D2594100C65353 /* Finder */,
 				56910DD827CB0FA600F27013 /* TabBar */,
 				56A5476027C58FED00334829 /* DetailAuthor */,
 				56A5475D27C58FD200334829 /* DetailFindBook */,
@@ -527,6 +600,7 @@
 		56A5478027C5920B00334829 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				56FD599E27D32EF800449425 /* Logo */,
 				5649C044279A71CB000DCA63 /* Main.storyboard */,
 				5620E13B27A8995C004527E6 /* CollectionBooks */,
 				5620E13C27A8998C004527E6 /* TableViewBooks */,
@@ -553,6 +627,32 @@
 			path = DetailFindApi;
 			sourceTree = "<group>";
 		};
+		56FD599E27D32EF800449425 /* Logo */ = {
+			isa = PBXGroup;
+			children = (
+				56FD599F27D32F0D00449425 /* logoConstants.swift */,
+				56FD59A127D32F4300449425 /* logoView.swift */,
+			);
+			path = Logo;
+			sourceTree = "<group>";
+		};
+		631FCE36AC604DC5803DF66C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ACE4B8FC8CBA31EEB61DE80E /* Pods_BookProyect.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		725D332EC33A1263BB319DA1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B26784F3BDF9D5C03C7022D2 /* Pods-BookProyect.debug.xcconfig */,
+				AF9CC6FBA78A3552001CABB5 /* Pods-BookProyect.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -560,15 +660,20 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5649C04F279A71CB000DCA63 /* Build configuration list for PBXNativeTarget "BookProyect" */;
 			buildPhases = (
+				461F99D9F86F47D6FD8A011C /* [CP] Check Pods Manifest.lock */,
 				5649C037279A71CB000DCA63 /* Sources */,
 				5649C038279A71CB000DCA63 /* Frameworks */,
 				5649C039279A71CB000DCA63 /* Resources */,
+				AC659A876466DE5C45ED1804 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = BookProyect;
+			packageProductDependencies = (
+				563480AB27D45C5200D27187 /* IQKeyboardManagerSwift */,
+			);
 			productName = BookProyect;
 			productReference = 5649C03B279A71CB000DCA63 /* BookProyect.app */;
 			productType = "com.apple.product-type.application";
@@ -597,6 +702,9 @@
 				Base,
 			);
 			mainGroup = 5649C032279A71CB000DCA63;
+			packageReferences = (
+				563480AA27D45C5200D27187 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+			);
 			productRefGroup = 5649C03C279A71CB000DCA63 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -612,6 +720,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5649C04B279A71CB000DCA63 /* LaunchScreen.storyboard in Resources */,
+				563C766327D42CF200868934 /* GoogleService-Info.plist in Resources */,
 				5649C048279A71CB000DCA63 /* Assets.xcassets in Resources */,
 				5649C046279A71CB000DCA63 /* Main.storyboard in Resources */,
 			);
@@ -619,12 +728,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		461F99D9F86F47D6FD8A011C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BookProyect-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC659A876466DE5C45ED1804 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BookProyect/Pods-BookProyect-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BookProyect/Pods-BookProyect-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BookProyect/Pods-BookProyect-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5649C037279A71CB000DCA63 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				567C71A427B1EE6D00B8B095 /* DetailAuthorViewController.swift in Sources */,
+				569B5B8E27D2638D00C65353 /* UserViewController.swift in Sources */,
 				567C71A727B1EFC700B8B095 /* bioData.swift in Sources */,
 				56B49FDB27B08F8700ACAE21 /* DetailManager.swift in Sources */,
 				56B49FD727B08F3E00ACAE21 /* DetailData.swift in Sources */,
@@ -649,6 +801,7 @@
 				5698F27427ADE61900F66BF9 /* CategoryData.swift in Sources */,
 				56A5477827C5918C00334829 /* ViewModel.swift in Sources */,
 				56A5477427C5916800334829 /* FindBookViewModel.swift in Sources */,
+				5600143D27D1BC1800669B0E /* BookCoreData.xcdatamodeld in Sources */,
 				56B49FD927B08F7400ACAE21 /* DetailModel.swift in Sources */,
 				565AF05D27A9AA2100B37184 /* BookModel.swift in Sources */,
 				563AC45A279DE89700B97AA3 /* BookObject.swift in Sources */,
@@ -658,6 +811,7 @@
 				56A5476A27C5911200334829 /* DetailFindBookViewModel.swift in Sources */,
 				56503799279FBA1900D4CA27 /* BookCollectionView.swift in Sources */,
 				56A5477027C5914600334829 /* BooksViewModel.swift in Sources */,
+				56FD59A027D32F0D00449425 /* logoConstants.swift in Sources */,
 				566FDE0327AB5E21009C1378 /* AuthorsViewController.swift in Sources */,
 				561E382227AE063600C22D57 /* AuthorManager.swift in Sources */,
 				5649C03F279A71CB000DCA63 /* AppDelegate.swift in Sources */,
@@ -666,7 +820,9 @@
 				56A5476C27C5912500334829 /* AuthorsViewModel.swift in Sources */,
 				566FDE0127AB5E06009C1378 /* CategoriesViewController.swift in Sources */,
 				561E382027AE062200C22D57 /* AuthorData.swift in Sources */,
+				56FD59A227D32F4300449425 /* logoView.swift in Sources */,
 				56A5477F27C591F100334829 /* UIColor++.swift in Sources */,
+				569B5B8927D259AC00C65353 /* FinderViewController.swift in Sources */,
 				56A5476E27C5913600334829 /* CategoriesViewModel.swift in Sources */,
 				5649C041279A71CB000DCA63 /* SceneDelegate.swift in Sources */,
 			);
@@ -812,6 +968,7 @@
 		};
 		5649C050279A71CB000DCA63 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B26784F3BDF9D5C03C7022D2 /* Pods-BookProyect.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -841,6 +998,7 @@
 		};
 		5649C051279A71CB000DCA63 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF9CC6FBA78A3552001CABB5 /* Pods-BookProyect.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -890,6 +1048,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		563480AA27D45C5200D27187 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		563480AB27D45C5200D27187 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 563480AA27D45C5200D27187 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		5600143B27D1BC1800669B0E /* BookCoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5600143C27D1BC1800669B0E /* BookCoreData.xcdatamodel */,
+			);
+			currentVersion = 5600143C27D1BC1800669B0E /* BookCoreData.xcdatamodel */;
+			path = BookCoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5649C033279A71CB000DCA63 /* Project object */;
 }

@@ -25,7 +25,7 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate {
     func createTabBarController(){
         tabBarCnt = UITabBarController()
         tabBarCnt.delegate = self
-        tabBarCnt.tabBar.barStyle = .blackOpaque
+        //tabBarCnt.tabBar.barStyle = .blackOpaque
         tabBarCnt.tabBar.backgroundColor = UIColor.brownColor
         tabBarCnt.tabBar.tintColor = UIColor.pinkColor
         tabBarCnt.tabBar.unselectedItemTintColor = UIColor.white
@@ -34,19 +34,15 @@ class TabBarViewController: UIViewController, UITabBarControllerDelegate {
         firstViewController.title = "Home"
         firstViewController.tabBarItem.image = UIImage(named: "home")
         
-        let secondViewController = AuthorsViewController()
-        secondViewController.title = "Authors"
-        secondViewController.tabBarItem.image = UIImage(named: "author")
+        let secondViewController = FinderViewController()
+        secondViewController.title = "Finder"
+        secondViewController.tabBarItem.image = UIImage(named: "category")
         
-        let thirdViewController = CategoriesViewController()
-        thirdViewController.title = "Categories"
-        thirdViewController.tabBarItem.image = UIImage(named: "category")
+        let thirdViewController = UserViewController()
+        thirdViewController.title = "User"
+        thirdViewController.tabBarItem.image = UIImage(named: "author")
         
-        let fourthViewController = FindBookViewController()
-        fourthViewController.title = "Books"
-        fourthViewController.tabBarItem.image = UIImage(named: "books")
-        
-        tabBarCnt.viewControllers = [firstViewController, secondViewController, thirdViewController, fourthViewController]
+        tabBarCnt.viewControllers = [firstViewController, secondViewController, thirdViewController]
 
         self.view.addSubview(tabBarCnt.view)
     }

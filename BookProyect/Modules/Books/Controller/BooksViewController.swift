@@ -5,19 +5,47 @@
 //  Created by GiselaCamacho on 21/01/22.
 //
 import UIKit
+import Firebase
 
 class BooksViewController : UIViewController {
+
+    enum DashboardSection:String, CaseIterable {
+        case books = "Books"
+        case authors = "Authors"
+        case categories = "Categories"
+    }
+    
+    let db = Firestore.firestore()
+    
+    lazy var id : UILabel = UILabel()
+    lazy var exitButton: UIButton = UIButton()
+    
+    var userName: UILabel = UILabel()
     
     var dataSource : BookObject?
     var imageSource : BooksObjectCollection?
     
-    private lazy var sectionButton: UISegmentedControl = UISegmentedControl(items: viewSections)
-    private var viewSections: [String] = ["Books", "Authors", "Categories"]
-    var agregadosLabel: UILabel?
-    var id : UILabel?
-    var exitButton: UIButton?
+    private lazy var sectionButton: UISegmentedControl = UISegmentedControl(items:  viewSections.map{ $0.rawValue })
+    
+    private var viewSections: [DashboardSection] = DashboardSection.allCases
+    
+    private var currentSection: DashboardSection = .books
     
     var tableView : UITableView?
+    
+    lazy var labelStackView: UIStackView = UIStackView()
+    lazy var categoryStackView: UIStackView = UIStackView()
+    
+    
+    var imageCar: UIImageView = UIImageView()
+    var counter = 0
+    var cart = [String: Any]()
+    
+    var counterLabel: UILabel = {
+        let label = UILabel()
+        label.text = "0"
+        return label
+    }()
     
     
     //MARK: - CollectionView
@@ -54,36 +82,41 @@ class BooksViewController : UIViewController {
         getData()
         getImage()
         initUI()
+        user()
+        requesBooks()
     }
     
     func initUI(){
         
         exitButton = UIButton(frame: CGRect(x: width - 60, y: height/8 - 40, width: 45, height: 45))
-        exitButton?.setImage(UIImage(named: "exit"), for: .normal)
-        exitButton?.addTarget(self, action: #selector(logout), for: .touchUpInside)
-        view.addSubview(exitButton!)
-        
-        agregadosLabel = UILabel(frame: CGRect(x: 20, y: 390, width: 150, height: 30))
-        agregadosLabel?.text = "Recently added"
-        agregadosLabel?.font = .boldSystemFont(ofSize: 14)
-        agregadosLabel?.textColor = UIColor.pinkColor
-        agregadosLabel?.textAlignment = .center
-        view.addSubview(agregadosLabel!)
-        
+        exitButton.setImage(UIImage(named: "exit"), for: .normal)
+        exitButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
+        view.addSubview(exitButton)
         
         id = UILabel(frame: CGRect(x: 20, y: 390, width: 150, height: 30))
-        id?.text = ""
-        id?.font = .boldSystemFont(ofSize: 14)
-        id?.textColor = UIColor.pinkColor
-        id?.textAlignment = .center
-        view.addSubview(id!)
+        id.text = ""
+        id.font = .boldSystemFont(ofSize: 14)
+        id.textColor = UIColor.pinkColor
+        id.textAlignment = .center
+        view.addSubview(id)
+        
+        
+        //MARK: - Compras
+        view?.addSubview(imageCar)
+        imageCar.image = UIImage(systemName: "cart.fill")
+        imageCar.tintColor = UIColor.brownColor
+        imageCar.addAnchorsAndSize(width: 50, height: 50, left: nil, top: 375, right: 25, bottom: nil)
+        
+        view?.addSubview(counterLabel)
+        counterLabel.addAnchorsAndSize(width: 22, height: 22, left: nil, top: 375, right: 15, bottom: nil)
+        counterLabel.font = .boldSystemFont(ofSize: 15)
+        counterLabel.layer.masksToBounds = true
+        counterLabel.layer.cornerRadius = 11
+        counterLabel.backgroundColor = UIColor.DarkPinkColor
+        counterLabel.textAlignment = .center
+        counterLabel.textColor = .white
         
         // MARK: - TableView
-        tableView = UITableView(frame: CGRect(x: 20, y: height/3 + 115, width: width - 40, height: height - 410))
-        tableView?.backgroundColor = UIColor.backgroundColor
-        tableView?.delegate = self
-        tableView?.dataSource = self //en donde se va a definir (en si mismo)
-        view.addSubview(tableView!) //se hace visible
         
         librosCollectionView.delegate = self
         librosCollectionView.dataSource = self
@@ -100,11 +133,35 @@ class BooksViewController : UIViewController {
             sectionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             sectionButton.heightAnchor.constraint(equalToConstant: 30)
         ])
+        sectionButton.addTarget(self, action: #selector(sectionDidChanged(_:)), for: .valueChanged)
+        navigationItem.setRightBarButtonItems([UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(self.dismissView))], animated: true)
+    }
+    
+    @objc func sectionDidChanged(_ sender: UISegmentedControl) {
+         let indexSelection: Int = sender.selectedSegmentIndex
+         currentSection = viewSections[indexSelection]
+         switch indexSelection {
+         case 0:
+             requesBooks()
+         case 1:
+             requestAuthors()
+         case 2:
+             requestCategories()
+         default:
+             break
+         }
+     }
+    @objc func dismissView() {
+        self.dismiss(animated: true, completion: nil)
     }
 //MARK: - buttonsView
  
     
     func getData(){
+        
+        cart = UserDefaults.standard.dictionary(forKey: "superCart") ?? [String:Any]()
+        countCounter()
+        
         // MARK: - Tales
  
         let cuentos = Libro(nombre: "Tales and Poems", descripcion: "La edición de Cuentos en dos volúmenes ofrece la recopilación de los 67 Cuentos publicados a lo largo de su vida por Edgar Alan Poe. Se reúnen las narraciones dominadas por el terror, la presencia de lo sobrenatural.", autor: "Edgar Allan Poe", imagen: "cuentos", detalles: "Austral Básicos", sobreAutor: "Escritor, poeta, narrador, periodista y crítico literario americano, quien se conoció por su narrativa de terror, horror romántico y su maestría del relato de influencia gótica, siendo considerado uno de los grandes de la literatura universal y padre del género detectivesco.", categoria: "Tales", autorImage: "edgar")
@@ -147,6 +204,15 @@ class BooksViewController : UIViewController {
         dataSource = Libros
         
     }
+    
+//MARK: - User dataBase
+    func user(){
+        db.collection("UserInfo").getDocuments {(querySnapshot, error )in
+            if let e = error {
+                print("There was an issue retrieving data from Firestore. \(e)")
+                }
+            }
+        }
 // MARK: - Imagenes de libros
     
     func getImage(){
@@ -171,13 +237,133 @@ class BooksViewController : UIViewController {
         
     }
     
-
+    func requesBooks() {
+        tableView = UITableView(frame: CGRect(x: 20, y: height/3 + 115, width: width - 40, height: height - 410))
+        tableView?.backgroundColor = UIColor.backgroundColor
+        tableView?.delegate = self
+        tableView?.dataSource = self //en donde se va a definir (en si mismo)
+        view.addSubview(tableView!) //se hace visible
+    }
+    
+    func requestAuthors() {
+        hideTableView()
+        labelStackView.isHidden = false
+        categoryStackView.isHidden = true
+        lazy var a1Label: UILabel = UILabel()
+        lazy var a2Label: UILabel = UILabel()
+        lazy var a3Label: UILabel = UILabel()
+        lazy var a4Label: UILabel = UILabel()
+        lazy var a5Label: UILabel = UILabel()
+        lazy var a6Label: UILabel = UILabel()
+        self.view.addSubview(a1Label)
+        self.view.addSubview(a2Label)
+        self.view.addSubview(a3Label)
+        self.view.addSubview(a4Label)
+        self.view.addSubview(a5Label)
+        self.view.addSubview(a6Label)
+        let names: [String] = ["Miguel de Cervantes", "Edgar Allan Poe", "William Shakespeare", "J.K. Rolling", "Dante Alighieri", "Franz Kafka"]
+        let labelArray: [UILabel] = [a1Label, a2Label, a3Label, a4Label, a5Label, a6Label]
+        
+        labelStackView.axis = .vertical
+        labelStackView.spacing = 20
+        labelStackView.alignment = .fill
+        labelStackView.distribution = .fillEqually
+        labelArray.forEach {label in
+        labelStackView.addArrangedSubview(label)
+        }
+        view.addSubview(labelStackView)
+        labelStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([labelStackView.topAnchor.constraint(equalTo: librosCollectionView.bottomAnchor, constant: 120),
+        labelStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        labelStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8)
+        ])
+        labelArray.forEach {label in
+            label.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            label.widthAnchor.constraint(equalToConstant: 50).isActive = true
+            label.backgroundColor = .white
+            label.font = .boldSystemFont(ofSize: 25)
+            label.textColor = UIColor.brownColor
+            label.textAlignment = .center
+            label.layer.masksToBounds = true
+            label.layer.cornerRadius = 10
+            
+        }
+        a1Label.text = names[0]
+        a2Label.text = names[1]
+        a3Label.text = names[2]
+        a4Label.text = names[3]
+        a5Label.text = names[4]
+        a6Label.text = names[5]
+    }
+    
+    func requestCategories() {
+        hideTableView()
+        labelStackView.isHidden = true
+        categoryStackView.isHidden = false
+        lazy var a1Label: UILabel = UILabel()
+        lazy var a2Label: UILabel = UILabel()
+        lazy var a3Label: UILabel = UILabel()
+        lazy var a4Label: UILabel = UILabel()
+        lazy var a5Label: UILabel = UILabel()
+        lazy var a6Label: UILabel = UILabel()
+        self.view.addSubview(a1Label)
+        self.view.addSubview(a2Label)
+        self.view.addSubview(a3Label)
+        self.view.addSubview(a4Label)
+        self.view.addSubview(a5Label)
+        self.view.addSubview(a6Label)
+        let names: [String] = ["Horror", "Love", "Fiction", "History", "Classic", "Literacy"]
+        let labelArray: [UILabel] = [a1Label, a2Label, a3Label, a4Label, a5Label, a6Label]
+        
+        categoryStackView.axis = .vertical
+        categoryStackView.spacing = 20
+        categoryStackView.alignment = .fill
+        categoryStackView.distribution = .fillEqually
+        labelArray.forEach {label in
+        categoryStackView.addArrangedSubview(label)
+        }
+        view.addSubview(categoryStackView)
+        categoryStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([categoryStackView.topAnchor.constraint(equalTo: librosCollectionView.bottomAnchor, constant: 120),
+            categoryStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            categoryStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5)
+        ])
+        labelArray.forEach {label in
+            label.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            label.widthAnchor.constraint(equalToConstant: 50).isActive = true
+            label.backgroundColor = .white
+            label.font = .boldSystemFont(ofSize: 25)
+            label.textColor = UIColor.brownColor
+            label.textAlignment = .center
+            label.layer.masksToBounds = true
+            label.layer.cornerRadius = 10
+            
+        }
+        a1Label.text = names[0]
+        a2Label.text = names[1]
+        a3Label.text = names[2]
+        a4Label.text = names[3]
+        a5Label.text = names[4]
+        a6Label.text = names[5]
+    }
+        
+    func hideTableView() {
+        tableView?.isHidden = true
+    }
+    
 //MARK: - función regresar
     
     @objc func logout(){
-        let back = ViewController()
-       back.modalPresentationStyle = .fullScreen
-       present(back, animated: true, completion: nil)
+        do {
+            try Auth.auth().signOut()
+            let back = ViewController()
+            back.modalPresentationStyle = .fullScreen
+            present(back, animated: true, completion: nil)
+        } catch let signOutError as NSError{
+            print("Error signing out %@", signOutError)
+        }
     }
     @objc func findBook (){
         print("go to findBook")
@@ -250,7 +436,9 @@ extension BooksViewController : UITableViewDelegate{
     //tipo de celda que se mostrara
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let libr = dataSource?.categorias?[indexPath.section].libros?[indexPath.row]
-        let cell = BookTableViewCell(libro: libr!)
+        let currentCounter = cart[libr?.nombre ?? ""] ?? 0
+        let cell = BookTableViewCell(libro: libr!, numberOf: currentCounter as! Int)
+        cell.delegate = self
         return cell
     }
     
@@ -258,6 +446,29 @@ extension BooksViewController : UITableViewDelegate{
             return height/7
         }
     }
+
+extension BooksViewController: MenuTableViewCellDelegate {
+    func addtoCar(product: Libro, count: Int) {
+        
+        cart[product.nombre ?? ""] = count
+        UserDefaults.standard.set(cart, forKey: "superCart")
+        countCounter()
+    }
+        
+    func countCounter(){
+            counter = 0
+            for product in cart{
+                counter += product.value as! Int
+            }
+            counterLabel.text = "\(counter)"
+        }
+    
+    func removetoCar(product: Libro, count: Int) {
+        
+        cart[product.nombre ?? ""] = count
+        countCounter()
+    }
+}
 
 
 //MARK: - UICollectionDelegate && UICollectionDataSourse
@@ -284,3 +495,12 @@ extension BooksViewController : UICollectionViewDelegate, UICollectionViewDataSo
         return CGSize(width: width/3 - 20, height: height / 4 - 50)
     }
 }
+
+
+
+//https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=6GmMry36iGR60wACRPVu5PNVrJSCliyv
+//api-key=6GmMry36iGR60wACRPVu5PNVrJSCliyv
+
+//https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-key=6GmMry36iGR60wACRPVu5PNVrJSCliyv
+
+//https://api.nytimes.com/svc/books/v3/lists/full-overview.json?api-key=6GmMry36iGR60wACRPVu5PNVrJSCliyv
