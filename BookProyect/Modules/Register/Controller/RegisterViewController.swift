@@ -163,11 +163,13 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
         print("back")
         dismiss(animated: true)
     }
-    
+    var alerta = ""
     @IBAction func goToLogin(_ sender: Any) {
-        if (contrasenaTextField.text?.isEmpty)! || (correoTextField.text?.isEmpty)! || (usuarioTextField.text?.isEmpty)! || (confirmarTextField.text?.isEmpty)!  {
-          print("Text field is empty")
-       } else {
+        if (contrasenaTextField.text?.isEmpty)! || (correoTextField.text?.isEmpty)! || (usuarioTextField.text?.isEmpty)! || (confirmarTextField.text?.isEmpty)! {
+            alerta = "Ingrese todos los datos requeridos"
+        } else if contrasenaTextField.text != confirmarTextField.text {
+            alerta = "Las contraseñas deben ser las mismas"
+        }else {
            
            if let password = contrasenaTextField.text, let email = correoTextField.text {
            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
@@ -190,6 +192,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
                }
            }
        }
+        if alerta != "" {
+                let alertView = UIAlertController(title: "Error", message: alerta, preferredStyle: .alert)
+                let aceptar = UIAlertAction(title: "Aceptar", style: .default, handler: nil)
+                alertView.addAction(aceptar)
+                self.present(alertView, animated: true, completion: nil)
+            }
     }
     
 }

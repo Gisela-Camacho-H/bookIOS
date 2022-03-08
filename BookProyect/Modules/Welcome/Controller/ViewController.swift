@@ -187,8 +187,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     //funcion log in y verificación de campos vacios
     @IBAction func goToBooks(_ sender: Any) {
+        var alerta = ""
         if (contrasenaTextField.text?.isEmpty)! || (correoTextField.text?.isEmpty)!  {
-          print("Text field is empty")
+            alerta = "Ingrese todos los datos requeridos"
        } else {
            if let password = contrasenaTextField.text, let email = correoTextField.text {
                Auth.auth().signIn(withEmail: email, password: password) {
@@ -204,6 +205,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
                }
        }
     }
+    if alerta != "" {
+            let alertView = UIAlertController(title: "Error", message: alerta, preferredStyle: .alert)
+            let aceptar = UIAlertAction(title: "Aceptar", style: .default, handler: nil)
+            alertView.addAction(aceptar)
+            self.present(alertView, animated: true, completion: nil)
+        }
 }
     
     //funcion de ir al registro
