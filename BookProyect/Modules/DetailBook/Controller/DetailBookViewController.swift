@@ -33,6 +33,8 @@ class DetailBookViewController: UIViewController {
     lazy var bookCategoria : UILabel = UILabel()
     lazy var bookMas: UILabel = UILabel()
     
+    private lazy var activityView: UIActivityIndicatorView = UIActivityIndicatorView()
+    
     // UIButtons
     lazy var backButton : UIButton = UIButton()
     
@@ -122,6 +124,21 @@ class DetailBookViewController: UIViewController {
         bookCard.addSubview(bookCategoria)
     }
     
+    
+    // Activity indicator
+    func createActivityIndicator() {
+        self.view.addSubview(activityView)
+        activityView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityView.centerXAnchor.constraint(equalTo: view.centerXAnchor), activityView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
+        ])
+        activityView.startAnimating()
+    }
+    
+    func removeActivityIndicator() {
+        activityView.stopAnimating()
+        activityView.removeFromSuperview()
+    }
    // Función regresar
 
     @objc func backAction(){

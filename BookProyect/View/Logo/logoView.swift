@@ -16,14 +16,14 @@ class logoView: UIView {
     }
     
     @IBInspectable
-    public var lineColor: UIColor = .black {
+    public var lineColor: UIColor = UIColor.brownColor {
         didSet {
             self.setNeedsDisplay()
         }
     }
     
     @IBInspectable
-    public var lineWidth: CGFloat = 7.0 {
+    public var lineWidth: CGFloat = 5.0 {
         didSet {
             self.setNeedsDisplay()
         }
@@ -76,6 +76,24 @@ class logoView: UIView {
         path.addLine(to: CGPoint(
             x:logoConstant.scalePointF.x * factorX,
             y:logoConstant.scalePointF.y * factorY
+        ))
+        
+        path.addLine(to: CGPoint(
+            x:logoConstant.scalePointG.x * factorX,
+            y:logoConstant.scalePointG.y * factorY
+        ))
+        
+        path.addLine(to: CGPoint(
+            x:logoConstant.scalePointH.x * factorX,
+            y:logoConstant.scalePointH.y * factorY
+        ))
+        path.addLine(to: CGPoint(
+            x:logoConstant.scalePointI.x * factorX,
+            y:logoConstant.scalePointI.y * factorY
+        ))
+        path.addLine(to: CGPoint(
+            x:logoConstant.scalePointJ.x * factorX,
+            y:logoConstant.scalePointJ.y * factorY
         ))
         
         //Set stroke or fill colors.

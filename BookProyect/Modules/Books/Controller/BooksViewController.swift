@@ -82,7 +82,6 @@ class BooksViewController : UIViewController {
         getData()
         getImage()
         initUI()
-        user()
         requesBooks()
     }
     
@@ -99,6 +98,17 @@ class BooksViewController : UIViewController {
         id.textColor = UIColor.pinkColor
         id.textAlignment = .center
         view.addSubview(id)
+        
+        let docRef = db.collection("UserInfo").document("User")
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                print("Document data: \(dataDescription)")
+            } else {
+                print("Document does not exist")
+            }
+        }
         
         
         //MARK: - Compras
@@ -204,15 +214,6 @@ class BooksViewController : UIViewController {
         dataSource = Libros
         
     }
-    
-//MARK: - User dataBase
-    func user(){
-        db.collection("UserInfo").getDocuments {(querySnapshot, error )in
-            if let e = error {
-                print("There was an issue retrieving data from Firestore. \(e)")
-                }
-            }
-        }
 // MARK: - Imagenes de libros
     
     func getImage(){

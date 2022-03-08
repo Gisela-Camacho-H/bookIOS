@@ -140,7 +140,7 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
         
     }
     
-    func creaeActivityIndicator() {
+    func createActivityIndicator() {
         self.view.addSubview(activityView)
         activityView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -170,7 +170,6 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
             return true
         }
         func textFieldDidEndEditing(_ textField: UITextField) {
-            
             if let Name = SearchTextField.text {
                 categoryManager.fetchCategory(bookName: Name)
             }
@@ -188,5 +187,3 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
 
                 }
         }
-
-

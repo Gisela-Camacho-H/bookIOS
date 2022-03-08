@@ -10,6 +10,7 @@ import Foundation
 
 protocol CategoryManagerDelegate {
    func didUpdateCategory(_ categoryManager: CategoryManager, categoryid: CategoryModel)
+    
 }
 
 struct CategoryManager {
@@ -17,12 +18,13 @@ struct CategoryManager {
 
    
    var delegate: CategoryManagerDelegate?
+
    
    func fetchCategory(bookName: String) {
        let urlString = "\(BookUrl)/\(bookName).json"
       perfomRequest(urlString: urlString)
    }
-   
+    
    func perfomRequest(urlString: String) {
        // Hacemos los 4 pasos
        
@@ -48,7 +50,6 @@ struct CategoryManager {
            task.resume()
        }
    }
-   
    
    
    func parseJSON(categoryData: Data) -> CategoryModel? {

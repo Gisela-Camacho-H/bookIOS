@@ -32,6 +32,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
     lazy var contentform : UIView = UIView()
     lazy var textFieldStackView : UIStackView = UIStackView()
     lazy var labelStackView : UIStackView = UIStackView()
+    
 
     
     override func viewDidLoad() {
@@ -42,6 +43,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
         backgroundImage.image = UIImage(named: "papel")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
         self.view.insertSubview(backgroundImage, at: 0)
+        
 
         initUI()
         self.emailTextField.delegate = self
@@ -54,7 +56,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
         return false
     }
     func initUI(){
-    
         
         topImageView = UIImageView(frame: CGRect(x: 0, y: height/6 - 60, width: width, height: height/5))
         topImageView.image = UIImage(named: "topImage")
@@ -174,16 +175,16 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
             
         }else {
            
-           if let password = passwordTextField.text, let email = emailTextField.text {
-           Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-               if let e = error {
-                   print(e)
-               } else {
+            if let password = passwordTextField.text, let email = emailTextField.text {
+              Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                    if let e = error {
+                        print(e)
+                    } else {
                         let register = TabBarViewController()
                         register.modalPresentationStyle = .fullScreen
                         self.present(register , animated: true, completion: nil)
                    
-                  /* if let user = self.userTextField.text {
+                  if let user = self.userTextField.text {
                        self.db.collection("UserInfo").addDocument(data: ["User": user]) { (error) in
                            if let e = error {
                                print("There was a issue saving data to firestore, \(e)")
@@ -191,7 +192,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
                                print("Successfully saved data.")
                            }
                        }
-                   }*/
+                   }
                     }
                 }
            }

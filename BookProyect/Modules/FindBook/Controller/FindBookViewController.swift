@@ -155,7 +155,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
 
     }
     
-    func creaeActivityIndicator() {
+    func createActivityIndicator() {
         self.view.addSubview(activityView)
         activityView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -196,6 +196,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             
             if let Name = SearchTextField.text {
                 bookManager.fetchBook(bookName: Name)
+                createActivityIndicator()
             }
             SearchTextField.text = ""
         }
@@ -208,7 +209,6 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
                     self.fetchedEndPoint = bookid.key
 
                     }
-
                 }
         }
 

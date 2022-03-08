@@ -58,18 +58,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(topImageView)
         
         bienvenidoView = UIView(frame: CGRect(x: 20, y: height/4 + 60, width: width - 40, height: 160))
-        bienvenidoView.backgroundColor = .white
+        bienvenidoView.backgroundColor = .clear
         bienvenidoView.layer.cornerRadius = 20
         view.addSubview(bienvenidoView)
         
-        imageBook = UIImageView(frame: CGRect(x: width/3, y: 0, width: 90, height: 90))
+        imageBook = UIImageView(frame: CGRect(x: width/2, y: 0, width: 90, height: 90))
         imageBook.image = UIImage(named: "icon")
         bienvenidoView.addSubview(imageBook)
         
-        bienvenidosLabel = UILabel(frame: CGRect(x: 0, y: 100, width: width, height: 50))
+        bienvenidosLabel = UILabel(frame: CGRect(x: 70, y: 100, width: width - 60, height: 50))
         bienvenidosLabel.text = ""
         var charIndex = 0
-       let titleText = "  Welcome  "
+       let titleText = "   Welcome   "
         for letter in titleText {
             Timer.scheduledTimer(withTimeInterval: Double(charIndex) * 0.3, repeats: false){
                 (timer) in
@@ -77,7 +77,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
             charIndex += 1
         }
-        bienvenidosLabel.font = .boldSystemFont(ofSize: 35)
+        bienvenidosLabel.font = .boldSystemFont(ofSize: 25)
         bienvenidosLabel.textAlignment = .center
         bienvenidosLabel.textColor = UIColor.brownColor
         bienvenidoView.addSubview(bienvenidosLabel)
