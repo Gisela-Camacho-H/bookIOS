@@ -48,8 +48,8 @@ class logoView: UIView {
         let path = UIBezierPath()
         //Set attributes
         path.lineWidth = lineWidth
-        let factorX = rect.width * 0.9
-        let factorY = rect.height * 0.90
+        let factorX = rect.width * 0.8
+        let factorY = rect.height * 0.8
         
         //Set starting points
         path.move(to: CGPoint(

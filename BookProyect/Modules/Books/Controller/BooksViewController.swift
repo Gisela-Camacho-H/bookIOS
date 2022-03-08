@@ -359,6 +359,7 @@ class BooksViewController : UIViewController {
     @objc func logout(){
         do {
             try Auth.auth().signOut()
+            UserDefaults.standard.removeObject(forKey: "superCart")
             let back = ViewController()
             back.modalPresentationStyle = .fullScreen
             present(back, animated: true, completion: nil)

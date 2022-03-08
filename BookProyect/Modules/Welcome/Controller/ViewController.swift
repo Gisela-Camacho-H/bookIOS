@@ -10,7 +10,8 @@ import Firebase
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
-//MARK: - Image
+    @IBOutlet weak var logoView: logoView!
+    //MARK: - Image
     private lazy var topImageView: UIImageView = UIImageView()
     private lazy var imageBook : UIImageView = UIImageView()
 //MARK: - Labels
@@ -58,10 +59,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         view.addSubview(topImageView)
         
         bienvenidoView = UIView(frame: CGRect(x: 20, y: height/4 + 60, width: width - 40, height: 160))
-        bienvenidoView.backgroundColor = .clear
+        bienvenidoView.backgroundColor = .white
         bienvenidoView.layer.cornerRadius = 20
         view.addSubview(bienvenidoView)
         
+        logoView.backgroundColor = .clear
+        logoView.layer.cornerRadius = 20
+        view.addSubview(logoView)
+
         imageBook = UIImageView(frame: CGRect(x: width/2, y: 0, width: 90, height: 90))
         imageBook.image = UIImage(named: "icon")
         bienvenidoView.addSubview(imageBook)
@@ -77,7 +82,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
             charIndex += 1
         }
-        bienvenidosLabel.font = .boldSystemFont(ofSize: 25)
+        bienvenidosLabel.font = .boldSystemFont(ofSize: 30)
         bienvenidosLabel.textAlignment = .center
         bienvenidosLabel.textColor = UIColor.brownColor
         bienvenidoView.addSubview(bienvenidosLabel)
