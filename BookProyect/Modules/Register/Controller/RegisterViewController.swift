@@ -17,17 +17,17 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
     lazy var topImageView: UIImageView = UIImageView()
     let db = Firestore.firestore()
     // TextField
-    lazy var correoTextField : UITextField = UITextField()
-    lazy var contrasenaTextField : UITextField = UITextField()
-    lazy var usuarioTextField : UITextField = UITextField()
-    lazy var confirmarTextField : UITextField = UITextField()
+    lazy var emailTextField : UITextField = UITextField()
+    lazy var passwordTextField : UITextField = UITextField()
+    lazy var userTextField : UITextField = UITextField()
+    lazy var confirmTextField : UITextField = UITextField()
     
     // Labels
-    lazy var RegistraInfoLabel : UILabel = UILabel()
-    lazy var usuarioLabel : UILabel = UILabel()
-    lazy var correoLabel: UILabel = UILabel()
-    lazy var contrasenaLabel: UILabel = UILabel()
-    lazy var confirmarLabel: UILabel = UILabel()
+    lazy var RegisterInfoLabel : UILabel = UILabel()
+    lazy var userLabel : UILabel = UILabel()
+    lazy var emailLabel: UILabel = UILabel()
+    lazy var passwordLabel: UILabel = UILabel()
+    lazy var confirmLabel: UILabel = UILabel()
     
     lazy var contentform : UIView = UIView()
     lazy var textFieldStackView : UIStackView = UIStackView()
@@ -44,10 +44,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
         self.view.insertSubview(backgroundImage, at: 0)
 
         initUI()
-        self.correoTextField.delegate = self
-        self.contrasenaTextField.delegate = self
-        self.usuarioTextField.delegate = self
-        self.confirmarTextField.delegate = self
+        self.emailTextField.delegate = self
+        self.passwordTextField.delegate = self
+        self.userTextField.delegate = self
+        self.confirmTextField.delegate = self
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
@@ -72,21 +72,21 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
         
         //MARK: - formulario de registro
         
-        RegistraInfoLabel = UILabel(frame: CGRect(x: 30, y: 0, width: width - 60, height: 50))
-        RegistraInfoLabel.text = "  Registration  "
-        RegistraInfoLabel.font = .boldSystemFont(ofSize: 22)
-        RegistraInfoLabel.textAlignment = .center
-        RegistraInfoLabel.textColor = UIColor.brownColor
-        contentform.addSubview(RegistraInfoLabel)
+        RegisterInfoLabel = UILabel(frame: CGRect(x: 30, y: 0, width: width - 60, height: 50))
+        RegisterInfoLabel.text = "  Registration  "
+        RegisterInfoLabel.font = .boldSystemFont(ofSize: 22)
+        RegisterInfoLabel.textAlignment = .center
+        RegisterInfoLabel.textColor = UIColor.brownColor
+        contentform.addSubview(RegisterInfoLabel)
         
-        self.view.addSubview(correoTextField)
-        self.view.addSubview(contrasenaTextField)
-        self.view.addSubview(usuarioTextField)
-        self.view.addSubview(confirmarTextField)
-        contrasenaTextField.isSecureTextEntry = true
-        confirmarTextField.isSecureTextEntry = true
+        self.view.addSubview(emailTextField)
+        self.view.addSubview(passwordTextField)
+        self.view.addSubview(userTextField)
+        self.view.addSubview(confirmTextField)
+        passwordTextField.isSecureTextEntry = true
+        confirmTextField.isSecureTextEntry = true
         
-        let textFieldArray: [UITextField] = [usuarioTextField, correoTextField, contrasenaTextField, confirmarTextField]
+        let textFieldArray: [UITextField] = [userTextField, emailTextField, passwordTextField, confirmTextField]
         
         textFieldStackView.axis = .vertical
         textFieldStackView.spacing = 45
@@ -98,7 +98,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
         view.addSubview(textFieldStackView)
         textFieldStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint.activate([textFieldStackView.topAnchor.constraint(equalTo: RegistraInfoLabel.bottomAnchor, constant: 5),
+        NSLayoutConstraint.activate([textFieldStackView.topAnchor.constraint(equalTo: RegisterInfoLabel.bottomAnchor, constant: 5),
             textFieldStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             textFieldStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8)
         ])
@@ -110,18 +110,19 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
             textFieldElement.layer.borderWidth = 2
             textFieldElement.backgroundColor = .clear
             textFieldElement.textAlignment = NSTextAlignment.left
+            textFieldElement.keyboardType = UIKeyboardType.default
+            textFieldElement.autocorrectionType = UITextAutocorrectionType.no
+            textFieldElement.clearButtonMode = UITextField.ViewMode.whileEditing
         }
         
-        self.view.addSubview(correoLabel)
-        self.view.addSubview(contrasenaLabel)
-        self.view.addSubview(usuarioLabel)
-        self.view.addSubview(confirmarLabel)
-        confirmarLabel.text = "- Confirm -"
-        contrasenaLabel.text = "Password"
-        correoLabel.text = "--  Email  --"
-        usuarioLabel.text = "--  User  --"
+        self.view.addSubview(userLabel)
+        confirmLabel.text = "- Confirm -"
+        passwordLabel.text = "Password"
+        emailLabel.text = "--  Email  --"
+        userLabel.text = "--  User  --"
+
         
-        let labelArray: [UILabel] = [usuarioLabel, correoLabel, contrasenaLabel, confirmarLabel]
+        let labelArray: [UILabel] = [userLabel, emailLabel, passwordLabel, confirmLabel]
         
         labelStackView.axis = .vertical
         labelStackView.spacing = 75
@@ -165,13 +166,15 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
     }
     var alerta = ""
     @IBAction func goToLogin(_ sender: Any) {
-        if (contrasenaTextField.text?.isEmpty)! || (correoTextField.text?.isEmpty)! || (usuarioTextField.text?.isEmpty)! || (confirmarTextField.text?.isEmpty)! {
+        if (passwordTextField.text?.isEmpty)! || (emailTextField.text?.isEmpty)! || (userTextField.text?.isEmpty)! || (confirmTextField.text?.isEmpty)! {
             alerta = "Ingrese todos los datos requeridos"
-        } else if contrasenaTextField.text != confirmarTextField.text {
+            
+        } else if passwordTextField.text != passwordTextField.text {
             alerta = "Las contraseñas deben ser las mismas"
+            
         }else {
            
-           if let password = contrasenaTextField.text, let email = correoTextField.text {
+           if let password = passwordTextField.text, let email = emailTextField.text {
            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                if let e = error {
                    print(e)
@@ -179,17 +182,18 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
                         let register = TabBarViewController()
                         register.modalPresentationStyle = .fullScreen
                         self.present(register , animated: true, completion: nil)
+                   
+                  /* if let user = self.userTextField.text {
+                       self.db.collection("UserInfo").addDocument(data: ["User": user]) { (error) in
+                           if let e = error {
+                               print("There was a issue saving data to firestore, \(e)")
+                           } else {
+                               print("Successfully saved data.")
+                           }
+                       }
+                   }*/
                     }
                 }
-           }
-           if let user = usuarioTextField.text {
-               db.collection("UserInfo").addDocument(data: ["User": user]) { (error) in
-                   if let e = error {
-                       print("There was a issue saving data to firestore, \(e)")
-                   } else {
-                       print("Successfully saved data.")
-                   }
-               }
            }
        }
         if alerta != "" {
