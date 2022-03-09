@@ -35,7 +35,7 @@ struct AuthorManager {
            let task = session.dataTask(with: url) {(data, response, error)
                in
                if error != nil{
-                   print(error)
+                   print(error!)
                    return
                }
                if let safeData = data {
@@ -57,7 +57,7 @@ struct AuthorManager {
            
            let decodedData = try decoder.decode(AuthorData.self, from: authorData)
            print(decodedData.docs[0].name)
-           print(decodedData.docs[0].top_work)
+           print(decodedData.docs[0].top_work!)
        
            let nameApi = decodedData.docs[0].name
            let birthdayApi = decodedData.docs[0].birth_date

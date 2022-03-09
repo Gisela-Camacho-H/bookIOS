@@ -67,7 +67,7 @@
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
-		<key>Keychain.xcscheme</key>
+		<key>KeychainAccess.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

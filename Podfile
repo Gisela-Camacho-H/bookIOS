@@ -1,5 +1,5 @@
 
-platform :ios, '9.0'
+platform :ios, '13.0'
 
 target 'BookProyect' do
   use_frameworks!
@@ -11,6 +11,6 @@ target 'BookProyect' do
   
   inhibit_all_warnings!
   
-  pod "Keychain"
+  pod 'KeychainAccess'
 
 end

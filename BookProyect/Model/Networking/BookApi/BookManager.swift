@@ -36,7 +36,7 @@ struct BookManager {
             let task = session.dataTask(with: url) {(data, response, error)
                 in
                 if error != nil{
-                    print(error)
+                    print(error!)
                     return
                 }
                 if let safeData = data {
