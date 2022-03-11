@@ -130,7 +130,7 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     content2.text = ""
     view.addSubview(content2)
         
-    contentLabel2 = UILabel(frame: CGRect(x: 60, y: 620, width: width - 120 , height: 50))
+    contentLabel2 = UILabel(frame: CGRect(x: 60, y: 640, width: width - 120 , height: 50))
     contentLabel2.textAlignment = NSTextAlignment.center
     contentLabel2.backgroundColor = UIColor.brownColor
     contentLabel2.textColor = UIColor.pinkColor
@@ -149,7 +149,7 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     content3.text = ""
     view.addSubview(content3)
         
-    goBookButton = UIButton(frame: CGRect(x: width - 90, y: height - 170, width: 70 , height: 50))
+    goBookButton = UIButton(frame: CGRect(x: width - 90, y: height - 200, width: 70 , height: 50))
     goBookButton.setTitle("+ info", for: .normal)
     goBookButton.setTitleColor(.brownColor, for: .normal)
     goBookButton.addTarget(self, action: #selector(go), for: .touchUpInside)

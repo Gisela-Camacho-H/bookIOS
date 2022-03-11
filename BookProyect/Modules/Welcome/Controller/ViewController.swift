@@ -294,37 +294,40 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func goToBooks(_ sender: Any) {
         var alerta = ""
         if (contrasenaTextField.text?.isEmpty)! || (correoTextField.text?.isEmpty)!  {
-            alerta = "Ingrese todos los datos requeridos"
+            alerta = "Enter all the information"
        } else {
            if let password = contrasenaTextField.text, let email = correoTextField.text {
                Auth.auth().signIn(withEmail: email, password: password) {
                    [weak self] authResult, error in
                    if let e = error {
                        print(e)
+                       alerta = "WRONG email or password"
+                       let alertView = UIAlertController(title: "Error", message: alerta, preferredStyle: .alert)
+                       let aceptar = UIAlertAction(title: "Aceptar", style: .default, handler: nil)
+                       alertView.addAction(aceptar)
+                       self?.present(alertView, animated: true, completion: nil)
+                       
                    }else {
-
-                   }
-               }
-       }
-    }
+                       UserDefaults.standard.set(self?.correoTextField.text, forKey: "UserLog")
+                       self?.textFieldStackView.removeFromSuperview()
+                       self?.correoLabel.removeFromSuperview()
+                       self?.cuentaLabel.removeFromSuperview()
+                       self?.loginButton.removeFromSuperview()
+                       self?.cuentaStackView.removeFromSuperview()
+                       if let user = self?.defaults.string(forKey: "UserLog"){
+                           //userLogged(name: username)
+                           let gotoBooks = TabBarViewController()
+                           gotoBooks.modalPresentationStyle = .fullScreen
+                           self?.present(gotoBooks, animated: true, completion: nil)}
+                            }
+                        }
+                    }
+                }
     if alerta != "" {
             let alertView = UIAlertController(title: "Error", message: alerta, preferredStyle: .alert)
             let aceptar = UIAlertAction(title: "Aceptar", style: .default, handler: nil)
             alertView.addAction(aceptar)
             self.present(alertView, animated: true, completion: nil)
-    }else {
-        UserDefaults.standard.set(correoTextField.text, forKey: "UserLog")
-        textFieldStackView.removeFromSuperview()
-        correoLabel.removeFromSuperview()
-        cuentaLabel.removeFromSuperview()
-        loginButton.removeFromSuperview()
-        cuentaStackView.removeFromSuperview()
-        if let user = defaults.string(forKey: "UserLog"){
-            //userLogged(name: username)
-            let gotoBooks = TabBarViewController()
-            gotoBooks.modalPresentationStyle = .fullScreen
-            self.present(gotoBooks, animated: true, completion: nil)
-        }
     }
 }
     

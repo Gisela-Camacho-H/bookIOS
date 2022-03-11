@@ -74,9 +74,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
         
         //MARK: - formulario de registro
         
-        RegisterInfoLabel = UILabel(frame: CGRect(x: 30, y: 0, width: width - 60, height: 50))
+        RegisterInfoLabel = UILabel(frame: CGRect(x: 20, y: 10, width: width - 60, height: 50))
         RegisterInfoLabel.text = "  Registration  "
-        RegisterInfoLabel.font = .boldSystemFont(ofSize: 22)
+        RegisterInfoLabel.font = .boldSystemFont(ofSize: 25)
         RegisterInfoLabel.textAlignment = .center
         RegisterInfoLabel.textColor = UIColor.brownColor
         contentform.addSubview(RegisterInfoLabel)
@@ -100,7 +100,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
         view.addSubview(textFieldStackView)
         textFieldStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint.activate([textFieldStackView.topAnchor.constraint(equalTo: RegisterInfoLabel.bottomAnchor, constant: 5),
+        NSLayoutConstraint.activate([textFieldStackView.topAnchor.constraint(equalTo: RegisterInfoLabel.bottomAnchor, constant: 30),
             textFieldStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             textFieldStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8)
         ])
@@ -136,7 +136,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
         view.addSubview(labelStackView)
         labelStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint.activate([labelStackView.topAnchor.constraint(equalTo: textFieldStackView.topAnchor, constant: -10 ),
+        NSLayoutConstraint.activate([labelStackView.topAnchor.constraint(equalTo: textFieldStackView.topAnchor, constant: -10),
             labelStackView.leftAnchor.constraint(equalTo: textFieldStackView.leftAnchor, constant: 20)
         ])
         labelArray.forEach {label in

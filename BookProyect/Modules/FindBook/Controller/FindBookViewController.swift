@@ -146,7 +146,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
             content3.text = ""
             view.addSubview(content3)
                 
-            goBookButton = UIButton(frame: CGRect(x: width - 90, y: height - 170, width: 70 , height: 50))
+            goBookButton = UIButton(frame: CGRect(x: width - 90, y: height - 200, width: 70 , height: 50))
             goBookButton.setTitle("+ info", for: .normal)
             goBookButton.setTitleColor(.brownColor, for: .normal)
             goBookButton.addTarget(self, action: #selector(go), for: .touchUpInside)
