@@ -142,16 +142,12 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
     
     func createActivityIndicator() {
         self.view.addSubview(activityView)
+        activityView.color = UIColor.brownColor
         activityView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             activityView.centerXAnchor.constraint(equalTo: view.centerXAnchor), activityView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
         ])
         activityView.startAnimating()
-    }
-    
-    func removeActivityIndicator() {
-        activityView.stopAnimating()
-        activityView.removeFromSuperview()
     }
     
     @objc func backAction(){
@@ -171,12 +167,15 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
         }
         func textFieldDidEndEditing(_ textField: UITextField) {
             if let Name = SearchTextField.text {
-                categoryManager.fetchCategory(bookName: Name)
+                categoryManager.fetchCategory(bookName: Name, view: activityView)
+                createActivityIndicator()
             }
             SearchTextField.text = ""
         }
             func didUpdateCategory(_ categoryManager: CategoryManager, categoryid: CategoryModel) {
                 DispatchQueue.main.async {
+                    self.activityView.removeFromSuperview()
+                    self.activityView.stopAnimating()
                     self.title1.text = categoryid.name
                     self.content1.text = categoryid.title1
                     self.content2.text = categoryid.title2

@@ -111,11 +111,14 @@ class DetailFindBookViewController: UIViewController, DetailManagerDelegate, UIT
     func fetchData(){
         if let name = endPointKey {
             detailManager.fetchDetail(bookName: name)
+            creaeActivityIndicator()
         }
     }
     
             func didUpdateDetail(_ detailManager: DetailManager, detailid: DetailModel) {
                 DispatchQueue.main.async {
+                    self.activityView.removeFromSuperview()
+                    self.activityView.stopAnimating()
                     self.title1.text = detailid.title
                     self.content1.text = detailid.description
                     }

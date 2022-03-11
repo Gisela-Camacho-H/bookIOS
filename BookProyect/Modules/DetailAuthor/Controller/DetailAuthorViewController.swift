@@ -112,11 +112,14 @@ class DetailAuthorViewController: UIViewController, BioManagerDelegate, UITextFi
     func fetchData(){
         if let name = endPointKey {
             bioManager.fetchBio(bookName: name)
+            creaeActivityIndicator()
         }
     }
     
             func didUpdateBio(_ bioManager: BioManager, bioid: BioModel) {
                 DispatchQueue.main.async {
+                    self.activityView.removeFromSuperview()
+                    self.activityView.stopAnimating()
                     self.content1.text = bioid.bio
                     }
 

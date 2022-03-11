@@ -32,6 +32,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
     lazy var contentform : UIView = UIView()
     lazy var textFieldStackView : UIStackView = UIStackView()
     lazy var labelStackView : UIStackView = UIStackView()
+    var defaults = UserDefaults.standard
     
 
     
@@ -158,6 +159,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
         view.addSubview(registerButton)
         
         
+        
     }
     //MARK: - Funciones de regresar y registrar
     
@@ -174,6 +176,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
             alerta = "Las contraseñas deben ser las mismas"
             
         }else {
+            UserDefaults.standard.set(userTextField.text, forKey: "user")
+            UserDefaults.standard.set(emailTextField.text, forKey: "UserLog")
            
             if let password = passwordTextField.text, let email = emailTextField.text {
               Auth.auth().createUser(withEmail: email, password: password) { authResult, error in

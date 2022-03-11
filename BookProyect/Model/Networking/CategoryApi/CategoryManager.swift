@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import UIKit
 
 
 protocol CategoryManagerDelegate {
    func didUpdateCategory(_ categoryManager: CategoryManager, categoryid: CategoryModel)
     
 }
+
 
 struct CategoryManager {
      let BookUrl = "https://openlibrary.org/subjects"
@@ -20,14 +22,13 @@ struct CategoryManager {
    var delegate: CategoryManagerDelegate?
 
    
-   func fetchCategory(bookName: String) {
+   func fetchCategory(bookName: String, view: UIView) {
        let urlString = "\(BookUrl)/\(bookName).json"
-      perfomRequest(urlString: urlString)
+       perfomRequest(urlString: urlString)
    }
     
-   func perfomRequest(urlString: String) {
+    func perfomRequest(urlString: String) {
        // Hacemos los 4 pasos
-       
        //1.Crear un URL
        if let url = URL(string: urlString) {
            //2. Create a URLSession

@@ -8,18 +8,18 @@
 import Foundation
 
 public enum logoConstant {
-    public static let pointA = (x:15.0, y:0.0)
-    public static let pointB = (x:15.0, y:150.0)
-    public static let pointC = (x:30.0, y:130.0)
-    public static let pointD = (x:45.0, y:150.0)
-    public static let pointE = (x:45.0, y:0.0)
-    public static let pointF = (x:0.0, y:0.0)
-    public static let pointG = (x:100.0, y:0.0)
-    public static let pointH = (x:100.0, y:165.0)
-    public static let pointI = (x:0.0, y:165.0)
-    public static let pointJ = (x:0.0, y:0.0)
+    public static let pointA = (x:20.0, y:5.0)
+    public static let pointB = (x:20.0, y:155.0)
+    public static let pointC = (x:35.0, y:135.0)
+    public static let pointD = (x:50.0, y:155.0)
+    public static let pointE = (x:50.0, y:5.0)
+    public static let pointF = (x:5.0, y:5.0)
+    public static let pointG = (x:105.0, y:5.0)
+    public static let pointH = (x:105.0, y:170.0)
+    public static let pointI = (x:5.0, y:170.0)
+    public static let pointJ = (x:5.0, y:2.0)
     
-    private static let scaleXFactor = 275.0
+    private static let scaleXFactor = 100.0
     private static let scaleYFactor = 160.0
     
     public static let scalePointA = (x:logoConstant.pointA.x/logoConstant.scaleXFactor,

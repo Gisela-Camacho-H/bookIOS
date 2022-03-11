@@ -23,7 +23,7 @@ class logoView: UIView {
     }
     
     @IBInspectable
-    public var lineWidth: CGFloat = 5.0 {
+    public var lineWidth: CGFloat = 4.0 {
         didSet {
             self.setNeedsDisplay()
         }

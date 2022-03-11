@@ -36,6 +36,8 @@ class BooksViewController : UIViewController {
     lazy var labelStackView: UIStackView = UIStackView()
     lazy var categoryStackView: UIStackView = UIStackView()
     
+    var defaults = UserDefaults.standard
+    
     
     var imageCar: UIImageView = UIImageView()
     var counter = 0
@@ -86,6 +88,7 @@ class BooksViewController : UIViewController {
     }
     
     func initUI(){
+        
         
         exitButton = UIButton(frame: CGRect(x: width - 60, y: height/8 - 40, width: 45, height: 45))
         exitButton.setImage(UIImage(named: "exit"), for: .normal)
@@ -360,6 +363,7 @@ class BooksViewController : UIViewController {
         do {
             try Auth.auth().signOut()
             UserDefaults.standard.removeObject(forKey: "superCart")
+            UserDefaults.standard.removeObject(forKey: "UserLog")
             let back = ViewController()
             back.modalPresentationStyle = .fullScreen
             present(back, animated: true, completion: nil)

@@ -160,15 +160,11 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     func creaeActivityIndicator() {
         self.view.addSubview(activityView)
         activityView.translatesAutoresizingMaskIntoConstraints = false
+        activityView.color = UIColor.brownColor
         NSLayoutConstraint.activate([
             activityView.centerXAnchor.constraint(equalTo: view.centerXAnchor), activityView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
         ])
         activityView.startAnimating()
-    }
-    
-    func removeActivityIndicator() {
-        activityView.stopAnimating()
-        activityView.removeFromSuperview()
     }
 
     @objc func backAction(){
@@ -200,11 +196,14 @@ func textFieldDidEndEditing(_ textField: UITextField) {
     
     if let Name = SearchTextField.text {
         authorManager.fetchAuthor(bookName: Name)
+        creaeActivityIndicator()
     }
     SearchTextField.text = ""
 }
     func didUpdateAuthor(_ authorManager: AuthorManager, authorid: AuthorModel) {
         DispatchQueue.main.async {
+            self.activityView.removeFromSuperview()
+            self.activityView.stopAnimating()
             self.title1.text = authorid.name
             self.content3.text = authorid.birthday ?? ""
             self.content2.text = authorid.top ?? ""

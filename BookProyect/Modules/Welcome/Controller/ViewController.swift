@@ -10,21 +10,28 @@ import Firebase
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var logoView: logoView!
+    @IBOutlet weak var logoView: logoView?
     //MARK: - Image
     private lazy var topImageView: UIImageView = UIImageView()
+    private lazy var topImageView1: UIImageView = UIImageView()
     private lazy var imageBook : UIImageView = UIImageView()
+    private lazy var imageBook1 : UIImageView = UIImageView()
 //MARK: - Labels
     private lazy var bienvenidosLabel : UILabel = UILabel()
+    private lazy var bienvenidosLabel1 : UILabel = UILabel()
     private lazy var correoLabel: UILabel = UILabel()
     private lazy var contrasenaLabel: UILabel = UILabel()
     private lazy var cuentaLabel : UILabel = UILabel()
+    private lazy var userLabel: UILabel = UILabel()
+    private lazy var continueLabel: UILabel = UILabel()
 //MARK: - TextField
     private lazy var correoTextField : UITextField = UITextField()
     private lazy var contrasenaTextField : UITextField = UITextField()
 //MARK: - Button
     private lazy var loginButton : UIButton = UIButton()
     private lazy var registrateButton: UIButton = UIButton()
+    lazy var exitButton: UIButton = UIButton()
+    lazy var nextButton: UIButton = UIButton()
     var passwordButton: UIButton?
 //MARK: - StackViews
     private lazy var textFieldStackView: UIStackView = UIStackView()
@@ -32,7 +39,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     private lazy var labelsStackView: UIStackView = UIStackView()
 //MARK: - View
     private lazy var bienvenidoView : UIView = UIView()
-    
+    private lazy var bienvenidoView1 : UIView = UIView()
+    var defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,11 +50,79 @@ class ViewController: UIViewController, UITextFieldDelegate {
         backgroundImage.image = UIImage(named: "papel")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
         self.view.insertSubview(backgroundImage, at: 0)
+
+        validateUser()
         
-        //llamar función initUI
-        initUI()
-        self.correoTextField.delegate = self
-        self.contrasenaTextField.delegate = self
+    }
+    
+    func validateUser(){
+        if let user = defaults.string(forKey: "UserLog"){
+            print("books")
+            let gotoBooks = TabBarViewController()
+            gotoBooks.modalPresentationStyle = .fullScreen
+            self.present(gotoBooks, animated: true, completion: nil)
+            userLogged(name: user)
+        }else {
+            initUI()
+        }
+    }
+    
+    func userLogged(name: String){
+        
+        exitButton = UIButton(frame: CGRect(x: width - 60, y: height/8 - 40, width: 45, height: 45))
+        exitButton.setImage(UIImage(named: "exit"), for: .normal)
+        exitButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
+        view.addSubview(exitButton)
+        
+        topImageView1 = UIImageView(frame: CGRect(x: 0, y: height/6 - 20, width: width, height: height/5))
+        topImageView1.image = UIImage(named: "topImage")
+        view.addSubview(topImageView1)
+        
+        bienvenidoView1 = UIView(frame: CGRect(x: 20, y: height/3 + 75, width: width - 40, height: 200))
+        bienvenidoView1.backgroundColor = .white
+        bienvenidoView1.layer.cornerRadius = 20
+        view.addSubview(bienvenidoView1)
+
+        imageBook1 = UIImageView(frame: CGRect(x: width/2 - 60, y: 0, width: 90, height: 90))
+        imageBook1.image = UIImage(named: "icon")
+        bienvenidoView1.addSubview(imageBook1)
+        
+        let userName = defaults.string(forKey: "user")
+        userLabel = UILabel(frame: CGRect(x: 0, y: 150, width: width - 60, height: 50))
+        userLabel.text = "    \(userName ?? "" )  "
+        userLabel.textAlignment = .center
+        userLabel.textColor = UIColor.coralColor
+        userLabel.font = .boldSystemFont(ofSize: 30)
+        bienvenidoView1.addSubview(userLabel)
+        
+        bienvenidosLabel1 = UILabel(frame: CGRect(x: -20, y: 100, width: width, height: 50))
+        bienvenidosLabel1.text = ""
+        var charIndex = 0
+       let titleText = "Welcome Back!"
+        for letter in titleText {
+            Timer.scheduledTimer(withTimeInterval: Double(charIndex) * 0.3, repeats: false){
+                (timer) in
+                self.bienvenidosLabel1.text?.append(letter)
+            }
+            charIndex += 1
+        }
+        bienvenidosLabel1.font = .boldSystemFont(ofSize: 25)
+        bienvenidosLabel1.textAlignment = .center
+        bienvenidosLabel1.textColor = UIColor.brownColor
+        bienvenidoView1.addSubview(bienvenidosLabel1)
+        
+        continueLabel = UILabel(frame: CGRect(x: width - 260, y: height - 150 , width: 200, height: 50))
+        continueLabel.text = " Let's continue"
+        continueLabel.textAlignment = .center
+        continueLabel.textColor = UIColor.coralColor
+        continueLabel.font = .boldSystemFont(ofSize: 25)
+        view.addSubview(continueLabel)
+        
+        nextButton = UIButton(frame: CGRect(x: width - 60, y: height - 145 , width: 45, height: 45))
+        nextButton.setImage(UIImage(named: "go"), for: .normal)
+        nextButton.addTarget(self, action: #selector(nextView), for: .touchUpInside)
+        view.addSubview(nextButton)
+
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -54,6 +130,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return false
     }
     func initUI(){
+        
+        
+        userLabel.removeFromSuperview()
+        exitButton.removeFromSuperview()
+        nextButton.removeFromSuperview()
+        topImageView1.removeFromSuperview()
+        bienvenidoView1.removeFromSuperview()
+        bienvenidosLabel1.removeFromSuperview()
+        imageBook1.removeFromSuperview()
+        
         topImageView = UIImageView(frame: CGRect(x: 0, y: height/6 - 60, width: width, height: height/5))
         topImageView.image = UIImage(named: "topImage")
         view.addSubview(topImageView)
@@ -62,16 +148,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         bienvenidoView.backgroundColor = .white
         bienvenidoView.layer.cornerRadius = 20
         view.addSubview(bienvenidoView)
-        
-        logoView.backgroundColor = .clear
-        logoView.layer.cornerRadius = 20
-        view.addSubview(logoView)
 
-        imageBook = UIImageView(frame: CGRect(x: width/2, y: 0, width: 90, height: 90))
+        imageBook = UIImageView(frame: CGRect(x: width/2 - 45, y: 0, width: 90, height: 90))
         imageBook.image = UIImage(named: "icon")
         bienvenidoView.addSubview(imageBook)
         
-        bienvenidosLabel = UILabel(frame: CGRect(x: 70, y: 100, width: width - 60, height: 50))
+        bienvenidosLabel = UILabel(frame: CGRect(x: 0, y: 100, width: width, height: 50))
         bienvenidosLabel.text = ""
         var charIndex = 0
        let titleText = "   Welcome   "
@@ -82,7 +164,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
             charIndex += 1
         }
-        bienvenidosLabel.font = .boldSystemFont(ofSize: 30)
+        bienvenidosLabel.font = .boldSystemFont(ofSize: 35)
         bienvenidosLabel.textAlignment = .center
         bienvenidosLabel.textColor = UIColor.brownColor
         bienvenidoView.addSubview(bienvenidosLabel)
@@ -184,9 +266,27 @@ class ViewController: UIViewController, UITextFieldDelegate {
             element.heightAnchor.constraint(equalToConstant: 20).isActive = true
         }
         
-        
+        self.correoTextField.delegate = self
+        self.contrasenaTextField.delegate = self
     }
 // MARK: - Función de botones
+    
+    @objc func logout(){
+        do {
+            try Auth.auth().signOut()
+            UserDefaults.standard.removeObject(forKey: "UserLog")
+            initUI()
+        } catch let signOutError as NSError{
+            print("Error signing out %@", signOutError)
+        }
+    }
+    
+    @objc func nextView(){
+        let register = TabBarViewController()
+       register.modalPresentationStyle = .fullScreen
+       present(register, animated: true, completion: nil)
+    }
+    
     @objc func verpass(){
         contrasenaTextField.isSecureTextEntry.toggle()
     }
@@ -202,10 +302,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                    if let e = error {
                        print(e)
                    }else {
-                       print("books")
-                        let gotoBooks = TabBarViewController()
-                       gotoBooks.modalPresentationStyle = .fullScreen
-                       self?.present(gotoBooks, animated: true, completion: nil)
+
                    }
                }
        }
@@ -215,7 +312,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
             let aceptar = UIAlertAction(title: "Aceptar", style: .default, handler: nil)
             alertView.addAction(aceptar)
             self.present(alertView, animated: true, completion: nil)
+    }else {
+        UserDefaults.standard.set(correoTextField.text, forKey: "UserLog")
+        textFieldStackView.removeFromSuperview()
+        correoLabel.removeFromSuperview()
+        cuentaLabel.removeFromSuperview()
+        loginButton.removeFromSuperview()
+        cuentaStackView.removeFromSuperview()
+        if let user = defaults.string(forKey: "UserLog"){
+            //userLogged(name: username)
+            let gotoBooks = TabBarViewController()
+            gotoBooks.modalPresentationStyle = .fullScreen
+            self.present(gotoBooks, animated: true, completion: nil)
         }
+    }
 }
     
     //funcion de ir al registro
@@ -226,4 +336,3 @@ class ViewController: UIViewController, UITextFieldDelegate {
         present(register, animated: true, completion: nil)
     }
 }
-

@@ -157,10 +157,12 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
     
     func createActivityIndicator() {
         self.view.addSubview(activityView)
+        activityView.color = UIColor.brownColor
         activityView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             activityView.centerXAnchor.constraint(equalTo: view.centerXAnchor), activityView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
         ])
+        
         activityView.startAnimating()
     }
     
@@ -202,6 +204,8 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
         }
             func didUpdateBook(_ bookManager: BookManager, bookid: BookModel) {
                 DispatchQueue.main.async {
+                    self.activityView.removeFromSuperview()
+                    self.activityView.stopAnimating()
                     self.title1.text = String(bookid.title)
                     self.content1.text = String(bookid.first ?? 0)
                     self.content2.text = bookid.author_name
