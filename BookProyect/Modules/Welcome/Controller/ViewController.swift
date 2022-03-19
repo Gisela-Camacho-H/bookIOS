@@ -213,6 +213,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             textFieldElement.layer.borderWidth = 2
             textFieldElement.backgroundColor = .clear
             textFieldElement.textAlignment = NSTextAlignment.left
+            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: textFieldElement.frame.height))
+            textFieldElement.leftView = paddingView
+            textFieldElement.leftViewMode = UITextField.ViewMode.always
         }
 
 

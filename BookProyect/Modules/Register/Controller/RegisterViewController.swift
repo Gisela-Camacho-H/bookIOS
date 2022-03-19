@@ -112,6 +112,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
             textFieldElement.keyboardType = UIKeyboardType.default
             textFieldElement.autocorrectionType = UITextAutocorrectionType.no
             textFieldElement.clearButtonMode = UITextField.ViewMode.whileEditing
+            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: textFieldElement.frame.height))
+            textFieldElement.leftView = paddingView
+            textFieldElement.leftViewMode = UITextField.ViewMode.always
         }
         
         self.view.addSubview(userLabel)
