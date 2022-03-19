@@ -8,6 +8,7 @@
 import UIKit
 
 struct Constants {
+    static var cornerRadius = 20.0
     static var width = UIScreen.main.bounds.width
     static var height = UIScreen.main.bounds.height
 }

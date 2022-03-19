@@ -57,6 +57,7 @@ struct BookManager {
         do {
             
             let decodedData = try decoder.decode(BookData.self, from: bookData)
+
             print(decodedData.docs[0].title)
         
             let title1Api = decodedData.docs[0].title

@@ -23,7 +23,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
     lazy var confirmTextField : UITextField = UITextField()
     
     // Labels
-    lazy var RegisterInfoLabel : UILabel = UILabel()
+    lazy var registerInfoLabel : UILabel = UILabel()
     lazy var userLabel : UILabel = UILabel()
     lazy var emailLabel: UILabel = UILabel()
     lazy var passwordLabel: UILabel = UILabel()
@@ -33,8 +33,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
     lazy var textFieldStackView : UIStackView = UIStackView()
     lazy var labelStackView : UIStackView = UIStackView()
     var defaults = UserDefaults.standard
-    
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,12 +72,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
         
         //MARK: - formulario de registro
         
-        RegisterInfoLabel = UILabel(frame: CGRect(x: 20, y: 10, width: width - 60, height: 50))
-        RegisterInfoLabel.text = "  Registration  "
-        RegisterInfoLabel.font = .boldSystemFont(ofSize: 25)
-        RegisterInfoLabel.textAlignment = .center
-        RegisterInfoLabel.textColor = UIColor.brownColor
-        contentform.addSubview(RegisterInfoLabel)
+        registerInfoLabel = UILabel(frame: CGRect(x: 20, y: 10, width: width - 60, height: 50))
+        registerInfoLabel.text = "  Registration  "
+        registerInfoLabel.font = .boldSystemFont(ofSize: 25)
+        registerInfoLabel.textAlignment = .center
+        registerInfoLabel.textColor = UIColor.brownColor
+        contentform.addSubview(registerInfoLabel)
         
         self.view.addSubview(emailTextField)
         self.view.addSubview(passwordTextField)
@@ -91,7 +89,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
         let textFieldArray: [UITextField] = [userTextField, emailTextField, passwordTextField, confirmTextField]
         
         textFieldStackView.axis = .vertical
-        textFieldStackView.spacing = 45
+        textFieldStackView.spacing = Constants.height/25
         textFieldStackView.alignment = .fill
         textFieldStackView.distribution = .fillEqually
         textFieldArray.forEach {textFieldElement in
@@ -100,15 +98,14 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
         view.addSubview(textFieldStackView)
         textFieldStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint.activate([textFieldStackView.topAnchor.constraint(equalTo: RegisterInfoLabel.bottomAnchor, constant: 30),
+        NSLayoutConstraint.activate([textFieldStackView.topAnchor.constraint(equalTo: registerInfoLabel.bottomAnchor, constant: 30),
             textFieldStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             textFieldStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8)
         ])
         textFieldArray.forEach {textFieldElement in
-            textFieldElement.heightAnchor.constraint(equalToConstant: 50).isActive = true
-            textFieldElement.layer.cornerRadius = 25
-            textFieldElement.layer.borderColor = UIColor.brownColor.cgColor
+            textFieldElement.heightAnchor.constraint(equalToConstant: Constants.height/17).isActive = true
             textFieldElement.layer.cornerRadius = 7
+            textFieldElement.layer.borderColor = UIColor.brownColor.cgColor
             textFieldElement.layer.borderWidth = 2
             textFieldElement.backgroundColor = .clear
             textFieldElement.textAlignment = NSTextAlignment.left
@@ -127,7 +124,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
         let labelArray: [UILabel] = [userLabel, emailLabel, passwordLabel, confirmLabel]
         
         labelStackView.axis = .vertical
-        labelStackView.spacing = 75
+        labelStackView.spacing = Constants.height/13
         labelStackView.alignment = .fill
         labelStackView.distribution = .fillEqually
         labelArray.forEach {label in
@@ -140,7 +137,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
             labelStackView.leftAnchor.constraint(equalTo: textFieldStackView.leftAnchor, constant: 20)
         ])
         labelArray.forEach {label in
-            label.heightAnchor.constraint(equalToConstant: 20).isActive = true
+            label.heightAnchor.constraint(equalToConstant: Constants.height/45).isActive = true
             label.widthAnchor.constraint(equalToConstant: 75).isActive = true
             label.backgroundColor = .white
             label.font = .boldSystemFont(ofSize: 12)
@@ -148,9 +145,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
             label.textAlignment = .center
         }
         
-        registerButton = UIButton(frame: CGRect(x: 30, y: height - 140 , width: width - 60 , height: 50))
+        registerButton = UIButton(frame: CGRect(x: 30, y: height - 120 , width: width - 60 , height: Constants.height/15))
         registerButton.backgroundColor = UIColor.brownColor
-        registerButton.layer.cornerRadius = 18
+        registerButton.layer.cornerRadius = Constants.cornerRadius
         registerButton.setTitleColor(.white, for: .normal)
         registerButton.setTitle("Register", for: .normal)
         registerButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
@@ -170,10 +167,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
     var alerta = ""
     @IBAction func goToLogin(_ sender: Any) {
         if (passwordTextField.text?.isEmpty)! || (emailTextField.text?.isEmpty)! || (userTextField.text?.isEmpty)! || (confirmTextField.text?.isEmpty)! {
-            alerta = "Ingrese todos los datos requeridos"
+            alerta = "Enter all the information"
             
         } else if passwordTextField.text != passwordTextField.text {
-            alerta = "Las contraseñas deben ser las mismas"
+            alerta = "passwords should match"
             
         }else {
             UserDefaults.standard.set(userTextField.text, forKey: "user")

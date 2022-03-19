@@ -11,7 +11,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
     
     // Labels
     lazy var buscarLabel : UILabel = UILabel()
-    lazy var date : UILabel = UILabel()
+    lazy var date: UILabel = UILabel()
     lazy var titleLabel : UILabel = UILabel()
     lazy var title1 : UILabel = UILabel()
     lazy var contentLabel1 : UILabel = UILabel()

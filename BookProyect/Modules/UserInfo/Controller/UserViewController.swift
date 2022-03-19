@@ -12,6 +12,7 @@ class UserViewController: UIViewController {
     lazy var userInfoLabel: UILabel = UILabel()
     lazy var userNameLabel: UILabel = UILabel()
     lazy var userEmailLabel: UILabel = UILabel()
+    lazy var lightLabel: UILabel = UILabel()
     var defaults = UserDefaults.standard
     lazy var switchDemo: UISwitch = UISwitch()
 
@@ -54,6 +55,13 @@ class UserViewController: UIViewController {
         switchDemo.setOn(true, animated: false)
         switchDemo.addTarget(self, action: #selector(switchValueDidChange), for: .valueChanged)
         self.view!.addSubview(switchDemo)
+        
+        lightLabel = UILabel(frame:CGRect(x: width/3 - 40, y: 505, width: 100, height: 20))
+        lightLabel.text = "Light Mode "
+        lightLabel.font = .boldSystemFont(ofSize: 15)
+        lightLabel.textAlignment = .center
+        lightLabel.textColor = UIColor.brownColor
+        view.addSubview(lightLabel)
 
     }
     
@@ -64,6 +72,7 @@ class UserViewController: UIViewController {
             userInfoLabel.textColor = UIColor.brownColor
             userNameLabel.textColor = UIColor.brownColor
             userEmailLabel.textColor = UIColor.brownColor
+            lightLabel.textColor = UIColor.brownColor
             
         }
         else{
@@ -71,6 +80,7 @@ class UserViewController: UIViewController {
             userInfoLabel.textColor = .white
             userNameLabel.textColor = .white
             userEmailLabel.textColor = .white
+            lightLabel.textColor = .white
         }
         
     }
