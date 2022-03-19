@@ -9,37 +9,30 @@ import Firebase
 
 class BooksViewController : UIViewController {
 
+    // segmentedControl
     enum DashboardSection:String, CaseIterable {
         case books = "Books"
         case authors = "Authors"
         case categories = "Categories"
     }
-    
-    let db = Firestore.firestore()
-    
-    private let viewModel = BooksViewModel()
-    
-    
-    lazy var id : UILabel = UILabel()
-    lazy var exitButton: UIButton = UIButton()
-    
     private lazy var sectionButton: UISegmentedControl = UISegmentedControl(items:  viewSections.map{ $0.rawValue })
-    
     private var viewSections: [DashboardSection] = DashboardSection.allCases
-    
     private var currentSection: DashboardSection = .books
     
+    let db = Firestore.firestore()
+    private let viewModel = BooksViewModel()
+    
+    lazy var exitButton: UIButton = UIButton()
     var tableView : UITableView?
     
+    // StackesView
     lazy var labelStackView: UIStackView = UIStackView()
     lazy var categoryStackView: UIStackView = UIStackView()
     
     var defaults = UserDefaults.standard
-    
-    
     var imageCar: UIImageView = UIImageView()
     
-    
+    // labels
     lazy var userName: UILabel = UILabel()
     var counterLabel: UILabel = {
         let label = UILabel()
@@ -50,12 +43,12 @@ class BooksViewController : UIViewController {
     
     //MARK: - CollectionView
     
-    var librosCollectionView: UICollectionView = { //ponemos el nombre de la var y lo igualamos a {}()
+    var librosCollectionView: UICollectionView = {
     
-        let layout = UICollectionViewFlowLayout() //Declaramos un layout el cual nos servirá para definir los atributos del collectionView
-        layout.scrollDirection = .horizontal //aqui definimos el tipo de scroll que tendrá el collection
-        layout.minimumLineSpacing = 25
-        layout.minimumInteritemSpacing = 25
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = Constants.width/15
+        layout.minimumInteritemSpacing = Constants.width/10
         
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.register(BookCollectionView.self, forCellWithReuseIdentifier: "cell")
@@ -65,7 +58,7 @@ class BooksViewController : UIViewController {
         collection.showsVerticalScrollIndicator = true
         collection.showsHorizontalScrollIndicator = true
         
-        return collection //Debemos retornar un valor del tipo del cual estamos declarando
+        return collection
     }()
     
     
@@ -89,18 +82,10 @@ class BooksViewController : UIViewController {
     
     func initUI(){
         
-        
         exitButton = UIButton(frame: CGRect(x: width - 60, y: height/8 - 40, width: 45, height: 45))
         exitButton.setImage(UIImage(named: "exit"), for: .normal)
         exitButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
         view.addSubview(exitButton)
-        
-        id = UILabel(frame: CGRect(x: 20, y: 390, width: 150, height: 30))
-        id.text = ""
-        id.font = .boldSystemFont(ofSize: 14)
-        id.textColor = UIColor.pinkColor
-        id.textAlignment = .center
-        view.addSubview(id)
         
         let docRef = db.collection("UserInfo").document("User")
 
@@ -118,10 +103,10 @@ class BooksViewController : UIViewController {
         view?.addSubview(imageCar)
         imageCar.image = UIImage(systemName: "cart.fill")
         imageCar.tintColor = UIColor.brownColor
-        imageCar.addAnchorsAndSize(width: 50, height: 50, left: nil, top: 375, right: 25, bottom: nil)
+        imageCar.addAnchorsAndSize(width: 45, height: 45, left: nil, top: Constants.height/3 + 50, right: 25, bottom: nil)
         
         view?.addSubview(counterLabel)
-        counterLabel.addAnchorsAndSize(width: 22, height: 22, left: nil, top: 375, right: 15, bottom: nil)
+        counterLabel.addAnchorsAndSize(width: 22, height: 22, left: nil, top: Constants.height/3 + 50, right: 15, bottom: nil)
         counterLabel.font = .boldSystemFont(ofSize: 15)
         counterLabel.layer.masksToBounds = true
         counterLabel.layer.cornerRadius = 11
@@ -134,16 +119,16 @@ class BooksViewController : UIViewController {
         librosCollectionView.delegate = self
         librosCollectionView.dataSource = self
         view.addSubview(librosCollectionView)
-        librosCollectionView.addAnchorsAndSize(width: nil, height: height/5, left: 0, top: 125, right: 20, bottom: nil)
+        librosCollectionView.addAnchorsAndSize(width: nil, height: height/6, left: 0, top: 125, right: 20, bottom: nil)
         
         view.addSubview(sectionButton)
         sectionButton.selectedSegmentIndex = 0
         sectionButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            sectionButton.bottomAnchor.constraint(equalTo: librosCollectionView.bottomAnchor, constant: 60),
-            sectionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            sectionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            sectionButton.bottomAnchor.constraint(equalTo: librosCollectionView.bottomAnchor, constant: 50),
+            sectionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.cornerRadius),
+            sectionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.cornerRadius),
             sectionButton.heightAnchor.constraint(equalToConstant: 30)
         ])
         sectionButton.addTarget(self, action: #selector(sectionDidChanged(_:)), for: .valueChanged)
@@ -169,11 +154,11 @@ class BooksViewController : UIViewController {
     }
     
     func requesBooks() {
-        tableView = UITableView(frame: CGRect(x: 20, y: height/3 + 115, width: width - 40, height: height - 410))
+        tableView = UITableView(frame: CGRect(x: 20, y: height/2 - 40, width: width - 40, height: height - 410))
         tableView?.backgroundColor = UIColor.backgroundColor
         tableView?.delegate = self
-        tableView?.dataSource = self //en donde se va a definir (en si mismo)
-        view.addSubview(tableView!) //se hace visible
+        tableView?.dataSource = self
+        view.addSubview(tableView!)
     }
     
     func requestAuthors() {
@@ -196,7 +181,7 @@ class BooksViewController : UIViewController {
         let labelArray: [UILabel] = [a1Label, a2Label, a3Label, a4Label, a5Label, a6Label]
         
         labelStackView.axis = .vertical
-        labelStackView.spacing = 20
+        labelStackView.spacing = 15
         labelStackView.alignment = .fill
         labelStackView.distribution = .fillEqually
         labelArray.forEach {label in
@@ -205,12 +190,12 @@ class BooksViewController : UIViewController {
         view.addSubview(labelStackView)
         labelStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint.activate([labelStackView.topAnchor.constraint(equalTo: librosCollectionView.bottomAnchor, constant: 120),
+        NSLayoutConstraint.activate([labelStackView.topAnchor.constraint(equalTo: imageCar.bottomAnchor, constant: 20),
         labelStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         labelStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8)
         ])
         labelArray.forEach {label in
-            label.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            label.heightAnchor.constraint(equalToConstant: Constants.height/17).isActive = true
             label.widthAnchor.constraint(equalToConstant: 50).isActive = true
             label.backgroundColor = UIColor.brownColor
             label.font = .boldSystemFont(ofSize: 25)
@@ -248,7 +233,7 @@ class BooksViewController : UIViewController {
         let labelArray: [UILabel] = [a1Label, a2Label, a3Label, a4Label, a5Label, a6Label]
         
         categoryStackView.axis = .vertical
-        categoryStackView.spacing = 20
+        categoryStackView.spacing = 15
         categoryStackView.alignment = .fill
         categoryStackView.distribution = .fillEqually
         labelArray.forEach {label in
@@ -257,12 +242,12 @@ class BooksViewController : UIViewController {
         view.addSubview(categoryStackView)
         categoryStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint.activate([categoryStackView.topAnchor.constraint(equalTo: librosCollectionView.bottomAnchor, constant: 120),
+        NSLayoutConstraint.activate([categoryStackView.topAnchor.constraint(equalTo: imageCar.bottomAnchor, constant: 20),
             categoryStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             categoryStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5)
         ])
         labelArray.forEach {label in
-            label.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            label.heightAnchor.constraint(equalToConstant: Constants.height/17).isActive = true
             label.widthAnchor.constraint(equalToConstant: 50).isActive = true
             label.backgroundColor = .white
             label.font = .boldSystemFont(ofSize: 25)
@@ -324,7 +309,8 @@ extension BooksViewController : UITableViewDelegate{
     
     // definir el texto o view en los headers de las secciones
     func tableView(_ tableView: UITableView, titleForHeaderInSection section:Int) -> String?{
-        return viewModel.dataSource?.categorias?[section].nombre ?? ""
+        let title = viewModel.dataSource?.categories?[section].name ?? ""
+        return title
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -333,7 +319,7 @@ extension BooksViewController : UITableViewDelegate{
         
         //se declara el label
         let label = UILabel(frame: CGRect(x: 25, y: 2, width: 200, height: 20))
-        label.text = viewModel.dataSource?.categorias?[section].nombre ?? ""
+        label.text = viewModel.dataSource?.categories?[section].name ?? ""
         label.font = .boldSystemFont(ofSize: 20)
         view.addSubview(label)
         
@@ -341,20 +327,19 @@ extension BooksViewController : UITableViewDelegate{
     }
     
     
-    // muestra la sección y la celda por sección donde se da click
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("I`m on the sección \(indexPath.section) on the cell \(indexPath.row)")
         
-        let libro = viewModel.dataSource?.categorias?[indexPath.section].libros?[indexPath.row]
+        let book = viewModel.dataSource?.categories?[indexPath.section].books?[indexPath.row]
         
-        let vc = DetailBookViewController(libro: libro!)
+        let vc = DetailBookViewController(book: book!)
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
         
     }
     // numero de secciones que vamos a usar
     func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.dataSource?.categorias?.count ?? 0
+        return viewModel.dataSource?.categories?.count ?? 0
     }
     
 }
@@ -364,14 +349,15 @@ extension BooksViewController : UITableViewDelegate{
     extension BooksViewController : UITableViewDataSource{
     // numero de celdas por cada secciones que tiene cada categoria
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.dataSource?.categorias?[section].libros?.count ?? 0
+        return viewModel.dataSource?.categories?[section].books?.count ?? 0
   }
     //tipo de celda que se mostrara
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let libr = viewModel.dataSource?.categorias?[indexPath.section].libros?[indexPath.row]
-        let currentCounter = viewModel.cart[libr?.nombre ?? ""] ?? 0
-        let cell = BookTableViewCell(libro: libr!, numberOf: currentCounter as! Int)
+        let bk = viewModel.dataSource?.categories?[indexPath.section].books?[indexPath.row]
+        let currentCounter = viewModel.cart[bk?.name ?? ""] ?? 0
+        let cell = BookTableViewCell(book: bk!, numberOf: currentCounter as! Int)
         cell.delegate = self
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -381,9 +367,9 @@ extension BooksViewController : UITableViewDelegate{
     }
 
 extension BooksViewController: MenuTableViewCellDelegate {
-    func addtoCar(product: Libro, count: Int) {
+    func addtoCar(product: Books, count: Int) {
         
-        viewModel.cart[product.nombre ?? ""] = count
+        viewModel.cart[product.name ?? ""] = count
         UserDefaults.standard.set(viewModel.cart, forKey: "superCart")
         countCounter()
     }
@@ -396,9 +382,9 @@ extension BooksViewController: MenuTableViewCellDelegate {
         counterLabel.text = "\(viewModel.counter)"
         }
     
-    func removetoCar(product: Libro, count: Int) {
+    func removetoCar(product: Books, count: Int) {
         
-        viewModel.cart[product.nombre ?? ""] = count
+        viewModel.cart[product.name ?? ""] = count
         countCounter()
     }
 }
@@ -425,15 +411,6 @@ extension BooksViewController : UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
         
-        return CGSize(width: width/3 - 20, height: height / 4 - 50)
+        return CGSize(width: width/4 - 20, height: height / 5 - 50)
     }
 }
-
-
-
-//https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=6GmMry36iGR60wACRPVu5PNVrJSCliyv
-//api-key=6GmMry36iGR60wACRPVu5PNVrJSCliyv
-
-//https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?api-key=6GmMry36iGR60wACRPVu5PNVrJSCliyv
-
-//https://api.nytimes.com/svc/books/v3/lists/full-overview.json?api-key=6GmMry36iGR60wACRPVu5PNVrJSCliyv

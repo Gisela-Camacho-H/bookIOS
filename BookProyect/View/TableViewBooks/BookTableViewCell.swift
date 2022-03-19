@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 protocol MenuTableViewCellDelegate{
-    func addtoCar(product: Libro, count: Int)
-    func removetoCar(product: Libro, count: Int)
+    func addtoCar(product: Books, count: Int)
+    func removetoCar(product: Books, count: Int)
 }
 
 class BookTableViewCell: UITableViewCell{
@@ -18,18 +18,16 @@ class BookTableViewCell: UITableViewCell{
     var ownContent: UIView?
     
     // Label
-    lazy var nameBook: UILabel = UILabel()
-    lazy var autorLibro: UILabel = UILabel()
-    lazy var categoriaLibro : UILabel = UILabel()
+    lazy var bookName: UILabel = UILabel()
+    lazy var bookAuthor: UILabel = UILabel()
+    lazy var bookCategory: UILabel = UILabel()
     
     lazy var goButton: UIButton = UIButton()
     
     // UIImageView
-    lazy var imageLibro : UIImageView = UIImageView()
-    lazy var shareImage: UIImageView  = UIImageView()
-    lazy var heartImage: UIImageView  = UIImageView()
+    lazy var bookImage : UIImageView = UIImageView()
     
-    var libro: Libro?
+    var book: Books?
     var delegate: MenuTableViewCellDelegate?
     
     var count = 0
@@ -42,9 +40,9 @@ class BookTableViewCell: UITableViewCell{
         return label
     }()
     
-    init(libro : Libro, numberOf: Int){
+    init( book : Books, numberOf: Int){
         super.init(style: .default, reuseIdentifier: nil)
-        self.libro = libro
+        self.book = book
         self.count = numberOf
         self.backgroundColor = .clear
         initUI()
@@ -58,44 +56,39 @@ class BookTableViewCell: UITableViewCell{
         self.contentView.addSubview(ownContent!)
         
         
-        nameBook = UILabel(frame: CGRect(x: 100, y: 20, width: width/2, height: 20))
-        nameBook.text = libro?.nombre
-        nameBook.font = .boldSystemFont(ofSize: 15)
-        nameBook.textAlignment = .left
-        ownContent?.addSubview(nameBook)
+        bookName = UILabel(frame: CGRect(x: 80, y: 10, width: width/2, height: 20))
+        bookName.text = book?.name
+        bookName.textColor = UIColor.brownColor
+        bookName.font = .boldSystemFont(ofSize: 15)
+        bookName.textAlignment = .left
+        ownContent?.addSubview(bookName)
         
-        autorLibro = UILabel(frame: CGRect(x: 100, y: 55, width: width/2, height: 20))
-        autorLibro.text = libro?.autor
-        autorLibro.font = .boldSystemFont(ofSize: 12)
-        autorLibro.textAlignment = .left
-        autorLibro.adjustsFontSizeToFitWidth = true
-        ownContent?.addSubview(autorLibro)
+        bookAuthor = UILabel(frame: CGRect(x: 80, y: 40, width: width/2, height: 20))
+        bookAuthor.text = book?.author
+        bookAuthor.textColor = UIColor.brownColor
+        bookAuthor.font = .boldSystemFont(ofSize: 12)
+        bookAuthor.textAlignment = .left
+        bookAuthor.adjustsFontSizeToFitWidth = true
+        ownContent?.addSubview(bookAuthor)
         
-        categoriaLibro = UILabel(frame: CGRect(x: 100, y: 80, width: width/2, height: 20))
-        categoriaLibro.text = libro?.categoria
-        categoriaLibro.font = .systemFont(ofSize: 12)
-        ownContent?.addSubview(categoriaLibro)
+        bookCategory = UILabel(frame: CGRect(x: 80, y: 70, width: width/2, height: 20))
+        bookCategory.text = book?.categories
+        bookCategory.textColor = UIColor.brownColor
+        bookCategory.font = .systemFont(ofSize: 12)
+        ownContent?.addSubview(bookCategory)
         
         
-        imageLibro = UIImageView(frame: CGRect(x: 20, y: 5 , width: 60, height: 95)) //declaramos imagen
-        imageLibro.image = UIImage(named: libro?.imagen ?? "") //asigna imagen
-        imageLibro.layer.cornerRadius = 10
-        imageLibro.layer.masksToBounds = true
-        ownContent?.addSubview(imageLibro)
+        bookImage = UIImageView(frame: CGRect(x: 10, y: 5 , width: 60, height: 95)) //declaramos imagen
+        bookImage.image = UIImage(named: book?.image ?? "") //asigna imagen
+        bookImage.layer.cornerRadius = 10
+        bookImage.layer.masksToBounds = true
+        ownContent?.addSubview(bookImage)
         
-        goButton = UIButton(frame: CGRect(x: 295, y: 10 , width: 40 , height: 30))
+        goButton = UIButton(frame: CGRect(x: Constants.width - 100, y: 10 , width: 35 , height: 35))
         goButton.setImage(UIImage(named: "go"), for: .normal);
         ownContent?.addSubview(goButton)
         
-        shareImage = UIImageView(frame: CGRect(x: 290, y: 50 , width: 17, height: 17))
-        shareImage.image = UIImage(named: "share")
-        ownContent?.addSubview(shareImage)
-        
-        heartImage = UIImageView(frame: CGRect(x: 320, y: 50 , width: 17, height: 17))
-        heartImage.image = UIImage(named: "heart")
-        ownContent?.addSubview(heartImage)
-        
-        addButton = UIButton(frame: CGRect(x: 280, y: 80, width: 30, height: 30))
+        addButton = UIButton(frame: CGRect(x: Constants.width - 130, y: 60, width: 30, height: 30))
         addButton?.backgroundColor = .white
         addButton?.setTitle(" + ", for: .normal)
         addButton?.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
@@ -108,9 +101,10 @@ class BookTableViewCell: UITableViewCell{
         
         ownContent?.addSubview(counterLabel)
         counterLabel.text = "\(count)"
-        counterLabel.addAnchorsAndSize(width: 20, height: 20, left: 5, top: nil, right: nil, bottom: 12, withAnchor: .left, relativeToView: addButton)
+        counterLabel.textColor = UIColor.brownColor
+        counterLabel.addAnchorsAndSize(width: 20, height: 20, left: 5, top: 60, right: nil, bottom: nil, withAnchor: .left, relativeToView: addButton)
         
-        removeButton = UIButton(frame: CGRect(x:  330, y: 80 , width: 30 , height: 30))
+        removeButton = UIButton(frame: CGRect(x: Constants.width - 80, y: 60 , width: 30 , height: 30))
         removeButton?.backgroundColor = .white
         removeButton?.layer.borderColor = UIColor.DarkPinkColor.cgColor
         removeButton?.layer.borderWidth = 1
@@ -126,9 +120,9 @@ class BookTableViewCell: UITableViewCell{
     @objc func addProduct(){
         if count != 9 {
         count += 1
-        print("ADD \(libro?.nombre)")
+        print("ADD \(book?.name)")
         counterLabel.text = "\(count)"
-        delegate?.addtoCar(product: libro!, count: count)
+        delegate?.addtoCar(product: book!, count: count)
         }
     }
     
@@ -137,7 +131,7 @@ class BookTableViewCell: UITableViewCell{
             count -= 1
             print("Remove")
         counterLabel.text = "\(count)"
-            delegate?.removetoCar(product: libro!, count: count)
+            delegate?.removetoCar(product: book!, count: count)
         }
     }
     

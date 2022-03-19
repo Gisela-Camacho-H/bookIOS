@@ -21,7 +21,7 @@ class DetailBookViewController: UIViewController {
     lazy var topImageView : UIImageView = UIImageView()
     lazy var shareImage: UIImageView = UIImageView()
     lazy var heartImage: UIImageView = UIImageView()
-    lazy var autorImage : UIImageView = UIImageView()
+    lazy var authorImage : UIImageView = UIImageView()
     
     // UILabels
     lazy var bookName: UILabel = UILabel()
@@ -30,18 +30,18 @@ class DetailBookViewController: UIViewController {
     lazy var detailLabel : UILabel = UILabel()
     lazy var bookSobre: UILabel = UILabel()
     lazy var descriptionLabel : UILabel = UILabel()
-    lazy var bookCategoria : UILabel = UILabel()
-    lazy var bookMas: UILabel = UILabel()
+    lazy var bookCategory : UILabel = UILabel()
+    lazy var moreBooks: UILabel = UILabel()
     
     private lazy var activityView: UIActivityIndicatorView = UIActivityIndicatorView()
     
     // UIButtons
     lazy var backButton : UIButton = UIButton()
     
-    var mLibro: Libro?
+    var mBook: Books?
     
-    init(libro : Libro){
-        self.mLibro = libro
+    init(book : Books){
+        self.mBook = book
         super.init(nibName: nil, bundle: nil)
          initUI()
      }
@@ -98,30 +98,32 @@ class DetailBookViewController: UIViewController {
         
         
         bookImage = UIImageView(frame: CGRect(x: 20, y: 20, width: (width - 40)/3, height: height/4 - 30))
-        bookImage.image = UIImage(named: mLibro?.imagen ?? "")
+        bookImage.image = UIImage(named: mBook?.image ?? "")
 
         bookContentView.addSubview(bookImage)
         
         
-        bookName = UILabel(frame: CGRect(x: 160, y: 5, width: 180, height: 20))
-        bookName.text = mLibro?.nombre
+        bookName = UILabel(frame: CGRect(x: 150, y: 5, width: Constants.width - 200, height: 60))
+        bookName.text = mBook?.name
+        bookName.numberOfLines = 0
+        bookName.textAlignment = .center
         bookName.textColor = UIColor.brownColor
         bookName.font = .boldSystemFont(ofSize: 17)
         
         bookCard.addSubview(bookName)
         
         
-        bookAutor = UILabel(frame: CGRect(x: 160, y: 40, width: 160, height: 20))
-        bookAutor.text = mLibro?.autor
+        bookAutor = UILabel(frame: CGRect(x: 160, y: 60, width: 160, height: 20))
+        bookAutor.text = mBook?.author
         bookAutor.font = .boldSystemFont(ofSize: 12)
         
         bookCard.addSubview(bookAutor)
         
-        bookCategoria = UILabel(frame: CGRect(x: 160, y: 70, width: 160, height: 20))
-        bookCategoria.text = mLibro?.categoria
-        bookCategoria.font = .boldSystemFont(ofSize: 12)
+        bookCategory = UILabel(frame: CGRect(x: 160, y: 80, width: 160, height: 20))
+        bookCategory.text = mBook?.categories
+        bookCategory.font = .boldSystemFont(ofSize: 12)
         
-        bookCard.addSubview(bookCategoria)
+        bookCard.addSubview(bookCategory)
     }
     
     
@@ -170,7 +172,7 @@ class DetailBookViewController: UIViewController {
         
         
         descriptionTextView = UILabel(frame: CGRect(x: 20, y: 50, width: width - 80, height: 100))
-        descriptionTextView.text = mLibro?.descripcion
+        descriptionTextView.text = mBook?.description
         descriptionTextView.numberOfLines = 0
         descriptionTextView.textAlignment = .left
         descriptionTextView.font = .boldSystemFont(ofSize: 13)
@@ -197,30 +199,30 @@ class DetailBookViewController: UIViewController {
         descriptionView.addSubview(descriptionLabel)
         
         bookAutor = UILabel(frame: CGRect(x: width/4 + 20, y: 40, width: 250, height: 30))
-        bookAutor.text = mLibro?.autor
+        bookAutor.text = mBook?.author
         bookAutor.textColor = UIColor.brownColor
         bookAutor.font = .boldSystemFont(ofSize: 22)
         bookAutor.textAlignment = .left
         descriptionView.addSubview(bookAutor)
         
         bookSobre = UILabel(frame: CGRect(x: 20, y: 85, width: width - 80, height: 110))
-        bookSobre.text = mLibro?.sobreAutor
+        bookSobre.text = mBook?.aboutAuthor
         bookSobre.numberOfLines = 0
         bookSobre.textAlignment = .left
         bookSobre.font = .boldSystemFont(ofSize: 12)
         descriptionView.addSubview(bookSobre)
         
-        bookMas = UILabel(frame: CGRect(x: 260, y: 200 , width: 140, height: 20))
-        bookMas.text = "+ author titles"
-        bookMas.textColor = UIColor.coralColor
-        bookMas.font = .boldSystemFont(ofSize: 12)
-        descriptionView.addSubview(bookMas)
+        moreBooks = UILabel(frame: CGRect(x: Constants.width - 150, y: Constants.height/5 + 25 , width: 140, height: 20))
+        moreBooks.text = "+ author titles"
+        moreBooks.textColor = UIColor.coralColor
+        moreBooks.font = .boldSystemFont(ofSize: 12)
+        descriptionView.addSubview(moreBooks)
         
-        autorImage = UIImageView(frame: CGRect(x: 25, y: 10, width: 70, height: 70))
-        autorImage.image = UIImage(named: mLibro?.autorImage ?? "")
-        autorImage.layer.cornerRadius = 35
-        autorImage.layer.masksToBounds = true
-        descriptionView.addSubview(autorImage)
+        authorImage = UIImageView(frame: CGRect(x: 25, y: 10, width: 70, height: 70))
+        authorImage.image = UIImage(named: mBook?.imageAuthor ?? "")
+        authorImage.layer.cornerRadius = 35
+        authorImage.layer.masksToBounds = true
+        descriptionView.addSubview(authorImage)
         
     }
     required init?(coder: NSCoder) {

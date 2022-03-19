@@ -22,7 +22,7 @@ class BookCollectionView : UICollectionViewCell{
         super.init(frame: .zero)
         self.backgroundColor = UIColor.coralColor
         
-        imageLibr =  UIImageView(frame: CGRect(x: 10, y: 10 , width: 100, height: 160))
+        imageLibr =  UIImageView(frame: CGRect(x: 6, y: 6, width: Constants.width/6, height: Constants.height/8))
         self.addSubview(imageLibr)
 
     }

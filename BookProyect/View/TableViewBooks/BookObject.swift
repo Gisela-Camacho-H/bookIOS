@@ -9,49 +9,49 @@ import UIKit
 
 // la tableview tendrá diferentes categorias
 class BookObject{
-    var categorias : [Categoria]?
+    var categories : [Category]?
     var title : String?
     
     //se inicializa y se asigna los elementos que va a tener cada categoria
-    init(categorias : [Categoria], title : String){
-        self.categorias = categorias
+    init(categories : [Category], title : String){
+        self.categories = categories
         self.title = title
     }
         
 }
 
 //cada categoria tendra nombre y libro
-class Categoria{
-    var nombre : String?
-    var libros : [Libro]?
+class Category{
+    var name : String?
+    var books : [Books]?
     
-    init(nombre : String, libros: [Libro]){
-        self.nombre = nombre
-        self.libros = libros
+    init(name : String, books: [Books]){
+        self.name = name
+        self.books = books
     }
 }
 
 // varibles que se necesitan por cada libro
-class Libro{
-    var nombre : String?
-    var descripcion : String?
-    var autor : String?
-    var imagen : String?
-    var detalles : String?
-    var sobreAutor : String?
-    var categoria: String?
-    var autorImage : String?
+class Books{
+    var name : String?
+    var description : String?
+    var author : String?
+    var image : String?
+    var details : String?
+    var aboutAuthor : String?
+    var categories: String?
+    var imageAuthor : String?
     
     
-    init(nombre : String, descripcion : String, autor: String, imagen : String, detalles : String, sobreAutor : String, categoria: String, autorImage: String){
-        self.nombre = nombre
-        self.descripcion = descripcion
-        self.autor = autor
-        self.imagen = imagen
-        self.detalles = detalles
-        self.sobreAutor = sobreAutor
-        self.categoria = categoria
-        self.autorImage = autorImage
+    init(name : String, description : String, author: String, image : String, details : String, aboutAuthor : String, categories: String, imageAuthor: String){
+        self.name = name
+        self.description = description
+        self.author = author
+        self.image = image
+        self.details = details
+        self.aboutAuthor = aboutAuthor
+        self.categories = categories
+        self.imageAuthor = imageAuthor
     }
     
 }
