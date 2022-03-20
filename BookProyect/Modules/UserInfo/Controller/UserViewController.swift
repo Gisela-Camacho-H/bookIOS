@@ -14,7 +14,7 @@ class UserViewController: UIViewController {
     lazy var userEmailLabel: UILabel = UILabel()
     lazy var lightLabel: UILabel = UILabel()
     var defaults = UserDefaults.standard
-    lazy var switchDemo: UISwitch = UISwitch()
+    lazy var switchMode: UISwitch = UISwitch()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,11 +50,11 @@ class UserViewController: UIViewController {
         userEmailLabel.font = .boldSystemFont(ofSize: 25)
         view.addSubview(userEmailLabel)
         
-        switchDemo = UISwitch(frame:CGRect(x: width/2 - 10, y: 500, width: 10, height: 10))
-        switchDemo.isOn = true
-        switchDemo.setOn(true, animated: false)
-        switchDemo.addTarget(self, action: #selector(switchValueDidChange), for: .valueChanged)
-        self.view!.addSubview(switchDemo)
+        switchMode = UISwitch(frame:CGRect(x: width/2 - 10, y: 500, width: 10, height: 10))
+        switchMode.isOn = true
+        switchMode.setOn(true, animated: false)
+        switchMode.addTarget(self, action: #selector(switchValueDidChange), for: .valueChanged)
+        self.view!.addSubview(switchMode)
         
         lightLabel = UILabel(frame:CGRect(x: width/3 - 40, y: 505, width: 100, height: 20))
         lightLabel.text = "Light Mode "

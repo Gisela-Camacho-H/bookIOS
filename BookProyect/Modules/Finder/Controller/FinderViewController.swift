@@ -59,9 +59,9 @@ class FinderViewController: UIViewController {
         ])
         buttonArray.forEach {button in
             button.backgroundColor = UIColor.brownColor
-            button.layer.cornerRadius = 23
+            button.layer.cornerRadius = 7
             button.setTitleColor(.white, for: .normal)
-            button.heightAnchor.constraint(equalToConstant: 60).isActive = true
+            button.heightAnchor.constraint(equalToConstant: 50).isActive = true
             button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
             
         }
@@ -77,19 +77,16 @@ class FinderViewController: UIViewController {
     }
 
     @objc func books (){
-        print("Books")
          let register = FindBookViewController()
         register.modalPresentationStyle = .fullScreen
         present(register, animated: true, completion: nil)
     }
     @objc func categories (){
-        print("Categories")
          let register = CategoriesViewController()
         register.modalPresentationStyle = .fullScreen
         present(register, animated: true, completion: nil)
     }
     @objc func authors (){
-        print("Authors")
          let register = AuthorsViewController()
         register.modalPresentationStyle = .fullScreen
         present(register, animated: true, completion: nil)

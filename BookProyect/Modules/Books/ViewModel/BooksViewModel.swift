@@ -13,19 +13,19 @@ public class BooksViewModel {
     
         func getImage(){
 
-            let cuentos = Book(imagen: "cuentos")
-            let cuentosInfantiles = Book(imagen: "cuentosInf")
-            let cumbres = Book(imagen: "cumbres")
-            let guerraPaz = Book(imagen: "guerra")
-            let LaDivinaComedia = Book(imagen: "divina")
-            let donQuijote = Book(imagen: "quijote")
-            let ElCastillo = Book(imagen: "castillo")
-            let hombreInvisible = Book(imagen: "hombre")
-            let ViejoMar = Book(imagen: "viejo")
+            let tales = Book(imagen: "cuentos")
+            let fairyTales = Book(imagen: "cuentosInf")
+            let wutheringHeights = Book(imagen: "cumbres")
+            let warAndPeace = Book(imagen: "guerra")
+            let theDivineComedy = Book(imagen: "divina")
+            let donQuixote = Book(imagen: "quijote")
+            let theCastle = Book(imagen: "castillo")
+            let invisibleMan = Book(imagen: "hombre")
+            let TheOldman = Book(imagen: "viejo")
             let Eneida = Book(imagen: "eneida")
-            let Cuentos = Catego(nombre: "Cuentos", books: [cuentos, cuentosInfantiles, cumbres, guerraPaz, LaDivinaComedia, donQuijote, ElCastillo, hombreInvisible, ViejoMar, Eneida])
+            let Tales = Catego(name: "Cuentos", books: [tales, fairyTales, wutheringHeights, warAndPeace, theDivineComedy, donQuixote, theCastle, invisibleMan, TheOldman, Eneida])
 
-            let Image = BooksObjectCollection(catego: [Cuentos], title: "Libros Recientes")
+            let Image = BooksObjectCollection(catego: [Tales], title: "Recent Books")
             
             imageSource = Image
             

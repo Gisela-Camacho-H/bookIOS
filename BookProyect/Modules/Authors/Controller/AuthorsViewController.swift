@@ -10,22 +10,26 @@ import UIKit
 class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFieldDelegate {
     
     // Labels
-    lazy var buscarLabel : UILabel = UILabel()
-    lazy var date : UILabel = UILabel()
+    lazy var findLabel : UILabel = UILabel()
+    lazy var date: UILabel = UILabel()
     lazy var titleLabel : UILabel = UILabel()
-    lazy var title1 : UILabel = UILabel()
-    lazy var contentLabel : UILabel = UILabel()
-    lazy var content1: UILabel = UILabel()
+    lazy var titleText: UILabel = UILabel()
     lazy var contentLabel1 : UILabel = UILabel()
-    lazy var content2: UILabel = UILabel()
+    lazy var contentText: UILabel = UILabel()
     lazy var contentLabel2 : UILabel = UILabel()
-    lazy var content3: UILabel = UILabel()
+    lazy var contentText1: UILabel = UILabel()
+    lazy var contentLabel3 : UILabel = UILabel()
+    lazy var contentText2: UILabel = UILabel()
     
     // Buttons
     var goBookButton : UIButton = UIButton()
     lazy var backButton: UIButton = UIButton()
     
-    var SearchTextField: UITextField!
+    // stacksView
+    lazy var labelStackView: UIStackView = UIStackView()
+    lazy var labelStackView1: UIStackView = UIStackView()
+    
+    var searchTextField: UITextField!
     private lazy var activityView: UIActivityIndicatorView = UIActivityIndicatorView()
     
     
@@ -45,7 +49,7 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
         initUI()
             
         authorManager.delegate = self
-        SearchTextField.delegate = self
+        searchTextField.delegate = self
         
     }
     
@@ -56,98 +60,87 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
     backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
     view.addSubview(backButton)
         
-    buscarLabel = UILabel(frame: CGRect(x: 10, y: 170, width: width , height: 40))
-    buscarLabel.textAlignment = NSTextAlignment.center
-    buscarLabel.backgroundColor = .clear
-    buscarLabel.textColor = UIColor.brownColor
-    buscarLabel.font = UIFont(name: "Arial Bold", size: 22)
-    buscarLabel.text = " Enter the Author's Name  "
-    view.addSubview(buscarLabel)
+    findLabel = UILabel(frame: CGRect(x: 10, y: 170, width: width , height: 40))
+    findLabel.textAlignment = NSTextAlignment.center
+    findLabel.backgroundColor = .clear
+    findLabel.textColor = UIColor.brownColor
+    findLabel.font = UIFont(name: "Arial Bold", size: 22)
+    findLabel.text = " Enter the Author's Name  "
+    view.addSubview(findLabel)
 
-    SearchTextField = UITextField(frame: CGRect(x: 70, y: 220, width: width - 120 , height: 50))
-    SearchTextField.placeholder = "Author Name"
-    SearchTextField.textAlignment = .center
-    SearchTextField.backgroundColor = .white
-    SearchTextField.layer.cornerRadius = 7
-    SearchTextField.layer.borderColor = UIColor.black.cgColor
-    SearchTextField.layer.borderWidth = 2
-    view.addSubview(SearchTextField)
+    searchTextField = UITextField(frame: CGRect(x: 70, y: 220, width: width - 120 , height: 50))
+    searchTextField.placeholder = "Author Name"
+    searchTextField.textAlignment = .center
+    searchTextField.backgroundColor = .white
+    searchTextField.layer.cornerRadius = 7
+    searchTextField.layer.borderColor = UIColor.black.cgColor
+    searchTextField.layer.borderWidth = 2
+    view.addSubview(searchTextField)
         
-    titleLabel = UILabel(frame: CGRect(x: 60, y: 290, width: width - 120 , height: 50))
-    titleLabel.textAlignment = NSTextAlignment.center
-    titleLabel.backgroundColor = UIColor.brownColor
-    titleLabel.textColor = UIColor.pinkColor
-    titleLabel.numberOfLines = 0
-    titleLabel.layer.cornerRadius = 7
-    titleLabel.font = UIFont(name: "Arial Bold", size: 25)
+    self.view.addSubview(titleLabel)
+    self.view.addSubview(contentLabel1)
+    self.view.addSubview(contentLabel2)
+    self.view.addSubview(contentLabel3)
     titleLabel.text = "Author Full Name:"
-    view.addSubview(titleLabel)
+    contentLabel1.text = "Author Id:"
+    contentLabel2.text = "Top - Work:"
+    contentLabel3.text = "Birthday:"
         
-    title1 = UILabel(frame: CGRect(x: 40, y: 350, width: width - 80 , height: 50))
-    title1.textAlignment = NSTextAlignment.center
-    title1.backgroundColor = .clear
-    title1.textColor = UIColor.brownColor
-    title1.numberOfLines = 0
-    title1.font = UIFont(name: "Arial Bold", size: 20)
-    title1.text = ""
-    view.addSubview(title1)
+    let labelArray: [UILabel] = [titleLabel, contentLabel1, contentLabel2, contentLabel3]
         
-    contentLabel = UILabel(frame: CGRect(x: 60, y: 410, width: width - 120 , height: 50))
-    contentLabel.textAlignment = NSTextAlignment.center
-    contentLabel.backgroundColor = UIColor.brownColor
-    contentLabel.textColor = UIColor.pinkColor
-    contentLabel.numberOfLines = 0
-    contentLabel.layer.cornerRadius = 7
-    contentLabel.font = UIFont(name: "Arial Bold", size: 25)
-    contentLabel.text = "Author Id:"
-    view.addSubview(contentLabel)
-        
-    content1 = UILabel(frame: CGRect(x: 40, y: 470, width: width - 80 , height: 50))
-    content1.textAlignment = NSTextAlignment.center
-    content1.backgroundColor = .clear
-    content1.textColor = UIColor.brownColor
-    content1.numberOfLines = 0
-    content1.font = UIFont(name: "Arial Bold", size: 20)
-    content1.text = ""
-    view.addSubview(content1)
-        
-    contentLabel1 = UILabel(frame: CGRect(x: 60, y: 520, width: width - 120 , height: 50))
-    contentLabel1.textAlignment = NSTextAlignment.center
-    contentLabel1.backgroundColor = UIColor.brownColor
-    contentLabel1.textColor = UIColor.pinkColor
-    contentLabel1.numberOfLines = 0
-    contentLabel1.layer.cornerRadius = 7
-    contentLabel1.font = UIFont(name: "Arial Bold", size: 25)
-    contentLabel1.text = "Top - Work:"
-    view.addSubview(contentLabel1)
+    labelStackView.axis = .vertical
+    labelStackView.spacing = Constants.height/16
+    labelStackView.alignment = .fill
+    labelStackView.distribution = .fillEqually
+    labelArray.forEach {label in
+    labelStackView.addArrangedSubview(label)
+    }
+    view.addSubview(labelStackView)
+    labelStackView.translatesAutoresizingMaskIntoConstraints = false
             
-    content2 = UILabel(frame: CGRect(x: 40, y: 580, width: width - 80 , height: 50))
-    content2.textAlignment = NSTextAlignment.center
-    content2.backgroundColor = .clear
-    content2.textColor = UIColor.brownColor
-    content2.numberOfLines = 0
-    content2.font = UIFont(name: "Arial Bold", size: 20)
-    content2.text = ""
-    view.addSubview(content2)
+    NSLayoutConstraint.activate([labelStackView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 10)])
+        labelArray.forEach {label in
+        label.heightAnchor.constraint(equalToConstant: Constants.height/20).isActive = true
+        label.widthAnchor.constraint(equalToConstant: Constants.width).isActive = true
+        label.numberOfLines = 0
+        label.textColor = UIColor.pinkColor
+        label.textAlignment = .center
+        label.backgroundColor = UIColor.brownColor
+        label.layer.cornerRadius = 10
+        label.font = UIFont(name: "Arial Bold", size: 25)
+        }
         
-    contentLabel2 = UILabel(frame: CGRect(x: 60, y: 640, width: width - 120 , height: 50))
-    contentLabel2.textAlignment = NSTextAlignment.center
-    contentLabel2.backgroundColor = UIColor.brownColor
-    contentLabel2.textColor = UIColor.pinkColor
-    contentLabel2.numberOfLines = 0
-    contentLabel2.layer.cornerRadius = 7
-    contentLabel2.font = UIFont(name: "Arial Bold", size: 25)
-    contentLabel2.text = "Birthday:"
-    view.addSubview(contentLabel2)
+    self.view.addSubview(titleText)
+    self.view.addSubview(contentText)
+    self.view.addSubview(contentText1)
+    self.view.addSubview(contentText2)
+    titleText.text = ""
+    contentText.text = ""
+    contentText1.text = ""
+    contentText2.text = ""
+        
+    let labelArray1: [UILabel] = [titleText, contentText, contentText1, contentText2]
+    
+    labelStackView1.axis = .vertical
+    labelStackView1.spacing = Constants.height/16
+    labelStackView1.alignment = .fill
+    labelStackView1.distribution = .fillEqually
+    labelArray1.forEach {label1 in
+    labelStackView1.addArrangedSubview(label1)
+    }
+    view.addSubview(labelStackView1)
+    labelStackView1.translatesAutoresizingMaskIntoConstraints = false
                 
-    content3 = UILabel(frame: CGRect(x: 40, y: 700, width: width - 80 , height: 50))
-    content3.textAlignment = NSTextAlignment.center
-    content3.backgroundColor = .clear
-    content3.textColor = UIColor.brownColor
-    content3.numberOfLines = 0
-    content3.font = UIFont(name: "Arial Bold", size: 20)
-    content3.text = ""
-    view.addSubview(content3)
+    NSLayoutConstraint.activate([labelStackView1.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: Constants.cornerRadius + 30)])
+            labelArray1.forEach {label1 in
+                label1.heightAnchor.constraint(equalToConstant: Constants.height/20).isActive = true
+                label1.widthAnchor.constraint(equalToConstant: Constants.width).isActive = true
+                label1.numberOfLines = 0
+                label1.textColor = UIColor.brownColor
+                label1.textAlignment = .center
+                label1.backgroundColor = .clear
+                label1.font = UIFont(name: "Arial Bold", size: 17)
+            }
         
     goBookButton = UIButton(frame: CGRect(x: width - 90, y: height - 200, width: 70 , height: 50))
     goBookButton.setTitle("+ info", for: .normal)
@@ -161,6 +154,7 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
         self.view.addSubview(activityView)
         activityView.translatesAutoresizingMaskIntoConstraints = false
         activityView.color = UIColor.brownColor
+        activityView.backgroundColor = .white
         NSLayoutConstraint.activate([
             activityView.centerXAnchor.constraint(equalTo: view.centerXAnchor), activityView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
         ])
@@ -183,31 +177,31 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
 
 
 func SearchPressed(_ sender: UIButton) {
-    SearchTextField.endEditing(true)
-    print(SearchTextField.text!)
+    searchTextField.endEditing(true)
+    print(searchTextField.text!)
 }
 
 func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    SearchTextField.endEditing(true)
-    print(SearchTextField.text!)
+    searchTextField.endEditing(true)
+    print(searchTextField.text!)
     return true
 }
 func textFieldDidEndEditing(_ textField: UITextField) {
     
-    if let Name = SearchTextField.text {
+    if let Name = searchTextField.text {
         authorManager.fetchAuthor(bookName: Name)
         creaeActivityIndicator()
     }
-    SearchTextField.text = ""
+    searchTextField.text = ""
 }
     func didUpdateAuthor(_ authorManager: AuthorManager, authorid: AuthorModel) {
         DispatchQueue.main.async {
             self.activityView.removeFromSuperview()
             self.activityView.stopAnimating()
-            self.title1.text = authorid.name
-            self.content3.text = authorid.birthday ?? ""
-            self.content2.text = authorid.top ?? ""
-            self.content1.text = authorid.key
+            self.titleText.text = authorid.name
+            self.contentText.text = authorid.birthday ?? ""
+            self.contentText1.text = authorid.top ?? ""
+            self.contentText2.text = authorid.key
             self.fetchedEndPoint = authorid.key
             self.nameEndPoint = authorid.name
             }

@@ -23,11 +23,11 @@ class BooksObjectCollection{
 
 //cada categoria tendra nombre y libro
 class Catego{
-    var nombre : String?
+    var name : String?
     var books : [Book]?
     
-    init(nombre : String, books: [Book]){
-        self.nombre = nombre
+    init(name : String, books: [Book]){
+        self.name = name
         self.books = books
     }
 }

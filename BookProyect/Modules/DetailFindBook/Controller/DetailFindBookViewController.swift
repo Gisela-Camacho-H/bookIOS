@@ -10,7 +10,6 @@ import UIKit
 class DetailFindBookViewController: UIViewController, DetailManagerDelegate, UITextFieldDelegate{
     
     // labels
-    lazy var buscarLabel : UILabel = UILabel()
     lazy var date : UILabel = UILabel()
     lazy var titleLabel : UILabel = UILabel()
     lazy var title1 : UILabel = UILabel()

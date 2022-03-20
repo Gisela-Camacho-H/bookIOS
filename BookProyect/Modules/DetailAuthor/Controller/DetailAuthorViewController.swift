@@ -10,7 +10,6 @@ import UIKit
 class DetailAuthorViewController: UIViewController, BioManagerDelegate, UITextFieldDelegate{
     
     // Labels
-    var buscarLabel : UILabel = UILabel()
     var date : UILabel = UILabel()
     var titleLabel : UILabel = UILabel()
     var title1 : UILabel = UILabel()
@@ -48,37 +47,37 @@ class DetailAuthorViewController: UIViewController, BioManagerDelegate, UITextFi
             backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
             view.addSubview(backButton)
                 
-        
-            titleLabel = UILabel(frame: CGRect(x: 60, y: 180, width: width - 120 , height: 50))
+                
+            titleLabel = UILabel(frame: CGRect(x: 0, y: 180, width: width , height: 60))
             titleLabel.textAlignment = NSTextAlignment.center
             titleLabel.backgroundColor = UIColor.brownColor
             titleLabel.textColor = UIColor.pinkColor
             titleLabel.numberOfLines = 0
             titleLabel.layer.cornerRadius = 7
-            titleLabel.font = UIFont(name: "Arial Bold", size: 25)
+            titleLabel.font = UIFont(name: "Arial Bold", size: 20)
             titleLabel.text = " Author Name:"
             view.addSubview(titleLabel)
-                
-            title1 = UILabel(frame: CGRect(x: 40, y: 230, width: width - 80 , height: 60))
+                        
+            title1 = UILabel(frame: CGRect(x: 40, y: 240, width: width - 80 , height: 60))
             title1.textAlignment = NSTextAlignment.center
             title1.backgroundColor = .clear
             title1.textColor = UIColor.brownColor
             title1.numberOfLines = 0
-            title1.font = UIFont(name: "Arial Bold", size: 22)
+            title1.font = UIFont(name: "Arial Bold", size: 20)
             title1.text = nameAuthor
             view.addSubview(title1)
-                
-            contentLabel = UILabel(frame: CGRect(x: 60, y: 290, width: width - 120 , height: 50))
+                        
+            contentLabel = UILabel(frame: CGRect(x: 0, y: 300, width: width, height: 60))
             contentLabel.textAlignment = NSTextAlignment.center
             contentLabel.backgroundColor = UIColor.brownColor
             contentLabel.textColor = UIColor.pinkColor
             contentLabel.numberOfLines = 0
             contentLabel.layer.cornerRadius = 7
-            contentLabel.font = UIFont(name: "Arial Bold", size: 25)
+            contentLabel.font = UIFont(name: "Arial Bold", size: 20)
             contentLabel.text = "Author Biography:"
             view.addSubview(contentLabel)
-                
-            content1 = UILabel(frame: CGRect(x: 40, y: 360, width: width - 80 , height: 340))
+                        
+            content1 = UILabel(frame: CGRect(x: 40, y: 380, width: width - 80 , height: 300))
             content1.textAlignment = NSTextAlignment.justified
             content1.backgroundColor = .clear
             content1.textColor = UIColor.brownColor
