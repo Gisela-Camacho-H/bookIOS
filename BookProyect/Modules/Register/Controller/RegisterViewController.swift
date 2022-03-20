@@ -123,7 +123,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
         emailLabel.text = "--  Email  --"
         userLabel.text = "--  User  --"
 
-        
         let labelArray: [UILabel] = [userLabel, emailLabel, passwordLabel, confirmLabel]
         
         labelStackView.axis = .vertical

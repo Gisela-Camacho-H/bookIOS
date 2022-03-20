@@ -26,6 +26,7 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
     
     var SearchTextField: UITextField!
     var categoryManager = CategoryManager()
+    lazy var labelStackView1: UIStackView = UIStackView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,17 +65,17 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
             SearchTextField?.layer.borderWidth = 2
             view.addSubview(SearchTextField!)
             
-            titleLabel = UILabel(frame: CGRect(x: 60, y: 290, width: width - 120 , height: 50))
+            titleLabel = UILabel(frame: CGRect(x: 0, y: 290, width: width , height: 50))
             titleLabel.textAlignment = NSTextAlignment.center
             titleLabel.backgroundColor = UIColor.brownColor
             titleLabel.textColor = UIColor.pinkColor
             titleLabel.numberOfLines = 0
             titleLabel.layer.cornerRadius = 7
-            titleLabel.font = UIFont(name: "Arial Bold", size: 25)
+            titleLabel.font = UIFont(name: "Arial Bold", size: 20)
             titleLabel.text = " Genres:"
             view.addSubview(titleLabel)
                 
-            title1 = UILabel(frame: CGRect(x: 40, y: 340, width: width - 80 , height: 60))
+            title1 = UILabel(frame: CGRect(x: 40, y: 330, width: width - 80 , height: 60))
             title1.textAlignment = NSTextAlignment.center
             title1.backgroundColor = .clear
             title1.textColor = UIColor.brownColor
@@ -83,60 +84,50 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
             title1.text = ""
             view.addSubview(title1)
                 
-            contentLabel = UILabel(frame: CGRect(x: 60, y: 400, width: width - 120 , height: 50))
+            contentLabel = UILabel(frame: CGRect(x: 0, y: 380, width: width , height: 50))
             contentLabel.textAlignment = NSTextAlignment.center
             contentLabel.backgroundColor = UIColor.brownColor
             contentLabel.textColor = UIColor.pinkColor
             contentLabel.numberOfLines = 0
             contentLabel.layer.cornerRadius = 7
-            contentLabel.font = UIFont(name: "Arial Bold", size: 25)
+            contentLabel.font = UIFont(name: "Arial Bold", size: 20)
             contentLabel.text = "Top 5:"
             view.addSubview(contentLabel)
                 
-            content1 = UILabel(frame: CGRect(x: 40, y: 460, width: width - 80 , height: 60))
-            content1.textAlignment = NSTextAlignment.center
-            content1.backgroundColor = .clear
-            content1.textColor = UIColor.brownColor
-            content1.numberOfLines = 0
-            content1.font = UIFont(name: "Arial Bold", size: 20)
+                
+            self.view.addSubview(content1)
+            self.view.addSubview(content2)
+            self.view.addSubview(content3)
+            self.view.addSubview(content4)
+            self.view.addSubview(content5)
             content1.text = ""
-            view.addSubview(content1)
-                
-            content2 = UILabel(frame: CGRect(x: 40, y: 520, width: width - 80 , height: 60))
-            content2.textAlignment = NSTextAlignment.center
-            content2.backgroundColor = .clear
-            content2.textColor = UIColor.brownColor
-            content2.numberOfLines = 0
-            content2.font = UIFont(name: "Arial Bold", size: 20)
             content2.text = ""
-            view.addSubview(content2)
-                
-            content3 = UILabel(frame: CGRect(x: 40, y: 580, width: width - 80 , height: 60))
-            content3.textAlignment = NSTextAlignment.center
-            content3.backgroundColor = .clear
-            content3.textColor = UIColor.brownColor
-            content3.numberOfLines = 0
-            content3.font = UIFont(name: "Arial Bold", size: 20)
             content3.text = ""
-            view.addSubview(content3)
-            
-            content4 = UILabel(frame: CGRect(x: 40, y: 640, width: width - 80 , height: 60))
-            content4.textAlignment = NSTextAlignment.center
-            content4.backgroundColor = .clear
-            content4.textColor = UIColor.brownColor
-            content4.numberOfLines = 0
-            content4.font = UIFont(name: "Arial Bold", size: 20)
             content4.text = ""
-            view.addSubview(content4)
-                
-            content5 = UILabel(frame: CGRect(x: 40, y: 700, width: width - 80 , height: 60))
-            content5.textAlignment = NSTextAlignment.center
-            content5.backgroundColor = .clear
-            content5.textColor = UIColor.brownColor
-            content5.numberOfLines = 0
-            content5.font = UIFont(name: "Arial Bold", size: 20)
             content5.text = ""
-            view.addSubview(content5)
+
+            let labelArray1: [UILabel] = [content1, content2, content3, content4, content5]
+            
+            labelStackView1.axis = .vertical
+            labelStackView1.spacing = 10
+            labelStackView1.alignment = .fill
+            labelStackView1.distribution = .fillEqually
+                labelArray1.forEach {label1 in
+                labelStackView1.addArrangedSubview(label1)
+                }
+            view.addSubview(labelStackView1)
+            labelStackView1.translatesAutoresizingMaskIntoConstraints = false
+                    
+            NSLayoutConstraint.activate([labelStackView1.topAnchor.constraint(equalTo: contentLabel.bottomAnchor, constant: 10)])
+            labelArray1.forEach {label1 in
+            label1.heightAnchor.constraint(equalToConstant: Constants.height/20).isActive = true
+            label1.widthAnchor.constraint(equalToConstant: Constants.width).isActive = true
+            label1.numberOfLines = 0
+            label1.textColor = UIColor.brownColor
+            label1.textAlignment = .center
+            label1.backgroundColor = .clear
+            label1.font = UIFont(name: "Arial Bold", size: 20)
+            }
         
     }
     
