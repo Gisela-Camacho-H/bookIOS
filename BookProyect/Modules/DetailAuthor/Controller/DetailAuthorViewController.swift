@@ -11,10 +11,12 @@ class DetailAuthorViewController: UIViewController, BioManagerDelegate, UITextFi
     
     // Labels
     var date : UILabel = UILabel()
-    var titleLabel : UILabel = UILabel()
-    var title1 : UILabel = UILabel()
-    var contentLabel : UILabel = UILabel()
-    var content1: UILabel = UILabel()
+    
+    var title1 : UIView.clearLabels = UIView.clearLabels()
+    var content1: UIView.clearLabels = UIView.clearLabels()
+    
+    var titleLabel : UIView.brownLabels = UIView.brownLabels()
+    var contentLabel :  UIView.brownLabels = UIView.brownLabels()
     
     var backButton: UIButton = UIButton()
     private lazy var activityView: UIActivityIndicatorView = UIActivityIndicatorView()
@@ -48,42 +50,22 @@ class DetailAuthorViewController: UIViewController, BioManagerDelegate, UITextFi
             view.addSubview(backButton)
                 
                 
-            titleLabel = UILabel(frame: CGRect(x: 0, y: 180, width: width , height: 60))
-            titleLabel.textAlignment = NSTextAlignment.center
-            titleLabel.backgroundColor = UIColor.brownColor
-            titleLabel.textColor = UIColor.pinkColor
-            titleLabel.numberOfLines = 0
-            titleLabel.layer.cornerRadius = 7
-            titleLabel.font = UIFont(name: "Arial Bold", size: 20)
+            titleLabel = UIView.brownLabels(frame: CGRect(x: 0, y: 180, width: width , height: 60))
             titleLabel.text = " Author Name:"
             view.addSubview(titleLabel)
                         
-            title1 = UILabel(frame: CGRect(x: 40, y: 240, width: width - 80 , height: 60))
+            title1 = UIView.clearLabels(frame: CGRect(x: 40, y: 240, width: width - 80 , height: 60))
             title1.textAlignment = NSTextAlignment.center
-            title1.backgroundColor = .clear
-            title1.textColor = UIColor.brownColor
-            title1.numberOfLines = 0
-            title1.font = UIFont(name: "Arial Bold", size: 20)
             title1.text = nameAuthor
             view.addSubview(title1)
                         
-            contentLabel = UILabel(frame: CGRect(x: 0, y: 300, width: width, height: 60))
-            contentLabel.textAlignment = NSTextAlignment.center
-            contentLabel.backgroundColor = UIColor.brownColor
-            contentLabel.textColor = UIColor.pinkColor
-            contentLabel.numberOfLines = 0
-            contentLabel.layer.cornerRadius = 7
-            contentLabel.font = UIFont(name: "Arial Bold", size: 20)
+            contentLabel = UIView.brownLabels(frame: CGRect(x: 0, y: 300, width: width, height: 60))
             contentLabel.text = "Author Biography:"
             view.addSubview(contentLabel)
                         
-            content1 = UILabel(frame: CGRect(x: 40, y: 380, width: width - 80 , height: 300))
+            content1 = UIView.clearLabels(frame: CGRect(x: 40, y: 380, width: width - 80 , height: 300))
             content1.textAlignment = NSTextAlignment.justified
-            content1.backgroundColor = .clear
-            content1.textColor = UIColor.brownColor
-            content1.numberOfLines = 0
             content1.adjustsFontSizeToFitWidth = true
-            content1.font = UIFont(name: "Arial Bold", size: 20)
             content1.text = ""
             view.addSubview(content1)
         
@@ -110,7 +92,7 @@ class DetailAuthorViewController: UIViewController, BioManagerDelegate, UITextFi
         
     func fetchData(){
         if let name = endPointKey {
-            bioManager.fetchBio(bookName: name)
+            bioManager.fetchBio(authorDetailName: name)
             creaeActivityIndicator()
         }
     }

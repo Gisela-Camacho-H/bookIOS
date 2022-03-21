@@ -12,27 +12,29 @@ protocol BookManagerDelegate {
 }
 
 struct BookManager {
+    // assign the url to a variable
       let BookUrl = "https://openlibrary.org/search.json?"
 
     
     var delegate: BookManagerDelegate?
     
     func fetchBook(bookName: String) {
+        // add the variable(bookName) to the url
         let urlString = "\(BookUrl)q=\(bookName)"
        perfomRequest(urlString: urlString)
     }
     
     func perfomRequest(urlString: String) {
-        // Hacemos los 4 pasos
+        // 4 steps
         
-        //1.Crear un URL
+        //1.Create a URL
         if let url = URL(string: urlString) {
             
             //2. Create a URLSession
             
             let session = URLSession(configuration: .default)
             
-            //3. Darle la session una tarea
+            //3. give a task to the session
             let task = session.dataTask(with: url) {(data, response, error)
                 in
                 if error != nil{
@@ -45,7 +47,7 @@ struct BookManager {
                     }
                 }
             }
-            //4. empezar la tarea
+            //4. start the task
             task.resume()
         }
     }
@@ -58,14 +60,15 @@ struct BookManager {
             
             let decodedData = try decoder.decode(BookData.self, from: bookData)
 
-            print(decodedData.docs[0].title)
-        
+            // obtein the data from the API
             let title1Api = decodedData.docs[0].title
             let firstApi = decodedData.docs[0].first_publish_year
             let keyApi = decodedData.docs[0].key
             let EditionIdApi = decodedData.docs[0].edition_key?[2]
             let authorNameApi = decodedData.docs[0].author_name?[0]
             let authorKeyNameApi = decodedData.docs[0].author_key?[0]
+            
+            // assing the data to a variable
             let bookid = BookModel(title: title1Api, first: firstApi, key: keyApi, author_name: authorNameApi, edition: EditionIdApi, author_key: authorKeyNameApi)
             return bookid
             

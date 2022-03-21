@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// protocol for the car
 protocol MenuTableViewCellDelegate{
     func addtoCar(product: Books, count: Int)
     func removetoCar(product: Books, count: Int)
@@ -40,6 +41,7 @@ class BookTableViewCell: UITableViewCell{
         return label
     }()
     
+    // init the cell
     init( book : Books, numberOf: Int){
         super.init(style: .default, reuseIdentifier: nil)
         self.book = book
@@ -117,6 +119,8 @@ class BookTableViewCell: UITableViewCell{
         
     }
     
+    
+// functions for the car
     @objc func addProduct(){
         if count != 9 {
         count += 1

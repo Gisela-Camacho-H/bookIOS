@@ -8,12 +8,12 @@
 import Foundation
 import UIKit
 
-// la tableview tendrá diferentes categorias
+// collectionView class
 class BooksObjectCollection{
     var catego : [Catego]?
     var title : String?
     
-    //se inicializa y se asigna los elementos que va a tener cada categoria
+    // init the elements
     init(catego : [Catego], title : String){
         self.catego = catego
         self.title = title
@@ -21,7 +21,7 @@ class BooksObjectCollection{
         
 }
 
-//cada categoria tendra nombre y libro
+// each category has a name and a book
 class Catego{
     var name : String?
     var books : [Book]?
@@ -32,7 +32,7 @@ class Catego{
     }
 }
 
-// varibles que se necesitan por cada libro
+// varibles per book
 class Book{
     var imagen : String?
     

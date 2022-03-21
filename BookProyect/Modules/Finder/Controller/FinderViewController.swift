@@ -12,9 +12,9 @@ class FinderViewController: UIViewController {
     lazy var findLabel: UILabel = UILabel()
     
     // Buttons
-    lazy var booksButton: UIButton = UIButton()
-    lazy var categoriesButton: UIButton = UIButton()
-    lazy var authorsButton: UIButton = UIButton()
+    lazy var booksButton: UIView.brownButton = UIView.brownButton()
+    lazy var categoriesButton: UIView.brownButton = UIView.brownButton()
+    lazy var authorsButton: UIView.brownButton = UIView.brownButton()
     
     lazy var ButtonStackView: UIStackView = UIStackView()
 
@@ -58,12 +58,7 @@ class FinderViewController: UIViewController {
         ButtonStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8)
         ])
         buttonArray.forEach {button in
-            button.backgroundColor = UIColor.brownColor
-            button.layer.cornerRadius = 7
-            button.setTitleColor(.white, for: .normal)
             button.heightAnchor.constraint(equalToConstant: 50).isActive = true
-            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-            
         }
         
         booksButton.setTitle("Books", for: .normal)

@@ -10,21 +10,22 @@ import UIKit
 class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITextFieldDelegate{
     
     // Labels
-    lazy var buscarLabel : UILabel = UILabel()
-    lazy var date : UILabel = UILabel()
-    lazy var titleLabel : UILabel = UILabel()
-    lazy var title1 : UILabel = UILabel()
-    lazy var contentLabel : UILabel = UILabel()
-    lazy var content1: UILabel = UILabel()
-    lazy var content2: UILabel = UILabel()
-    lazy var content3: UILabel = UILabel()
-    lazy var content4: UILabel = UILabel()
-    lazy var content5: UILabel = UILabel()
+    lazy var findLabel : UIView.findLabel = UIView.findLabel()
+    
+    lazy var title1 :  UIView.clearLabels = UIView.clearLabels()
+    lazy var content1: UIView.clearLabels = UIView.clearLabels()
+    lazy var content2: UIView.clearLabels = UIView.clearLabels()
+    lazy var content3: UIView.clearLabels = UIView.clearLabels()
+    lazy var content4: UIView.clearLabels = UIView.clearLabels()
+    lazy var content5: UIView.clearLabels = UIView.clearLabels()
+    
+    lazy var contentLabel :  UIView.brownLabels = UIView.brownLabels()
+    lazy var titleLabel : UIView.brownLabels = UIView.brownLabels()
     
     lazy var backButton: UIButton = UIButton()
     private lazy var activityView: UIActivityIndicatorView = UIActivityIndicatorView()
     
-    var SearchTextField: UITextField!
+    var SearchTextField: UIView.findTextField = UIView.findTextField()
     var categoryManager = CategoryManager()
     lazy var labelStackView1: UIStackView = UIStackView()
 
@@ -48,49 +49,24 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
             backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
             view.addSubview(backButton)
                 
-            buscarLabel = UILabel(frame: CGRect(x: 10, y: 170, width: width , height: 40))
-            buscarLabel.textAlignment = NSTextAlignment.center
-            buscarLabel.backgroundColor = .clear
-            buscarLabel.textColor = UIColor.brownColor
-            buscarLabel.font = UIFont(name: "Arial Bold", size: 22)
-            buscarLabel.text = "Enter the Genres!"
-            view.addSubview(buscarLabel)
+            findLabel = UIView.findLabel(frame: CGRect(x: 10, y: 170, width: width , height: 40))
+            findLabel.text = "Enter the Genres!"
+            view.addSubview(findLabel)
         
-            SearchTextField = UITextField(frame: CGRect(x: 70, y: 220, width: width - 120 , height: 50))
-            SearchTextField?.placeholder = "Genres"
-            SearchTextField?.textAlignment = .center
-            SearchTextField?.backgroundColor = .white
-            SearchTextField?.layer.cornerRadius = 7
-            SearchTextField?.layer.borderColor = UIColor.black.cgColor
-            SearchTextField?.layer.borderWidth = 2
-            view.addSubview(SearchTextField!)
+            SearchTextField = UIView.findTextField(frame: CGRect(x: 70, y: 220, width: width - 120 , height: 50))
+            SearchTextField.placeholder = "Genres"
+            view.addSubview(SearchTextField)
             
-            titleLabel = UILabel(frame: CGRect(x: 0, y: 290, width: width , height: 50))
-            titleLabel.textAlignment = NSTextAlignment.center
-            titleLabel.backgroundColor = UIColor.brownColor
-            titleLabel.textColor = UIColor.pinkColor
-            titleLabel.numberOfLines = 0
-            titleLabel.layer.cornerRadius = 7
-            titleLabel.font = UIFont(name: "Arial Bold", size: 20)
+            titleLabel = UIView.brownLabels(frame: CGRect(x: 0, y: 290, width: width , height: 50))
             titleLabel.text = " Genres:"
             view.addSubview(titleLabel)
                 
-            title1 = UILabel(frame: CGRect(x: 40, y: 330, width: width - 80 , height: 60))
+            title1 = UIView.clearLabels(frame: CGRect(x: 40, y: 330, width: width - 80 , height: 60))
             title1.textAlignment = NSTextAlignment.center
-            title1.backgroundColor = .clear
-            title1.textColor = UIColor.brownColor
-            title1.numberOfLines = 0
-            title1.font = UIFont(name: "Arial Bold", size: 20)
             title1.text = ""
             view.addSubview(title1)
                 
-            contentLabel = UILabel(frame: CGRect(x: 0, y: 380, width: width , height: 50))
-            contentLabel.textAlignment = NSTextAlignment.center
-            contentLabel.backgroundColor = UIColor.brownColor
-            contentLabel.textColor = UIColor.pinkColor
-            contentLabel.numberOfLines = 0
-            contentLabel.layer.cornerRadius = 7
-            contentLabel.font = UIFont(name: "Arial Bold", size: 20)
+            contentLabel = UIView.brownLabels(frame: CGRect(x: 0, y: 380, width: width , height: 50))
             contentLabel.text = "Top 5:"
             view.addSubview(contentLabel)
                 
@@ -122,11 +98,7 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
             labelArray1.forEach {label1 in
             label1.heightAnchor.constraint(equalToConstant: Constants.height/20).isActive = true
             label1.widthAnchor.constraint(equalToConstant: Constants.width).isActive = true
-            label1.numberOfLines = 0
-            label1.textColor = UIColor.brownColor
             label1.textAlignment = .center
-            label1.backgroundColor = .clear
-            label1.font = UIFont(name: "Arial Bold", size: 20)
             }
         
     }
@@ -158,7 +130,7 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
         }
         func textFieldDidEndEditing(_ textField: UITextField) {
             if let Name = SearchTextField.text {
-                categoryManager.fetchCategory(bookName: Name, view: activityView)
+                categoryManager.fetchCategory(categoryName: Name, view: activityView)
                 createActivityIndicator()
             }
             SearchTextField.text = ""

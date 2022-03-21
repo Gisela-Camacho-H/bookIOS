@@ -31,18 +31,6 @@ class logoView: UIView {
     
    
     override func draw(_ rect: CGRect) {
-        //Call super.draw
-        //Create path object
-        //Set attributes
-        //Set starting points
-        //Define path
-        //Set stroke or fill colors.
-        //*Get context and save state
-        //*Position the shape
-        //Render
-        //*Restore graphic context
-        
-        //Call super.draw
         super.draw(rect)
         //Create path object
         let path = UIBezierPath()

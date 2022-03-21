@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Book logo, coordinates
 public enum logoConstant {
     public static let pointA = (x:20.0, y:5.0)
     public static let pointB = (x:20.0, y:155.0)
@@ -19,6 +20,7 @@ public enum logoConstant {
     public static let pointI = (x:5.0, y:170.0)
     public static let pointJ = (x:5.0, y:2.0)
     
+
     private static let scaleXFactor = 100.0
     private static let scaleYFactor = 160.0
     

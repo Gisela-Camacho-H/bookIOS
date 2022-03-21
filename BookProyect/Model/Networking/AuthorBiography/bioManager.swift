@@ -12,26 +12,28 @@ protocol BioManagerDelegate {
 }
 
 struct BioManager {
+    // assing the url to a variable
      let BookUrl = "https://openlibrary.org/authors"
 
    
    var delegate: BioManagerDelegate?
    
-   func fetchBio(bookName: String) {
+   func fetchBio(authorDetailName: String) {
        
-       let urlString = "\(BookUrl)/\(bookName).json"
+       // add the variable (authorDetailName) to the url
+       let urlString = "\(BookUrl)/\(authorDetailName).json"
       perfomRequest(urlString: urlString)
    }
    
    func perfomRequest(urlString: String) {
-       // Hacemos los 4 pasos
+       // 4 steps
        
-       //1.Crear un URL
+       //1.Create a URL
        if let url = URL(string: urlString) {
-           //2. Create a URLSession
+           //2. Create the URL session
            
            let session = URLSession(configuration: .default)
-           //3. Darle la session una tarea
+           //3. give a task to the session
            let task = session.dataTask(with: url) {(data, response, error)
                in
                if error != nil{
@@ -44,7 +46,7 @@ struct BioManager {
                    }
                }
            }
-           //4. empezar la tarea
+           //4. start the task
            task.resume()
        }
    }
@@ -56,9 +58,11 @@ struct BioManager {
        do {
            
            let decodedData = try decoder.decode(BioData.self, from: bioData)
-           print(decodedData.bio)
-       
+
+           // obtein the data from the API
            let bioApi = decodedData.bio
+           
+           // assing the data to a variable
            let bioid = BioModel(bio: bioApi)
            return bioid
            

@@ -12,7 +12,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
 
     // Buttons
     lazy var backButton : UIButton = UIButton()
-    lazy var registerButton : UIButton = UIButton()
+    lazy var registerButton : UIView.brownButton = UIView.brownButton()
     
     lazy var topImageView: UIImageView = UIImageView()
     let db = Firestore.firestore()
@@ -147,12 +147,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
             label.textAlignment = .center
         }
         
-        registerButton = UIButton(frame: CGRect(x: 30, y: height - 120 , width: width - 60 , height: Constants.height/15))
-        registerButton.backgroundColor = UIColor.brownColor
-        registerButton.layer.cornerRadius = Constants.cornerRadius
-        registerButton.setTitleColor(.white, for: .normal)
+        registerButton = UIView.brownButton(frame: CGRect(x: 30, y: height - 120 , width: width - 60 , height: Constants.height/15))
         registerButton.setTitle("Register", for: .normal)
-        registerButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
         registerButton.addTarget(self, action: #selector(goToLogin), for: .touchUpInside)
         
         view.addSubview(registerButton)

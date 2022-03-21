@@ -7,12 +7,12 @@
 import Foundation
 import UIKit
 
-// la tableview tendrá diferentes categorias
+// the tableView has different categories
 class BookObject{
     var categories : [Category]?
     var title : String?
     
-    //se inicializa y se asigna los elementos que va a tener cada categoria
+    // initialize and assign the elements per category
     init(categories : [Category], title : String){
         self.categories = categories
         self.title = title
@@ -20,18 +20,19 @@ class BookObject{
         
 }
 
-//cada categoria tendra nombre y libro
+// each category has name and books
 class Category{
     var name : String?
     var books : [Books]?
     
+    // init the category
     init(name : String, books: [Books]){
         self.name = name
         self.books = books
     }
 }
 
-// varibles que se necesitan por cada libro
+// variables per book
 class Books{
     var name : String?
     var description : String?

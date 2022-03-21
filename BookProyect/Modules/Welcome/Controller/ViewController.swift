@@ -31,7 +31,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     private lazy var passwordTextField : UITextField = UITextField()
     
 //MARK: - Button
-    private lazy var loginButton : UIButton = UIButton()
+    private lazy var loginButton : UIView.brownButton = {
+        loginButton = UIView.brownButton()
+        return loginButton
+    }()
+    
     private lazy var signUpButton: UIButton = UIButton()
     lazy var exitButton: UIButton = UIButton()
     lazy var nextButton: UIButton = UIButton()
@@ -235,13 +239,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         passwordLabel.textAlignment = .center
         textFieldStackView.addSubview(passwordLabel)
         
-        loginButton = UIButton(frame: CGRect(x: 30, y:  height - 160 , width: width - 60  , height: 60))
-        loginButton.backgroundColor = UIColor.brownColor
-        loginButton.layer.cornerRadius = Constants.cornerRadius
-        loginButton.setTitleColor(.white, for: .normal)
-        loginButton.setTitle("Log In", for: .normal)
-        loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
+        loginButton = UIView.brownButton(frame: CGRect(x: 30, y:  height - 160 , width: width - 60  , height: 60))
         loginButton.addTarget(self, action: #selector(goToBooks), for: .touchUpInside)
+        loginButton.setTitle("Log in", for: .normal)
         view.addSubview(loginButton)
         
         passwordButton = UIButton()

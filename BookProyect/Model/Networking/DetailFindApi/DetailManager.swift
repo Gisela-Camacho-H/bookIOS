@@ -12,26 +12,28 @@ protocol DetailManagerDelegate {
 }
 
 struct DetailManager {
+    // assing the url to a variable
      let BookUrl = "https://openlibrary.org"
 
    
    var delegate: DetailManagerDelegate?
    
-   func fetchDetail(bookName: String) {
+   func fetchDetail(bookDetailName: String) {
        
-       let urlString = "\(BookUrl)/\(bookName).json"
+       // add the variable (bookDetailName) to the url to complete it
+       let urlString = "\(BookUrl)/\(bookDetailName).json"
       perfomRequest(urlString: urlString)
    }
    
    func perfomRequest(urlString: String) {
-       // Hacemos los 4 pasos
+       //4 steps
        
-       //1.Crear un URL
+       //1.Create a URL
        if let url = URL(string: urlString) {
            //2. Create a URLSession
            
            let session = URLSession(configuration: .default)
-           //3. Darle la session una tarea
+           //3. give a task to the session
            let task = session.dataTask(with: url) {(data, response, error)
                in
                if error != nil{
@@ -44,7 +46,7 @@ struct DetailManager {
                    }
                }
            }
-           //4. empezar la tarea
+           //4. start the task
            task.resume()
        }
    }
@@ -56,10 +58,12 @@ struct DetailManager {
        do {
            
            let decodedData = try decoder.decode(DetailData.self, from: detailData)
-           print(decodedData.description)
-       
+           
+           // obtein the data from the API
            let descriptionApi = decodedData.description
            let titleApi = decodedData.title
+
+           // assing the data to a variable 
            let detailid = DetailModel(description: descriptionApi, title: titleApi)
            return detailid
            
