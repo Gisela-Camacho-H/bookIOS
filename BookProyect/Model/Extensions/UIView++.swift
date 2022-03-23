@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+//MARK: - Button
 extension UIView{
     class brownButton: UIButton {
         override init(frame: CGRect){
@@ -23,6 +24,7 @@ extension UIView{
         }
     }
     
+//MARK: - Finder labels
     class brownLabels: UILabel {
         override init(frame: CGRect){
             super.init(frame: frame)
@@ -53,6 +55,8 @@ extension UIView{
         }
     }
     
+//MARK: - Finder textField and mainlabel
+    
     class findTextField: UITextField {
         override init(frame: CGRect){
             super.init(frame: frame)
@@ -81,4 +85,27 @@ extension UIView{
             fatalError("init(coder:) has not been implemented")
         }
     }
+
+    
+    class loginTextField: UITextField {
+        override init(frame: CGRect){
+            super.init(frame: frame)
+            layer.borderColor = UIColor.brownColor.cgColor
+            layer.cornerRadius = 7
+            layer.borderWidth = 2
+            backgroundColor = .clear
+            textAlignment = NSTextAlignment.left
+            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: frame.height))
+            keyboardType = UIKeyboardType.default
+            autocorrectionType = UITextAutocorrectionType.no
+            clearButtonMode = UITextField.ViewMode.whileEditing
+            leftView = paddingView
+            leftViewMode = UITextField.ViewMode.always
+        }
+        
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+    }
+    
 }

@@ -67,7 +67,7 @@ class BooksViewController : UIViewController {
 
         //Imagen de fondo
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "papel")
+        backgroundImage.image = UIImage(named: "paper")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
         self.view.insertSubview(backgroundImage, at: 0)
         

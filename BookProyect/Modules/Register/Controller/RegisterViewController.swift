@@ -17,10 +17,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
     lazy var topImageView: UIImageView = UIImageView()
     let db = Firestore.firestore()
     // TextField
-    lazy var emailTextField : UITextField = UITextField()
-    lazy var passwordTextField : UITextField = UITextField()
-    lazy var userTextField : UITextField = UITextField()
-    lazy var confirmTextField : UITextField = UITextField()
+    lazy var emailTextField : UIView.loginTextField = UIView.loginTextField()
+    lazy var passwordTextField : UIView.loginTextField = UIView.loginTextField()
+    lazy var userTextField : UIView.loginTextField = UIView.loginTextField()
+    lazy var confirmTextField : UIView.loginTextField = UIView.loginTextField()
     
     // Labels
     lazy var registerInfoLabel : UILabel = UILabel()
@@ -39,7 +39,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
         
         //imagen de fondo
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "papel")
+        backgroundImage.image = UIImage(named: "paper")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
         self.view.insertSubview(backgroundImage, at: 0)
         
@@ -104,18 +104,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
         ])
         textFieldArray.forEach {textFieldElement in
             textFieldElement.heightAnchor.constraint(equalToConstant: Constants.height/17).isActive = true
-            textFieldElement.layer.cornerRadius = 7
-            textFieldElement.layer.borderColor = UIColor.brownColor.cgColor
-            textFieldElement.layer.borderWidth = 2
-            textFieldElement.backgroundColor = .clear
-            textFieldElement.textAlignment = NSTextAlignment.left
-            textFieldElement.keyboardType = UIKeyboardType.default
-            textFieldElement.autocorrectionType = UITextAutocorrectionType.no
-            textFieldElement.clearButtonMode = UITextField.ViewMode.whileEditing
-            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: textFieldElement.frame.height))
-            textFieldElement.leftView = paddingView
-            textFieldElement.leftViewMode = UITextField.ViewMode.always
         }
+        
         
         self.view.addSubview(userLabel)
         confirmLabel.text = "- Confirm -"

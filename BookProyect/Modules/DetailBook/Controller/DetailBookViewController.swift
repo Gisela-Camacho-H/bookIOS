@@ -25,10 +25,10 @@ class DetailBookViewController: UIViewController {
     
     // UILabels
     lazy var bookName: UILabel = UILabel()
-    lazy var bookAutor : UILabel = UILabel()
+    lazy var authorBook : UILabel = UILabel()
     lazy var descriptionTextView : UILabel = UILabel()
     lazy var detailLabel : UILabel = UILabel()
-    lazy var bookSobre: UILabel = UILabel()
+    lazy var aboutAuthor: UILabel = UILabel()
     lazy var descriptionLabel : UILabel = UILabel()
     lazy var bookCategory : UILabel = UILabel()
     lazy var moreBooks: UILabel = UILabel()
@@ -51,7 +51,7 @@ class DetailBookViewController: UIViewController {
 
         //view.backgroundColor = backgroundColor
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "papel")
+        backgroundImage.image = UIImage(named: "paper")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
         self.view.insertSubview(backgroundImage, at: 0)
         
@@ -113,11 +113,10 @@ class DetailBookViewController: UIViewController {
         bookCard.addSubview(bookName)
         
         
-        bookAutor = UILabel(frame: CGRect(x: 160, y: 60, width: 160, height: 20))
-        bookAutor.text = mBook?.author
-        bookAutor.font = .boldSystemFont(ofSize: 12)
-        
-        bookCard.addSubview(bookAutor)
+        authorBook = UILabel(frame: CGRect(x: 160, y: 60, width: 160, height: 20))
+        authorBook.text = mBook?.author
+        authorBook.font = .boldSystemFont(ofSize: 12)
+        bookCard.addSubview(authorBook)
         
         bookCategory = UILabel(frame: CGRect(x: 160, y: 80, width: 160, height: 20))
         bookCategory.text = mBook?.categories
@@ -198,19 +197,19 @@ class DetailBookViewController: UIViewController {
         descriptionLabel.textAlignment = .left
         descriptionView.addSubview(descriptionLabel)
         
-        bookAutor = UILabel(frame: CGRect(x: width/4 + 20, y: 40, width: 250, height: 30))
-        bookAutor.text = mBook?.author
-        bookAutor.textColor = UIColor.brownColor
-        bookAutor.font = .boldSystemFont(ofSize: 22)
-        bookAutor.textAlignment = .left
-        descriptionView.addSubview(bookAutor)
+        authorBook = UILabel(frame: CGRect(x: width/4 + 20, y: 40, width: 250, height: 30))
+        authorBook.text = mBook?.author
+        authorBook.textColor = UIColor.brownColor
+        authorBook.font = .boldSystemFont(ofSize: 22)
+        authorBook.textAlignment = .left
+        descriptionView.addSubview(authorBook)
         
-        bookSobre = UILabel(frame: CGRect(x: 20, y: 85, width: width - 80, height: 110))
-        bookSobre.text = mBook?.aboutAuthor
-        bookSobre.numberOfLines = 0
-        bookSobre.textAlignment = .left
-        bookSobre.font = .boldSystemFont(ofSize: 12)
-        descriptionView.addSubview(bookSobre)
+        aboutAuthor = UILabel(frame: CGRect(x: 20, y: 85, width: width - 80, height: 110))
+        aboutAuthor .text = mBook?.aboutAuthor
+        aboutAuthor .numberOfLines = 0
+        aboutAuthor .textAlignment = .left
+        aboutAuthor .font = .boldSystemFont(ofSize: 12)
+        descriptionView.addSubview(aboutAuthor )
         
         moreBooks = UILabel(frame: CGRect(x: Constants.width - 150, y: Constants.height/5 + 25 , width: 140, height: 20))
         moreBooks.text = "+ author titles"

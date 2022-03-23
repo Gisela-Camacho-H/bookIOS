@@ -27,8 +27,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     private lazy var continueLabel: UILabel = UILabel()
     
 //MARK: - TextField
-    private lazy var emailTextField : UITextField = UITextField()
-    private lazy var passwordTextField : UITextField = UITextField()
+    private lazy var emailTextField : UIView.loginTextField = UIView.loginTextField()
+    private lazy var passwordTextField :UIView.loginTextField = UIView.loginTextField()
     
 //MARK: - Button
     private lazy var loginButton : UIView.brownButton = {
@@ -57,7 +57,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
        
         //imagen de fondo
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "papel")
+        backgroundImage.image = UIImage(named: "paper")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
         self.view.insertSubview(backgroundImage, at: 0)
 
@@ -211,15 +211,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         ])
         textFieldArray.forEach {textFieldElement in
             textFieldElement.heightAnchor.constraint(equalToConstant: 50).isActive = true
-            textFieldElement.layer.cornerRadius = 25
-            textFieldElement.layer.borderColor = UIColor.brownColor.cgColor
-            textFieldElement.layer.cornerRadius = 7
-            textFieldElement.layer.borderWidth = 2
-            textFieldElement.backgroundColor = .clear
-            textFieldElement.textAlignment = NSTextAlignment.left
-            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: textFieldElement.frame.height))
-            textFieldElement.leftView = paddingView
-            textFieldElement.leftViewMode = UITextField.ViewMode.always
         }
 
 

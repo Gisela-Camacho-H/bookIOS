@@ -600,7 +600,6 @@
 				56FD599E27D32EF800449425 /* Logo */,
 				5649C044279A71CB000DCA63 /* Main.storyboard */,
 				5620E13B27A8995C004527E6 /* CollectionBooks */,
-				5620E13C27A8998C004527E6 /* TableViewBooks */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -644,6 +643,7 @@
 		725D332EC33A1263BB319DA1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				5620E13C27A8998C004527E6 /* TableViewBooks */,
 				B26784F3BDF9D5C03C7022D2 /* Pods-BookProyect.debug.xcconfig */,
 				AF9CC6FBA78A3552001CABB5 /* Pods-BookProyect.release.xcconfig */,
 			);
