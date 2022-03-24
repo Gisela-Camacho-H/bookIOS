@@ -43,15 +43,7 @@
 		569B5B8927D259AC00C65353 /* FinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B5B8827D259AC00C65353 /* FinderViewController.swift */; };
 		569B5B8E27D2638D00C65353 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569B5B8D27D2638D00C65353 /* UserViewController.swift */; };
 		56A5476627C590B600334829 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5476527C590B600334829 /* Constants.swift */; };
-		56A5476827C590F800334829 /* DetailAuthorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5476727C590F800334829 /* DetailAuthorViewModel.swift */; };
-		56A5476A27C5911200334829 /* DetailFindBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5476927C5911200334829 /* DetailFindBookViewModel.swift */; };
-		56A5476C27C5912500334829 /* AuthorsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5476B27C5912500334829 /* AuthorsViewModel.swift */; };
-		56A5476E27C5913600334829 /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5476D27C5913600334829 /* CategoriesViewModel.swift */; };
 		56A5477027C5914600334829 /* BooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5476F27C5914600334829 /* BooksViewModel.swift */; };
-		56A5477227C5915900334829 /* DetailBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5477127C5915900334829 /* DetailBookViewModel.swift */; };
-		56A5477427C5916800334829 /* FindBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5477327C5916800334829 /* FindBookViewModel.swift */; };
-		56A5477627C5917A00334829 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5477527C5917A00334829 /* RegisterViewModel.swift */; };
-		56A5477827C5918C00334829 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5477727C5918C00334829 /* ViewModel.swift */; };
 		56A5477B27C591DA00334829 /* UIView++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5477A27C591DA00334829 /* UIView++.swift */; };
 		56A5477D27C591E600334829 /* UILabel++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5477C27C591E600334829 /* UILabel++.swift */; };
 		56A5477F27C591F100334829 /* UIColor++.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A5477E27C591F100334829 /* UIColor++.swift */; };
@@ -101,15 +93,7 @@
 		569B5B8827D259AC00C65353 /* FinderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderViewController.swift; sourceTree = "<group>"; };
 		569B5B8D27D2638D00C65353 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		56A5476527C590B600334829 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		56A5476727C590F800334829 /* DetailAuthorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAuthorViewModel.swift; sourceTree = "<group>"; };
-		56A5476927C5911200334829 /* DetailFindBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFindBookViewModel.swift; sourceTree = "<group>"; };
-		56A5476B27C5912500334829 /* AuthorsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorsViewModel.swift; sourceTree = "<group>"; };
-		56A5476D27C5913600334829 /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
 		56A5476F27C5914600334829 /* BooksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewModel.swift; sourceTree = "<group>"; };
-		56A5477127C5915900334829 /* DetailBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBookViewModel.swift; sourceTree = "<group>"; };
-		56A5477327C5916800334829 /* FindBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindBookViewModel.swift; sourceTree = "<group>"; };
-		56A5477527C5917A00334829 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
-		56A5477727C5918C00334829 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		56A5477A27C591DA00334829 /* UIView++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView++.swift"; sourceTree = "<group>"; };
 		56A5477C27C591E600334829 /* UILabel++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel++.swift"; sourceTree = "<group>"; };
 		56A5477E27C591F100334829 /* UIColor++.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor++.swift"; sourceTree = "<group>"; };
@@ -213,7 +197,6 @@
 			children = (
 				565AF05C27A9AA2100B37184 /* BookModel.swift */,
 				565AF05A27A9A9CD00B37184 /* BookData.swift */,
-				565AF05F27A9AA9400B37184 /* BookManager.swift */,
 			);
 			path = BookApi;
 			sourceTree = "<group>";
@@ -223,7 +206,6 @@
 			children = (
 				561E381D27AE060D00C22D57 /* AuthorModel.swift */,
 				561E381F27AE062200C22D57 /* AuthorData.swift */,
-				561E382127AE063600C22D57 /* AuthorManager.swift */,
 			);
 			path = AuthorsApi;
 			sourceTree = "<group>";
@@ -233,7 +215,6 @@
 			children = (
 				567C71A627B1EFC700B8B095 /* bioData.swift */,
 				567C71A827B1EFD200B8B095 /* bioModel.swift */,
-				567C71AA27B1EFDD00B8B095 /* bioManager.swift */,
 			);
 			path = AuthorBiography;
 			sourceTree = "<group>";
@@ -241,17 +222,9 @@
 		56910DD827CB0FA600F27013 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				56910DD927CB0FB500F27013 /* ViewModel */,
 				56910DDA27CB0FBF00F27013 /* Controller */,
 			);
 			path = TabBar;
-			sourceTree = "<group>";
-		};
-		56910DD927CB0FB500F27013 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		56910DDA27CB0FBF00F27013 /* Controller */ = {
@@ -267,7 +240,6 @@
 			children = (
 				5698F27127ADE5FD00F66BF9 /* CategoryModel.swift */,
 				5698F27327ADE61900F66BF9 /* CategoryData.swift */,
-				5698F27527ADE63800F66BF9 /* CategoryManager.swift */,
 			);
 			path = CategoryApi;
 			sourceTree = "<group>";
@@ -275,7 +247,6 @@
 		569B5B8427D2594100C65353 /* Finder */ = {
 			isa = PBXGroup;
 			children = (
-				569B5B8727D2598C00C65353 /* ViewModel */,
 				569B5B8627D2597400C65353 /* Controller */,
 			);
 			path = Finder;
@@ -289,17 +260,9 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		569B5B8727D2598C00C65353 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		569B5B8A27D2636400C65353 /* UserInfo */ = {
 			isa = PBXGroup;
 			children = (
-				569B5B8C27D2637800C65353 /* ViewModel */,
 				569B5B8B27D2636D00C65353 /* Controller */,
 			);
 			path = UserInfo;
@@ -311,13 +274,6 @@
 				569B5B8D27D2638D00C65353 /* UserViewController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		569B5B8C27D2637800C65353 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		56A5474627C58DC000334829 /* Modules */ = {
@@ -342,18 +298,9 @@
 		56A5474727C58DD200334829 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
-				56A5474827C58DE400334829 /* ViewModel */,
 				56A5474927C58DF200334829 /* Controller */,
 			);
 			path = Welcome;
-			sourceTree = "<group>";
-		};
-		56A5474827C58DE400334829 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				56A5477727C5918C00334829 /* ViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		56A5474927C58DF200334829 /* Controller */ = {
@@ -367,18 +314,9 @@
 		56A5474A27C58E0A00334829 /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				56A5474B27C58E2800334829 /* ViewModel */,
 				56A5474D27C58E4C00334829 /* Controller */,
 			);
 			path = Register;
-			sourceTree = "<group>";
-		};
-		56A5474B27C58E2800334829 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				56A5477527C5917A00334829 /* RegisterViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		56A5474D27C58E4C00334829 /* Controller */ = {
@@ -409,7 +347,7 @@
 		56A5475027C58EA900334829 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				56A5477327C5916800334829 /* FindBookViewModel.swift */,
+				565AF05F27A9AA9400B37184 /* BookManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -417,7 +355,6 @@
 		56A5475127C58F1500334829 /* DetailBook */ = {
 			isa = PBXGroup;
 			children = (
-				56A5475327C58F3E00334829 /* ViewModel */,
 				56A5475227C58F3500334829 /* Controller */,
 			);
 			path = DetailBook;
@@ -429,14 +366,6 @@
 				562B6F98279D24FF008F8437 /* DetailBookViewController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		56A5475327C58F3E00334829 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				56A5477127C5915900334829 /* DetailBookViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		56A5475427C58F5600334829 /* Books */ = {
@@ -484,7 +413,7 @@
 		56A5475927C58F8B00334829 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				56A5476D27C5913600334829 /* CategoriesViewModel.swift */,
+				5698F27527ADE63800F66BF9 /* CategoryManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -509,7 +438,7 @@
 		56A5475C27C58FB600334829 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				56A5476B27C5912500334829 /* AuthorsViewModel.swift */,
+				561E382127AE063600C22D57 /* AuthorManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -534,7 +463,7 @@
 		56A5475F27C58FE100334829 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				56A5476927C5911200334829 /* DetailFindBookViewModel.swift */,
+				56B49FDA27B08F8700ACAE21 /* DetailManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -559,7 +488,7 @@
 		56A5476227C58FFC00334829 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				56A5476727C590F800334829 /* DetailAuthorViewModel.swift */,
+				567C71AA27B1EFDD00B8B095 /* bioManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -597,8 +526,9 @@
 		56A5478027C5920B00334829 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				56FD599E27D32EF800449425 /* Logo */,
 				5649C044279A71CB000DCA63 /* Main.storyboard */,
+				5620E13C27A8998C004527E6 /* TableViewBooks */,
+				56FD599E27D32EF800449425 /* Logo */,
 				5620E13B27A8995C004527E6 /* CollectionBooks */,
 			);
 			path = View;
@@ -618,7 +548,6 @@
 			children = (
 				56B49FD627B08F3E00ACAE21 /* DetailData.swift */,
 				56B49FD827B08F7400ACAE21 /* DetailModel.swift */,
-				56B49FDA27B08F8700ACAE21 /* DetailManager.swift */,
 			);
 			path = DetailFindApi;
 			sourceTree = "<group>";
@@ -643,7 +572,6 @@
 		725D332EC33A1263BB319DA1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5620E13C27A8998C004527E6 /* TableViewBooks */,
 				B26784F3BDF9D5C03C7022D2 /* Pods-BookProyect.debug.xcconfig */,
 				AF9CC6FBA78A3552001CABB5 /* Pods-BookProyect.release.xcconfig */,
 			);
@@ -784,7 +712,6 @@
 				565AF05B27A9A9CD00B37184 /* BookData.swift in Sources */,
 				5695960C279BBA3B00EE3748 /* RegisterViewController.swift in Sources */,
 				5698F27627ADE63800F66BF9 /* CategoryManager.swift in Sources */,
-				56A5477627C5917A00334829 /* RegisterViewModel.swift in Sources */,
 				567C71AB27B1EFDD00B8B095 /* bioManager.swift in Sources */,
 				56910DDE27CB102900F27013 /* TabBarViewController.swift in Sources */,
 				565AF06027A9AA9400B37184 /* BookManager.swift in Sources */,
@@ -794,17 +721,13 @@
 				561E381E27AE060D00C22D57 /* AuthorModel.swift in Sources */,
 				5698F27227ADE5FD00F66BF9 /* CategoryModel.swift in Sources */,
 				56B6B87227A08884009BA902 /* BooksObjectCollection.swift in Sources */,
-				56A5477227C5915900334829 /* DetailBookViewModel.swift in Sources */,
 				5698F27427ADE61900F66BF9 /* CategoryData.swift in Sources */,
-				56A5477827C5918C00334829 /* ViewModel.swift in Sources */,
-				56A5477427C5916800334829 /* FindBookViewModel.swift in Sources */,
 				56B49FD927B08F7400ACAE21 /* DetailModel.swift in Sources */,
 				565AF05D27A9AA2100B37184 /* BookModel.swift in Sources */,
 				563AC45A279DE89700B97AA3 /* BookObject.swift in Sources */,
 				5650379C279FC34A00D4CA27 /* Utils.swift in Sources */,
 				5695960A279BB68D00EE3748 /* BooksViewController.swift in Sources */,
 				567C71A927B1EFD200B8B095 /* bioModel.swift in Sources */,
-				56A5476A27C5911200334829 /* DetailFindBookViewModel.swift in Sources */,
 				56503799279FBA1900D4CA27 /* BookCollectionView.swift in Sources */,
 				56A5477027C5914600334829 /* BooksViewModel.swift in Sources */,
 				56FD59A027D32F0D00449425 /* logoConstants.swift in Sources */,
@@ -812,14 +735,11 @@
 				561E382227AE063600C22D57 /* AuthorManager.swift in Sources */,
 				5649C03F279A71CB000DCA63 /* AppDelegate.swift in Sources */,
 				56A5477D27C591E600334829 /* UILabel++.swift in Sources */,
-				56A5476827C590F800334829 /* DetailAuthorViewModel.swift in Sources */,
-				56A5476C27C5912500334829 /* AuthorsViewModel.swift in Sources */,
 				566FDE0127AB5E06009C1378 /* CategoriesViewController.swift in Sources */,
 				561E382027AE062200C22D57 /* AuthorData.swift in Sources */,
 				56FD59A227D32F4300449425 /* logoView.swift in Sources */,
 				56A5477F27C591F100334829 /* UIColor++.swift in Sources */,
 				569B5B8927D259AC00C65353 /* FinderViewController.swift in Sources */,
-				56A5476E27C5913600334829 /* CategoriesViewModel.swift in Sources */,
 				5649C041279A71CB000DCA63 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

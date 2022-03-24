@@ -108,19 +108,19 @@ class DetailBookViewController: UIViewController {
         bookName.numberOfLines = 0
         bookName.textAlignment = .center
         bookName.textColor = UIColor.brownColor
-        bookName.font = .boldSystemFont(ofSize: 17)
+        bookName.apply17Font()
         
         bookCard.addSubview(bookName)
         
         
         authorBook = UILabel(frame: CGRect(x: 160, y: 60, width: 160, height: 20))
         authorBook.text = mBook?.author
-        authorBook.font = .boldSystemFont(ofSize: 12)
+        authorBook.apply13Font()
         bookCard.addSubview(authorBook)
         
         bookCategory = UILabel(frame: CGRect(x: 160, y: 80, width: 160, height: 20))
         bookCategory.text = mBook?.categories
-        bookCategory.font = .boldSystemFont(ofSize: 12)
+        bookCategory.apply13Font()
         
         bookCard.addSubview(bookCategory)
     }
@@ -157,7 +157,7 @@ class DetailBookViewController: UIViewController {
         
         descriptionLabel = UILabel(frame: CGRect(x: 10, y: 5, width: 160, height: 30))
         descriptionLabel.text = "Description"
-        descriptionLabel.font = .boldSystemFont(ofSize: 14)
+        descriptionLabel.apply17Font()
         descriptionLabel.textColor = UIColor.brownColor
         descriptionLabel.textAlignment = .center
         descriptionView.addSubview(descriptionLabel)
@@ -165,15 +165,15 @@ class DetailBookViewController: UIViewController {
         detailLabel = UILabel(frame: CGRect(x: width/2 - 20, y: 5, width: 160, height: 30))
         detailLabel.text = "Details"
         detailLabel.textColor = UIColor.brownColor
-        detailLabel.font = .boldSystemFont(ofSize: 14)
+        detailLabel.apply17Font()
         detailLabel.textAlignment = .center
         descriptionView.addSubview(detailLabel)
         
         
-        descriptionTextView = UILabel(frame: CGRect(x: 20, y: 50, width: width - 80, height: 100))
+        descriptionTextView = UILabel(frame: CGRect(x: 20, y: 50, width: width - 90, height: 100))
         descriptionTextView.text = mBook?.description
         descriptionTextView.numberOfLines = 0
-        descriptionTextView.textAlignment = .left
+        descriptionTextView.textAlignment = .justified
         descriptionTextView.font = .boldSystemFont(ofSize: 13)
         descriptionView.addSubview(descriptionTextView)
         
@@ -193,28 +193,28 @@ class DetailBookViewController: UIViewController {
         descriptionLabel = UILabel(frame: CGRect(x: width/4 + 20, y: 5, width: 160, height: 30))
         descriptionLabel.text = "About Author"
         descriptionLabel.textColor = UIColor.brownColor
-        descriptionLabel.font = .boldSystemFont(ofSize: 15)
+        descriptionLabel.apply17Font()
         descriptionLabel.textAlignment = .left
         descriptionView.addSubview(descriptionLabel)
         
         authorBook = UILabel(frame: CGRect(x: width/4 + 20, y: 40, width: 250, height: 30))
         authorBook.text = mBook?.author
         authorBook.textColor = UIColor.brownColor
-        authorBook.font = .boldSystemFont(ofSize: 22)
+        authorBook.apply20Font()
         authorBook.textAlignment = .left
         descriptionView.addSubview(authorBook)
         
-        aboutAuthor = UILabel(frame: CGRect(x: 20, y: 85, width: width - 80, height: 110))
-        aboutAuthor .text = mBook?.aboutAuthor
-        aboutAuthor .numberOfLines = 0
-        aboutAuthor .textAlignment = .left
-        aboutAuthor .font = .boldSystemFont(ofSize: 12)
+        aboutAuthor = UILabel(frame: CGRect(x: 20, y: 85, width: width - 90, height: 110))
+        aboutAuthor.text = mBook?.aboutAuthor
+        aboutAuthor.numberOfLines = 0
+        aboutAuthor.textAlignment = .justified
+        aboutAuthor.font = .boldSystemFont(ofSize: 12)
         descriptionView.addSubview(aboutAuthor )
         
         moreBooks = UILabel(frame: CGRect(x: Constants.width - 150, y: Constants.height/5 + 25 , width: 140, height: 20))
         moreBooks.text = "+ author titles"
         moreBooks.textColor = UIColor.coralColor
-        moreBooks.font = .boldSystemFont(ofSize: 12)
+        moreBooks.apply13Font()
         descriptionView.addSubview(moreBooks)
         
         authorImage = UIImageView(frame: CGRect(x: 25, y: 10, width: 70, height: 70))

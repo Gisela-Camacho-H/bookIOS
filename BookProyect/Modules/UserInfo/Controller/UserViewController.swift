@@ -31,7 +31,7 @@ class UserViewController: UIViewController {
         
         userInfoLabel = UILabel(frame: CGRect(x: 0, y: 200, width: width, height: 50))
         userInfoLabel.text = "User Information "
-        userInfoLabel.font = .boldSystemFont(ofSize: 40)
+        userInfoLabel.applyTitleFont()
         userInfoLabel.textAlignment = .center
         userInfoLabel.textColor = UIColor.brownColor
         view.addSubview(userInfoLabel)
@@ -40,14 +40,14 @@ class UserViewController: UIViewController {
         userNameLabel = UILabel(frame: CGRect(x: 30, y: 300, width: width - 60, height: 50))
         userNameLabel.text = "User Name: \(userName ?? "" )"
         userNameLabel.textAlignment = .center
-        userNameLabel.font = .boldSystemFont(ofSize: 25)
+        userNameLabel.apply25Font()
         view.addSubview(userNameLabel)
         
         let userEmail = defaults.string(forKey: "UserLog")
         userEmailLabel = UILabel(frame: CGRect(x: 30, y: 400, width: width - 60, height: 50))
         userEmailLabel.text = "User Email: \(userEmail ?? "" )"
         userEmailLabel.textAlignment = .center
-        userEmailLabel.font = .boldSystemFont(ofSize: 25)
+        userEmailLabel.apply25Font()
         view.addSubview(userEmailLabel)
         
         switchMode = UISwitch(frame:CGRect(x: width/2 - 10, y: 500, width: 10, height: 10))
@@ -58,7 +58,7 @@ class UserViewController: UIViewController {
         
         lightLabel = UILabel(frame:CGRect(x: width/3 - 40, y: 505, width: 100, height: 20))
         lightLabel.text = "Light Mode "
-        lightLabel.font = .boldSystemFont(ofSize: 15)
+        lightLabel.apply17Font()
         lightLabel.textAlignment = .center
         lightLabel.textColor = UIColor.brownColor
         view.addSubview(lightLabel)

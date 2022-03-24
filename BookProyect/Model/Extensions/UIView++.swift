@@ -16,7 +16,7 @@ extension UIView{
             backgroundColor = UIColor.brownColor
             layer.cornerRadius = 15
             setTitleColor(.white, for: .normal)
-            titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
+            titleLabel?.apply35Font()
         }
         
         required init?(coder: NSCoder) {
@@ -33,7 +33,7 @@ extension UIView{
             textColor = UIColor.pinkColor
             textAlignment = .center
             backgroundColor = UIColor.brownColor
-            font = UIFont(name: "Arial Bold", size: 20)
+            apply30Font()
         }
         
         required init?(coder: NSCoder) {
@@ -47,7 +47,7 @@ extension UIView{
             numberOfLines = 0
             textColor = UIColor.brownColor
             backgroundColor = .clear
-            font = UIFont(name: "Arial Bold", size: 17)
+            apply20Font()
         }
         
         required init?(coder: NSCoder) {
@@ -78,7 +78,7 @@ extension UIView{
             textAlignment = NSTextAlignment.center
             backgroundColor = .clear
             textColor = UIColor.brownColor
-            font = UIFont(name: "Arial Bold", size: 22)
+            apply30Font()
         }
         
         required init?(coder: NSCoder) {

@@ -61,14 +61,14 @@ class BookTableViewCell: UITableViewCell{
         bookName = UILabel(frame: CGRect(x: 80, y: 10, width: width/2, height: 20))
         bookName.text = book?.name
         bookName.textColor = UIColor.brownColor
-        bookName.font = .boldSystemFont(ofSize: 15)
+        bookName.apply15Font()
         bookName.textAlignment = .left
         ownContent?.addSubview(bookName)
         
         bookAuthor = UILabel(frame: CGRect(x: 80, y: 40, width: width/2, height: 20))
         bookAuthor.text = book?.author
         bookAuthor.textColor = UIColor.brownColor
-        bookAuthor.font = .boldSystemFont(ofSize: 12)
+        bookAuthor.apply13Font()
         bookAuthor.textAlignment = .left
         bookAuthor.adjustsFontSizeToFitWidth = true
         ownContent?.addSubview(bookAuthor)
@@ -76,7 +76,7 @@ class BookTableViewCell: UITableViewCell{
         bookCategory = UILabel(frame: CGRect(x: 80, y: 70, width: width/2, height: 20))
         bookCategory.text = book?.categories
         bookCategory.textColor = UIColor.brownColor
-        bookCategory.font = .systemFont(ofSize: 12)
+        bookCategory.apply13Font()
         ownContent?.addSubview(bookCategory)
         
         

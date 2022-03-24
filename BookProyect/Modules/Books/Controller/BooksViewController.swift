@@ -124,6 +124,7 @@ class BooksViewController : UIViewController {
         view.addSubview(sectionButton)
         sectionButton.selectedSegmentIndex = 0
         sectionButton.translatesAutoresizingMaskIntoConstraints = false
+        sectionButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.brownColor], for: UIControl.State.selected)
         
         NSLayoutConstraint.activate([
             sectionButton.bottomAnchor.constraint(equalTo: librosCollectionView.bottomAnchor, constant: 50),
@@ -198,7 +199,7 @@ class BooksViewController : UIViewController {
             label.heightAnchor.constraint(equalToConstant: Constants.height/17).isActive = true
             label.widthAnchor.constraint(equalToConstant: 50).isActive = true
             label.backgroundColor = UIColor.brownColor
-            label.font = .boldSystemFont(ofSize: 25)
+            label.apply25Font()
             label.textColor = UIColor.pinkColor
             label.textAlignment = .center
             label.layer.masksToBounds = true
@@ -250,7 +251,7 @@ class BooksViewController : UIViewController {
             label.heightAnchor.constraint(equalToConstant: Constants.height/17).isActive = true
             label.widthAnchor.constraint(equalToConstant: 50).isActive = true
             label.backgroundColor = .white
-            label.font = .boldSystemFont(ofSize: 25)
+            label.apply25Font()
             label.textColor = UIColor.brownColor
             label.textAlignment = .center
             label.layer.masksToBounds = true
@@ -320,7 +321,8 @@ extension BooksViewController : UITableViewDelegate{
         //se declara el label
         let label = UILabel(frame: CGRect(x: 25, y: 2, width: 200, height: 20))
         label.text = viewModel.dataSource?.categories?[section].name ?? ""
-        label.font = .boldSystemFont(ofSize: 20)
+        label.apply30Font()
+        label.textColor = UIColor.brownColor
         view.addSubview(label)
         
         return view

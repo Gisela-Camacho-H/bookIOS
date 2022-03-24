@@ -99,10 +99,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         let userName = defaults.string(forKey: "user")
         userLabel = UILabel(frame: CGRect(x: 0, y: 150, width: width - 60, height: 50))
-        userLabel.text = "    \(userName ?? "" )  "
+        userLabel.text = " \(userName ?? "" )  "
         userLabel.textAlignment = .center
         userLabel.textColor = UIColor.coralColor
-        userLabel.font = .boldSystemFont(ofSize: 30)
+        userLabel.applyTitleFont()
         welcomeView1.addSubview(userLabel)
         
         welcomeLabel1 = UILabel(frame: CGRect(x: -20, y: 100, width: width, height: 50))
@@ -116,7 +116,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
             charIndex += 1
         }
-        welcomeLabel1.font = .boldSystemFont(ofSize: 25)
+        welcomeLabel1.apply25Font()
         welcomeLabel1.textAlignment = .center
         welcomeLabel1.textColor = UIColor.brownColor
         welcomeView1.addSubview(welcomeLabel1)
@@ -125,7 +125,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         continueLabel.text = " Let's continue"
         continueLabel.textAlignment = .center
         continueLabel.textColor = UIColor.coralColor
-        continueLabel.font = .boldSystemFont(ofSize: 25)
+        continueLabel.apply25Font()
         view.addSubview(continueLabel)
         
         nextButton = UIButton(frame: CGRect(x: width - 60, y: height - 145 , width: 45, height: 45))
@@ -174,7 +174,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         welcomeLabel = UILabel(frame: CGRect(x: 0, y: height/10 , width: width, height: 50))
         welcomeLabel.text = ""
         var charIndex = 0
-       let titleText = "   Welcome   "
+       let titleText = "¡ Welcome !"
         for letter in titleText {
             Timer.scheduledTimer(withTimeInterval: Double(charIndex) * 0.3, repeats: false){
                 (timer) in
@@ -182,7 +182,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
             charIndex += 1
         }
-        welcomeLabel.font = .boldSystemFont(ofSize: 35)
+        welcomeLabel.applyTitleFont()
         welcomeLabel.textAlignment = .center
         welcomeLabel.textColor = UIColor.brownColor
         welcomeView.addSubview(welcomeLabel)
@@ -217,7 +217,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         emailLabel = UILabel(frame: CGRect(x: 20, y: -10, width: 50, height: 20))
         emailLabel.text = "Email"
         emailLabel.backgroundColor = UIColor.backgroundColor
-        emailLabel.font = .boldSystemFont(ofSize: 13)
+        emailLabel.apply13Font()
         emailLabel.textColor = UIColor.brownColor
         emailLabel.textAlignment = .center
         textFieldStackView.addSubview(emailLabel)
@@ -225,7 +225,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         passwordLabel = UILabel(frame: CGRect(x: 20, y: 70, width: 80, height: 20))
         passwordLabel.text = "Password"
         passwordLabel.backgroundColor = UIColor.backgroundColor
-        passwordLabel.font = .boldSystemFont(ofSize: 13)
+        passwordLabel.apply13Font()
         passwordLabel.textColor = UIColor.brownColor
         passwordLabel.textAlignment = .center
         textFieldStackView.addSubview(passwordLabel)
@@ -246,14 +246,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // MARK: - Registro
         
         accountLabel.text = "No account?  "
-        accountLabel.font = .boldSystemFont(ofSize: 18)
+        accountLabel.apply25Font()
         accountLabel.textColor = UIColor.brownColor
         self.view.addSubview(accountLabel)
         
         signUpButton.setTitleColor(.coralColor, for: .normal)
         signUpButton.setTitle("Sign-up", for: .normal)
         signUpButton.addTarget(self, action: #selector(register), for: .touchUpInside)
-        signUpButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        signUpButton.titleLabel?.apply25Font()
         self.view.addSubview(signUpButton)
 //MARK: - cuentaStackView
         let cuentaArray: [AnyObject] = [accountLabel, signUpButton]

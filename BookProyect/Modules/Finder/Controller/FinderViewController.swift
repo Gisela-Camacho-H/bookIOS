@@ -30,9 +30,9 @@ class FinderViewController: UIViewController {
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
         self.view.insertSubview(backgroundImage, at: 0)
         
-        findLabel = UILabel(frame: CGRect(x: 0, y: 180, width: width, height: 50))
+        findLabel = UILabel(frame: CGRect(x: 0, y: 230, width: width, height: 50))
         findLabel.text = "Find by: "
-        findLabel.font = .boldSystemFont(ofSize: 35)
+        findLabel.apply35Font()
         findLabel.textAlignment = .center
         findLabel.textColor = UIColor.brownColor
         view.addSubview(findLabel)

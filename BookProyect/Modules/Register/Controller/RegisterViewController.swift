@@ -74,7 +74,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
         
         registerInfoLabel = UILabel(frame: CGRect(x: 20, y: 10, width: width - 60, height: 50))
         registerInfoLabel.text = "  Registration  "
-        registerInfoLabel.font = .boldSystemFont(ofSize: 25)
+        registerInfoLabel.apply25Font()
         registerInfoLabel.textAlignment = .center
         registerInfoLabel.textColor = UIColor.brownColor
         contentform.addSubview(registerInfoLabel)
@@ -132,12 +132,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
             label.heightAnchor.constraint(equalToConstant: Constants.height/45).isActive = true
             label.widthAnchor.constraint(equalToConstant: 75).isActive = true
             label.backgroundColor = .white
-            label.font = .boldSystemFont(ofSize: 12)
+            label.apply13Font()
             label.textColor = UIColor.brownColor
             label.textAlignment = .center
         }
         
-        registerButton = UIView.brownButton(frame: CGRect(x: 30, y: height - 120 , width: width - 60 , height: Constants.height/15))
+        registerButton = UIView.brownButton(frame: CGRect(x: 30, y: height - 140 , width: width - 60 , height: Constants.height/15))
         registerButton.setTitle("Register", for: .normal)
         registerButton.addTarget(self, action: #selector(goToLogin), for: .touchUpInside)
         
