@@ -116,10 +116,12 @@ class DetailBookViewController: UIViewController {
         authorBook = UILabel(frame: CGRect(x: 160, y: 60, width: 160, height: 20))
         authorBook.text = mBook?.author
         authorBook.apply13Font()
+        authorBook.textColor = UIColor.brownColor
         bookCard.addSubview(authorBook)
         
         bookCategory = UILabel(frame: CGRect(x: 160, y: 80, width: 160, height: 20))
         bookCategory.text = mBook?.categories
+        bookCategory.textColor = UIColor.brownColor
         bookCategory.apply13Font()
         
         bookCard.addSubview(bookCategory)
@@ -174,6 +176,7 @@ class DetailBookViewController: UIViewController {
         descriptionTextView.text = mBook?.description
         descriptionTextView.numberOfLines = 0
         descriptionTextView.textAlignment = .justified
+        descriptionTextView.textColor = UIColor.brownColor
         descriptionTextView.font = .boldSystemFont(ofSize: 13)
         descriptionView.addSubview(descriptionTextView)
         
@@ -207,6 +210,7 @@ class DetailBookViewController: UIViewController {
         aboutAuthor = UILabel(frame: CGRect(x: 20, y: 85, width: width - 90, height: 110))
         aboutAuthor.text = mBook?.aboutAuthor
         aboutAuthor.numberOfLines = 0
+        aboutAuthor.textColor = UIColor.brownColor
         aboutAuthor.textAlignment = .justified
         aboutAuthor.font = .boldSystemFont(ofSize: 12)
         descriptionView.addSubview(aboutAuthor )

@@ -67,6 +67,7 @@ class AuthorsViewController: UIViewController, AuthorManagerDelegate, UITextFiel
 
     searchTextField = UIView.findTextField(frame: CGRect(x: 70, y: 220, width: width - 120 , height: 50))
     searchTextField.placeholder = "Author Name"
+    searchTextField.textColor = UIColor.brownColor
     view.addSubview(searchTextField)
         
     self.view.addSubview(titleLabel)

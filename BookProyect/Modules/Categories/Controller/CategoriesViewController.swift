@@ -25,7 +25,7 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
     lazy var backButton: UIButton = UIButton()
     private lazy var activityView: UIActivityIndicatorView = UIActivityIndicatorView()
     
-    var SearchTextField: UIView.findTextField = UIView.findTextField()
+    var searchTextField: UIView.findTextField = UIView.findTextField()
     var categoryManager = CategoryManager()
     lazy var labelStackView1: UIStackView = UIStackView()
 
@@ -40,7 +40,7 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
         initUI()
             
         categoryManager.delegate = self
-        SearchTextField.delegate = self
+        searchTextField.delegate = self
     }
             func initUI(){
             
@@ -53,9 +53,10 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
             findLabel.text = "Enter the Genres!"
             view.addSubview(findLabel)
         
-            SearchTextField = UIView.findTextField(frame: CGRect(x: 70, y: 220, width: width - 120 , height: 50))
-            SearchTextField.placeholder = "Genres"
-            view.addSubview(SearchTextField)
+            searchTextField = UIView.findTextField(frame: CGRect(x: 70, y: 220, width: width - 120 , height: 50))
+            searchTextField.placeholder = "Genres"
+            searchTextField.textColor = UIColor.brownColor
+            view.addSubview(searchTextField)
             
             titleLabel = UIView.brownLabels(frame: CGRect(x: 0, y: 290, width: width , height: 50))
             titleLabel.text = " Genres:"
@@ -119,21 +120,21 @@ class CategoriesViewController:  UIViewController, CategoryManagerDelegate, UITe
     }
         
         func SearchPressed(_ sender: UIButton) {
-            SearchTextField.endEditing(true)
-            print(SearchTextField.text!)
+            searchTextField.endEditing(true)
+            print(searchTextField.text!)
         }
         
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            SearchTextField.endEditing(true)
-            print(SearchTextField.text!)
+            searchTextField.endEditing(true)
+            print(searchTextField.text!)
             return true
         }
         func textFieldDidEndEditing(_ textField: UITextField) {
-            if let Name = SearchTextField.text {
+            if let Name = searchTextField.text {
                 categoryManager.fetchCategory(categoryName: Name, view: activityView)
                 createActivityIndicator()
             }
-            SearchTextField.text = ""
+            searchTextField.text = ""
         }
             func didUpdateCategory(_ categoryManager: CategoryManager, categoryid: CategoryModel) {
                 DispatchQueue.main.async {

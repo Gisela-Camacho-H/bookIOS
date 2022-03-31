@@ -88,7 +88,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         topImageView1.image = UIImage(named: "topImage")
         view.addSubview(topImageView1)
         
-        welcomeView1 = UIView(frame: CGRect(x: 20, y: height/3 + 75, width: width - 40, height: 200))
+        welcomeView1 = UIView(frame: CGRect(x: 20, y: height/3 + 45, width: width - 40, height: 200))
         welcomeView1.backgroundColor = .white
         welcomeView1.layer.cornerRadius = 20
         view.addSubview(welcomeView1)
@@ -121,17 +121,29 @@ class ViewController: UIViewController, UITextFieldDelegate {
         welcomeLabel1.textColor = UIColor.brownColor
         welcomeView1.addSubview(welcomeLabel1)
         
-        continueLabel = UILabel(frame: CGRect(x: width - 260, y: height - 150 , width: 200, height: 50))
         continueLabel.text = " Let's continue"
         continueLabel.textAlignment = .center
         continueLabel.textColor = UIColor.coralColor
-        continueLabel.apply25Font()
+        continueLabel.apply35Font()
         view.addSubview(continueLabel)
+        continueLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        nextButton = UIButton(frame: CGRect(x: width - 60, y: height - 145 , width: 45, height: 45))
+        NSLayoutConstraint.activate([continueLabel.topAnchor.constraint(equalTo: welcomeView1.bottomAnchor, constant:  20),
+            continueLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -80),
+            continueLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6)
+        ])
+        
+        
         nextButton.setImage(UIImage(named: "go"), for: .normal)
         nextButton.addTarget(self, action: #selector(nextView), for: .touchUpInside)
         view.addSubview(nextButton)
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([nextButton.topAnchor.constraint(equalTo: welcomeView1.bottomAnchor, constant:  20),
+            nextButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
+            nextButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.12),
+            nextButton.heightAnchor.constraint(equalToConstant: 40),
+        ])
 
     }
     

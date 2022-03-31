@@ -104,6 +104,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate  {
         ])
         textFieldArray.forEach {textFieldElement in
             textFieldElement.heightAnchor.constraint(equalToConstant: Constants.height/17).isActive = true
+            textFieldElement.textColor = UIColor.brownColor
         }
         
         

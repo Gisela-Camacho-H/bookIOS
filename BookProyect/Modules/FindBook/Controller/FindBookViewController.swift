@@ -63,6 +63,7 @@ class FindBookViewController: UIViewController, BookManagerDelegate, UITextField
         
             searchTextField = UIView.findTextField(frame: CGRect(x: 70, y: 220, width: width - 120 , height: 50))
             searchTextField.placeholder = " Book Name "
+            searchTextField.textColor = UIColor.brownColor
             view.addSubview(searchTextField)
                 
             self.view.addSubview(titleLabel)

@@ -23,7 +23,7 @@ class BooksViewController : UIViewController {
     private let viewModel = BooksViewModel()
     
     lazy var exitButton: UIButton = UIButton()
-    var tableView : UITableView?
+    var tableView : UITableView = UITableView()
     
     // StackesView
     lazy var labelStackView: UIStackView = UIStackView()
@@ -156,10 +156,10 @@ class BooksViewController : UIViewController {
     
     func requesBooks() {
         tableView = UITableView(frame: CGRect(x: 20, y: height/2 - 40, width: width - 40, height: height - 410))
-        tableView?.backgroundColor = UIColor.backgroundColor
-        tableView?.delegate = self
-        tableView?.dataSource = self
-        view.addSubview(tableView!)
+        tableView.backgroundColor = UIColor.backgroundColor
+        tableView.delegate = self
+        tableView.dataSource = self
+        view.addSubview(tableView)
     }
     
     func requestAuthors() {
@@ -267,7 +267,7 @@ class BooksViewController : UIViewController {
     }
         
     func hideTableView() {
-        tableView?.isHidden = true
+        tableView.isHidden = true
     }
     
 //MARK: - función regresar
